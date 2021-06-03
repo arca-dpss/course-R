@@ -1,6 +1,6 @@
 ---
 title: Introduzione a R
-subtitle: Elementi di base ad applicazioni avanzate
+subtitle: Elementi di base e applicazioni avanzate
 author: Filippo Gambarota
 output: pdf_document
 ---
