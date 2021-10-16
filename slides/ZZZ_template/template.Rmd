@@ -1,0 +1,88 @@
+---
+title: ""
+subtitle: ""
+author: ""
+institute: ""
+date: ""
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["resources/arca.css", "resources/arca_fonts.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: googlecode
+      highlightLines: true
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+class: title-slide, center, middle
+
+#.title[Introduzione a R]
+
+#.subtitle[Giornata 1]
+
+```{r, out.width="10%", echo = FALSE}
+knitr::include_graphics(path = "img/tidyverse.svg")
+```
+
+
+###.location[Corsi ARCA - @DPSS]
+
+###.author[Filippo Gambarota]
+
+---
+
+# Header 1
+
+## Header 2
+
+### Header 3
+
+#### Header 4
+
+---
+
+# Test font
+
+- bullet 1
+- bullet 2
+- bullet 3
+
+---
+
+# Test font
+
+This is a **font** test. It's awesome! you can use all *fonts* that you want. This is an `inline code`
+
+---
+
+# Colors
+
+Colored fonts test!
+
+* This is a .red[red color]
+* This is a .blue[blue color]
+* This is a .green[green color]
+* This is a .yellow[yellow color]
+
+---
+class: section, middle, center
+
+# Section 1
+
+---
+
+# Code
+
+```{r, eval=FALSE}
+data[rows, columns]
+data[rows, columns]
+data[rows, columns]
+{{data[rows, columns]}}
+data[rows, columns]
+```
