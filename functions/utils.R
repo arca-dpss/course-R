@@ -1,8 +1,8 @@
 # This function create a new folder for a new lecture
 
-create_new_lecture <- function(folder_name, slides_name = folder_name, title){
+create_new_lecture <- function(folder_name, slides_name = folder_name){
     
-    template_folder <- "slides/0_template"
+    template_folder <- "slides/ZZZ_template"
     new_folder <- file.path("slides", folder_name)
     fs::dir_copy(template_folder, new_folder)
     
