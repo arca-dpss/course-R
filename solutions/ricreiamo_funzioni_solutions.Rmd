@@ -1,0 +1,92 @@
+---
+title: "Untitled"
+author: "Filippo Gambarota"
+date: "9/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Soluzioni
+
+## Matrici
+
+```{r}
+x <- rnorm(100)
+mat <- matrix(nrow = 10, ncol = 10)
+
+populate_matrix <- function(matrice, contenuto){
+    index <- 1
+    
+    for(i in 1:nrow(matrice)){
+        for(j in 1:ncol(matrice)){
+            mat[i,j] <- contenuto[index]
+            index <- index + 1
+        }
+    }
+    return(mat)
+}
+
+populate_matrix(mat, x)
+```
+
+
+### `sum()`
+
+```{r}
+my_sum <- function(x){
+    sum <- 0
+    for(i in 1:length(x)){
+        sum <- sum + x[i]
+    }
+    return(sum)
+}
+```
+
+### `mean()`
+
+```{r}
+my_mean <- function(x){
+    avg <- my_sum(x)/length(x)
+    return(avg)
+}
+
+my_mean(x)
+mean(x)
+```
+
+### `median()`
+
+Questa è più complessa perchè abbiamo 2 scenari:
+
+- il vettore ha una lunghezza pari
+- il vettore ha una lunghezza dispari
+
+```{r}
+my_median <- function(x){
+  x <- sort(x)
+  if(length(x) %% 2 == 0){ # se è pari
+    mid <- length(x)/2
+    med <- (x[mid] + x[mid+1])/2
+  }else{ # se è dispari
+    med <- x[ceiling(length(x)/2)]
+  }
+  return(med)
+}
+```
+
+### `mode`
+
+La funzione `mode` non è presente in R. Possiamo crearla in vari modi oppure possiamo importarla da un pacchetto esterno. Una possibilità è questa:
+
+```{r}
+my_mode <- function(x){
+    # fonte https://statisticsglobe.com/mode-in-r-programming-example
+    unique_x <- unique(x)
+    tabulate_x <- tabulate(match(x, unique_x))
+    res <- unique_x[tabulate_x == max(tabulate_x)]
+    return(res)
+}
+```

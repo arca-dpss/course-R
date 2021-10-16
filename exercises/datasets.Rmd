@@ -1,0 +1,63 @@
+---
+title: "Esercizi - Datasets"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Packages
+
+library(here)
+```
+
+```{r load-data, include = F}
+netflix <- read.table(here("exercises", "data", "netflix.txt"), header = T, sep = ";")
+```
+
+
+# Esercizi - Datasets
+
+In questi esercizi vedremo come gestire un dataset più o meno complesso in modo da applicare le nozioni che abbiamo imparato. Gli obiettivi sono:
+
+- **applicare** il più possibile i **concetti del corso**
+- **cercare soluzioni online** per le cose non chiare
+- scrivere funzioni dove possibile
+- produrre uno script di pulizia dati
+
+In questo corso non abbiamo visto aspetti di statistica o manipolazione dati in senso stretto, tuttavia i concetti che abbiamo imparato sono applicabili anche senza queste nozioni. Ad esempio non abbiamo affrontato nel dettaglio la pulizia dei dati, i pacchetti per gestire dataset complessi ma sappiamo che ad esempio un `dataframe` è una lista, e se vogliamo applicare una funzione ad una lista possiamo usare l'`*apply` family.
+
+## Netflix
+
+Questo dataset è stato preso dal sito [Kaggle](https://www.kaggle.com/shivamb/netflix-shows)(un ottima risorsa per trovare datasets). E' un dataset relativamente grande con `r nrow(netflix)` righe e `r ncol(netflix)` colonne. Il dataset contiene informazioni su serie-tv e film presenti sulla piattaforma, in particolare:
+
+- `show_id`: in indice numerico per ogni film/serie-tv
+- `type`: identifica se il prodotto è una serie-tv o un film
+- `title`: il titolo
+- `country`: il paese di produzione
+- `duration`: la durata
+- `users_rating`: le valutazioni degli utenti netflix
+- `imdb_rating`: le valutazioni del portale *imdb*
+- `total_cost`: il costo di produzione in milioni
+- `release_date`: la data di rilascio originale della serie o del film
+- `insert_date`: la data di inserimento nel catalogo netflix
+
+```{r}
+head(netflix)
+```
+
+
+## Passaggi da fare:
+
+- Importare il file `netflix.txt` capendo quale funzione utilizzare, come assegnare la prima riga come nomi e usando il separatore giusto
+- Scrivere una funzione che prenda in **input** il dataset e restituisca la tipologia di dato presente in ogni colonna
+- Ragionare sul tipo di dato in base alla descrizione ed eventualmente cambiare la tipologia dove appropriato
+- Scrivere una funzione che prenda in input il dataset e fornisca per ogni colonna il numero di valori `NA`
+- Creare una nuova colonna con la differenza tra `release_date` e `insert_date`. Per questo può essere utile cercare online come R gestisce le date.
+
+## Passaggi avanzati
+
+Solitamente le colonne di un dataset contengono informazioni rindondanti o non adeguatamente organizzate. Ad esempio la colonna `duration` ha una duplice informazione: la durata in minuti (per i film) e la durata in stagioni per le serie. In un'altra colonna abbiamo invece la durata degli episodi chiaramente non rilevante per i film. In questo caso potrebbe essere utile:
+
+- creare una colonna `durata` che contiene la durata in minuti per i film e la durata dell'episodio per le le serie-tv
+- creare una colonna `durata_stagioni` che contenga il numero di stagioni per ogni serie-tv mentre il valore `0` per i film.

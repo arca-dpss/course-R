@@ -1,0 +1,60 @@
+---
+title: "Esercizi"
+author: "Filippo Gambarota"
+date: "9/4/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Esercizi
+
+## Matrici
+
+Popoliamo una matrice usando il ciclo `for`. La matrice ha un numero *totale* di elementi. Usando il vettore `x` che contiene il numero di elementi totali della matrice come possiamo popolare la matrice senza usare la funzione `matrix()`. La matrice è **quadrata** di dimensione 10x10:
+
+```{r}
+# matrice 10 x 10 quindi 100 elementi totali
+x <- rnorm(100)
+```
+
+
+## Ri-creiamo le funzioni di R
+
+Un ottimo esercizio per affinare le nostre competenze di codice è quello di ricreare le funzioni di R che diamo per scontate diciamo. La funzione `mean()` ad esempio si può facilmente create con un ciclo for e qualche altra aggiunta.
+
+### `sum()`
+
+Ricrea la funzione `sum()` e testala sul seguente vettore:
+
+```{r}
+x <- rnorm(100)
+sum(x)
+```
+
+
+### `mean()`
+
+Ricrea la funzione `mean()` testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione `sum()` creata prima):
+
+```{r}
+x <- rnorm(100)
+mean(x)
+```
+
+### `median()`
+
+La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un `if` per controllare queste condizioni)
+
+```{r}
+median(x)
+```
+
+### Moda
+
+In R non è prevista una funzione per calcolare la **moda**. In statistica la moda è definita come il valore/i associato a maggiore frequenza. Ad esempio se abbiamo un vettore $x$ come `c(1,1,1,2,3,5)` la moda sarà 1.
+
+- come si potrebbe calcolare la moda in R?
+- ci sono dei pacchetti che l'hanno implementata?
