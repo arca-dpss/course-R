@@ -19,6 +19,12 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+
+put_image <- function(name){
+ img <- file.path("img", name)
+ knitr::include_graphics(img)
+}
+
 ```
 class: title-slide, center, middle
 
