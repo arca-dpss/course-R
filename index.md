@@ -31,10 +31,10 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 
 ## Slides lezioni
 
-- **Introduzione al corso** - [Slides](slides/0_intro_generale/0_intro_generale.html)
-- **Introduzione a R** - [Slides](slides/1_intro_a_R/1_intro_a_R.html)
-- **Strutture dati in R** - [Slides](slides/2_data_structures/2_data_structures.html)
-- **Programmazione in R** - [Slides](slides/3_programmazione/3_programmazione.html)
+- **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html)
+- **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html)
+- **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html)
+- **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html)
 
 ## Errori libro `Introduzione a R`
 
