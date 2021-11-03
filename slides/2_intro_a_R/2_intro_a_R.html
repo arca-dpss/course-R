@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>title</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="resources/arca.css" type="text/css" />
+    <link rel="stylesheet" href="resources/arca_fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+class: title-slide, center, middle
+
+#.title[Introduzione a R]
+
+#.subtitle[Giornata 1]
+
+&lt;img src="img/tidyverse.svg" width="10%" style="display: block; margin: auto;" /&gt;
+
+
+###.location[Corsi ARCA - @DPSS]
+
+###.author[Filippo Gambarota]
+
+---
+class: section, center, middle
+
+# Primi passi con R
+
+---
+# Installazione
+
+Per l'installazione trovate le indicazioni nella sezione [Installare R e RStudio](https://psicostat.github.io/Introduction2R/install.html) del libro. In generale i passaggi sono:
+
+- scaricare R e installare **R** per il vostro sistema operativo
+- scaricare e installare **RStudio**
+
+---
+class: section, center, middle
+
+# Come si presenta R
+
+---
+
+# Console
+
+
+```r
+put_image("R_console.png")
+```
+
+&lt;img src="img/R_console.png" width="128" style="display: block; margin: auto;" /&gt;
+
+# RStudio
+
+
+```r
+knitr::include_graphics("img/rstudio.png")
+```
+
+&lt;img src="img/rstudio.png" width="213" style="display: block; margin: auto;" /&gt;
+
+---
+class: section, center, middle
+
+# I primi passi in R
+
+---
+# R come calcolatrice
+
+In R è possibile effettuare tutte le operazioni matematiche e algebriche dalle più semplici alle più avanzate
+
+---
+# R e gli oggetti
+
+&gt; “Everything that exists in R is an object” - John Chambers
+
+Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un insieme di numeri, dei caratteri o delle funzioni sono creati come oggetti.
+
+---
+# R e gli oggetti
+
+- Come creare un oggetto?
+- Oggetti e nomi
+- Dove viene creato l'oggetto?
+- Principali tipologie di oggetti
+
+---
+# Convenzioni vs regole
+
+Ci sono alcune cose da considerare quando si scrive codice ed in particolare si creano oggetti:
+
+- **alcune modalità sono errate** --&gt; R ci fornisce un messaggio di errore
+- **alcune modalità sono sconsigliate** --&gt; funziona tutto ma ci potrebbero essere problemi
+- **alcune modalità sono stilisticamente errate** --&gt; funziona tutto, nessun problema ma... anche l'occhio vuole la sua parte
+
+---
+class: section, center, middle
+
+# Ambiente di lavoro
+
+---
+# Ambiente di lavoro
+
+- ### Environment
+
+- ### Working directory
+
+- ### Packages
+
+---
+# Environment
+
+Il **working environment** è la vostra *scrivania* quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
+
+
+```r
+knitr::include_graphics("img/environemnt.png")
+```
+
+&lt;img src="img/environemnt.png" width="146" style="display: block; margin: auto;" /&gt;
+
+---
+# Working Directory
+
+La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti
+
+
+```r
+knitr::include_graphics("img/working_directory.png")
+```
+
+&lt;img src="img/working_directory.png" width="145" style="display: block; margin: auto;" /&gt;
+
+---
+# Packages
+
+In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro che rendere disponibili librerie di funzioni create da altri utenti. Per utilizzare un pacchetto:
+
+- Installare il pacchetto con `install.packages("nomepacchetto")`
+- Caricare il pacchetto con `library(nomepacchetto)`
+
+
+```r
+knitr::include_graphics("img/packages.png")
+```
+
+&lt;img src="img/packages.png" width="146" style="display: block; margin: auto;" /&gt;
+
+---
+class: section, center, middle
+
+# Come lavorare in R
+
+---
+
+# Scrivere e organizzare script
+
+- Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione
+- Nello script è possibile combinare **codice** e **commenti**
+
+
+```r
+knitr::include_graphics("img/script.png")
+```
+
+&lt;img src="img/script.png" width="160" style="display: block; margin: auto;" /&gt;
+
+---
+
+# R Projects
+
+Gli `R projects` sono una feature implementata in R Studio per organizzare una cartella di lavoro
+
+- permettono di impostare la **working directory** in automatico
+- permettono di usare **relative path** invece che **absolute path**
+- rendono più **riproducibile** e **trasportabile** il progetto
+- permettono un **veloce accesso** ad un determinato progetto
+
+---
+class: section, center, middle
+
+# Come risolvere i problemi ~~nella vita~~ in R
+
+---
+# Come risolvere i problemi ~~nella vita~~ in R
+
+In R gli errori sono:
+
+- inevitabili
+- parte del codice stesso
+- educativi
+
+Resta solo da capire come affrontarli
+
+---
+# R ed errori
+
+Ci sono diversi livelli di **allerta** quando scriviamo codice:
+
+- **messaggi**: la funzione ci restituisce qualcosa che è utile sapere, ma tutto liscio
+- **warnings**: la funzione ci informa di qualcosa di *potenzialmente* problematico, ma (circa) tutto liscio
+- **error**: la funzione non solo ci informa di un **errore** ma le operazioni richieste non sono state eseguite
+
+---
+# Come risolvere un errore?
+
+- capire il messaggio
+- leggere la documentazione della funzione
+- cercare il messaggio su Google
+- chiedere aiuto nei forum dedicati
+
+---
+# Come risolvere un errore?
+
+- Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione` o `??nomefunzione`
+- Possiamo cercare anche la documentazione del pacchetto
+- Possiamo cercare su Google il nome della funzione o l'eventuale messaggio che riceviamo
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

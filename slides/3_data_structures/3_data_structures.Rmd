@@ -1,0 +1,208 @@
+---
+title: "title"
+subtitle: ""
+author: ""
+institute: ""
+date: ""
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["resources/arca.css", "resources/arca_fonts.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: googlecode
+      highlightLines: true
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+put_image <- function(name){
+ img <- file.path("img", name)
+ knitr::include_graphics(img)
+}
+```
+class: title-slide, center, middle
+
+#.title[Strutture dati in R]
+
+#.subtitle[Giornata 2]
+
+```{r, out.width="10%", echo = FALSE}
+knitr::include_graphics(path = "img/tidyverse.svg")
+```
+
+
+###.location[Corsi ARCA - @DPSS]
+
+###.author[Filippo Gambarota]
+
+---
+
+# Strutture dati
+
+- Finora abbiamo visto oggetti semplici, tuttavia poter creare, manipolare e gestire **strutture dati complesse** è fondamentale in R.
+
+- Le strutture dati sono modalità di **immagazzinare diverse informazioni** con una certa logica e utile per eseguire altre operazioni complesse.
+
+---
+# Strutture dati
+
+Tutti voi avete presente un foglio di calcolo:
+
+```{r}
+put_image("foglio_excel.png")
+```
+
+---
+# Strutture dati in R
+
+In R sono presenti diverse strutture dati di diversa complessità:
+
+- Vettori
+- Fattori
+- Matrici
+- Dataframe
+- Liste
+
+---
+# Attributi
+
+Gli oggetti in R possiedono degli **attributi** che forniscono informazioni aggiuntive:
+
+- *nomi*: possiamo fornire delle etichette ad ogni elemento
+- *dimensioni*: fornisce il numero di elementi per ogni dimensione nell'oggetto
+- *classe*: definisce la tipologia di oggetto per come è rappresentata in R
+
+---
+# Come affrontarle?
+
+- Creazione
+- Indicizzazione
+- Manipolazione
+- Operazioni (se rilevante)
+
+---
+class: section, center, middle
+
+# Vettori
+
+---
+# Vettori
+
+I vettori sono una struttura dati *unidimensionale* e sono la più semplice presente in R. Ci sono alcune cose importanti:
+
+- Possono contenere informazioni di una sola *tipologia* (come numeri, stringhe, etc.)
+- Essendo *unidimensionali* ogni elemento corrisponde ad una posizione
+- Sono l'elemento fondante di strutture dati più complesse come matrici e dataframe
+
+---
+# Vettori
+
+```{r}
+put_image("vector.png")
+```
+
+---
+class: section, center, middle
+
+# Fattori
+
+---
+# Fattori
+
+I fattori sono dei vettori con degli **attributi** aggiuntivi. In R spesso è possibile aggiungere delle proprietà a strutture dati più semplici in modo da avere oggetti più informativi.
+
+```{r}
+put_image("factors.png")
+```
+
+---
+class: section, center, middle
+
+# Matrici
+
+---
+# Matrici
+
+Le matrici sono una struttura dati *bidimensionale*. Come per i vettori ci sono alcune cose rilevanti:
+
+- Possono contenere una sola tipologia di dati
+- Essendo bidimensionali, abbiamo bisogno di due indici di posizione (righe e colonne) per identificare un elemento
+- Possono essere viste come un insieme di singoli vettori
+
+---
+# Matrici
+
+```{r}
+put_image("matrix.png")
+```
+
+---
+# Extra: Array
+
+Gli array sono degli oggetti *n-dimensionali*. Se la matrice è un quadrato un array è un cubo. Valgono le stesse proprietà della matrice chiaramente scalate alle *n dimensioni*
+
+---
+class: section, center, middle
+
+# Dataframe
+
+---
+# Dataframe
+
+Il dataframe è la struttura più complessa, utile e potente di R. é la cosa che più si avvicina al concetto di *foglio excel*. Ci sono diverse cose importanti:
+
+- Può contenere *diverse* tipologie di elementi
+- E' una struttura *bidimensionale* quindi definita per righe e colonne
+- Ogni elemento (colonna o riga) deve avere lo stesso numero di elementi
+
+---
+# Dataframe vs Excel
+
+```{r}
+put_image("dataframe.png")
+```
+
+---
+class: section, center, middle
+
+# Liste
+
+---
+# Liste
+
+- Le liste sono un oggetto estremamente *versatile* e intuitivo, tuttavia possono diventare molto complesse
+
+- Le altre strutture dati aumentavano di complessità aumentando di dimensione e/o tipologia di dato le liste aumentano di complessità in *profondità*
+
+- Come dice la parola, la lista è un contenitore di **qualsiasi** oggetto
+
+---
+# Liste
+
+.pull-left[
+
+```{r}
+put_image("list_example.png")
+```
+
+]
+
+.pull-right[
+
+```{r}
+put_image("list_depth.png")
+```
+
+]
+
+---
+# Liste e Dataframe
+
+- I dataframe non sono altro che una topologia particolare di lista dove ogni elemento ha la stessa dimensione ed è associato ad un nome.
+- Le liste possono contenere dataframe o altre liste, come i dataframe possono contenere un vettore di liste o di dataframe
+- Per un utilizzo di base, avere queste strutture dati più complesse non è necessario, tuttavia possono diventare estremamente utili in alcuni contesti

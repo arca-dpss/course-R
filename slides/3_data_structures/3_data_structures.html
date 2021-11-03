@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>title</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="resources/arca.css" type="text/css" />
+    <link rel="stylesheet" href="resources/arca_fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+class: title-slide, center, middle
+
+#.title[Strutture dati in R]
+
+#.subtitle[Giornata 2]
+
+&lt;img src="img/tidyverse.svg" width="10%" /&gt;
+
+
+###.location[Corsi ARCA - @DPSS]
+
+###.author[Filippo Gambarota]
+
+---
+
+# Strutture dati
+
+- Finora abbiamo visto oggetti semplici, tuttavia poter creare, manipolare e gestire **strutture dati complesse** è fondamentale in R.
+
+- Le strutture dati sono modalità di **immagazzinare diverse informazioni** con una certa logica e utile per eseguire altre operazioni complesse.
+
+---
+# Strutture dati
+
+Tutti voi avete presente un foglio di calcolo:
+
+
+```r
+put_image("foglio_excel.png")
+```
+
+&lt;img src="img/foglio_excel.png" width="736" /&gt;
+
+---
+# Strutture dati in R
+
+In R sono presenti diverse strutture dati di diversa complessità:
+
+- Vettori
+- Fattori
+- Matrici
+- Dataframe
+- Liste
+
+---
+# Attributi
+
+Gli oggetti in R possiedono degli **attributi** che forniscono informazioni aggiuntive:
+
+- *nomi*: possiamo fornire delle etichette ad ogni elemento
+- *dimensioni*: fornisce il numero di elementi per ogni dimensione nell'oggetto
+- *classe*: definisce la tipologia di oggetto per come è rappresentata in R
+
+---
+# Come affrontarle?
+
+- Creazione
+- Indicizzazione
+- Manipolazione
+- Operazioni (se rilevante)
+
+---
+class: section, center, middle
+
+# Vettori
+
+---
+# Vettori
+
+I vettori sono una struttura dati *unidimensionale* e sono la più semplice presente in R. Ci sono alcune cose importanti:
+
+- Possono contenere informazioni di una sola *tipologia* (come numeri, stringhe, etc.)
+- Essendo *unidimensionali* ogni elemento corrisponde ad una posizione
+- Sono l'elemento fondante di strutture dati più complesse come matrici e dataframe
+
+---
+# Vettori
+
+
+```r
+put_image("vector.png")
+```
+
+&lt;img src="img/vector.png" width="3412" /&gt;
+
+---
+class: section, center, middle
+
+# Fattori
+
+---
+# Fattori
+
+I fattori sono dei vettori con degli **attributi** aggiuntivi. In R spesso è possibile aggiungere delle proprietà a strutture dati più semplici in modo da avere oggetti più informativi.
+
+
+```r
+put_image("factors.png")
+```
+
+&lt;img src="img/factors.png" width="668" /&gt;
+
+---
+class: section, center, middle
+
+# Matrici
+
+---
+# Matrici
+
+Le matrici sono una struttura dati *bidimensionale*. Come per i vettori ci sono alcune cose rilevanti:
+
+- Possono contenere una sola tipologia di dati
+- Essendo bidimensionali, abbiamo bisogno di due indici di posizione (righe e colonne) per identificare un elemento
+- Possono essere viste come un insieme di singoli vettori
+
+---
+# Matrici
+
+
+```r
+put_image("matrix.png")
+```
+
+&lt;img src="img/matrix.png" width="2336" /&gt;
+
+---
+# Extra: Array
+
+Gli array sono degli oggetti *n-dimensionali*. Se la matrice è un quadrato un array è un cubo. Valgono le stesse proprietà della matrice chiaramente scalate alle *n dimensioni*
+
+---
+class: section, center, middle
+
+# Dataframe
+
+---
+# Dataframe
+
+Il dataframe è la struttura più complessa, utile e potente di R. é la cosa che più si avvicina al concetto di *foglio excel*. Ci sono diverse cose importanti:
+
+- Può contenere *diverse* tipologie di elementi
+- E' una struttura *bidimensionale* quindi definita per righe e colonne
+- Ogni elemento (colonna o riga) deve avere lo stesso numero di elementi
+
+---
+# Dataframe vs Excel
+
+
+```r
+put_image("dataframe.png")
+```
+
+&lt;img src="img/dataframe.png" width="1289" /&gt;
+
+---
+class: section, center, middle
+
+# Liste
+
+---
+# Liste
+
+- Le liste sono un oggetto estremamente *versatile* e intuitivo, tuttavia possono diventare molto complesse
+
+- Le altre strutture dati aumentavano di complessità aumentando di dimensione e/o tipologia di dato le liste aumentano di complessità in *profondità*
+
+- Come dice la parola, la lista è un contenitore di **qualsiasi** oggetto
+
+---
+# Liste
+
+.pull-left[
+
+
+```r
+put_image("list_example.png")
+```
+
+&lt;img src="img/list_example.png" width="1385" /&gt;
+
+]
+
+.pull-right[
+
+
+```r
+put_image("list_depth.png")
+```
+
+&lt;img src="img/list_depth.png" width="1792" /&gt;
+
+]
+
+---
+# Liste e Dataframe
+
+- I dataframe non sono altro che una topologia particolare di lista dove ogni elemento ha la stessa dimensione ed è associato ad un nome.
+- Le liste possono contenere dataframe o altre liste, come i dataframe possono contenere un vettore di liste o di dataframe
+- Per un utilizzo di base, avere queste strutture dati più complesse non è necessario, tuttavia possono diventare estremamente utili in alcuni contesti
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "googlecode",
+"highlightLines": true,
+"highlightLanguage": "r",
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
