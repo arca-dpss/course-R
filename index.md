@@ -1,5 +1,12 @@
 # Info Generali
 
+# Slides lezioni
+
+- [**Introduzione al corso**]("slides/0_intro_generale/0_intro_generale.html")
+- [**Introduzione a R**]("slides/1_intro_a_R/1_intro_a_R.html")
+- [**Strutture dati in R**]("slides/2_data_structures/2_data_structures.html")
+- [**Programmazione in R**]("slides/3_programmazione/3_programmazione.html")
+
 # Fixing Typo
 
 Quando aumenta la quantità delle cose da scrivere aumenta (tantissimo 😱) la quantità di errori, inconsistenze e così via. Lo scopo di questo documento è di **raccogliere e sistemare tutti gli errori che nel tempo si trovano**.
