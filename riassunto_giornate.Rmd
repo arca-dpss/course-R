@@ -1,0 +1,28 @@
+---
+title: "Introduzione a R"
+subtitle: "Elementi di base e applicazioni avanzate"
+author: "Filippo Gambarota"
+output: 
+    pdf_document:
+        number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduzione all’ambiente di lavoro in R.
+
+In questa giornata verrà introdotto il software R dall’installazione per i vari sistemi operativi alla spiegazione e organizzazione di come gestire una sessione di lavoro.
+
+# Strutture dati e manipolazione di oggetti
+
+In questa giornata verranno introdotte le principali strutture dati che compongono il linguaggio R e le modalità per interagire in modo avanzato con esse.
+
+# Introduzione alla programmazione in R
+
+In questa giornata verranno introdotti i principali costrutti della programmazione (operazioni condizionali, iterazioni e funzioni) e la loro implementazione in R.
+
+# Sviluppo di un progetto in R e cenni ad elementi avanzati del linguaggio
+
+In questa giornata verranno introdotti alcuni aspetti trasversali utili per un utilizzo moderno e avanzato del linguaggio R. Inoltre verrà sviluppato individ- ualmente un progetto che comprenda organizzazione della sessione di lavoro e applicazione dei principali elementi del linguaggio.
