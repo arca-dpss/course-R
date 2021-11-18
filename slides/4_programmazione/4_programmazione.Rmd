@@ -876,6 +876,39 @@ mapply(function(x, y) rnorm(n = 10, mean = x, sd = y), medie, stds, SIMPLIFY = F
 ---
 class: section, center, middle
 
+# Extra: `purrr::map*`
+
+---
+# Extra: `purrr::map*`
+
+.pull-left[
+
+```{r}
+put_image("purrr.svg")
+```
+
+]
+
+.pull-right[
+
+Senza addentrarci troppo in questo modo, c'è una famiglia di funzioni che una volta imparato `*apply` vi consiglio di usare perchè più consistenti e intuitive, la `map*` family.
+
+]
+
+---
+# Extra: `purrr::map*`
+
+Per usare `purrr::map*` è sufficiente installare il pacchetto `purrr` con `install.packages("purrr")` ed iniziare ad usare le nuove funzioni. La sintassi è esattamente la stessa di `*apply` (qualche modifica ma potete usare la stessa) ma invece che usare una funzione per tutto, abbiamo molte funzioni per ogni casistica:
+
+- `map(lista, funzione)` è l'analogo di `lapply()` e fornisce sempre una lista
+
+- `map_dbl(lista, funzione)` applica la funzione ad ogni elemento e **si aspetta che** il risultato sia un vettore di *double*
+- `map_lgl(lista, funzione)` applica la funzione ad ogni elemento e **si aspetta che** il risultato sia un vettore *logico*
+- `map2/pmap_*` sono rispettivamente applicare la funzione a 2/n liste (analogo di `mapply()`)
+
+---
+class: section, center, middle
+
 # Extra: `replicate()` and `repeat()`
 
 ---
@@ -885,6 +918,77 @@ Ci sono altre due funzioni in R che permettono di *iterare*. Sono meno utilizzat
 
 - `replicate()` permette di ripetere un operazione *n* volte, senza però utilizzare un `iteratore` o un `placeholder`.
 - `repeat()` anche repeat permette di ripetere ma fino a che non si verifica un certa condizione (**logica**). Ha una struttura simile al ciclo `while`
+
+---
+class: section, center, middle
+
+# Extra: Formula syntax
+
+---
+# Formula syntax
+
+In R molte operazioni vengono eseguite usando la **formula syntax** `something ~ something else` ad esempio:
+
+- modelli statistici: `lm(y ~ x, data = data)`, `t.test(y ~ factor, data = data)`
+- plot: `boxplot(y ~ x, data = data)`
+- ...
+
+In cosa consiste?
+
+---
+# Formula syntax
+
+Senza andare nei dettagli tecnici, R usa una cosa che si chiama *lazy evaluation*. In altri termini "salva" delle operazioni per essere eseguite in un secondo momento. Tutti sappiamo che se scriviamo un nome (senza virgolette) e questo non è associato ad un oggetto otteniamo un errore. Tuttavia alcune funzioni come `library()` non forniscono errore. Perchè?
+
+```{r, error=TRUE}
+stats # errore
+library(stats) # no errore
+```
+
+---
+# Formula syntax
+
+La ragione è che R è in grado di salvare un'espressione per usarla poi in uno specifico contesto (ad esempio dentro una funzione). La `formula syntax` è un esempio. Usando la tilde `~` possiamo creare delle `formule` che R può utilizzare in specifici contesti:
+
+```{r, error=TRUE}
+y
+x
+y ~ x
+my_formula <- y ~ x
+class(my_formula)
+```
+
+---
+# Formula syntax e `aggregate()`
+
+Un esempio utile è la funzione `aggregate()` molto interessante per applicare funzioni a dataframe. Immaginate di avere il dataset `iris` e calcolare la media per ogni livello del fattore `Species`:
+
+```{r, error = TRUE}
+tapply(iris$Sepal.Length, iris$Species)
+aggregate(Sepal.Length ~ Species, FUN = mean, data = iris)
+
+# Anche creando un oggetto, ma solo come formula
+
+my_formula <- Sepal.Length ~ Species
+my_char <- "Sepal.Length ~ Species"
+aggregate(my_char, FUN = mean, data = iris)
+
+
+# Viene lo stesso usando $ e senza specificare data =
+aggregate(iris$Sepal.Length, iris$Species, FUN = mean)
+
+```
+---
+
+# Formula syntax e `aggregate()`
+
+Ma anche operazioni più complesse:
+
+```{r}
+my_iris <- iris
+my_iris$fac <- rep(c("a", "b", "c"), 50)
+aggregate(Sepal.Length ~ Species + fac, mean, data = my_iris)
+```
 
 ---
 # Replicate
@@ -978,9 +1082,3 @@ while(i < 4){
 ]
 
 - `repeat` valuta la condizione una volta finita l'iterazione, mentre `while` all'inizio. Se la condizione non è `TRUE` all'inizio, il `while` non parte mentre `repeat` si.
-
-
-
-
-
-

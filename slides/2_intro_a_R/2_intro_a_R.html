@@ -4,11 +4,16 @@
     <title>title</title>
     <meta charset="utf-8" />
     <script src="libs/header-attrs/header-attrs.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="resources/arca.css" type="text/css" />
     <link rel="stylesheet" href="resources/arca_fonts.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
+
+
+
 
 
 
@@ -54,21 +59,13 @@ class: section, center, middle
 
 # Console
 
+&lt;img src="img/R_console.png" width="100%" style="display: block; margin: auto;" /&gt;
 
-```r
-put_image("R_console.png")
-```
-
-&lt;img src="img/R_console.png" width="128" style="display: block; margin: auto;" /&gt;
+---
 
 # RStudio
 
-
-```r
-knitr::include_graphics("img/rstudio.png")
-```
-
-&lt;img src="img/rstudio.png" width="213" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/rstudio.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: section, center, middle
@@ -78,14 +75,227 @@ class: section, center, middle
 ---
 # R come calcolatrice
 
-In R è possibile effettuare tutte le operazioni matematiche e algebriche dalle più semplici alle più avanzate
+In R è possibile effettuare tutte le [operazioni matematiche](https://psicostat.github.io/Introduction2R/first-comands.html#math-operators) e algebriche dalle più semplici alle più avanzate
+
+&lt;div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:1000px; "&gt;&lt;table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"&gt; Funzione &lt;/th&gt;
+   &lt;th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"&gt; Nome &lt;/th&gt;
+   &lt;th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"&gt; Esempio &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x + y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Addizione &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 5 + 3 &lt;br&gt;[1] 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x - y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Sottrazione &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 7 - 2 &lt;br&gt;[1] 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x * y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Moltiplicazione &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 4 * 3 &lt;br&gt;[1] 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x / y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Divisione &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 8 / 3 &lt;br&gt;[1] 2.666667 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x %% y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Resto della divisione &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 7 %% 5 &lt;br&gt;[1] 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x %/% y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Divisione intera &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 7 %/% 5 &lt;br&gt;[1] 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; x ^ y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Potenza &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 3 ^ 3 &lt;br&gt;[1] 27 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; abs(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Valore assoluto &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; abs(3-5^2) &lt;br&gt;[1] 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; sign(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Segno di un'espressione &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; sign(-8) &lt;br&gt;[1] -1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; sqrt(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Radice quadrata &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; sqrt(25) &lt;br&gt;[1] 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; log(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Logaritmo naturale &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; log(10) &lt;br&gt;[1] 2.302585 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; exp(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Esponenziale &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; exp(1) &lt;br&gt;[1] 2.718282 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; sin(x)&lt;br&gt;cos(x)&lt;br&gt;tan(x)&lt;br&gt;asin(x)&lt;br&gt;acos(x)&lt;br&gt;atan(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Funzioni trigonometriche &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt;sin(pi/2) &lt;br&gt;[1]1 &lt;br&gt;&amp;gt;cos(pi/2) &lt;br&gt;[1]6.123234e-17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; factorial(x) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fattoriale &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; factorial(6) &lt;br&gt;[1] 720 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; choose(n, k) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Coefficiente binomiale &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; choose(5,3) &lt;br&gt;[1] 10 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;
+
+---
+# Operatori matematici
+
+- Importante considerare l'**ordine delle operazioni** analogo alle regole della matematica: `2 x 3 + 1` prima `2 x 3` e poi `+ 1`. Analogalmente in R:
+
+
+```r
+# Senza parentesi
+
+2 * 3 + 1
+```
+
+```
+## [1] 7
+```
+
+```r
+# Con le parentesi
+
+(2 * 3) + 1
+```
+
+```
+## [1] 7
+```
+
+```r
+# Con le parentesi forzando un ordine diverso
+
+2 * (3 + 1)
+```
+
+```
+## [1] 8
+```
+
+---
+# Operatori relazionali
+
+Gli operatori relazionali sono molto utili dentro le **funzioni**, per **selezionare elementi dalle strutture dati** (vedremo più avanti) e in generale per **controllare** alcune sezioni del nostro codice:
+
+.pull-left[
+
+
+```r
+3 &gt; 4
+```
+
+```
+## [1] FALSE
+```
+
+```r
+3 &gt;= 3
+```
+
+```
+## [1] TRUE
+```
+
+```r
+10 &lt; 100
+```
+
+```
+## [1] TRUE
+```
+
+]
+
+.pull-right[
+
+
+```r
+40 == 40
+```
+
+```
+## [1] TRUE
+```
+
+```r
+10 != 50
+```
+
+```
+## [1] TRUE
+```
+
+]
+
+---
+# Operatori logici
+
+Gli operatori logici permettono di **combinare espressioni relazionali** e ottenere sempre un valore `TRUE` o `FALSE`:
+
+
+```r
+3 &gt; 4 &amp; 10 &lt; 100
+```
+
+```
+## [1] FALSE
+```
+
+```r
+10 &lt; 100 | 50 &gt; 2
+```
+
+```
+## [1] TRUE
+```
+
+```r
+!5 &gt; 4
+```
+
+```
+## [1] FALSE
+```
+
+---
+class: section, center, middle
+
+# R e gli oggetti
 
 ---
 # R e gli oggetti
 
 &gt; “Everything that exists in R is an object” - John Chambers
 
-Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un insieme di numeri, dei caratteri o delle funzioni sono creati come oggetti.
+Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un vettore, dei caratteri o delle funzioni sono creati come oggetti.
 
 ---
 # R e gli oggetti
@@ -93,7 +303,37 @@ Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che
 - Come creare un oggetto?
 - Oggetti e nomi
 - Dove viene creato l'oggetto?
-- Principali tipologie di oggetti
+---
+# Come creare un oggetto?
+
+La creazione di un oggetto avviene tramite il comando `&lt;-` oppure `=` in questo modo: `nome &lt;- oggetto`:
+
+
+```r
+x
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'x' not found
+```
+
+```r
+10 # questo non è un oggetto, non è salvato
+```
+
+```
+## [1] 10
+```
+
+```r
+x &lt;- 10 # ora il valore numerico 10 è associato al nome "x"
+
+x
+```
+
+```
+## [1] 10
+```
 
 ---
 # Convenzioni vs regole
@@ -103,6 +343,133 @@ Ci sono alcune cose da considerare quando si scrive codice ed in particolare si 
 - **alcune modalità sono errate** --&gt; R ci fornisce un messaggio di errore
 - **alcune modalità sono sconsigliate** --&gt; funziona tutto ma ci potrebbero essere problemi
 - **alcune modalità sono stilisticamente errate** --&gt; funziona tutto, nessun problema ma... anche l'occhio vuole la sua parte
+
+---
+# Oggetti e nomi
+
+Il nome di un oggetto è importante sia per l'utente che per il software stesso:
+
+
+```r
+
+1 &lt;- 10 # errore
+
+_ciao &lt;- 10 # errore
+
+mean &lt;- 10 # possibile ma pericoloso
+
+`1` &lt;- 10 # con i backticks si può usare qualsiasi nome ma poco pratico
+```
+
+```
+## Error: &lt;text&gt;:4:1: unexpected input
+## 3: 
+## 4: _
+##    ^
+```
+
+
+```r
+my_obj &lt;- 10
+
+my.obj &lt;- 10
+
+My_obj &lt;- 10 # attenzione a maiuscole e minuscole
+```
+
+---
+# Oggetti e nomi (proibiti)
+
+In R ci sono anche dei nomi non solo sconsigliati ma proprio **proibiti** che nonostante siano sintatticamente corretti, non possono essere usati (per ovvie ragioni):
+
+.pull-left[
+
+
+```r
+
+mean &lt;- 10 # ok ma sconsigliato
+
+function &lt;- 10
+```
+
+```
+## Error: &lt;text&gt;:4:10: unexpected assignment
+## 3: 
+## 4: function &lt;-
+##             ^
+```
+
+]
+
+.pull-right[
+
+
+```r
+TRUE &lt;- 4
+```
+
+```
+## Error in TRUE &lt;- 4: invalid (do_set) left-hand side to assignment
+```
+
+```r
+T &lt;- 2 # attenzione
+```
+
+]
+
+---
+# Dove viene creato l'oggetto?
+
+Il legame `nome-oggetto` viene creato nel **global environment** e rimane *salvato* per tutta a sessione di utilizzo. Potete visualizzare l'environment in RStudio oppure usando il comando `ls()`:
+
+&lt;img src="img/obj_environment.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+class: section, center, middle
+
+# Non solo numeri (anticipazione)
+
+---
+
+# Non solo numeri (anticipazione)
+
+In R possiamo usare oltre ai numeri (in senso matematico) anche le **stringhe** ovvero parole, lettere intepretate così come sono:
+
+
+```r
+"ciao" # stringa formata da 5 caratteri
+```
+
+```
+## [1] "ciao"
+```
+
+```r
+x &lt;- "ciao" # associo la stringa ad un oggetto
+
+x + 1 # operazioni matematiche con stringhe (ha senso?)
+```
+
+```
+## Error in x + 1: non-numeric argument to binary operator
+```
+
+```r
+x == "ciao"
+```
+
+```
+## [1] TRUE
+```
+
+```r
+x &gt; 10
+```
+
+```
+## [1] TRUE
+```
 
 ---
 class: section, center, middle
@@ -123,24 +490,14 @@ class: section, center, middle
 
 Il **working environment** è la vostra *scrivania* quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
 
-
-```r
-knitr::include_graphics("img/environemnt.png")
-```
-
-&lt;img src="img/environemnt.png" width="146" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/environemnt.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 # Working Directory
 
 La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti
 
-
-```r
-knitr::include_graphics("img/working_directory.png")
-```
-
-&lt;img src="img/working_directory.png" width="145" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/working_directory.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 # Packages
@@ -150,12 +507,10 @@ In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro
 - Installare il pacchetto con `install.packages("nomepacchetto")`
 - Caricare il pacchetto con `library(nomepacchetto)`
 
+---
+# Packages
 
-```r
-knitr::include_graphics("img/packages.png")
-```
-
-&lt;img src="img/packages.png" width="146" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/packages.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: section, center, middle
@@ -169,12 +524,7 @@ class: section, center, middle
 - Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione
 - Nello script è possibile combinare **codice** e **commenti**
 
-
-```r
-knitr::include_graphics("img/script.png")
-```
-
-&lt;img src="img/script.png" width="160" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/script.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -226,6 +576,26 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 - Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione` o `??nomefunzione`
 - Possiamo cercare anche la documentazione del pacchetto
 - Possiamo cercare su Google il nome della funzione o l'eventuale messaggio che riceviamo
+
+---
+# Come NON fare una domanda
+
+.pull-left[
+&lt;img src="img/bad_question.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+--
+
+.pull-left[
+&lt;img src="img/bad_question_after.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+--
+
+.pull-right[
+- Non riporta il **messaggio di errore**!
+- Usa un **percorso assoluto**! Come posso riprodurre il suo problema?
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

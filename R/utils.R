@@ -47,3 +47,27 @@ update_slides <- function(){
     slides <- slides[!stringr::str_detect(slides, "template")]
     out <- sapply(slides, compile_slides)
 }
+
+
+# put_random_na -----------------------------------------------------------
+
+put_random_na <- function(data, n){
+    
+    pos <- list(rows = 1:nrow(data),
+                cols = 1:ncol(data))
+    
+    pos <- expand.grid(pos)
+    
+    na_pos <- sample(1:nrow(pos), n)
+    
+    for (i in 1:length(na_pos)) {
+        
+        na_pos_i <- pos[na_pos[i], ]
+        
+        data[na_pos_i[[1]], na_pos_i[[2]]] <- NA
+        
+    }
+    
+    return(data)
+    
+}

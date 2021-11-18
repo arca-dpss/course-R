@@ -685,7 +685,7 @@ my_sum(x)
 ```
 
 ```
-## [1] 6.176434
+## [1] -3.511834
 ```
 
 ```r
@@ -693,7 +693,7 @@ sum(x)
 ```
 
 ```
-## [1] 6.176434
+## [1] -3.511834
 ```
 
 ---
@@ -768,7 +768,7 @@ means
 ```
 
 ```
-## [1] -0.16470903  0.47951092  0.26525381 -0.05626564
+## [1] -0.03367924  0.54006157  0.07303584 -0.01317908
 ```
 
 ```r
@@ -776,7 +776,7 @@ medians
 ```
 
 ```
-## [1] -0.09244970  0.49494861  0.25442963 -0.04320046
+## [1] -0.02822172  0.55058166  0.00292036 -0.05864100
 ```
 
 ```r
@@ -784,7 +784,7 @@ stds
 ```
 
 ```
-## [1] 1.0339801 0.2890871 1.0750542 0.8830394
+## [1] 1.0940746 0.2859799 0.8928188 0.9243352
 ```
 
 ]
@@ -813,7 +813,7 @@ means
 ```
 
 ```
-## [1] -0.16470903  0.47951092  0.26525381 -0.05626564
+## [1] -0.03367924  0.54006157  0.07303584 -0.01317908
 ```
 
 ```r
@@ -821,7 +821,7 @@ medians
 ```
 
 ```
-## [1] -0.09244970  0.49494861  0.25442963 -0.04320046
+## [1] -0.02822172  0.55058166  0.00292036 -0.05864100
 ```
 
 ```r
@@ -829,7 +829,7 @@ stds
 ```
 
 ```
-## [1] 1.0339801 0.2890871 1.0750542 0.8830394
+## [1] 1.0940746 0.2859799 0.8928188 0.9243352
 ```
 
 ---
@@ -846,20 +846,20 @@ lapply(my_list, function(vec) sapply(my_funs, function(fun) fun(vec)))
 
 ```
 ## [[1]]
-##     median       mean         sd 
-## -0.0924497 -0.1647090  1.0339801 
+##      median        mean          sd 
+## -0.02822172 -0.03367924  1.09407458 
 ## 
 ## [[2]]
 ##    median      mean        sd 
-## 0.4949486 0.4795109 0.2890871 
+## 0.5505817 0.5400616 0.2859799 
 ## 
 ## [[3]]
-##    median      mean        sd 
-## 0.2544296 0.2652538 1.0750542 
+##     median       mean         sd 
+## 0.00292036 0.07303584 0.89281879 
 ## 
 ## [[4]]
 ##      median        mean          sd 
-## -0.04320046 -0.05626564  0.88303945
+## -0.05864100 -0.01317908  0.92433525
 ```
 
 Amazing! ora cerchiamo di dare un senso a queste righe di codice!
@@ -983,16 +983,16 @@ lapply(my_list, center_var)
 
 ```
 ## $vec1
-##  [1]  0.24579183 -0.05671473 -0.05047085  0.11546121  0.36427934
-##  [6]  0.36795302 -0.48074303 -0.36325566 -0.46572743  0.32342631
+##  [1]  0.33417084  0.06447329 -0.12930872 -0.04861421 -0.25460473 -0.03458802  0.43513086 -0.16409301
+##  [9] -0.05774704 -0.14481927
 ## 
 ## $vec2
-##  [1] -0.23954687 -0.18592118 -0.27694526  0.45635436 -0.16458653
-##  [6] -0.23494896 -0.08207358  0.02390574  0.47769853  0.22606375
+##  [1] -0.16247229 -0.18550136 -0.04296107 -0.25445041 -0.31006885  0.29758041  0.14223949 -0.17784229
+##  [9]  0.12121899  0.57225737
 ## 
 ## $vec3
-##  [1] -0.51848001 -0.15822415  0.02675978  0.23733352  0.06630436
-##  [6] -0.03592425  0.21776989  0.45293493  0.02891198 -0.31738604
+##  [1]  0.04713618  0.41016442 -0.31985962  0.47881569 -0.30240343 -0.43538183  0.07158915 -0.38259737
+##  [9]  0.25712553  0.17541128
 ```
 
 ---
@@ -1007,16 +1007,16 @@ lapply(my_list, function(x) x - mean(x))
 
 ```
 ## $vec1
-##  [1]  0.24579183 -0.05671473 -0.05047085  0.11546121  0.36427934
-##  [6]  0.36795302 -0.48074303 -0.36325566 -0.46572743  0.32342631
+##  [1]  0.33417084  0.06447329 -0.12930872 -0.04861421 -0.25460473 -0.03458802  0.43513086 -0.16409301
+##  [9] -0.05774704 -0.14481927
 ## 
 ## $vec2
-##  [1] -0.23954687 -0.18592118 -0.27694526  0.45635436 -0.16458653
-##  [6] -0.23494896 -0.08207358  0.02390574  0.47769853  0.22606375
+##  [1] -0.16247229 -0.18550136 -0.04296107 -0.25445041 -0.31006885  0.29758041  0.14223949 -0.17784229
+##  [9]  0.12121899  0.57225737
 ## 
 ## $vec3
-##  [1] -0.51848001 -0.15822415  0.02675978  0.23733352  0.06630436
-##  [6] -0.03592425  0.21776989  0.45293493  0.02891198 -0.31738604
+##  [1]  0.04713618  0.41016442 -0.31985962  0.47881569 -0.30240343 -0.43538183  0.07158915 -0.38259737
+##  [9]  0.25712553  0.17541128
 ```
 
 Come per i cicli `for` (ricordo che `*apply` e `for` sono identici), `x` è solo un placeholder (analogo di `i`) e può essere qualsiasi lettera o nome
@@ -1046,13 +1046,13 @@ res
 
 ```
 ## $vec1
-## [1] 0.6057164
+## [1] 0.3764034
 ## 
 ## $vec2
-## [1] 0.3736339
+## [1] 0.3860785
 ## 
 ## $vec3
-## [1] 0.5324058
+## [1] 0.5007965
 ```
 
 ```r
@@ -1076,7 +1076,7 @@ res
 
 ```
 ##      vec1      vec2      vec3 
-## 0.6057164 0.3736339 0.5324058
+## 0.3764034 0.3860785 0.5007965
 ```
 
 ```r
@@ -1102,13 +1102,13 @@ head(my_dataframe)
 ```
 
 ```
-##        vec1       vec2      vec3
-## 1 0.8515083 0.13408700 0.0139258
-## 2 0.5490017 0.18771269 0.3741817
-## 3 0.5552456 0.09668861 0.5591656
-## 4 0.7211777 0.82998823 0.7697393
-## 5 0.9699958 0.20904734 0.5987102
-## 6 0.9736695 0.13868491 0.4964816
+##        vec1       vec2       vec3
+## 1 0.7105743 0.22360625 0.54793273
+## 2 0.4408767 0.20057718 0.91096097
+## 3 0.2470947 0.34311747 0.18093693
+## 4 0.3277892 0.13162813 0.97961224
+## 5 0.1217987 0.07600969 0.19839312
+## 6 0.3418154 0.68365895 0.06541471
 ```
 
 ```r
@@ -1116,8 +1116,7 @@ apply(my_dataframe, 1, mean)
 ```
 
 ```
-##  [1] 0.3331737 0.3702987 0.4036999 0.7736351 0.5925844 0.5362786
-##  [7] 0.3889031 0.5417804 0.5175464 0.5812867
+##  [1] 0.4940378 0.5174716 0.2570497 0.4796765 0.1320672 0.3636297 0.6374127 0.1795820 0.5279587 0.6220426
 ```
 
 ```r
@@ -1126,7 +1125,7 @@ apply(my_dataframe, 2, mean)
 
 ```
 ##      vec1      vec2      vec3 
-## 0.6057164 0.3736339 0.5324058
+## 0.3764034 0.3860785 0.5007965
 ```
 
 ```r
@@ -1135,16 +1134,16 @@ apply(my_dataframe, 2, center_var)
 
 ```
 ##              vec1        vec2        vec3
-##  [1,]  0.24579183 -0.23954687 -0.51848001
-##  [2,] -0.05671473 -0.18592118 -0.15822415
-##  [3,] -0.05047085 -0.27694526  0.02675978
-##  [4,]  0.11546121  0.45635436  0.23733352
-##  [5,]  0.36427934 -0.16458653  0.06630436
-##  [6,]  0.36795302 -0.23494896 -0.03592425
-##  [7,] -0.48074303 -0.08207358  0.21776989
-##  [8,] -0.36325566  0.02390574  0.45293493
-##  [9,] -0.46572743  0.47769853  0.02891198
-## [10,]  0.32342631  0.22606375 -0.31738604
+##  [1,]  0.33417084 -0.16247229  0.04713618
+##  [2,]  0.06447329 -0.18550136  0.41016442
+##  [3,] -0.12930872 -0.04296107 -0.31985962
+##  [4,] -0.04861421 -0.25445041  0.47881569
+##  [5,] -0.25460473 -0.31006885 -0.30240343
+##  [6,] -0.03458802  0.29758041 -0.43538183
+##  [7,]  0.43513086  0.14223949  0.07158915
+##  [8,] -0.16409301 -0.17784229 -0.38259737
+##  [9,] -0.05774704  0.12121899  0.25712553
+## [10,] -0.14481927  0.57225737  0.17541128
 ```
 
 ---
@@ -1164,7 +1163,7 @@ tapply(vec, index, mean)
 
 ```
 ##           a           b           c 
-## -0.13945561 -0.02888261 -0.13789253
+## -0.24994285 -0.01205035  0.25313643
 ```
 
 ---
@@ -1181,7 +1180,7 @@ vapply(my_list, FUN = mean, FUN.VALUE = numeric(length = 1))
 
 ```
 ##      vec1      vec2      vec3 
-## 0.6057164 0.3736339 0.5324058
+## 0.3764034 0.3860785 0.5007965
 ```
 
 - `my_list, FUN = mean`: è esattamente uguale a `sapply/lapply`
@@ -1201,20 +1200,16 @@ mapply(function(x, y) rnorm(n = 10, mean = x, sd = y), medie, stds, SIMPLIFY = F
 
 ```
 ## [[1]]
-##  [1]  8.305195  8.167109 10.038734  8.969578 10.100013  9.974348
-##  [7]  9.826777 10.650257 10.095872 10.060818
+##  [1]  9.286008 11.435810 11.897851  9.145072  8.368361  8.980149 10.403598  8.629246 10.174788 11.320989
 ## 
 ## [[2]]
-##  [1] 20.03924 26.27884 19.75512 17.49948 22.32946 20.31865 19.59417
-##  [8] 20.49610 21.54210 19.11454
+##  [1] 20.84460 19.99403 22.78377 20.53245 19.53925 21.96885 20.82569 25.05088 20.02889 20.56961
 ## 
 ## [[3]]
-##  [1] 26.47069 29.72676 26.07811 26.90654 28.77236 30.81729 23.68395
-##  [8] 28.53035 26.39487 28.12373
+##  [1] 29.90787 25.25110 32.92254 35.86710 21.85754 27.98155 27.72602 26.38100 36.16648 25.92568
 ## 
 ## [[4]]
-##  [1] 37.22090 39.97584 39.29648 39.50171 34.49354 44.29605 36.30000
-##  [8] 44.02286 37.53775 45.05102
+##  [1] 41.19168 39.23628 39.78644 37.45391 47.02312 42.69417 46.23969 42.23179 40.46462 34.51635
 ```
 
 **IMPORTANTE**, tutte le liste incluse devono avere la stessa dimensione!
@@ -1253,20 +1248,16 @@ res
 
 ```
 ## [[1]]
-##  [1]  9.520355  9.807394  9.991086 10.009552 10.474614  7.810307
-##  [7]  8.533890 11.128911 10.970502  8.800954
+##  [1] 9.275852 8.898437 8.219540 9.393111 9.765305 9.769847 9.281147 9.124572 9.258340 8.683487
 ## 
 ## [[2]]
-##  [1] 22.99817 20.64879 17.12311 19.27371 22.09171 16.87903 24.89574
-##  [8] 21.86859 21.07791 24.62151
+##  [1] 19.34102 19.27704 21.59937 16.70402 22.60593 23.15229 19.54526 19.91560 17.62163 15.08715
 ## 
 ## [[3]]
-##  [1] 28.28535 37.01868 28.80985 30.90329 32.91155 32.21015 31.89471
-##  [8] 31.38742 32.35683 25.54126
+##  [1] 24.66906 31.80519 31.65243 32.40977 31.75505 33.82568 28.28722 31.94987 27.85979 23.96932
 ## 
 ## [[4]]
-##  [1] 40.57987 49.25196 39.70399 41.00245 40.60666 42.44781 49.78229
-##  [8] 40.19555 43.89933 43.08989
+##  [1] 36.42481 44.20442 45.15599 46.24319 46.78669 39.86543 38.85080 38.71174 34.40327 37.84745
 ```
 
 ---
@@ -1332,6 +1323,42 @@ mapply(function(x, y) rnorm(n = 10, mean = x, sd = y), medie, stds, SIMPLIFY = F
 ---
 class: section, center, middle
 
+# Extra: `purrr::map*`
+
+---
+# Extra: `purrr::map*`
+
+.pull-left[
+
+
+```r
+put_image("purrr.svg")
+```
+
+&lt;img src="img/purrr.svg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+Senza addentrarci troppo in questo modo, c'è una famiglia di funzioni che una volta imparato `*apply` vi consiglio di usare perchè più consistenti e intuitive, la `map*` family.
+
+]
+
+---
+# Extra: `purrr::map*`
+
+Per usare `purrr::map*` è sufficiente installare il pacchetto `purrr` con `install.packages("purrr")` ed iniziare ad usare le nuove funzioni. La sintassi è esattamente la stessa di `*apply` (qualche modifica ma potete usare la stessa) ma invece che usare una funzione per tutto, abbiamo molte funzioni per ogni casistica:
+
+- `map(lista, funzione)` è l'analogo di `lapply()` e fornisce sempre una lista
+
+- `map_dbl(lista, funzione)` applica la funzione ad ogni elemento e **si aspetta che** il risultato sia un vettore di *double*
+- `map_lgl(lista, funzione)` applica la funzione ad ogni elemento e **si aspetta che** il risultato sia un vettore *logico*
+- `map2/pmap_*` sono rispettivamente applicare la funzione a 2/n liste (analogo di `mapply()`)
+
+---
+class: section, center, middle
+
 # Extra: `replicate()` and `repeat()`
 
 ---
@@ -1341,6 +1368,167 @@ Ci sono altre due funzioni in R che permettono di *iterare*. Sono meno utilizzat
 
 - `replicate()` permette di ripetere un operazione *n* volte, senza però utilizzare un `iteratore` o un `placeholder`.
 - `repeat()` anche repeat permette di ripetere ma fino a che non si verifica un certa condizione (**logica**). Ha una struttura simile al ciclo `while`
+
+---
+class: section, center, middle
+
+# Extra: Formula syntax
+
+---
+# Formula syntax
+
+In R molte operazioni vengono eseguite usando la **formula syntax** `something ~ something else` ad esempio:
+
+- modelli statistici: `lm(y ~ x, data = data)`, `t.test(y ~ factor, data = data)`
+- plot: `boxplot(y ~ x, data = data)`
+- ...
+
+In cosa consiste?
+
+---
+# Formula syntax
+
+Senza andare nei dettagli tecnici, R usa una cosa che si chiama *lazy evaluation*. In altri termini "salva" delle operazioni per essere eseguite in un secondo momento. Tutti sappiamo che se scriviamo un nome (senza virgolette) e questo non è associato ad un oggetto otteniamo un errore. Tuttavia alcune funzioni come `library()` non forniscono errore. Perchè?
+
+
+```r
+stats # errore
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'stats' not found
+```
+
+```r
+library(stats) # no errore
+```
+
+---
+# Formula syntax
+
+La ragione è che R è in grado di salvare un'espressione per usarla poi in uno specifico contesto (ad esempio dentro una funzione). La `formula syntax` è un esempio. Usando la tilde `~` possiamo creare delle `formule` che R può utilizzare in specifici contesti:
+
+
+```r
+y
+```
+
+```
+##  [1] a a a a a a a a a a b b b b b b b b b b c c c c c c c c c c
+## Levels: a b c
+```
+
+```r
+x
+```
+
+```
+##   [1]  0.74963971 -0.91832163 -0.23333032  0.02204291 -0.96762250  0.24936883  0.59722598 -0.40727394
+##   [9] -1.43250894  0.93736699  1.62852357 -0.04138036 -0.08636043  0.93713202 -0.87377083  0.67380858
+##  [17]  0.36605124 -0.75393091  1.10199609  0.30411193 -0.07862003 -0.14389475 -0.26712678 -0.35390667
+##  [25] -0.01642396 -0.23002709  0.22351870  0.42819913 -0.02035468  0.92711019 -0.35780070  0.67776921
+##  [33]  1.44601229  2.38874942  0.88658610  0.37108146  0.88982078 -0.40157943 -0.64024908 -0.35651502
+##  [41] -0.42619992 -0.48330812 -1.97329110  0.40348844  0.70215332  0.36732295 -1.11225869  0.09549895
+##  [49]  0.38413124 -1.71829349 -0.49719057 -1.77584603  0.69042574 -0.19649038  0.66805166 -1.75161261
+##  [57]  0.14591838  1.97622988  0.52225828  0.75749795 -1.30890716  0.13584970  0.41627801 -0.69141386
+##  [65] -0.14711272 -1.15815438 -0.58196419  0.76466310 -0.42442275 -0.23704373 -1.04677587  0.32698671
+##  [73] -0.05172974 -1.64306937  0.59183340 -0.57134111  0.12543896  0.01552793 -1.21980080  0.76875735
+##  [81] -0.92987192  0.78490554 -0.75608727 -0.72983594 -0.96917812  0.13750301 -0.14211311  0.03832108
+##  [89] -0.31056546 -1.21061006  0.91637546  1.88105722 -2.22344813 -0.13467415 -0.42954456 -0.15340864
+##  [97] -1.56925183  1.93732038  0.41815228  1.86591767
+```
+
+```r
+y ~ x
+```
+
+```
+## y ~ x
+## &lt;environment: 0x5586997ea828&gt;
+```
+
+```r
+my_formula &lt;- y ~ x
+class(my_formula)
+```
+
+```
+## [1] "formula"
+```
+
+---
+# Formula syntax e `aggregate()`
+
+Un esempio utile è la funzione `aggregate()` molto interessante per applicare funzioni a dataframe. Immaginate di avere il dataset `iris` e calcolare la media per ogni livello del fattore `Species`:
+
+
+```r
+tapply(iris$Sepal.Length, iris$Species)
+```
+
+```
+##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+##  [50] 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+##  [99] 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+## [148] 3 3 3
+```
+
+```r
+aggregate(Sepal.Length ~ Species, FUN = mean, data = iris)
+```
+
+```
+##      Species Sepal.Length
+## 1     setosa        5.006
+## 2 versicolor        5.936
+## 3  virginica        6.588
+```
+
+```r
+# Anche creando un oggetto, ma solo come formula
+
+my_formula &lt;- Sepal.Length ~ Species
+my_char &lt;- "Sepal.Length ~ Species"
+aggregate(my_char, FUN = mean, data = iris)
+```
+
+```
+## Error in aggregate.data.frame(as.data.frame(x), ...): argument "by" is missing, with no default
+```
+
+```r
+# Viene lo stesso usando $ e senza specificare data =
+aggregate(iris$Sepal.Length, iris$Species, FUN = mean)
+```
+
+```
+## Error in aggregate.data.frame(as.data.frame(x), ...): 'by' must be a list
+```
+---
+
+# Formula syntax e `aggregate()`
+
+Ma anche operazioni più complesse:
+
+
+```r
+my_iris &lt;- iris
+my_iris$fac &lt;- rep(c("a", "b", "c"), 50)
+aggregate(Sepal.Length ~ Species + fac, mean, data = my_iris)
+```
+
+```
+##      Species fac Sepal.Length
+## 1     setosa   a     5.052941
+## 2 versicolor   a     5.770588
+## 3  virginica   a     6.756250
+## 4     setosa   b     5.011765
+## 5 versicolor   b     6.018750
+## 6  virginica   b     6.447059
+## 7     setosa   c     4.950000
+## 8 versicolor   c     6.023529
+## 9  virginica   c     6.570588
+```
 
 ---
 # Replicate
@@ -1370,7 +1558,7 @@ means &lt;- replicate(n = nrep, expr = {
 
 .pull-right[
 
-&lt;img src="4_programmazione_files/figure-html/unnamed-chunk-51-1.png" width="2100" style="display: block; margin: auto;" /&gt;
+&lt;img src="4_programmazione_files/figure-html/unnamed-chunk-56-1.png" width="2100" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1455,12 +1643,6 @@ while(i &lt; 4){
 ]
 
 - `repeat` valuta la condizione una volta finita l'iterazione, mentre `while` all'inizio. Se la condizione non è `TRUE` all'inizio, il `while` non parte mentre `repeat` si.
-
-
-
-
-
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

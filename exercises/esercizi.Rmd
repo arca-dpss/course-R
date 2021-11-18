@@ -1,0 +1,243 @@
+---
+title: "Esercizi"
+output: 
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+css: ["../files/css/course_html.css"]
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduzione a R
+
+# I primi passi con R
+
+## Operazioni matematiche
+
+La scrittura di operazione complesse in R avviene utilizzando le parentesi per dare priorità ad alcune parti. Per il resto R segue quella che è la normale priorità delle operazioni matematiche. Prova a scrivere in R queste operazioni:
+
+1. $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$
+
+2. $\frac{\sqrt{7-\pi}}{3\ (45-34)}$
+
+3. $\sqrt[3]{12-e^2}+\ln(10\pi)$
+
+4. $\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}$
+
+5. $\frac{\sum_{n=1}^{10} n}{10}$
+
+Note per la risoluzione degli esercizi:
+
+- In R la radice quadrata si ottine con la funzione `sqrt()` mentre per radici di indici diversi si utilizza la notazione esponenziale ($\sqrt[3]{x}$ è dato da `x^(1/3)`).
+- Il valore di $\pi$ si ottiene con `pi`.
+- Il valore di $e$ si ottiene con `exp(1)`.
+- In R per i logaritmi si usa la funzione `log(x, base=a)`, di base viene  considerato il logaritmo naturale.
+
+## Operazioni logiche
+
+1. Definisici due relazioni false e due vere che ti permettano di valutare i risultati di tutti i possibili incroci che puoi ottenere con gli operatori logici `&` e `|`.
+2. Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un'altra proposizione per i nueri dispari (tip: cosa ti ricorda `%%`?).
+3. Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) "*x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4*".
+4. Esegui le seguenti operazioni `4 ^ 3 %in% c(2,3,4)` e `4 * 3 %in% c(2,3,4)`. Cosa osservi nell'ordine di esecuzione degli operatori?
+
+# Strutture dati e manipolazione
+
+Popoliamo una matrice usando il ciclo `for`. La matrice ha un numero *totale* di elementi. Usando il vettore `x` che contiene il numero di elementi totali della matrice come possiamo popolare la matrice senza usare la funzione `matrix()`. La matrice è **quadrata** di dimensione 10x10:
+
+```{r}
+# matrice 10 x 10 quindi 100 elementi totali
+x <- rnorm(100)
+```
+
+# Strutture dati
+
+## Vettori
+
+### Creare vettori
+
+1. Crea il vettore `x` contenente i numeri 4, 6, 12, 34, 8
+2. Crea il vettore `y` contenente tutti i numeri pari compresi tra 1 e 25 (`?seq()`)
+3. Crea il vettore `z` contenente tutti i primi 10 multipli di 7 partendo da 13 (`?seq()`)
+4. Crea il vettore `s` in cui le lettere `"A"`,`"B"` e `"C"` vengono ripetute nel medesimo ordine 4 volte (`?rep()`)
+5. Crea il vettore `t` in cui le letter `"A"`,`"B"` e `"C"` vengono ripetute ognuna 4 volte (`?rep()`)
+6. Genera il seguente output in modo pigro, ovvero scrivendo meno codice possibile ;)
+
+### Indicizzare vettori
+
+1. Del vettore `x` seleziona il 2°, 3° e 5° elemento
+2. Del vettore `x` seleziona i valori 34 e 4
+3. Dato il vettore `my_vector = c(2,4,6,8)` commenta il risultato del comando `my_vector[my_vector]`
+4. Del vettore `y` seleziona tutti i valori minori di 13 o maggiori di 19
+5. Del vettore `z` seleziona tutti i valori compresi tra 24 e 50
+6. Del vettore `s` seleziona tutti gli elementi uguali ad  `"A"`
+7. Del vettore `t` seleziona tutti gli elementi diversi da  `"B"`
+8. Crea un nuovo vettore `u` identico a `s` ma dove le `"A"` sono sostituite con la lettera `"U"`
+9. Elimina dal vettore `z` i valori 28 e 42
+
+## Fattori
+
+1. Crea la variabile categoriale `genere` così definita:
+
+```{r}
+factor(c(rep(c("M","F"),3),"F","F","M"))
+```
+
+2. Rinomina i livelli della variabile `genere` rispettivamente in `"donne"` e `"uomini"`.
+
+3. Crea la variabile categoriale `intervento` così definita:
+
+```{r}
+factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
+```
+
+4. Correggi nella variabile `intervento` la 7° e 8° osservazione con la voce `Farmaci`.
+
+5. Aggiungi alla variabile `intervento` le seguenti nuove osservazioni:
+
+```{r}
+c("Farmaci","Controllo","Farmaci")
+```
+
+## Matrici
+
+1. Crea la matrice `A` così definita: 
+
+$$
+\begin{matrix}
+2 & 34 & 12 & 7\\
+46 & 93 & 27 & 99\\
+23  & 38 & 7 & 04
+\end{matrix}
+$$
+
+2. Crea la matrice `B` contenente tutti i primi 12 numeri dispari disposti su 4 righe e 3 colonne.
+3. Crea la matrice `C` contenente i primi 12 multipli di 9 disposti su 3 righe e 4 colonne.
+4. Crea la matrice `D`  formata da 3 colonne in cui le lettere `"A"`,`"B"` e `"C"` vengano ripetute 4 volte ciascuna rispettivamente nella prima, seconda e terza colonna.
+5. Crea la matrice `E`  formata da 3 righe in cui le lettere `"A"`,`"B"` e `"C"` vengano ripetute 4 volte ciascuna rispettivamente nella prima, seconda e terza riga.
+6. Utilizzando gli indici di riga e di colonna seleziona il numero 27 della matrice `A`
+7. Selziona gli elementi compresi tra la seconda e quarta riga, seconda e terza colonna della matrice `B`
+8. Seleziona solo gli elementi pari della matrice `A` (Nota: utilizza l'operazione resto `%%`)
+9. Elimina dalla matrice `C` la terza riga e la terza colonna
+10. Seleziona tutti gli elementi della seconda e terza riga della matrice `B`
+11. Seleziona tutti gli elementi diversi da  “B” appartenenti alla matrice `D`
+12. Crea la matrice `G` unendo alla matrice `A` le prime due colonne della matrice `C`
+13. Crea la matrice `H` unendo alla matrice `C` le prime due righe della matrice trasposta di `B`
+14. Ridefinisci la matrice `A` eliminando la seconda colonna. Ridefinisci la matrice `B` eliminando la prima riga. Verifica che le  matrici così ottenute abbiano la stessa dimensione.
+15. Commenta i differenti risultati che otteniamo nelle operazioni `A*B`, `B*A`, `A%*%B` e `B%*%A`.
+16. Assegna i seguenti nomi alle colonne e alle righe della matrice `C`: `"col_1", "col_2", "col_3", "col_4", "row_1", "row_2", "row_3"`.
+
+## Dataframe
+
+Ricrea questo dataframe in R:
+
+```{r}
+data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
+                      age=rep(c(21,23,19),each=3),
+                      gender=rep(c("F","M","F"),each=3),
+                      item=rep(1:3,3),
+                      response=c(2,1,1,0,2,1,2,0,1))
+```
+
+Utilizzando il dataframe `dataframe_example.rds` esegui le seguenti operazioni:
+
+- selezionare le persone con età maggiore di 30 anni
+- selezionare le persone con età maggiore di 30 anni e minore di 21
+- selezionare le persone che studiano al *dams* con voto di laurea maggiore di 100 e almeno 1 fratello/sorella
+- selezionare le persone che studiano *psicologia* e non hanno fratelli
+
+Utilizza la funzione `put_random_na(data, n)` dove `data` è il dataframe e `n` è il numero di `NA` da generare. Ora:
+
+- seleziona le persone con `NA` per la colonna `degree` e per la colonna `età`
+- seleziona le persone con `NA` per la colonna `email` e abitanti del veneto o campania
+
+# Programmazione
+
+## Funzioni
+
+1. definisci una funzione che trasformi la temperatura da Celsius a Fahrenheit 
+$$
+Fahrenheit = Celsius *1.8 + 32
+$$
+2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona.
+3. Definisci una funzione che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media.
+4. Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti conlla funzione `readline()`.
+5. Definisci una funzione che calcoli lo stipendio mensile sulla base delle ore svolte nel mese e la paga oraria.
+
+## Condizionali
+
+```{r, echo = TRUE}
+score <- runif(100, 0, 1)
+```
+
+1. Definisci una funzione per assegnare un voto in base alla percentuale di risposte corrette (*score*) segui le seguenti indicazioni: 
+
+- score < .55 insufficiente
+- .55 <= score < .65 - sufficiente
+- .65 <= score < .75 - buono
+- .75 <= score < .85 - distinto
+- .85 <= score - ottimo
+
+2. Definisci una funzione che determini se un numero è pari o dispari.
+3. Definisci una funzione che determini se un numero è un multiplo di 3, 4, o 5.
+4. Definisci una funzione che calcoli lo stipendio mensile considerando gli straordinari che sono retribuiti 1.5 della paga oraria normale. Utilizza come parametrile ore svolte nel mese, la paga oraria ed il tetto ore lavorative, oltre cui si contano gli straordinari.
+
+## Loop
+
+### Scrivi un loop che:
+
+Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio `Sepal.Length (12)`. Potete usare le funzioni `print()`, `paste0()` and `nchar()`.
+
+## Ri-creiamo le funzioni in R
+
+Un ottimo esercizio per affinare le nostre competenze di codice è quello di ricreare le funzioni di R che diamo per scontate diciamo. La funzione `mean()` ad esempio si può facilmente create con un ciclo for e qualche altra aggiunta.
+
+### `sum()`
+
+Ricrea la funzione `sum()` e testala sul seguente vettore:
+
+```{r}
+x <- rnorm(100)
+sum(x)
+```
+
+
+### `mean()`
+
+Ricrea la funzione `mean()` testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione `sum()` creata prima):
+
+```{r}
+x <- rnorm(100)
+mean(x)
+```
+
+### `median()`
+
+La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un `if` per controllare queste condizioni)
+
+```{r}
+median(x)
+```
+
+### Moda
+
+In R non è prevista una funzione per calcolare la **moda**. In statistica la moda è definita come il valore/i associato a maggiore frequenza. Ad esempio se abbiamo un vettore $x$ come `c(1,1,1,2,3,5)` la moda sarà 1.
+
+- come si potrebbe calcolare la moda in R?
+- ci sono dei pacchetti che l'hanno implementata?
+
+### `sd()`
+
+La deviazione standard è facilmente implementata in R con la funzione `sd()`. Prova a ricrearla con tutti gli strumenti che abbiamo imparato fino ad ora. La formula matematica è la seguente:
+
+$$
+SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
+$$
+# Credits
+
+Alcuni esercizi sono stati presi o inspirati da:
+
+- https://www.r-exercises.com/

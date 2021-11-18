@@ -21,11 +21,17 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
+```{r packages, include = FALSE}
+library(kableExtra)
+```
+
+
 ```{r slide-setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
+knitr::opts_chunk$set(echo = FALSE, 
                       fig.retina = 2, 
                       dpi = 300,
-                      fig.align = "center")
+                      fig.align = "center",
+                      out.width = "100%")
 ```
 
 ```{r variables, include=FALSE}
@@ -80,6 +86,8 @@ class: section, center, middle
 put_image("R_console.png")
 ```
 
+---
+
 # RStudio
 
 ```{r}
@@ -94,14 +102,113 @@ class: section, center, middle
 ---
 # R come calcolatrice
 
-In R è possibile effettuare tutte le operazioni matematiche e algebriche dalle più semplici alle più avanzate
+In R è possibile effettuare tutte le [operazioni matematiche](https://psicostat.github.io/Introduction2R/first-comands.html#math-operators) e algebriche dalle più semplici alle più avanzate
+
+```{r}
+names_function <- c("Addizione", "Sottrazione", "Moltiplicazione", "Divisione",
+                    "Resto della divisione", "Divisione intera", "Potenza",
+                    "Valore assoluto","Segno di un'espressione", "Radice quadrata", 
+                    "Logaritmo naturale", "Esponenziale", "Funzioni trigonometriche",
+                    "Fattoriale", "Coefficiente binomiale") 
+
+
+math_operators <- data.frame(
+    formula = c(sprintf("x %s y", c("+", "-", "*", "/", "%%", "%/%", "^")),
+                sprintf("%s(x)", c("abs", "sign", "sqrt", "log", "exp")),
+                paste0(sprintf("%s(x)", c("sin", "cos", "tan", "asin", "acos", "atan")),
+                       collapse = "<br />"),
+                "factorial(x)", "choose(n, k)"),
+    name = names_function,
+    example = c(sprintf("> %s <br />[1] %s",
+                        c("5 + 3", "7 - 2", "4 * 3", "8 / 3", "7 %% 5", "7 %/% 5", 
+                          "3 ^ 3","abs(3-5^2)", "sign(-8)", "sqrt(25)", "log(10)", "exp(1)"),
+                        c("8", "5", "12", "2.666667", "2", "1", "27","22", "-1", "5",
+                          "2.302585", "2.718282")),
+                ">sin(pi/2) <br />[1]1 <br />>cos(pi/2) <br />[1]6.123234e-17",
+                c(sprintf("> %s <br />[1] %s",
+                          c("factorial(6)", "choose(5,3)"),
+                          c("720", "10"))))
+)
+
+kableExtra::kable(math_operators, col.names = c("Funzione", "Nome", "Esempio"),
+                  escape = FALSE) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                  full_width = T) %>% 
+    scroll_box(width = "1000px", height = "400px")
+```
+
+---
+# Operatori matematici
+
+- Importante considerare l'**ordine delle operazioni** analogo alle regole della matematica: `2 x 3 + 1` prima `2 x 3` e poi `+ 1`. Analogalmente in R:
+
+```{r, echo = TRUE}
+
+# Senza parentesi
+
+2 * 3 + 1
+
+# Con le parentesi
+
+(2 * 3) + 1
+
+# Con le parentesi forzando un ordine diverso
+
+2 * (3 + 1)
+
+```
+
+---
+# Operatori relazionali
+
+Gli operatori relazionali sono molto utili dentro le **funzioni**, per **selezionare elementi dalle strutture dati** (vedremo più avanti) e in generale per **controllare** alcune sezioni del nostro codice:
+
+.pull-left[
+
+```{r, echo = TRUE}
+3 > 4
+
+3 >= 3
+
+10 < 100
+```
+
+]
+
+.pull-right[
+
+```{r, echo=TRUE}
+40 == 40
+
+10 != 50
+```
+
+]
+
+---
+# Operatori logici
+
+Gli operatori logici permettono di **combinare espressioni relazionali** e ottenere sempre un valore `TRUE` o `FALSE`:
+
+```{r, echo = TRUE}
+3 > 4 & 10 < 100
+
+10 < 100 | 50 > 2
+
+!5 > 4
+```
+
+---
+class: section, center, middle
+
+# R e gli oggetti
 
 ---
 # R e gli oggetti
 
 > “Everything that exists in R is an object” - John Chambers
 
-Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un insieme di numeri, dei caratteri o delle funzioni sono creati come oggetti.
+Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un vettore, dei caratteri o delle funzioni sono creati come oggetti.
 
 ---
 # R e gli oggetti
@@ -109,7 +216,20 @@ Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che
 - Come creare un oggetto?
 - Oggetti e nomi
 - Dove viene creato l'oggetto?
-- Principali tipologie di oggetti
+---
+# Come creare un oggetto?
+
+La creazione di un oggetto avviene tramite il comando `<-` oppure `=` in questo modo: `nome <- oggetto`:
+
+```{r, echo = TRUE, error=TRUE}
+x
+
+10 # questo non è un oggetto, non è salvato
+
+x <- 10 # ora il valore numerico 10 è associato al nome "x"
+
+x
+```
 
 ---
 # Convenzioni vs regole
@@ -119,6 +239,92 @@ Ci sono alcune cose da considerare quando si scrive codice ed in particolare si 
 - **alcune modalità sono errate** --> R ci fornisce un messaggio di errore
 - **alcune modalità sono sconsigliate** --> funziona tutto ma ci potrebbero essere problemi
 - **alcune modalità sono stilisticamente errate** --> funziona tutto, nessun problema ma... anche l'occhio vuole la sua parte
+
+---
+# Oggetti e nomi
+
+Il nome di un oggetto è importante sia per l'utente che per il software stesso:
+
+```{r, echo = TRUE, error=TRUE}
+
+1 <- 10 # errore
+
+_ciao <- 10 # errore
+
+mean <- 10 # possibile ma pericoloso
+
+`1` <- 10 # con i backticks si può usare qualsiasi nome ma poco pratico
+
+```
+
+```{r, echo=TRUE}
+
+my_obj <- 10
+
+my.obj <- 10
+
+My_obj <- 10 # attenzione a maiuscole e minuscole
+```
+
+---
+# Oggetti e nomi (proibiti)
+
+In R ci sono anche dei nomi non solo sconsigliati ma proprio **proibiti** che nonostante siano sintatticamente corretti, non possono essere usati (per ovvie ragioni):
+
+.pull-left[
+
+```{r, error = TRUE, echo=TRUE}
+
+mean <- 10 # ok ma sconsigliato
+
+function <- 10
+```
+
+]
+
+.pull-right[
+
+```{r, echo = TRUE, error = TRUE}
+TRUE <- 4
+
+T <- 2 # attenzione
+```
+
+]
+
+---
+# Dove viene creato l'oggetto?
+
+Il legame `nome-oggetto` viene creato nel **global environment** e rimane *salvato* per tutta a sessione di utilizzo. Potete visualizzare l'environment in RStudio oppure usando il comando `ls()`:
+
+```{r}
+put_image("obj_environment.png")
+```
+
+---
+class: section, center, middle
+
+# Non solo numeri (anticipazione)
+
+---
+
+# Non solo numeri (anticipazione)
+
+In R possiamo usare oltre ai numeri (in senso matematico) anche le **stringhe** ovvero parole, lettere intepretate così come sono:
+
+```{r, echo = TRUE, error = TRUE}
+
+"ciao" # stringa formata da 5 caratteri
+
+x <- "ciao" # associo la stringa ad un oggetto
+
+x + 1 # operazioni matematiche con stringhe (ha senso?)
+
+x == "ciao"
+
+x > 10
+
+```
 
 ---
 class: section, center, middle
@@ -159,6 +365,9 @@ In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro
 
 - Installare il pacchetto con `install.packages("nomepacchetto")`
 - Caricare il pacchetto con `library(nomepacchetto)`
+
+---
+# Packages
 
 ```{r}
 knitr::include_graphics("img/packages.png")
@@ -230,3 +439,27 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 - Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione` o `??nomefunzione`
 - Possiamo cercare anche la documentazione del pacchetto
 - Possiamo cercare su Google il nome della funzione o l'eventuale messaggio che riceviamo
+
+---
+# Come NON fare una domanda
+
+.pull-left[
+```{r, out.width="70%"}
+put_image("bad_question.png")
+```
+]
+
+--
+
+.pull-left[
+```{r, out.width="70%"}
+put_image("bad_question_after.png")
+```
+]
+
+--
+
+.pull-right[
+- Non riporta il **messaggio di errore**!
+- Usa un **percorso assoluto**! Come posso riprodurre il suo problema?
+]
