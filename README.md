@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img align="right" width="150" height="150" src="slides/0_template/img/arca_logo_w.png">
+<img align="right" width="150" height="150" src="files/arca_logo.svg">
 
 # corsoR
 
