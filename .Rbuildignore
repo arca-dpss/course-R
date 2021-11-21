@@ -1,3 +1,4 @@
 ^\.github/workflows$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
