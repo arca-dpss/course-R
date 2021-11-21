@@ -29,12 +29,29 @@ In questa giornata verranno introdotti i principali costrutti della programmazio
 
 In questa giornata verranno introdotti alcuni aspetti trasversali utili per un utilizzo moderno e avanzato del linguaggio R. Inoltre verrà sviluppato individ- ualmente un progetto che comprenda organizzazione della sessione di lavoro e applicazione dei principali elementi del linguaggio.
 
-## Slides lezioni
+## Materiale
+
+### Slides lezioni
+
+Questi sono i link alle principali slide del corso:
 
 - **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html)
 - **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html)
 - **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html)
 - **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html)
+
+### Esercizi
+
+In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:
+
+- Esercizi - [file](exercises/esercizi.html)
+
+### Argomenti extra
+
+In questa sezione ci sono alcuni argomenti extra che possono essere utili nel lavoro in R. Oltre ad una breve descrizione ci sono sempre dei riferimenti utili:
+
+- **NA, NaN, NULL e altri strani valori** - [Appunti](extra/dealing_with_NA_NaN_NULL.html)
+- **Importare dati esterni in R** - [Appunti](extra/importing_data.html)
 
 ## Errori libro `Introduzione a R`
 
