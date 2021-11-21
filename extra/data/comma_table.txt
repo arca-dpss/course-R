@@ -1,0 +1,5 @@
+id, nome, age, corso
+1,filippo,20,psicologia
+2,andrea,22,ingegneria
+3,anna,30,informatica
+4,francesca,23,dams

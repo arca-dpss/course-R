@@ -1,0 +1,111 @@
+---
+title: "Dealing with NA/NULL/NaN"
+output: 
+    html_document:
+        toc: true
+        toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# In general
+
+In R there are several type of special values such as `NA`, `NaN` and `NULL`. They are similar but at the same time different especially when directly tested. In general:
+
+- `NA` is a missing information
+- `NaN` means *not a number* and is the result of an not-defined math operation like $\frac{0}{0}$.
+- `NULL` is the absence of any information
+
+# Type
+
+In terms of data type, `NA` is *logical*, `NaN` is *numeric* type and `NULL` do not have a specific type. A particularity of `NA` is that can be also adapted to the type of vector where is located. In R we cannot have a vector of `numbers` and `logical` values:
+
+```{r}
+is.logical(NA)
+is.logical(NaN)
+is.logical(NULL)
+
+vec <- c(1,2,3,4, TRUE, 5, FALSE)
+vec # TRUE is 1 and FALSE is 0
+```
+
+But we can have a *numeric*, *character* or *logical* vector with `NA` values and the `NA` is forced to the specific type:
+
+```{r}
+# NA alone is logical but
+
+vec <- c(1,2,3,4,NA,5,6)
+class(vec)
+
+for(i in vec) print(class(i))
+
+# now NA is numeric
+```
+
+This is possible because there are several type of `NA` values that are not usually employed directly but are used from R depending on the vector:
+
+```{r}
+is.character(NA_character_)
+is.numeric(NA_real_)
+is.integer(NA_integer_)
+
+# This
+
+vec <- c(1,2,3,4,5,NA)
+vec
+
+# is the same as
+
+vec <- c(1,2,3,4,5,NA_integer_)
+vec
+```
+
+The `NaN` is a numeric type because is the result of *undefined operations*:
+
+```{r}
+is.numeric(NaN)
+
+0/0
+
+vec <- c(1,2,3,4,NaN)
+vec
+```
+
+The `NULL` value is surely the strangest because represents the absence of any value and the class is `NULL` itself meaning that is different from `NA` and `NaN` values.
+
+```{r}
+x <- NULL
+class(x) # the class is NULL
+```
+Compared to `NA` and `NaN` that are associate with some information (absence of value and undefined number), `NULL` values are somehow transparent and cannot be stored in vectors:
+
+```{r}
+vec <- c(1,2,3,4,5, NA, 8, NaN, 11, NULL)
+vec # the null value is not present
+```
+
+# The problem with `NA`
+
+As Hadley suggest[^na_hadley] the `NA` values infect all other computations. Practically many R functions such as `mean()` or `sd()` cannot return a value if there is a `NA` within the target vector.
+
+```{r}
+x <- c(runif(10), NA)
+mean(x)
+sd(x)
+```
+
+In fact, these functions have a specific argument `na.rm = TRUE` for doing the computation without considering `NA` values. Of course we can remove `NA` values before the computation and the result will be the same:
+
+```{r}
+mean(x, na.rm = TRUE)
+mean(x[!is.na(x)])
+```
+
+[^na_hadley]: 
+
+# Sources
+
+- http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/
+- https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r
