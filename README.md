@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-<img src="slides/0_template/img/arca_logo.svg" width="20%" style="display: block; margin: auto;" />
+<img src="slides/0_template/img/arca_logo.png" width="20%" style="display: block; margin: auto;" />
 
 # ARCA (Applied Research Courses Academy)
 

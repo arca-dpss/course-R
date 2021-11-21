@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 ```{r, echo=FALSE, out.width="20%", fig.align='center'}
-knitr::include_graphics("slides/0_template/img/arca_logo.svg")
+knitr::include_graphics("slides/0_template/img/arca_logo.png")
 ```
 
 # ARCA (Applied Research Courses Academy)
