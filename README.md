@@ -1,19 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<img align="right" width="150" height="150" src="slides/0_template/img/arca_logo_w.png">
+
 # corsoR
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-<img src="slides/0_template/img/arca_logo.png" width="20%" style="display: block; margin: auto;" />
-
 # ARCA (Applied Research Courses Academy)
 
 I corsi ARCA sono dei corsi avanzati e fortemente applicativi riguardo
 gli strumenti moderni per la ricerca in Psicologia. Sono organizzati dal
-Dipartimento di Psicologia dello Sviluppo e dellla Socializzazione
-presso l’Università degli Studi di Padova. Al link
+Dipartimento di Psicologia dello Sviluppo e della Socializzazione presso
+l’Università degli Studi di Padova. Al link
 [dpss.unipd.it/arca](https://www.dpss.unipd.it/arca) è possibile avere
 informazioni dettagliate su tutti i corsi attivi.
 

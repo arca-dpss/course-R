@@ -27,15 +27,15 @@
      inkscape:document-units="mm"
      showgrid="false"
      showborder="false"
-     inkscape:zoom="0.31181842"
-     inkscape:cx="1401.4567"
-     inkscape:cy="958.89141"
+     inkscape:zoom="0.56807052"
+     inkscape:cx="642.52586"
+     inkscape:cy="427.76379"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g10322" />
+     inkscape:current-layer="g41407" />
   <defs
      id="defs2" />
   <g
@@ -45,6 +45,10 @@
      transform="translate(-0.0186332,-60.616944)">
     <g
        id="g41407">
+      <path
+         style="fill:#fffffc;stroke:#c8c8c8;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+         d="M 5.0186332,65.616944 H 245.76738 V 306.36569 H 5.0186332 V 65.616944"
+         id="path24943" />
       <path
          sodipodi:type="star"
          style="fill:#c8c8c8;fill-opacity:1;stroke:none;stroke-width:38.9178;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -154,10 +158,6 @@
              x="32.159294"
              y="297.02472">courses</tspan></text>
       </g>
-      <path
-         style="fill:none;stroke:#c8c8c8;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 5.0186332,65.616944 H 245.76738 V 306.36569 H 5.0186332 V 65.616944"
-         id="path24943" />
     </g>
   </g>
 </svg>
