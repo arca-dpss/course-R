@@ -60,7 +60,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D" type="text/css" />
+<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
 
 
 
@@ -247,6 +247,27 @@ div.tocify {
 
 <div id="introduzione-a-r" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Introduzione a R</h1>
+<div id="r-projects" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> R Projects</h2>
+<p>Create un <strong>progetto R</strong> per il corso e gli esercizi con la seguente struttura:</p>
+<pre><code>📦project
+ ┣ 📂R
+ ┃ ┗ 📜funzioni.R
+ ┣ 📂data
+ ┃ ┗ 📜data.csv
+ ┣ 📂scripts
+ ┃ ┗ 📜esercizi_1.R
+ ┣ 📜.Rprofile
+ ┗ 📜corsoR.Rproj</code></pre>
+<p>Dove:</p>
+<ul>
+<li>dentro <code>R/</code> mettiamo tutte le funzioni</li>
+<li>dentro <code>data/</code> mettiamo tutti i dati che usiamo durante il corso</li>
+<li>dentro <code>scripts/</code> mettiamo i singoli script con gli esercizi</li>
+<li><code>.Rprofile</code> è un file vuoto che dovete chiamare in questo modo</li>
+<li><code>corsoR.Rproj</code> è il file del progetto che si crea in automatico con RStudio</li>
+</ul>
+</div>
 </div>
 <div id="i-primi-passi-con-r" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> I primi passi con R</h1>
@@ -400,7 +421,7 @@ Fahrenheit = Celsius *1.8 + 32
 \]</span></li>
 <li>Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona.</li>
 <li>Definisci una funzione che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media.</li>
-<li>Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti conlla funzione <code>readline()</code>.</li>
+<li>Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti con la funzione <code>readline()</code>.</li>
 <li>Definisci una funzione che calcoli lo stipendio mensile sulla base delle ore svolte nel mese e la paga oraria.</li>
 </ol>
 </div>
@@ -425,7 +446,10 @@ Fahrenheit = Celsius *1.8 + 32
 </div>
 <div id="loop" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Loop</h2>
-<!-- TODO loop exercises -->
+<div id="scrivi-un-loop-che" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Scrivi un loop che:</h3>
+<p>Scrivi un loop che scorre le colonne del dataset <code>iris</code> (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio <code>Sepal.Length (12)</code>. Potete usare le funzioni <code>print()</code>, <code>paste0()</code> and <code>nchar()</code>.</p>
+</div>
 </div>
 <div id="ri-creiamo-le-funzioni-in-r" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Ri-creiamo le funzioni in R</h2>
@@ -435,20 +459,20 @@ Fahrenheit = Celsius *1.8 + 32
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] 15.14982</code></pre>
+<pre><code>## [1] -7.008641</code></pre>
 </div>
 <div id="mean" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> <code>mean()</code></h3>
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] -0.08079554</code></pre>
+<pre><code>## [1] -0.06123519</code></pre>
 </div>
 <div id="median" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] -0.1436722</code></pre>
+<pre><code>## [1] -0.09676953</code></pre>
 </div>
 <div id="moda" class="section level3" number="5.4.4">
 <h3><span class="header-section-number">5.4.4</span> Moda</h3>
@@ -465,7 +489,185 @@ mean(x)</code></pre>
 SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
 \]</span></p>
 </div>
+<div id="trova-il-numero-allinterno-del-vettore" class="section level3" number="5.4.6">
+<h3><span class="header-section-number">5.4.6</span> Trova il numero all’interno del vettore</h3>
+<p>Scrivi una funzione che dato in input un vettore <code>x</code> restituisca il numero di volte che compare il numero <span class="math inline">\(3\)</span>:</p>
+<ul>
+<li>per testare la funzione genera un vettore di numeri casuali con <code>round(runif(20, 1, 10))</code></li>
+</ul>
 </div>
+<div id="numeri-pari" class="section level3" number="5.4.7">
+<h3><span class="header-section-number">5.4.7</span> Numeri pari</h3>
+<p>Scrivi una funzione che prenda in input un vettore <code>x</code> e restituisca il numero di numeri pari all’interno del vettore. Scrivi una funzione che utilizzi un <code>for loop</code> mentre un’altra che usi un’operazione vettorizzata.</p>
+<ul>
+<li>usa l’operatore divisione intera <code>%%</code></li>
+</ul>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>num_odd &lt;- function(x){
+    count &lt;- 0
+    for(i in seq_along(x)){
+        if(x[i] %% 2 == 0){
+            count &lt;- count + 1
+        }
+    }
+    
+    return(count)
+}
+
+num_odd2 &lt;- function(x){
+    sum(x %% 2 == 0)
+}</code></pre>
+</details>
+</div>
+<div id="complete.cases" class="section level3" number="5.4.8">
+<h3><span class="header-section-number">5.4.8</span> <code>complete.cases()</code></h3>
+<p>Cerca di capire cosa fa la funzione <code>complete.cases()</code> e di creare una funzione personalizzata <code>my_complete_cases()</code> con cui ottenere lo stesso output.</p>
+<pre class="r"><code>complete.cases(iris[1:10, ])</code></pre>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<p>Suggerimenti:</p>
+<ul>
+<li>usa la funzione <code>any()</code></li>
+<li>puoi usare un <code>ciclo for</code> oppure una funzione dell’<code>*apply</code> family</li>
+</ul>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>my_complete_cases_apply &lt;- function(data){
+    apply(my_mtcars, 1, function(x) !any(is.na(x)), simplify = T)
+}
+
+my_complete_cases_for &lt;- function(data){
+    out &lt;- vector(mode = &quot;logical&quot;, length = nrow(data))
+    for(i in seq_along(out)){
+        out[i] &lt;- all(!is.na(data[i, ]))
+    }
+    return(out)
+}</code></pre>
+</details>
+</div>
+<div id="troviamo-gli-outlier" class="section level3" number="5.4.9">
+<h3><span class="header-section-number">5.4.9</span> Troviamo gli outlier</h3>
+<p>Uno step importante quando si analizzano i dati è quello di cercare valori anomali (ad esempio che superano una certa soglia oppure che sono troppo oltre gli indici di tendenza centrale).</p>
+<ul>
+<li>Scrivi una funzione <code>is_outlier(x)</code> che dato in input un vettore <code>x</code>, restituisca un vettore logico dove <code>TRUE</code> corrisponde ad un valore che è maggiore della media più una volta la deviazione standard di <code>x</code>.</li>
+<li>Scrivi una funzione <code>has_outlier</code> che applichi <code>is_outlier()</code> ad ogni colonna di un dataframe e restituisca i nomi delle colonne dove è presente <strong>almeno 1 outlier</strong>.
+<ul>
+<li>puoi usare la funzione <code>any()</code></li>
+<li>puoi usare una funzione dentro un’altra funzione</li>
+<li>usa il dataframe <code>mtcars</code></li>
+</ul></li>
+<li>modifica la funzione <code>has_outliers()</code> per funzionare solo sulle colonne del dataframe che sono <strong>numeriche</strong> (no fattori o caratteri)</li>
+</ul>
+<p>Usa il dataframe <code>my_mtcars</code> dove sono state aggiunte delle variabili non numeriche:</p>
+<pre class="r"><code>my_mtcars &lt;- mtcars
+my_mtcars$factor1 &lt;- factor(rep(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), c(10, 10, 12)))
+my_mtcars$factor2 &lt;- rep(c(&quot;d&quot;, &quot;e&quot;, &quot;f&quot;), c(10, 10, 12))</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>is_outlier &lt;- function(x){
+    x &gt; (mean(x) + sd(x))
+}
+
+has_outlier &lt;- function(data){
+    which_outlier &lt;- sapply(mtcars, function(x) any(is_outlier(x)))
+    names(mtcars)[which_outlier]
+}</code></pre>
+</details>
+</div>
+<div id="bootstrapping" class="section level3" number="5.4.10">
+<h3><span class="header-section-number">5.4.10</span> Bootstrapping</h3>
+<p>Il bootstrapping è una tecnica statistica molto utilizzata. La logica della programmazione però è molto semplice ma interessante (e potrebbe esservi anche utile). Scrivete una funzione <code>prepare_bootstrap(data, nrow, n)</code> che prenda in input un dataframe <code>data</code>, il numero di righe da estrarre <code>nrow</code> e quanti dataframe creare <code>n</code> e che fornisca quindi <code>n</code> dataframe dove <code>n</code> righe sono estratte casualmente.</p>
+<ul>
+<li>usa il dataset <code>mtcars</code></li>
+<li>usa la funzione <code>sample()</code></li>
+</ul>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>prepare_bootstrap &lt;- function(data, nrighe, n){
+    
+    replicate(n,{
+        idx &lt;- sample(1:nrow(data), nrighe)
+        data[idx, ]
+    }, simplify = FALSE)
+}</code></pre>
+</details>
+</div>
+</div>
+</div>
+<div id="esercizi-avanzati-dataframe" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Esercizi avanzati dataframe</h1>
+<p>In questi esercizi vedremo come gestire un dataset più o meno complesso in modo da applicare le nozioni che abbiamo imparato. Gli obiettivi sono:</p>
+<ul>
+<li><strong>applicare</strong> il più possibile i <strong>concetti del corso</strong></li>
+<li><strong>cercare soluzioni online</strong> per le cose non chiare</li>
+<li>scrivere funzioni dove possibile</li>
+<li>produrre uno script di pulizia dati</li>
+</ul>
+<p>In questo corso non abbiamo visto aspetti di statistica o manipolazione dati in senso stretto, tuttavia i concetti che abbiamo imparato sono applicabili anche senza queste nozioni. Ad esempio non abbiamo affrontato nel dettaglio la pulizia dei dati, i pacchetti per gestire dataset complessi ma sappiamo che ad esempio un <code>dataframe</code> è una lista, e se vogliamo applicare una funzione ad una lista possiamo usare l’<code>*apply</code> family.</p>
+<div id="netflix" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Netflix</h2>
+<p>Questo dataset è stato preso dal sito <a href="https://www.kaggle.com/shivamb/netflix-shows">Kaggle</a>(un ottima risorsa per trovare datasets). E’ un dataset relativamente grande con 7787 righe e 12 colonne. Il dataset contiene informazioni su serie-tv e film presenti sulla piattaforma, in particolare:</p>
+<ul>
+<li><code>show_id</code>: in indice numerico per ogni film/serie-tv</li>
+<li><code>type</code>: identifica se il prodotto è una serie-tv o un film</li>
+<li><code>title</code>: il titolo</li>
+<li><code>country</code>: il paese di produzione</li>
+<li><code>duration</code>: la durata</li>
+<li><code>users_rating</code>: le valutazioni degli utenti netflix</li>
+<li><code>imdb_rating</code>: le valutazioni del portale <em>imdb</em></li>
+<li><code>total_cost</code>: il costo di produzione in milioni</li>
+<li><code>release_date</code>: la data di rilascio originale della serie o del film</li>
+<li><code>insert_date</code>: la data di inserimento nel catalogo netflix</li>
+</ul>
+<pre class="r"><code>head(netflix)</code></pre>
+<pre><code>##   show_id    type title          director       country  duration users_rating
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6
+## 4      s4   Movie     9       Shane Acker United States    80 min            8
+## 5      s5   Movie    21    Robert Luketic United States   123 min            1
+## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0
+##   imdb_rating total_cost duration_episode release_date insert_date
+## 1           2         35               91   2019-05-07  2019-09-24
+## 2           5        105               NA   2019-01-01  2019-03-31
+## 3           3        127               NA   2019-10-23  2020-01-30
+## 4           2         95               NA   2020-06-02  2020-06-09
+## 5           5         39               NA   2019-07-26  2019-08-30
+## 6           3         51               60   2019-11-09  2020-03-25</code></pre>
+<div id="passaggi-da-fare" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Passaggi da fare:</h3>
+<ul>
+<li>Importare il file <code>netflix.txt</code> capendo quale funzione utilizzare, come assegnare la prima riga come nomi e usando il separatore giusto</li>
+<li>Scrivere una funzione che prenda in <strong>input</strong> il dataset e restituisca la tipologia di dato presente in ogni colonna</li>
+<li>Ragionare sul tipo di dato in base alla descrizione ed eventualmente cambiare la tipologia dove appropriato</li>
+<li>Scrivere una funzione che prenda in input il dataset e fornisca per ogni colonna il numero di valori <code>NA</code></li>
+<li>Creare una nuova colonna con la differenza tra <code>release_date</code> e <code>insert_date</code>. Per questo può essere utile cercare online come R gestisce le date.</li>
+</ul>
+</div>
+<div id="passaggi-avanzati" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Passaggi avanzati</h3>
+<p>Solitamente le colonne di un dataset contengono informazioni rindondanti o non adeguatamente organizzate. Ad esempio la colonna <code>duration</code> ha una duplice informazione: la durata in minuti (per i film) e la durata in stagioni per le serie. In un’altra colonna abbiamo invece la durata degli episodi chiaramente non rilevante per i film. In questo caso potrebbe essere utile:</p>
+<ul>
+<li>creare una colonna <code>durata</code> che contiene la durata in minuti per i film e la durata dell’episodio per le le serie-tv</li>
+<li>creare una colonna <code>durata_stagioni</code> che contenga il numero di stagioni per ogni serie-tv mentre il valore <code>0</code> per i film.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="credits" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Credits</h1>
+<p>Alcuni esercizi sono stati presi o inspirati da:</p>
+<ul>
+<li><a href="https://www.r-exercises.com/" class="uri">https://www.r-exercises.com/</a></li>
+</ul>
 </div>
 
 

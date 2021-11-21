@@ -12,7 +12,39 @@ css: ["../files/css/course_html.css"]
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r packages, include=FALSE}
+library(here)
+```
+
+```{r load-data, include = F}
+netflix <- read.table(here("exercises", "data", "netflix.txt"), header = T, sep = ";")
+```
+
 # Introduzione a R
+
+## R Projects
+
+Create un **progetto R** per il corso e gli esercizi con la seguente struttura:
+
+```
+📦project
+ ┣ 📂R
+ ┃ ┗ 📜funzioni.R
+ ┣ 📂data
+ ┃ ┗ 📜data.csv
+ ┣ 📂scripts
+ ┃ ┗ 📜esercizi_1.R
+ ┣ 📜.Rprofile
+ ┗ 📜corsoR.Rproj
+```
+
+Dove:
+
+- dentro `R/` mettiamo tutte le funzioni
+- dentro `data/` mettiamo tutti i dati che usiamo durante il corso
+- dentro `scripts/` mettiamo i singoli script con gli esercizi
+- `.Rprofile` è un file vuoto che dovete chiamare in questo modo
+- `corsoR.Rproj` è il file del progetto che si crea in automatico con RStudio
 
 # I primi passi con R
 
@@ -164,7 +196,7 @@ Fahrenheit = Celsius *1.8 + 32
 $$
 2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona.
 3. Definisci una funzione che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media.
-4. Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti conlla funzione `readline()`.
+4. Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti con la funzione `readline()`.
 5. Definisci una funzione che calcoli lo stipendio mensile sulla base delle ore svolte nel mese e la paga oraria.
 
 ## Condizionali
@@ -236,6 +268,165 @@ La deviazione standard è facilmente implementata in R con la funzione `sd()`. P
 $$
 SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
 $$
+
+### Trova il numero all'interno del vettore
+
+Scrivi una funzione che dato in input un vettore `x` restituisca il numero di volte che compare il numero $3$:
+
+- per testare la funzione genera un vettore di numeri casuali con `round(runif(20, 1, 10))`
+
+### Numeri pari
+
+Scrivi una funzione che prenda in input un vettore `x` e restituisca il numero di numeri pari all'interno del vettore. Scrivi una funzione che utilizzi un `for loop` mentre un'altra che usi un'operazione vettorizzata.
+
+- usa l'operatore divisione intera `%%`
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+num_odd <- function(x){
+    count <- 0
+    for(i in seq_along(x)){
+        if(x[i] %% 2 == 0){
+            count <- count + 1
+        }
+    }
+    
+    return(count)
+}
+
+num_odd2 <- function(x){
+    sum(x %% 2 == 0)
+}
+```
+
+</details>
+
+### `complete.cases()`
+
+Cerca di capire cosa fa la funzione `complete.cases()` e di creare una funzione personalizzata `my_complete_cases()` con cui ottenere lo stesso output.
+
+```{r}
+complete.cases(iris[1:10, ])
+```
+
+Suggerimenti:
+
+- usa la funzione `any()`
+- puoi usare un `ciclo for` oppure una funzione dell'`*apply` family
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_complete_cases_apply <- function(data){
+    apply(my_mtcars, 1, function(x) !any(is.na(x)), simplify = T)
+}
+
+my_complete_cases_for <- function(data){
+    out <- vector(mode = "logical", length = nrow(data))
+    for(i in seq_along(out)){
+        out[i] <- all(!is.na(data[i, ]))
+    }
+    return(out)
+}
+```
+</details>
+
+### Troviamo gli outlier
+
+Uno step importante quando si analizzano i dati è quello di cercare valori anomali (ad esempio che superano una certa soglia oppure che sono troppo oltre gli indici di tendenza centrale). 
+
+- Scrivi una funzione `is_outlier(x)` che dato in input un vettore `x`, restituisca un vettore logico dove `TRUE` corrisponde ad un valore che è maggiore della media più una volta la deviazione standard di `x`.
+- Scrivi una funzione `has_outlier` che applichi `is_outlier()` ad ogni colonna di un dataframe e restituisca i nomi delle colonne dove è presente **almeno 1 outlier**.
+    - puoi usare la funzione `any()`
+    - puoi usare una funzione dentro un'altra funzione
+    - usa il dataframe `mtcars`
+- modifica la funzione `has_outliers()` per funzionare solo sulle colonne del dataframe che sono **numeriche** (no fattori o caratteri)
+
+Usa il dataframe `my_mtcars` dove sono state aggiunte delle variabili non numeriche:
+
+```{r}
+my_mtcars <- mtcars
+my_mtcars$factor1 <- factor(rep(c("a", "b", "c"), c(10, 10, 12)))
+my_mtcars$factor2 <- rep(c("d", "e", "f"), c(10, 10, 12))
+```
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+is_outlier <- function(x){
+    x > (mean(x) + sd(x))
+}
+
+has_outlier <- function(data){
+    which_outlier <- sapply(mtcars, function(x) any(is_outlier(x)))
+    names(mtcars)[which_outlier]
+}
+```
+</details>
+
+### Bootstrapping
+
+Il bootstrapping è una tecnica statistica molto utilizzata. La logica della programmazione però è molto semplice ma interessante (e potrebbe esservi anche utile). Scrivete una funzione `prepare_bootstrap(data, nrow, n)` che prenda in input un dataframe `data`, il numero di righe da estrarre `nrow` e quanti dataframe creare `n` e che fornisca quindi `n` dataframe dove `n` righe sono estratte casualmente.
+
+- usa il dataset `mtcars`
+- usa la funzione `sample()`
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+prepare_bootstrap <- function(data, nrighe, n){
+    
+    replicate(n,{
+        idx <- sample(1:nrow(data), nrighe)
+        data[idx, ]
+    }, simplify = FALSE)
+}
+```
+</details>
+
+# Esercizi avanzati dataframe
+
+In questi esercizi vedremo come gestire un dataset più o meno complesso in modo da applicare le nozioni che abbiamo imparato. Gli obiettivi sono:
+
+- **applicare** il più possibile i **concetti del corso**
+- **cercare soluzioni online** per le cose non chiare
+- scrivere funzioni dove possibile
+- produrre uno script di pulizia dati
+
+In questo corso non abbiamo visto aspetti di statistica o manipolazione dati in senso stretto, tuttavia i concetti che abbiamo imparato sono applicabili anche senza queste nozioni. Ad esempio non abbiamo affrontato nel dettaglio la pulizia dei dati, i pacchetti per gestire dataset complessi ma sappiamo che ad esempio un `dataframe` è una lista, e se vogliamo applicare una funzione ad una lista possiamo usare l'`*apply` family.
+
+## Netflix
+
+Questo dataset è stato preso dal sito [Kaggle](https://www.kaggle.com/shivamb/netflix-shows)(un ottima risorsa per trovare datasets). E' un dataset relativamente grande con `r nrow(netflix)` righe e `r ncol(netflix)` colonne. Il dataset contiene informazioni su serie-tv e film presenti sulla piattaforma, in particolare:
+
+- `show_id`: in indice numerico per ogni film/serie-tv
+- `type`: identifica se il prodotto è una serie-tv o un film
+- `title`: il titolo
+- `country`: il paese di produzione
+- `duration`: la durata
+- `users_rating`: le valutazioni degli utenti netflix
+- `imdb_rating`: le valutazioni del portale *imdb*
+- `total_cost`: il costo di produzione in milioni
+- `release_date`: la data di rilascio originale della serie o del film
+- `insert_date`: la data di inserimento nel catalogo netflix
+
+```{r}
+head(netflix)
+```
+
+### Passaggi da fare:
+
+- Importare il file `netflix.txt` capendo quale funzione utilizzare, come assegnare la prima riga come nomi e usando il separatore giusto
+- Scrivere una funzione che prenda in **input** il dataset e restituisca la tipologia di dato presente in ogni colonna
+- Ragionare sul tipo di dato in base alla descrizione ed eventualmente cambiare la tipologia dove appropriato
+- Scrivere una funzione che prenda in input il dataset e fornisca per ogni colonna il numero di valori `NA`
+- Creare una nuova colonna con la differenza tra `release_date` e `insert_date`. Per questo può essere utile cercare online come R gestisce le date.
+
+### Passaggi avanzati
+
+Solitamente le colonne di un dataset contengono informazioni rindondanti o non adeguatamente organizzate. Ad esempio la colonna `duration` ha una duplice informazione: la durata in minuti (per i film) e la durata in stagioni per le serie. In un'altra colonna abbiamo invece la durata degli episodi chiaramente non rilevante per i film. In questo caso potrebbe essere utile:
+
+- creare una colonna `durata` che contiene la durata in minuti per i film e la durata dell'episodio per le le serie-tv
+- creare una colonna `durata_stagioni` che contenga il numero di stagioni per ogni serie-tv mentre il valore `0` per i film.
+
 # Credits
 
 Alcuni esercizi sono stati presi o inspirati da:
