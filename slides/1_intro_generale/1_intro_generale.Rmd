@@ -45,13 +45,11 @@ class: title-slide, center, middle
 
 <br/>
 
-```{r, out.width="10%", echo = FALSE}
-knitr::include_graphics(path = "img/tidyverse.svg")
+```{r, out.width="20%", echo = FALSE}
+knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
 #.subtitle[Giornata 1]
-
-###.location[Corsi ARCA `r year` - @DPSS]
 
 ###.author[Filippo Gambarota]
 

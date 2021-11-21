@@ -1,5 +1,5 @@
 ---
-title: "title"
+title: 'title'
 subtitle: ""
 author: ""
 institute: ""
@@ -39,6 +39,8 @@ put_image <- function(name){
 }
 ```
 
+<!-- END HEADER --> 
+
 class: title-slide, center, middle
 
 #.title[Introduzione a R]
@@ -46,7 +48,7 @@ class: title-slide, center, middle
 #.subtitle[Giornata 3 - Programmazione in R]
 
 ```{r, out.width="10%", echo = FALSE}
-knitr::include_graphics(path = "img/tidyverse.svg")
+knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
 ###.location[Corsi ARCA - @DPSS]

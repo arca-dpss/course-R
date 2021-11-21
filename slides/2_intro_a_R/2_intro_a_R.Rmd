@@ -1,5 +1,5 @@
 ---
-title: "title"
+title: 'title'
 subtitle: ""
 author: ""
 institute: ""
@@ -21,17 +21,15 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-```{r packages, include = FALSE}
-library(kableExtra)
-```
-
-
 ```{r slide-setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
+knitr::opts_chunk$set(echo = TRUE, 
                       fig.retina = 2, 
                       dpi = 300,
-                      fig.align = "center",
-                      out.width = "100%")
+                      fig.align = "center")
+```
+
+```{r packages, include = FALSE}
+library(kableExtra)
 ```
 
 ```{r variables, include=FALSE}
@@ -52,7 +50,7 @@ class: title-slide, center, middle
 #.subtitle[Giornata 1]
 
 ```{r, out.width="10%", echo = FALSE}
-knitr::include_graphics(path = "img/tidyverse.svg")
+knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
 

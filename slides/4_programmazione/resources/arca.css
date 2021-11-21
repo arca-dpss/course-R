@@ -6,7 +6,7 @@
 }
 
 .remark-slide-content {
-    font-size: 25px;
+    font-size: 20px;
     line-height: 1.6;
 }
 
@@ -107,6 +107,15 @@ th, td { padding: 5px; }
   padding:            1px 1px 1px 1px;
 }
 
+.remark-code {
+    font-size: 60%;
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #333;
+    background: #f8f8f8;
+}
+
 
 /*  VIDEO SLIDES  (thanks to Andy Field  https://stackoverflow.com/questions/58381602/background-video-in-xaringan-slides) */
 
@@ -193,12 +202,4 @@ th, td { padding: 5px; }
     padding: .5em;
     color: #333;
     background: #f8f8f8;
-}
-
-remark-code {
-  display: block;
-  overflow-x: auto;
-  padding: .5em;
-  color: #333;
-  background: #f8f8f8;
 }

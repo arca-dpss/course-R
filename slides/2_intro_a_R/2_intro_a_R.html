@@ -23,14 +23,13 @@
 
 
 
-
 class: title-slide, center, middle
 
 #.title[Introduzione a R]
 
 #.subtitle[Giornata 1]
 
-&lt;img src="img/tidyverse.svg" width="10%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/arca_logo.svg" width="10%" style="display: block; margin: auto;" /&gt;
 
 
 ###.location[Corsi ARCA - @DPSS]
@@ -59,13 +58,23 @@ class: section, center, middle
 
 # Console
 
-&lt;img src="img/R_console.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+put_image("R_console.png")
+```
+
+&lt;img src="img/R_console.png" width="128" style="display: block; margin: auto;" /&gt;
 
 ---
 
 # RStudio
 
-&lt;img src="img/rstudio.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+knitr::include_graphics("img/rstudio.png")
+```
+
+&lt;img src="img/rstudio.png" width="213" style="display: block; margin: auto;" /&gt;
 
 ---
 class: section, center, middle
@@ -76,6 +85,40 @@ class: section, center, middle
 # R come calcolatrice
 
 In R è possibile effettuare tutte le [operazioni matematiche](https://psicostat.github.io/Introduction2R/first-comands.html#math-operators) e algebriche dalle più semplici alle più avanzate
+
+
+```r
+names_function &lt;- c("Addizione", "Sottrazione", "Moltiplicazione", "Divisione",
+                    "Resto della divisione", "Divisione intera", "Potenza",
+                    "Valore assoluto","Segno di un'espressione", "Radice quadrata", 
+                    "Logaritmo naturale", "Esponenziale", "Funzioni trigonometriche",
+                    "Fattoriale", "Coefficiente binomiale") 
+
+
+math_operators &lt;- data.frame(
+    formula = c(sprintf("x %s y", c("+", "-", "*", "/", "%%", "%/%", "^")),
+                sprintf("%s(x)", c("abs", "sign", "sqrt", "log", "exp")),
+                paste0(sprintf("%s(x)", c("sin", "cos", "tan", "asin", "acos", "atan")),
+                       collapse = "&lt;br /&gt;"),
+                "factorial(x)", "choose(n, k)"),
+    name = names_function,
+    example = c(sprintf("&gt; %s &lt;br /&gt;[1] %s",
+                        c("5 + 3", "7 - 2", "4 * 3", "8 / 3", "7 %% 5", "7 %/% 5", 
+                          "3 ^ 3","abs(3-5^2)", "sign(-8)", "sqrt(25)", "log(10)", "exp(1)"),
+                        c("8", "5", "12", "2.666667", "2", "1", "27","22", "-1", "5",
+                          "2.302585", "2.718282")),
+                "&gt;sin(pi/2) &lt;br /&gt;[1]1 &lt;br /&gt;&gt;cos(pi/2) &lt;br /&gt;[1]6.123234e-17",
+                c(sprintf("&gt; %s &lt;br /&gt;[1] %s",
+                          c("factorial(6)", "choose(5,3)"),
+                          c("720", "10"))))
+)
+
+kableExtra::kable(math_operators, col.names = c("Funzione", "Nome", "Esempio"),
+                  escape = FALSE) %&gt;%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                  full_width = T) %&gt;% 
+    scroll_box(width = "1000px", height = "400px")
+```
 
 &lt;div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:1000px; "&gt;&lt;table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
@@ -423,7 +466,12 @@ T &lt;- 2 # attenzione
 
 Il legame `nome-oggetto` viene creato nel **global environment** e rimane *salvato* per tutta a sessione di utilizzo. Potete visualizzare l'environment in RStudio oppure usando il comando `ls()`:
 
-&lt;img src="img/obj_environment.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+put_image("obj_environment.png")
+```
+
+&lt;img src="img/obj_environment.png" width="149" style="display: block; margin: auto;" /&gt;
 
 ---
 class: section, center, middle
@@ -490,14 +538,24 @@ class: section, center, middle
 
 Il **working environment** è la vostra *scrivania* quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
 
-&lt;img src="img/environemnt.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+knitr::include_graphics("img/environemnt.png")
+```
+
+&lt;img src="img/environemnt.png" width="146" style="display: block; margin: auto;" /&gt;
 
 ---
 # Working Directory
 
 La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti
 
-&lt;img src="img/working_directory.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+knitr::include_graphics("img/working_directory.png")
+```
+
+&lt;img src="img/working_directory.png" width="145" style="display: block; margin: auto;" /&gt;
 
 ---
 # Packages
@@ -510,7 +568,12 @@ In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro
 ---
 # Packages
 
-&lt;img src="img/packages.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+knitr::include_graphics("img/packages.png")
+```
+
+&lt;img src="img/packages.png" width="146" style="display: block; margin: auto;" /&gt;
 
 ---
 class: section, center, middle
@@ -524,7 +587,12 @@ class: section, center, middle
 - Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione
 - Nello script è possibile combinare **codice** e **commenti**
 
-&lt;img src="img/script.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+```r
+knitr::include_graphics("img/script.png")
+```
+
+&lt;img src="img/script.png" width="160" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -581,12 +649,22 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 # Come NON fare una domanda
 
 .pull-left[
+
+```r
+put_image("bad_question.png")
+```
+
 &lt;img src="img/bad_question.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
 
 --
 
 .pull-left[
+
+```r
+put_image("bad_question_after.png")
+```
+
 &lt;img src="img/bad_question_after.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
 

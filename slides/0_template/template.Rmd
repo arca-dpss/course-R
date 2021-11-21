@@ -1,5 +1,5 @@
 ---
-title: ""
+title: 'title'
 subtitle: ""
 author: ""
 institute: ""
@@ -38,6 +38,8 @@ put_image <- function(name){
  knitr::include_graphics(img)
 }
 ```
+
+<!-- END HEADER --> 
 
 class: title-slide, center, middle
 

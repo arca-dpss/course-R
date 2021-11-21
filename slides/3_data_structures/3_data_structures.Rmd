@@ -40,7 +40,7 @@ class: title-slide, center, middle
 #.subtitle[Giornata 2]
 
 ```{r, out.width="10%", echo = FALSE}
-knitr::include_graphics(path = "img/tidyverse.svg")
+knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
 
