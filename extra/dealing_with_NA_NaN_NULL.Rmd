@@ -1,9 +1,10 @@
 ---
 title: "Dealing with NA/NULL/NaN"
 output: 
-    html_document:
+    bookdown::html_document2:
         toc: true
         toc_float: true
+css: ["../files/css/course_html.css"]
 ---
 
 ```{r setup, include=FALSE}

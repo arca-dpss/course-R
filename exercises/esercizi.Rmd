@@ -236,6 +236,17 @@ x <- rnorm(100)
 sum(x)
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_sum <- function(x){
+    sum <- 0
+    for(i in 1:length(x)){
+        sum <- sum + x[i]
+    }
+    return(sum)
+}
+```
+</details>
 
 ### `mean()`
 
@@ -246,6 +257,18 @@ x <- rnorm(100)
 mean(x)
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_mean <- function(x){
+    avg <- my_sum(x)/length(x)
+    return(avg)
+}
+
+my_mean(x)
+mean(x)
+```
+</details>
+
 ### `median()`
 
 La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un `if` per controllare queste condizioni)
@@ -254,12 +277,55 @@ La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore ch
 median(x)
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+Questa è più complessa perchè abbiamo 2 scenari:
+
+- il vettore ha una lunghezza pari
+- il vettore ha una lunghezza dispari
+
+```{r}
+my_median <- function(x){
+  x <- sort(x)
+  if(length(x) %% 2 == 0){ # se è pari
+    mid <- length(x)/2
+    med <- (x[mid] + x[mid+1])/2
+  }else{ # se è dispari
+    med <- x[ceiling(length(x)/2)]
+  }
+  return(med)
+}
+```
+</details>
+
 ### Moda
 
 In R non è prevista una funzione per calcolare la **moda**. In statistica la moda è definita come il valore/i associato a maggiore frequenza. Ad esempio se abbiamo un vettore $x$ come `c(1,1,1,2,3,5)` la moda sarà 1.
 
 - come si potrebbe calcolare la moda in R?
 - ci sono dei pacchetti che l'hanno implementata?
+- possono esserci situazioni dove abbiamo più mode. La funzione che hai trovato/scritto gestisce questo scenario? eventualmente come puoi modificarla?
+
+<details><summary>Vedi la soluzione proposta</summary>
+La funzione `mode` non è presente in R. Possiamo crearla in vari modi oppure possiamo importarla da un pacchetto esterno. Una possibilità è questa:
+
+```{r}
+my_mode <- function(x){
+    unique(x)[which.max(tabulate(x))]
+}
+```
+
+Nel caso sia necessario gestire più mode bisogna modificare la funzione aggiungendo il fatto che se più valori sono associati a frequenza massima vengano restituiti tutti:
+
+```{r}
+my_better_mode <- function(x){
+    unique_x <- unique(x) # trovo valori unici
+    freq_x <- tabulate(x) # trovo frequenza di ogni valore
+    max_freq <- max(freq_x) # trovo la frequenza massima
+    unique_x[freq_x == max_freq] # indicizzo in modo logico tutti i valori associati alla frequenza massima
+}
+```
+
+</details>
 
 ### `sd()`
 
@@ -268,6 +334,29 @@ La deviazione standard è facilmente implementata in R con la funzione `sd()`. P
 $$
 SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
 $$
+Attenzione che R utilizza un denominatore diverso per la funzione `sd()` rispetto alla formula proposta. Cerca di capire cosa utilizza R aprendo la documentazione di `sd()` e implementa la versione di R e quella della formula. Crea poi una terza versione della funzione `my_sd(x, versione)` dove viene calcolata una o l'altra versione in base a cosa viene messo come argomento.
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_sd_formula <- function(x){
+    sqrt(mean((x - mean(x))^2))
+}
+
+my_sd_r <- function(x){
+    sqrt(sum((x - mean(x))^2) / (length(x) - 1))
+}
+
+my_sd <- function(x, version = c("formula", "R")){
+    num <- sum((x - mean(x))^2)
+    if(version == "formula"){
+        sqrt(num/length(x))
+    }else{
+        sqrt(num/(length(x) - 1))
+    }
+}
+```
+
+</details>
 
 ### Trova il numero all'interno del vettore
 
@@ -379,6 +468,33 @@ prepare_bootstrap <- function(data, nrighe, n){
         data[idx, ]
     }, simplify = FALSE)
 }
+```
+</details>
+
+### Popolare una matrice
+
+Scrivi una funzione `populate_matrix(matrix, data)` che presi in input i dei dati e una matrice vuota, popoli la matrice vuota usando un nested loop.
+
+```{r}
+x <- rnorm(100)
+mat <- matrix(nrow = 10, ncol = 10)
+```
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+populate_matrix <- function(matrice, contenuto){
+    index <- 1
+    
+    for(i in 1:nrow(matrice)){
+        for(j in 1:ncol(matrice)){
+            mat[i,j] <- contenuto[index]
+            index <- index + 1
+        }
+    }
+    return(mat)
+}
+
+populate_matrix(mat, x)
 ```
 </details>
 

@@ -32,22 +32,21 @@ update_css <- function(){
 }
 
 
-# compile_slides ----------------------------------------------------------
+# compile_file ----------------------------------------------------------
 
-compile_slides <- function(slide){
+compile_file <- function(slide){
     name <- basename(slide)
     rmarkdown::render(slide, quiet = T)
     cli::cli_alert_success(paste(cli::col_blue(name), "compiled!"))
 }
 
-# update_slides -----------------------------------------------------------
+# update_material -----------------------------------------------------------
 
-update_slides <- function(){
-    slides <- list.files("slides/", recursive = TRUE, full.names = T, pattern = ".Rmd")
-    slides <- slides[!stringr::str_detect(slides, "template")]
-    out <- sapply(slides, compile_slides)
+update_material <- function(){
+    material <- list.files(".", recursive = TRUE, full.names = T, pattern = ".Rmd")
+    material <- material[!stringr::str_detect(material, "template")]
+    out <- sapply(material, compile_file) %>% suppressWarnings()
 }
-
 
 # put_random_na -----------------------------------------------------------
 

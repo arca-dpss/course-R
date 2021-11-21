@@ -348,8 +348,8 @@ x &lt;- rnorm(100)</code></pre>
 <li><p>Crea la variabile categoriale <code>intervento</code> così definita:</p></li>
 </ol>
 <pre class="r"><code>factor(c(rep(c(&quot;CBT&quot;,&quot;Psicanalisi&quot;),3),&quot;Controllo&quot;,&quot;Controllo&quot;,&quot;CBT&quot;))</code></pre>
-<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi
-## [7] Controllo   Controllo   CBT        
+<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT        
+## [6] Psicanalisi Controllo   Controllo   CBT        
 ## Levels: CBT Controllo Psicanalisi</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Correggi nella variabile <code>intervento</code> la 7° e 8° osservazione con la voce <code>Farmaci</code>.</p></li>
@@ -459,20 +459,66 @@ Fahrenheit = Celsius *1.8 + 32
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] -7.008641</code></pre>
+<pre><code>## [1] -6.437099</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>my_sum &lt;- function(x){
+    sum &lt;- 0
+    for(i in 1:length(x)){
+        sum &lt;- sum + x[i]
+    }
+    return(sum)
+}</code></pre>
+</details>
 </div>
 <div id="mean" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> <code>mean()</code></h3>
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] -0.06123519</code></pre>
+<pre><code>## [1] 0.07948531</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>my_mean &lt;- function(x){
+    avg &lt;- my_sum(x)/length(x)
+    return(avg)
+}
+
+my_mean(x)</code></pre>
+<pre><code>## [1] 0.07948531</code></pre>
+<pre class="r"><code>mean(x)</code></pre>
+<pre><code>## [1] 0.07948531</code></pre>
+</details>
 </div>
 <div id="median" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] -0.09676953</code></pre>
+<pre><code>## [1] 0.02463611</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<p>Questa è più complessa perchè abbiamo 2 scenari:</p>
+<ul>
+<li>il vettore ha una lunghezza pari</li>
+<li>il vettore ha una lunghezza dispari</li>
+</ul>
+<pre class="r"><code>my_median &lt;- function(x){
+  x &lt;- sort(x)
+  if(length(x) %% 2 == 0){ # se è pari
+    mid &lt;- length(x)/2
+    med &lt;- (x[mid] + x[mid+1])/2
+  }else{ # se è dispari
+    med &lt;- x[ceiling(length(x)/2)]
+  }
+  return(med)
+}</code></pre>
+</details>
 </div>
 <div id="moda" class="section level3" number="5.4.4">
 <h3><span class="header-section-number">5.4.4</span> Moda</h3>
@@ -480,14 +526,53 @@ mean(x)</code></pre>
 <ul>
 <li>come si potrebbe calcolare la moda in R?</li>
 <li>ci sono dei pacchetti che l’hanno implementata?</li>
+<li>possono esserci situazioni dove abbiamo più mode. La funzione che hai trovato/scritto gestisce questo scenario? eventualmente come puoi modificarla?</li>
 </ul>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<p>La funzione <code>mode</code> non è presente in R. Possiamo crearla in vari modi oppure possiamo importarla da un pacchetto esterno. Una possibilità è questa:</p>
+<pre class="r"><code>my_mode &lt;- function(x){
+    unique(x)[which.max(tabulate(x))]
+}</code></pre>
+<p>Nel caso sia necessario gestire più mode bisogna modificare la funzione aggiungendo il fatto che se più valori sono associati a frequenza massima vengano restituiti tutti:</p>
+<pre class="r"><code>my_better_mode &lt;- function(x){
+    unique_x &lt;- unique(x) # trovo valori unici
+    freq_x &lt;- tabulate(x) # trovo frequenza di ogni valore
+    max_freq &lt;- max(freq_x) # trovo la frequenza massima
+    unique_x[freq_x == max_freq] # indicizzo in modo logico tutti i valori associati alla frequenza massima
+}</code></pre>
+</details>
 </div>
 <div id="sd" class="section level3" number="5.4.5">
 <h3><span class="header-section-number">5.4.5</span> <code>sd()</code></h3>
 <p>La deviazione standard è facilmente implementata in R con la funzione <code>sd()</code>. Prova a ricrearla con tutti gli strumenti che abbiamo imparato fino ad ora. La formula matematica è la seguente:</p>
 <p><span class="math display">\[
 SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
-\]</span></p>
+\]</span>
+Attenzione che R utilizza un denominatore diverso per la funzione <code>sd()</code> rispetto alla formula proposta. Cerca di capire cosa utilizza R aprendo la documentazione di <code>sd()</code> e implementa la versione di R e quella della formula. Crea poi una terza versione della funzione <code>my_sd(x, versione)</code> dove viene calcolata una o l’altra versione in base a cosa viene messo come argomento.</p>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>my_sd_formula &lt;- function(x){
+    sqrt(mean((x - mean(x))^2))
+}
+
+my_sd_r &lt;- function(x){
+    sqrt(sum((x - mean(x))^2) / (length(x) - 1))
+}
+
+my_sd &lt;- function(x, version = c(&quot;formula&quot;, &quot;R&quot;)){
+    num &lt;- sum((x - mean(x))^2)
+    if(version == &quot;formula&quot;){
+        sqrt(num/length(x))
+    }else{
+        sqrt(num/(length(x) - 1))
+    }
+}</code></pre>
+</details>
 </div>
 <div id="trova-il-numero-allinterno-del-vettore" class="section level3" number="5.4.6">
 <h3><span class="header-section-number">5.4.6</span> Trova il numero all’interno del vettore</h3>
@@ -600,6 +685,52 @@ Vedi la soluzione proposta
 }</code></pre>
 </details>
 </div>
+<div id="popolare-una-matrice" class="section level3" number="5.4.11">
+<h3><span class="header-section-number">5.4.11</span> Popolare una matrice</h3>
+<p>Scrivi una funzione <code>populate_matrix(matrix, data)</code> che presi in input i dei dati e una matrice vuota, popoli la matrice vuota usando un nested loop.</p>
+<pre class="r"><code>x &lt;- rnorm(100)
+mat &lt;- matrix(nrow = 10, ncol = 10)</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>populate_matrix &lt;- function(matrice, contenuto){
+    index &lt;- 1
+    
+    for(i in 1:nrow(matrice)){
+        for(j in 1:ncol(matrice)){
+            mat[i,j] &lt;- contenuto[index]
+            index &lt;- index + 1
+        }
+    }
+    return(mat)
+}
+
+populate_matrix(mat, x)</code></pre>
+<pre><code>##             [,1]       [,2]        [,3]        [,4]       [,5]
+##  [1,]  0.4163754 -1.0483707 -1.72976254  0.44933140  0.6612953
+##  [2,]  0.8143409 -0.2683325 -1.91658369 -0.14633431  1.8169283
+##  [3,]  0.1922724  0.1684972  0.52931286 -1.70101816  0.3353992
+##  [4,] -0.5265459  0.4745148 -1.01005316 -1.10239835 -0.7791504
+##  [5,] -0.6655274  1.1489914 -0.03925624 -2.08122501  0.4264256
+##  [6,] -1.7043935 -0.5038117  0.95802434  0.55091177 -0.3713445
+##  [7,] -0.2324302 -1.3056838 -1.04970044 -0.05517449  1.0933044
+##  [8,]  0.4529678 -0.1307380 -0.40939418  0.81580067 -0.9731597
+##  [9,]  1.7554838 -1.1014306  0.51177277  0.77621740  0.7242690
+## [10,]  0.5924398  0.8050797 -1.51742674 -1.55519008  1.2747858
+##              [,6]       [,7]       [,8]        [,9]      [,10]
+##  [1,] -0.87560294 -1.0135482 -0.8556916 -0.94924385  0.7973995
+##  [2,] -1.20849169 -0.5557059  0.8576244 -0.01778136  0.1240931
+##  [3,]  1.07905725 -0.6285802 -0.2326218  0.37807514  1.6566456
+##  [4,]  0.78630699 -0.3044789 -1.2682300  1.37460926 -0.4477617
+##  [5,]  1.49980392 -0.2293175  0.7271029 -0.96786500  0.7075313
+##  [6,]  0.10148157  0.2840994  0.9950544  0.40085946  0.4759353
+##  [7,]  0.92931497 -0.3038519  2.7132501  1.74617552 -0.1378884
+##  [8,]  0.01198443  0.9457948  1.8635411 -0.95716980  0.5433306
+##  [9,] -2.28700938  0.4379765  0.5917793  0.54902892 -1.3272881
+## [10,]  0.16018997 -0.4297611 -1.1158440 -0.76681640 -2.1318484</code></pre>
+</details>
+</div>
 </div>
 </div>
 <div id="esercizi-avanzati-dataframe" class="section level1" number="6">
@@ -628,20 +759,27 @@ Vedi la soluzione proposta
 <li><code>insert_date</code>: la data di inserimento nel catalogo netflix</li>
 </ul>
 <pre class="r"><code>head(netflix)</code></pre>
-<pre><code>##   show_id    type title          director       country  duration users_rating
-## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5
-## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7
-## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6
-## 4      s4   Movie     9       Shane Acker United States    80 min            8
-## 5      s5   Movie    21    Robert Luketic United States   123 min            1
-## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0
-##   imdb_rating total_cost duration_episode release_date insert_date
-## 1           2         35               91   2019-05-07  2019-09-24
-## 2           5        105               NA   2019-01-01  2019-03-31
-## 3           3        127               NA   2019-10-23  2020-01-30
-## 4           2         95               NA   2020-06-02  2020-06-09
-## 5           5         39               NA   2019-07-26  2019-08-30
-## 6           3         51               60   2019-11-09  2020-03-25</code></pre>
+<pre><code>##   show_id    type title          director       country  duration
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min
+## 4      s4   Movie     9       Shane Acker United States    80 min
+## 5      s5   Movie    21    Robert Luketic United States   123 min
+## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season
+##   users_rating imdb_rating total_cost duration_episode release_date
+## 1            5           2         35               91   2019-05-07
+## 2            7           5        105               NA   2019-01-01
+## 3            6           3        127               NA   2019-10-23
+## 4            8           2         95               NA   2020-06-02
+## 5            1           5         39               NA   2019-07-26
+## 6            0           3         51               60   2019-11-09
+##   insert_date
+## 1  2019-09-24
+## 2  2019-03-31
+## 3  2020-01-30
+## 4  2020-06-09
+## 5  2019-08-30
+## 6  2020-03-25</code></pre>
 <div id="passaggi-da-fare" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Passaggi da fare:</h3>
 <ul>

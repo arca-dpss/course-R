@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
 
 
 
@@ -244,8 +245,8 @@ div.tocify {
 </div>
 
 
-<div id="in-general" class="section level1">
-<h1>In general</h1>
+<div id="in-general" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> In general</h1>
 <p>In R there are several type of special values such as <code>NA</code>, <code>NaN</code> and <code>NULL</code>. They are similar but at the same time different especially when directly tested. In general:</p>
 <ul>
 <li><code>NA</code> is a missing information</li>
@@ -253,8 +254,8 @@ div.tocify {
 <li><code>NULL</code> is the absence of any information</li>
 </ul>
 </div>
-<div id="type" class="section level1">
-<h1>Type</h1>
+<div id="type" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Type</h1>
 <p>In terms of data type, <code>NA</code> is <em>logical</em>, <code>NaN</code> is <em>numeric</em> type and <code>NULL</code> do not have a specific type. A particularity of <code>NA</code> is that can be also adapted to the type of vector where is located. In R we cannot have a vector of <code>numbers</code> and <code>logical</code> values:</p>
 <pre class="r"><code>is.logical(NA)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
@@ -314,8 +315,8 @@ class(x) # the class is NULL</code></pre>
 vec # the null value is not present</code></pre>
 <pre><code>## [1]   1   2   3   4   5  NA   8 NaN  11</code></pre>
 </div>
-<div id="the-problem-with-na" class="section level1">
-<h1>The problem with <code>NA</code></h1>
+<div id="the-problem-with-na" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> The problem with <code>NA</code></h1>
 <p>As Hadley suggest<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> the <code>NA</code> values infect all other computations. Practically many R functions such as <code>mean()</code> or <code>sd()</code> cannot return a value if there is a <code>NA</code> within the target vector.</p>
 <pre class="r"><code>x &lt;- c(runif(10), NA)
 mean(x)</code></pre>
@@ -324,9 +325,9 @@ mean(x)</code></pre>
 <pre><code>## [1] NA</code></pre>
 <p>In fact, these functions have a specific argument <code>na.rm = TRUE</code> for doing the computation without considering <code>NA</code> values. Of course we can remove <code>NA</code> values before the computation and the result will be the same:</p>
 <pre class="r"><code>mean(x, na.rm = TRUE)</code></pre>
-<pre><code>## [1] 0.4716393</code></pre>
+<pre><code>## [1] 0.6137876</code></pre>
 <pre class="r"><code>mean(x[!is.na(x)])</code></pre>
-<pre><code>## [1] 0.4716393</code></pre>
+<pre><code>## [1] 0.6137876</code></pre>
 <ul>
 <li><a href="http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/" class="uri">http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/</a></li>
 <li><a href="https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r" class="uri">https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r</a></li>
