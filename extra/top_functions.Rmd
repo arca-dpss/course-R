@@ -1,0 +1,85 @@
+---
+title: "Le funzioni TOP in R"
+output: 
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+css: ["../files/css/course_html.css"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduzione
+
+In R ci sono centinaia di funzioni. Senza contare quelle integrabili installando pacchetti esterni. Di base ci sono funzioni per creare e manipolare e testare oggetti. Funzioni per computare modelli statistici, calcolare indici e produrre grafici. In questa sezione però volevo segnalare le principali funzioni in R utili anche per **programmare**, **scrivere funzini personalizzate** e gestire i dati in R. Non verranno approfondite funzioni statistiche e per la rappresentazione grafica.
+
+# Oggetti
+
+Abbiamo già visto come creare i principali oggetti in R [slides 3 - Strutture dati](../slides/3_data_structures/3_data_structures.html). Tuttavia ci sono altre funzioni estremamente utili:
+
+## `is.*` family
+
+La `is.*` family permette di chiedere, aspettandosi una risposta si o no (`TRUE`/`FALSE`), ad un oggetto se è associato ad una particolare tipologia.
+
+```{r}
+x <- 1:10
+is.numeric(x)
+is.vector(x)
+is.matrix(x)
+is.character(x)
+```
+
+## `as.*` family
+
+La `as.*` family non si limita solo a chiedere ma è leggermente più *aggressiva* e cerca di convertire la tipologia di oggetto. Dico cerca perchè non tutto è direttamente convertibile:
+
+```{r}
+x <- 1:10
+as.character(x)
+as.factor(x)
+
+y <- letters[1:10]
+as.numeric(y)
+```
+
+## Proprietà
+
+- `class()`: fornisce la classe dell'oggetto
+- `attributes()`: restituisce gli attributi
+- `length()`: restituisce la lunghezza (se rilevante) di un oggetto
+- `dim()`: fornisce le dimensioni di un oggetto. Simile a `length()` ma pensato per più di una dimensione
+- `nrow()`/`ncol()`: il numero di righe e colonne (se rilevante)
+- `names()`: fornisce i nomi (se impostati) assegnati ad un oggetto. Cambia se vettore o un dataframe
+- `colnames()`: i nomi delle colonne di un dataframe. Equivalente a `names()` se usato con un dataframe
+
+## Combinare oggetti
+
+- `c()`: unisce e crea vettori. Funziona anche su fattori e liste ma attenzione al risultato
+- `cbind()`/`rbind()`: combina matrici e dataframe rispettivamente per colonna e riga
+- `append()`: similar to `c()` to append one or more element to a vector
+
+## Operazioni logiche
+
+Oltre alla `is.*` family ci sono anche altre funzioni utili per lavorare in modo **logico**.
+
+- `any()`: restituisce `TRUE` se almeno un valore in un vettore logico è `TRUE`
+- `all()`: restituisce `TRUE` se tutti i valori in un vettore logico sono `TRUE`
+- `which()`: converte una rappresentazione logica in una rappresentazione intera
+
+```{r}
+x <- 1:10
+x
+
+x < 5 # rappresentazione logica
+which(x < 5) # rappresentazione intera
+```
+
+- `which.max()`/`which.min()`: restituisce la posizione del valore minimo/massimo all'interno di un vettore
+- `all.equal()`: restituisce `TRUE` se due dataframe/matrici sono esattamente uguali  
+
+## Subsetting
+
+- `subset()`: seleziona righe da un dataframe in base ad una condizione. Simile a fare `data[operazione, ]`
+- `complete.cases()`: seleziona solo le righe che non hanno `NA`. Equivalente a valutare `any(is.na(riga))`

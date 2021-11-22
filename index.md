@@ -52,6 +52,7 @@ In questa sezione ci sono alcuni argomenti extra che possono essere utili nel la
 
 - **NA, NaN, NULL e altri strani valori** - [Appunti](extra/dealing_with_NA_NaN_NULL.html)
 - **Importare dati esterni in R** - [Appunti](extra/importing_data.html)
+- **Le funzioni TOP in R** - [Appunti](extra/top_functions.html)
 
 ## Errori libro `Introduzione a R`
 
