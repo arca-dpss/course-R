@@ -275,12 +275,55 @@ div.tocify {
 <h2><span class="header-section-number">2.1</span> Operazioni matematiche</h2>
 <p>La scrittura di operazione complesse in R avviene utilizzando le parentesi per dare priorità ad alcune parti. Per il resto R segue quella che è la normale priorità delle operazioni matematiche. Prova a scrivere in R queste operazioni:</p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}\)</span></p></li>
-<li><p><span class="math inline">\(\frac{\sqrt{7-\pi}}{3\ (45-34)}\)</span></p></li>
-<li><p><span class="math inline">\(\sqrt[3]{12-e^2}+\ln(10\pi)\)</span></p></li>
-<li><p><span class="math inline">\(\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}\)</span></p></li>
-<li><p><span class="math inline">\(\frac{\sum_{n=1}^{10} n}{10}\)</span></p></li>
+<li><span class="math inline">\(\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}\)</span></li>
 </ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>((45 + 21)^3 + 3/4)/(sqrt(32 - 12/17))</code></pre>
+<pre><code>## [1] 51392.72</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(\frac{\sqrt{7-\pi}}{3\ (45-34)}\)</span></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>sqrt(7 - pi)/(3*(45 -34))</code></pre>
+<pre><code>## [1] 0.05952372</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(\sqrt[3]{12-e^2}+\ln(10\pi)\)</span></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>(12 - exp(1)^2)^(1/3) + log(10*pi)</code></pre>
+<pre><code>## [1] 5.111736</code></pre>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li><span class="math inline">\(\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}\)</span></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>(sin((3/4)*pi)^2 + cos((3/2)*pi)) / (log(exp(1)^3/2, base = 7))</code></pre>
+<pre><code>## [1] 0.4217673</code></pre>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li><span class="math inline">\(\frac{\sum_{n=1}^{10} n}{10}\)</span></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>sum(1:10)/10</code></pre>
+<pre><code>## [1] 5.5</code></pre>
+</details>
 <p>Note per la risoluzione degli esercizi:</p>
 <ul>
 <li>In R la radice quadrata si ottine con la funzione <code>sqrt()</code> mentre per radici di indici diversi si utilizza la notazione esponenziale (<span class="math inline">\(\sqrt[3]{x}\)</span> è dato da <code>x^(1/3)</code>).</li>
@@ -291,75 +334,291 @@ div.tocify {
 </div>
 <div id="operazioni-logiche" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Operazioni logiche</h2>
+<!--
+TODO: rivedi il primo esercizio
+-->
 <ol style="list-style-type: decimal">
-<li>Definisici due relazioni false e due vere che ti permettano di valutare i risultati di tutti i possibili incroci che puoi ottenere con gli operatori logici <code>&amp;</code> e <code>|</code>.</li>
-<li>Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un’altra proposizione per i nueri dispari (tip: cosa ti ricorda <code>%%</code>?).</li>
+<li>Definisci due relazioni false e due vere che ti permettano di valutare i risultati di tutti i possibili incroci che puoi ottenere con gli operatori logici <code>&amp;</code> e <code>|</code>.</li>
+<li>Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un’altra proposizione per i numeri dispari (tip: cosa ti ricorda <code>%%</code>?).</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code># Numeri pari: x %% 2 == 0
+4 %% 2 == 0  # TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>5 %% 2 == 0  # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># NUmeri dispari: x %% 2 != 0
+4 %% 2 != 0  # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>5 %% 2 != 0  # TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
 <li>Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) “<em>x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4</em>”.</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code># prima soluzione: (x &gt;= -4 &amp; x &lt;= -2) | (x &gt;= 2 &amp; x &lt;= 4)
+(-5 &gt;= -4 &amp; -5 &lt;= -2) | (-5 &gt;= 2 &amp; -5 &lt;= 4) # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>(-3 &gt;= -4 &amp; -3 &lt;= -2) | (-3 &gt;= 2 &amp; -3 &lt;= 4) # TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>(0 &gt;= -4 &amp; 0 &lt;= -2) | (0 &gt;= 2 &amp; 0 &lt;= 4)     # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>(3 &gt;= -4 &amp; 3 &lt;= -2) | (3 &gt;= 2 &amp; 3 &lt;= 4)     # TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>(5 &gt;= -4 &amp; 5 &lt;= -2) | (5 &gt;= 2 &amp; 5 &lt;= 4)     # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># seconda soluzione: abs(x) &gt;= 2 &amp; abs(x) &lt;= 4
+abs(-5) &gt;= 2 &amp; abs(-5) &lt;= 4   # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>abs(-3) &gt;= 2 &amp; abs(-3) &lt;= 4   # TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>abs(0) &gt;= 2 &amp; abs(0) &lt;= 4     # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>abs(3) &gt;= 2 &amp; abs(3) &lt;= 4     # TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>abs(5) &gt;= 2 &amp; abs(5) &lt;= 4     # FALSE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+</details>
+<ol start="4" style="list-style-type: decimal">
 <li>Esegui le seguenti operazioni <code>4 ^ 3 %in% c(2,3,4)</code> e <code>4 * 3 %in% c(2,3,4)</code>. Cosa osservi nell’ordine di esecuzione degli operatori?</li>
 </ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>4 ^ 3 %in% c(2,3,4) # ^ ha precedenza rispetto a %in%</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>4 * 3 %in% c(2,3,4) # %in% ha precedenza rispetto a *</code></pre>
+<pre><code>## [1] 4</code></pre>
+</details>
 </div>
 </div>
-<div id="strutture-dati-e-manipolazione" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Strutture dati e manipolazione</h1>
-<p>Popoliamo una matrice usando il ciclo <code>for</code>. La matrice ha un numero <em>totale</em> di elementi. Usando il vettore <code>x</code> che contiene il numero di elementi totali della matrice come possiamo popolare la matrice senza usare la funzione <code>matrix()</code>. La matrice è <strong>quadrata</strong> di dimensione 10x10:</p>
-<pre class="r"><code># matrice 10 x 10 quindi 100 elementi totali
-x &lt;- rnorm(100)</code></pre>
-</div>
-<div id="strutture-dati" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Strutture dati</h1>
-<div id="vettori" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Vettori</h2>
-<div id="creare-vettori" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Creare vettori</h3>
+<div id="strutture-dati" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Strutture dati</h1>
+<div id="vettori" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Vettori</h2>
+<div id="creare-vettori" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Creare vettori</h3>
 <ol style="list-style-type: decimal">
-<li>Crea il vettore <code>x</code> contenente i numeri 4, 6, 12, 34, 8</li>
+<li>Crea il vettore <code>x</code> contenente i numeri 4, 6, 12, 34,</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>x &lt;- c(4,6,12,34)</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
 <li>Crea il vettore <code>y</code> contenente tutti i numeri pari compresi tra 1 e 25 (<code>?seq()</code>)</li>
-<li>Crea il vettore <code>z</code> contenente tutti i primi 10 multipli di 7 partendo da 13 (<code>?seq()</code>)</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>y &lt;- seq(2, 25, 2)</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Crea il vettore <code>z</code> contenente tutti i primi 10 multipli di 7 partendo da 14 (<code>?seq()</code> in particolare l’argomento <code>length.out =</code>)</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>z &lt;- seq(from = 14, by = 7,  length.out = 10)</code></pre>
+</details>
+<ol start="4" style="list-style-type: decimal">
 <li>Crea il vettore <code>s</code> in cui le lettere <code>&quot;A&quot;</code>,<code>&quot;B&quot;</code> e <code>&quot;C&quot;</code> vengono ripetute nel medesimo ordine 4 volte (<code>?rep()</code>)</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>s &lt;- rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 4)</code></pre>
+</details>
+<ol start="5" style="list-style-type: decimal">
 <li>Crea il vettore <code>t</code> in cui le letter <code>&quot;A&quot;</code>,<code>&quot;B&quot;</code> e <code>&quot;C&quot;</code> vengono ripetute ognuna 4 volte (<code>?rep()</code>)</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>t &lt;- rep(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), each = 4)</code></pre>
+</details>
+<ol start="6" style="list-style-type: decimal">
 <li>Genera il seguente output in modo pigro, ovvero scrivendo meno codice possibile ;)</li>
 </ol>
+<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot; &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot;</code></pre>
+<pre class="r"><code>rep(rep(c(&quot;foo&quot;, &quot;bar&quot;), each = 2), times = 2)</code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot; &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot;</code></pre>
 </div>
-<div id="indicizzare-vettori" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Indicizzare vettori</h3>
+<div id="indicizzare-vettori" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Indicizzare vettori</h3>
 <ol style="list-style-type: decimal">
 <li>Del vettore <code>x</code> seleziona il 2°, 3° e 5° elemento</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>x[c(2,3,5)]</code></pre>
+<pre><code>## [1]  6 12 NA</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
 <li>Del vettore <code>x</code> seleziona i valori 34 e 4</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>x[x %in% c(34,4)]</code></pre>
+<pre><code>## [1]  4 34</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
 <li>Dato il vettore <code>my_vector = c(2,4,6,8)</code> commenta il risultato del comando <code>my_vector[my_vector]</code></li>
+</ol>
+<pre class="r"><code>my_vector = c(2,4,6,8)
+my_vector[my_vector]</code></pre>
+<ol start="4" style="list-style-type: decimal">
 <li>Del vettore <code>y</code> seleziona tutti i valori minori di 13 o maggiori di 19</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>y[y &lt; 13 | y &gt; 19]</code></pre>
+<pre><code>## [1]  2  4  6  8 10 12 20 22 24</code></pre>
+</details>
+<ol start="5" style="list-style-type: decimal">
 <li>Del vettore <code>z</code> seleziona tutti i valori compresi tra 24 e 50</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>z[z &gt;= 24 &amp; z &lt;= 50]</code></pre>
+<pre><code>## [1] 28 35 42 49</code></pre>
+</details>
+<ol start="6" style="list-style-type: decimal">
 <li>Del vettore <code>s</code> seleziona tutti gli elementi uguali ad <code>&quot;A&quot;</code></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>s[s == &quot;A&quot;]</code></pre>
+<pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot;</code></pre>
+</details>
+<ol start="7" style="list-style-type: decimal">
 <li>Del vettore <code>t</code> seleziona tutti gli elementi diversi da <code>&quot;B&quot;</code></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>t[t != &quot;B&quot;]</code></pre>
+<pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;C&quot; &quot;C&quot; &quot;C&quot; &quot;C&quot;</code></pre>
+</details>
+<ol start="8" style="list-style-type: decimal">
 <li>Crea un nuovo vettore <code>u</code> identico a <code>s</code> ma dove le <code>&quot;A&quot;</code> sono sostituite con la lettera <code>&quot;U&quot;</code></li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>u &lt;- s
+u[u == &quot;A&quot;] &lt;- &quot;U&quot;</code></pre>
+</details>
+<ol start="9" style="list-style-type: decimal">
 <li>Elimina dal vettore <code>z</code> i valori 28 e 42</li>
 </ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>z[!z %in% c(28,42)]</code></pre>
+<pre><code>## [1] 14 21 35 49 56 63 70 77</code></pre>
+</details>
 </div>
 </div>
-<div id="fattori" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Fattori</h2>
+<div id="fattori" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Fattori</h2>
 <ol style="list-style-type: decimal">
 <li>Crea la variabile categoriale <code>genere</code> così definita:</li>
 </ol>
-<pre class="r"><code>factor(c(rep(c(&quot;M&quot;,&quot;F&quot;),3),&quot;F&quot;,&quot;F&quot;,&quot;M&quot;))</code></pre>
 <pre><code>## [1] M F M F M F F F M
 ## Levels: F M</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>genere &lt;- factor(c(&quot;M&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;))</code></pre>
+</details>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Rinomina i livelli della variabile <code>genere</code> rispettivamente in <code>&quot;donne&quot;</code> e <code>&quot;uomini&quot;</code>.</p></li>
-<li><p>Crea la variabile categoriale <code>intervento</code> così definita:</p></li>
+<li>Rinomina i livelli della variabile <code>genere</code> rispettivamente in <code>&quot;donne&quot;</code> e <code>&quot;uomini&quot;</code>.</li>
 </ol>
-<pre class="r"><code>factor(c(rep(c(&quot;CBT&quot;,&quot;Psicanalisi&quot;),3),&quot;Controllo&quot;,&quot;Controllo&quot;,&quot;CBT&quot;))</code></pre>
-<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT        
-## [6] Psicanalisi Controllo   Controllo   CBT        
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>genere2 &lt;- genere # per tenere quello originale
+
+# Opzione 1
+levels(genere2) &lt;- c(&quot;donne&quot;, &quot;uomini&quot;)</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Crea la variabile categoriale <code>intervento</code> così definita:</li>
+</ol>
+<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi
+## [5] CBT         Psicanalisi Controllo   Controllo  
+## [9] CBT        
 ## Levels: CBT Controllo Psicanalisi</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>intervento &lt;- factor(c(rep(c(&quot;CBT&quot;,&quot;Psicanalisi&quot;),3),&quot;Controllo&quot;,&quot;Controllo&quot;,&quot;CBT&quot;))</code></pre>
+</details>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Correggi nella variabile <code>intervento</code> la 7° e 8° osservazione con la voce <code>Farmaci</code>.</p></li>
-<li><p>Aggiungi alla variabile <code>intervento</code> le seguenti nuove osservazioni:</p></li>
+<li>Correggi nella variabile <code>intervento</code> la 7° e 8° osservazione con la voce <code>Farmaci</code>.</li>
+</ol>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>intervento[7:8] &lt;- &quot;Farmaci&quot;</code></pre>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;):
+## invalid factor level, NA generated</code></pre>
+<pre class="r"><code>levels(intervento)&lt;-c(levels(intervento), &quot;Farmaci&quot;)
+intervento[7:8]&lt;-&quot;Farmaci&quot;</code></pre>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>Aggiungi alla variabile <code>intervento</code> le seguenti nuove osservazioni:</li>
 </ol>
 <pre class="r"><code>c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;)</code></pre>
 <pre><code>## [1] &quot;Farmaci&quot;   &quot;Controllo&quot; &quot;Farmaci&quot;</code></pre>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>intervento &lt;- c(intervento, as.factor(c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;)))
+
+# cosa succede con questo e perche?
+c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))</code></pre>
+<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;        
+##  [5] &quot;1&quot;         &quot;3&quot;         &quot;4&quot;         &quot;4&quot;        
+##  [9] &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;        
+## [13] &quot;Farmaci&quot;   &quot;Controllo&quot; &quot;Farmaci&quot;</code></pre>
+</details>
 </div>
-<div id="matrici" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Matrici</h2>
+<div id="matrici" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Matrici</h2>
 <ol style="list-style-type: decimal">
 <li>Crea la matrice <code>A</code> così definita:</li>
 </ol>
@@ -388,8 +647,8 @@ x &lt;- rnorm(100)</code></pre>
 <li>Assegna i seguenti nomi alle colonne e alle righe della matrice <code>C</code>: <code>&quot;col_1&quot;, &quot;col_2&quot;, &quot;col_3&quot;, &quot;col_4&quot;, &quot;row_1&quot;, &quot;row_2&quot;, &quot;row_3&quot;</code>.</li>
 </ol>
 </div>
-<div id="dataframe" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Dataframe</h2>
+<div id="dataframe" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Dataframe</h2>
 <p>Ricrea questo dataframe in R:</p>
 <pre class="r"><code>data_long&lt;-data.frame(Id=rep(c(&quot;subj_1&quot;,&quot;subj_2&quot;,&quot;subj_3&quot;),each=3),
                       age=rep(c(21,23,19),each=3),
@@ -410,10 +669,10 @@ x &lt;- rnorm(100)</code></pre>
 </ul>
 </div>
 </div>
-<div id="programmazione" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Programmazione</h1>
-<div id="funzioni" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Funzioni</h2>
+<div id="programmazione" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Programmazione</h1>
+<div id="funzioni" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Funzioni</h2>
 <ol style="list-style-type: decimal">
 <li>definisci una funzione che trasformi la temperatura da Celsius a Fahrenheit
 <span class="math display">\[
@@ -425,8 +684,8 @@ Fahrenheit = Celsius *1.8 + 32
 <li>Definisci una funzione che calcoli lo stipendio mensile sulla base delle ore svolte nel mese e la paga oraria.</li>
 </ol>
 </div>
-<div id="condizionali" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Condizionali</h2>
+<div id="condizionali" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Condizionali</h2>
 <pre class="r"><code>score &lt;- runif(100, 0, 1)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Definisci una funzione per assegnare un voto in base alla percentuale di risposte corrette (<em>score</em>) segui le seguenti indicazioni:</li>
@@ -444,22 +703,28 @@ Fahrenheit = Celsius *1.8 + 32
 <li>Definisci una funzione che calcoli lo stipendio mensile considerando gli straordinari che sono retribuiti 1.5 della paga oraria normale. Utilizza come parametrile ore svolte nel mese, la paga oraria ed il tetto ore lavorative, oltre cui si contano gli straordinari.</li>
 </ol>
 </div>
-<div id="loop" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Loop</h2>
-<div id="scrivi-un-loop-che" class="section level3" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Scrivi un loop che:</h3>
+<div id="loop" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Loop</h2>
+<div id="scrivi-un-loop-che" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Scrivi un loop che:</h3>
 <p>Scrivi un loop che scorre le colonne del dataset <code>iris</code> (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio <code>Sepal.Length (12)</code>. Potete usare le funzioni <code>print()</code>, <code>paste0()</code> and <code>nchar()</code>.</p>
 </div>
+<div id="popola-la-matrice-con-un-for" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Popola la matrice con un <code>for</code></h3>
+<p>Popoliamo una matrice usando il ciclo <code>for</code>. La matrice ha un numero <em>totale</em> di elementi. Usando il vettore <code>x</code> che contiene il numero di elementi totali della matrice come possiamo popolare la matrice senza usare la funzione <code>matrix()</code>. La matrice è <strong>quadrata</strong> di dimensione 10x10:</p>
+<pre class="r"><code># matrice 10 x 10 quindi 100 elementi totali
+x &lt;- rnorm(100)</code></pre>
 </div>
-<div id="ri-creiamo-le-funzioni-in-r" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Ri-creiamo le funzioni in R</h2>
+</div>
+<div id="ri-creiamo-le-funzioni-in-r" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Ri-creiamo le funzioni in R</h2>
 <p>Un ottimo esercizio per affinare le nostre competenze di codice è quello di ricreare le funzioni di R che diamo per scontate diciamo. La funzione <code>mean()</code> ad esempio si può facilmente create con un ciclo for e qualche altra aggiunta.</p>
-<div id="sum" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> <code>sum()</code></h3>
+<div id="sum" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> <code>sum()</code></h3>
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] -1.75692</code></pre>
+<pre><code>## [1] -7.367591</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -473,12 +738,12 @@ Vedi la soluzione proposta
 }</code></pre>
 </details>
 </div>
-<div id="mean" class="section level3" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> <code>mean()</code></h3>
+<div id="mean" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> <code>mean()</code></h3>
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] 0.2123738</code></pre>
+<pre><code>## [1] 0.04866613</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -489,16 +754,16 @@ Vedi la soluzione proposta
 }
 
 my_mean(x)</code></pre>
-<pre><code>## [1] 0.2123738</code></pre>
+<pre><code>## [1] 0.04866613</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] 0.2123738</code></pre>
+<pre><code>## [1] 0.04866613</code></pre>
 </details>
 </div>
-<div id="median" class="section level3" number="5.4.3">
-<h3><span class="header-section-number">5.4.3</span> <code>median()</code></h3>
+<div id="median" class="section level3" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 0.2665148</code></pre>
+<pre><code>## [1] 0.05614156</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -520,8 +785,8 @@ Vedi la soluzione proposta
 }</code></pre>
 </details>
 </div>
-<div id="moda" class="section level3" number="5.4.4">
-<h3><span class="header-section-number">5.4.4</span> Moda</h3>
+<div id="moda" class="section level3" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Moda</h3>
 <p>In R non è prevista una funzione per calcolare la <strong>moda</strong>. In statistica la moda è definita come il valore/i associato a maggiore frequenza. Ad esempio se abbiamo un vettore <span class="math inline">\(x\)</span> come <code>c(1,1,1,2,3,5)</code> la moda sarà 1.</p>
 <ul>
 <li>come si potrebbe calcolare la moda in R?</li>
@@ -545,8 +810,8 @@ Vedi la soluzione proposta
 }</code></pre>
 </details>
 </div>
-<div id="sd" class="section level3" number="5.4.5">
-<h3><span class="header-section-number">5.4.5</span> <code>sd()</code></h3>
+<div id="sd" class="section level3" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> <code>sd()</code></h3>
 <p>La deviazione standard è facilmente implementata in R con la funzione <code>sd()</code>. Prova a ricrearla con tutti gli strumenti che abbiamo imparato fino ad ora. La formula matematica è la seguente:</p>
 <p><span class="math display">\[
 SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
@@ -574,15 +839,15 @@ my_sd &lt;- function(x, version = c(&quot;formula&quot;, &quot;R&quot;)){
 }</code></pre>
 </details>
 </div>
-<div id="trova-il-numero-allinterno-del-vettore" class="section level3" number="5.4.6">
-<h3><span class="header-section-number">5.4.6</span> Trova il numero all’interno del vettore</h3>
+<div id="trova-il-numero-allinterno-del-vettore" class="section level3" number="4.4.6">
+<h3><span class="header-section-number">4.4.6</span> Trova il numero all’interno del vettore</h3>
 <p>Scrivi una funzione che dato in input un vettore <code>x</code> restituisca il numero di volte che compare il numero <span class="math inline">\(3\)</span>:</p>
 <ul>
 <li>per testare la funzione genera un vettore di numeri casuali con <code>round(runif(20, 1, 10))</code></li>
 </ul>
 </div>
-<div id="numeri-pari" class="section level3" number="5.4.7">
-<h3><span class="header-section-number">5.4.7</span> Numeri pari</h3>
+<div id="numeri-pari" class="section level3" number="4.4.7">
+<h3><span class="header-section-number">4.4.7</span> Numeri pari</h3>
 <p>Scrivi una funzione che prenda in input un vettore <code>x</code> e restituisca il numero di numeri pari all’interno del vettore. Scrivi una funzione che utilizzi un <code>for loop</code> mentre un’altra che usi un’operazione vettorizzata.</p>
 <ul>
 <li>usa l’operatore divisione intera <code>%%</code></li>
@@ -607,8 +872,8 @@ num_odd2 &lt;- function(x){
 }</code></pre>
 </details>
 </div>
-<div id="complete.cases" class="section level3" number="5.4.8">
-<h3><span class="header-section-number">5.4.8</span> <code>complete.cases()</code></h3>
+<div id="complete.cases" class="section level3" number="4.4.8">
+<h3><span class="header-section-number">4.4.8</span> <code>complete.cases()</code></h3>
 <p>Cerca di capire cosa fa la funzione <code>complete.cases()</code> e di creare una funzione personalizzata <code>my_complete_cases()</code> con cui ottenere lo stesso output.</p>
 <pre class="r"><code>complete.cases(iris[1:10, ])</code></pre>
 <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
@@ -634,8 +899,8 @@ my_complete_cases_for &lt;- function(data){
 }</code></pre>
 </details>
 </div>
-<div id="troviamo-gli-outlier" class="section level3" number="5.4.9">
-<h3><span class="header-section-number">5.4.9</span> Troviamo gli outlier</h3>
+<div id="troviamo-gli-outlier" class="section level3" number="4.4.9">
+<h3><span class="header-section-number">4.4.9</span> Troviamo gli outlier</h3>
 <p>Uno step importante quando si analizzano i dati è quello di cercare valori anomali (ad esempio che superano una certa soglia oppure che sono troppo oltre gli indici di tendenza centrale).</p>
 <ul>
 <li>Scrivi una funzione <code>is_outlier(x)</code> che dato in input un vettore <code>x</code>, restituisca un vettore logico dove <code>TRUE</code> corrisponde ad un valore che è maggiore della media più una volta la deviazione standard di <code>x</code>.</li>
@@ -665,8 +930,8 @@ has_outlier &lt;- function(data){
 }</code></pre>
 </details>
 </div>
-<div id="bootstrapping" class="section level3" number="5.4.10">
-<h3><span class="header-section-number">5.4.10</span> Bootstrapping</h3>
+<div id="bootstrapping" class="section level3" number="4.4.10">
+<h3><span class="header-section-number">4.4.10</span> Bootstrapping</h3>
 <p>Il bootstrapping è una tecnica statistica molto utilizzata. La logica della programmazione però è molto semplice ma interessante (e potrebbe esservi anche utile). Scrivete una funzione <code>prepare_bootstrap(data, nrow, n)</code> che prenda in input un dataframe <code>data</code>, il numero di righe da estrarre <code>nrow</code> e quanti dataframe creare <code>n</code> e che fornisca quindi <code>n</code> dataframe dove <code>n</code> righe sono estratte casualmente.</p>
 <ul>
 <li>usa il dataset <code>mtcars</code></li>
@@ -685,8 +950,8 @@ Vedi la soluzione proposta
 }</code></pre>
 </details>
 </div>
-<div id="popolare-una-matrice" class="section level3" number="5.4.11">
-<h3><span class="header-section-number">5.4.11</span> Popolare una matrice</h3>
+<div id="popolare-una-matrice" class="section level3" number="4.4.11">
+<h3><span class="header-section-number">4.4.11</span> Popolare una matrice</h3>
 <p>Scrivi una funzione <code>populate_matrix(matrix, data)</code> che presi in input i dei dati e una matrice vuota, popoli la matrice vuota usando un nested loop.</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mat &lt;- matrix(nrow = 10, ncol = 10)</code></pre>
@@ -707,34 +972,45 @@ Vedi la soluzione proposta
 }
 
 populate_matrix(mat, x)</code></pre>
-<pre><code>##              [,1]        [,2]       [,3]        [,4]        [,5]
-##  [1,]  0.08194494  3.23358434  1.5596717 -0.05284543  0.17811527
-##  [2,] -0.84239040 -1.02189497 -1.0241207 -2.10161649 -2.03435947
-##  [3,] -0.37598053 -0.30439211 -0.5972975 -1.10833507 -1.68800113
-##  [4,] -0.04069553 -0.77810569  0.1566972 -0.77814517 -0.20824897
-##  [5,] -0.09664817 -0.39058389  1.4270476  0.50430893  1.90447349
-##  [6,] -1.50115500 -0.06211739  0.3684979 -0.18607987  0.04345992
-##  [7,] -0.91765462  1.51838306 -0.5433076 -0.06653710 -0.90920989
-##  [8,]  1.73234750 -0.37714902 -1.6342079  0.60255407  1.78232565
-##  [9,]  1.00779867 -1.95033344 -0.6228398 -0.93902793  1.54018529
-## [10,]  0.80590904 -0.30388638  1.4518245  0.61026175 -0.75929849
-##              [,6]       [,7]        [,8]        [,9]       [,10]
-##  [1,]  0.22973223 -0.3598063 -0.01525893 -1.06118168 -1.58977951
-##  [2,] -0.46571461  2.0876308 -0.34811909  2.84454119 -0.02324362
-##  [3,]  1.02545563  0.3103457  0.09058696 -0.26682404  0.15043866
-##  [4,]  0.87932803 -0.9826022  0.85772358 -0.34070301  0.14041965
-##  [5,]  0.57051178 -1.2057061 -0.50311232  1.70858294 -0.39366121
-##  [6,] -0.21919866 -0.1029379  0.26471145 -1.70325829 -0.06546608
-##  [7,]  0.07848798  0.3814613 -0.42664832  0.42241733  1.10347698
-##  [8,]  0.62315218  0.2002002  0.58852911  0.08874558  1.17838291
-##  [9,] -0.33082284  0.8547272 -1.38993381 -1.15557741 -1.17235410
-## [10,]  0.53547655  1.1083067 -0.03107808 -0.23701841 -0.18830217</code></pre>
+<pre><code>##              [,1]       [,2]        [,3]       [,4]
+##  [1,]  0.22552991 -0.9579521  0.01391782 -0.5949352
+##  [2,]  0.04363908 -0.1080939 -0.72975722 -0.3362926
+##  [3,]  0.69934316 -0.6856349  0.42241082 -1.4753097
+##  [4,]  0.03828580  1.2593514 -1.08282886  0.4015714
+##  [5,] -0.75755445 -0.9325413 -0.38814489  1.3461703
+##  [6,] -0.40024058  0.5550781  0.52135462 -1.2963415
+##  [7,]  0.37736356  0.3658343  1.18341624  2.1180763
+##  [8,] -1.85421815 -0.7073062 -0.63558079 -0.3186013
+##  [9,] -0.69223006 -0.5431584  0.53784536 -0.5889142
+## [10,]  0.90633017 -0.7776267  0.41516005 -1.0588861
+##              [,5]       [,6]        [,7]        [,8]
+##  [1,] -0.54977199  1.6134114  0.29789272 -1.18667483
+##  [2,] -0.21377756 -0.6802839  0.04747306  0.02796136
+##  [3,] -0.36295460  1.2838613 -1.23259157  0.10601315
+##  [4,] -0.06759253  0.3456130 -1.18861879  1.16615749
+##  [5,] -1.63436498  0.5235190  1.06600821  0.97178261
+##  [6,]  0.49278363 -1.1871919 -0.06598147 -0.51935614
+##  [7,]  0.54900532 -1.4151741  0.60432217 -0.45754431
+##  [8,] -0.68464156  0.4572590 -0.10903675 -0.17904399
+##  [9,] -0.21923164  0.5847214  1.22392632 -0.10116524
+## [10,]  1.14888679  0.5285176 -0.13431869  1.00045981
+##               [,9]      [,10]
+##  [1,] -0.179678855 -0.0208259
+##  [2,] -0.292618107 -1.2269785
+##  [3,]  0.888294189 -0.5250861
+##  [4,]  0.008305537 -0.2251449
+##  [5,]  0.427717216  0.2200835
+##  [6,] -0.550649650  1.1815778
+##  [7,] -1.050832075  0.6710768
+##  [8,] -0.691854431  0.2010420
+##  [9,]  0.117465555  1.9680321
+## [10,]  1.743859871  1.0843838</code></pre>
 </details>
 </div>
 </div>
 </div>
-<div id="esercizi-avanzati-dataframe" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Esercizi avanzati dataframe</h1>
+<div id="esercizi-avanzati-dataframe" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Esercizi avanzati dataframe</h1>
 <p>In questi esercizi vedremo come gestire un dataset più o meno complesso in modo da applicare le nozioni che abbiamo imparato. Gli obiettivi sono:</p>
 <ul>
 <li><strong>applicare</strong> il più possibile i <strong>concetti del corso</strong></li>
@@ -743,8 +1019,8 @@ populate_matrix(mat, x)</code></pre>
 <li>produrre uno script di pulizia dati</li>
 </ul>
 <p>In questo corso non abbiamo visto aspetti di statistica o manipolazione dati in senso stretto, tuttavia i concetti che abbiamo imparato sono applicabili anche senza queste nozioni. Ad esempio non abbiamo affrontato nel dettaglio la pulizia dei dati, i pacchetti per gestire dataset complessi ma sappiamo che ad esempio un <code>dataframe</code> è una lista, e se vogliamo applicare una funzione ad una lista possiamo usare l’<code>*apply</code> family.</p>
-<div id="netflix" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Netflix</h2>
+<div id="netflix" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Netflix</h2>
 <p>Questo dataset è stato preso dal sito <a href="https://www.kaggle.com/shivamb/netflix-shows">Kaggle</a>(un ottima risorsa per trovare datasets). E’ un dataset relativamente grande con 7787 righe e 12 colonne. Il dataset contiene informazioni su serie-tv e film presenti sulla piattaforma, in particolare:</p>
 <ul>
 <li><code>show_id</code>: in indice numerico per ogni film/serie-tv</li>
@@ -759,29 +1035,29 @@ populate_matrix(mat, x)</code></pre>
 <li><code>insert_date</code>: la data di inserimento nel catalogo netflix</li>
 </ul>
 <pre class="r"><code>head(netflix)</code></pre>
-<pre><code>##   show_id    type title          director       country  duration
-## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons
-## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min
-## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min
-## 4      s4   Movie     9       Shane Acker United States    80 min
-## 5      s5   Movie    21    Robert Luketic United States   123 min
-## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season
-##   users_rating imdb_rating total_cost duration_episode release_date
-## 1            5           2         35               91   2019-05-07
-## 2            7           5        105               NA   2019-01-01
-## 3            6           3        127               NA   2019-10-23
-## 4            8           2         95               NA   2020-06-02
-## 5            1           5         39               NA   2019-07-26
-## 6            0           3         51               60   2019-11-09
-##   insert_date
-## 1  2019-09-24
-## 2  2019-03-31
-## 3  2020-01-30
-## 4  2020-06-09
-## 5  2019-08-30
-## 6  2020-03-25</code></pre>
-<div id="passaggi-da-fare" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Passaggi da fare:</h3>
+<pre><code>##   show_id    type title          director       country
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore
+## 4      s4   Movie     9       Shane Acker United States
+## 5      s5   Movie    21    Robert Luketic United States
+## 6      s6 TV Show    46       Serdar Akar        Turkey
+##    duration users_rating imdb_rating total_cost
+## 1 4 Seasons            5           2         35
+## 2    93 min            7           5        105
+## 3    78 min            6           3        127
+## 4    80 min            8           2         95
+## 5   123 min            1           5         39
+## 6  1 Season            0           3         51
+##   duration_episode release_date insert_date
+## 1               91   2019-05-07  2019-09-24
+## 2               NA   2019-01-01  2019-03-31
+## 3               NA   2019-10-23  2020-01-30
+## 4               NA   2020-06-02  2020-06-09
+## 5               NA   2019-07-26  2019-08-30
+## 6               60   2019-11-09  2020-03-25</code></pre>
+<div id="passaggi-da-fare" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Passaggi da fare:</h3>
 <ul>
 <li>Importare il file <code>netflix.txt</code> capendo quale funzione utilizzare, come assegnare la prima riga come nomi e usando il separatore giusto</li>
 <li>Scrivere una funzione che prenda in <strong>input</strong> il dataset e restituisca la tipologia di dato presente in ogni colonna</li>
@@ -790,8 +1066,8 @@ populate_matrix(mat, x)</code></pre>
 <li>Creare una nuova colonna con la differenza tra <code>release_date</code> e <code>insert_date</code>. Per questo può essere utile cercare online come R gestisce le date.</li>
 </ul>
 </div>
-<div id="passaggi-avanzati" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Passaggi avanzati</h3>
+<div id="passaggi-avanzati" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Passaggi avanzati</h3>
 <p>Solitamente le colonne di un dataset contengono informazioni rindondanti o non adeguatamente organizzate. Ad esempio la colonna <code>duration</code> ha una duplice informazione: la durata in minuti (per i film) e la durata in stagioni per le serie. In un’altra colonna abbiamo invece la durata degli episodi chiaramente non rilevante per i film. In questo caso potrebbe essere utile:</p>
 <ul>
 <li>creare una colonna <code>durata</code> che contiene la durata in minuti per i film e la durata dell’episodio per le le serie-tv</li>
@@ -800,8 +1076,8 @@ populate_matrix(mat, x)</code></pre>
 </div>
 </div>
 </div>
-<div id="credits" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> Credits</h1>
+<div id="credits" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Credits</h1>
 <p>Alcuni esercizi sono stati presi o inspirati da:</p>
 <ul>
 <li><a href="https://www.r-exercises.com/" class="uri">https://www.r-exercises.com/</a></li>
