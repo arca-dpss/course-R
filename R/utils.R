@@ -38,6 +38,11 @@ compile_file <- function(slide){
     name <- basename(slide)
     rmarkdown::render(slide, quiet = T)
     cli::cli_alert_success(paste(cli::col_blue(name), "compiled!"))
+    
+    if(stringr::str_detect(slide, "slides")){
+        slide <- str_replace(slide, ".Rmd", ".html")
+        pagedown::chrome_print(slide)
+    }
 }
 
 # update_material -----------------------------------------------------------
