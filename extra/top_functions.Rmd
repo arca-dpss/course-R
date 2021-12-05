@@ -83,3 +83,8 @@ which(x < 5) # rappresentazione intera
 
 - `subset()`: seleziona righe da un dataframe in base ad una condizione. Simile a fare `data[operazione, ]`
 - `complete.cases()`: seleziona solo le righe che non hanno `NA`. Equivalente a valutare `any(is.na(riga))`
+
+## Operazioni
+
+- `colSums()/rowSums()`: rispettivamente calcolano la somma di tutti gli elementi per colonna/riga. E' assolutamente analogo a fare `apply(data, 2, sum)` e `apply(data, 1, sum)`
+- `colMeans()/rowMeans()`: lo stesso approccio delle precedenti ma calcolano la media

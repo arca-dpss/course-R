@@ -311,7 +311,8 @@ as.numeric(y)</code></pre>
 x</code></pre>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <pre class="r"><code>x &lt; 5 # rappresentazione logica</code></pre>
-<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+## [10] FALSE</code></pre>
 <pre class="r"><code>which(x &lt; 5) # rappresentazione intera</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <ul>
@@ -324,6 +325,13 @@ x</code></pre>
 <ul>
 <li><code>subset()</code>: seleziona righe da un dataframe in base ad una condizione. Simile a fare <code>data[operazione, ]</code></li>
 <li><code>complete.cases()</code>: seleziona solo le righe che non hanno <code>NA</code>. Equivalente a valutare <code>any(is.na(riga))</code></li>
+</ul>
+</div>
+<div id="operazioni" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Operazioni</h2>
+<ul>
+<li><code>colSums()/rowSums()</code>: rispettivamente calcolano la somma di tutti gli elementi per colonna/riga. E’ assolutamente analogo a fare <code>apply(data, 2, sum)</code> e <code>apply(data, 1, sum)</code></li>
+<li><code>colMeans()/rowMeans()</code>: lo stesso approccio delle precedenti ma calcolano la media</li>
 </ul>
 </div>
 </div>
