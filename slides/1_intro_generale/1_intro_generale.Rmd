@@ -1,20 +1,21 @@
 ---
-title: 'title'
+title: 'Introduzione al corso'
 subtitle: ""
 author: ""
 institute: ""
 date: ""
 output:
   xaringan::moon_reader:
+    self_contained: true
     seal: false
     css: ["resources/arca.css", "resources/arca_fonts.css"]
     lib_dir: libs
     nature:
-      highlightStyle: github
-      highlightLines: true
-      highlightLanguage: ["r"]
-      countIncrementalSlides: false
-      ratio: "16:9"
+        highlightStyle: github
+        highlightLines: true
+        highlightLanguage: ["r"]
+        countIncrementalSlides: false
+        ratio: "16:9"
 ---
 
 ```{r setup, include=FALSE}
@@ -22,9 +23,11 @@ options(htmltools.dir.version = FALSE)
 ```
 
 ```{r slide-setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
+knitr::opts_chunk$set(echo = FALSE, 
                       fig.retina = 2, 
                       dpi = 300,
+                      warning = FALSE,
+                      message = FALSE,
                       fig.align = "center")
 ```
 
@@ -37,6 +40,10 @@ put_image <- function(name){
  img <- file.path("img", name)
  knitr::include_graphics(img)
 }
+```
+
+```{r packages}
+library(tidyverse)
 ```
 
 class: title-slide, center, middle
@@ -232,6 +239,55 @@ Imparare in linguaggio come R vi permette di conoscere uno strumento molto poten
 - Avere una skill realmente di valore
 
 ---
+# Imparare R è difficile...MA ne vale la pena!
+
+```{r}
+spss_curve <- function(x) sqrt(x*200)
+r_curve <- function(x) sqrt(x*30)
+
+ggplot(data = data.frame(x = 0), mapping = aes(x = x)) + 
+  stat_function(fun = spss_curve, aes(color = "SPSS"), size = 1.5) +
+  stat_function(fun = r_curve, aes(color = "R"), size = 1.5) +
+  xlim(0, 100) +
+  ylim(0, 100) +
+  cowplot::theme_minimal_grid() +
+  xlab("ORE TOTALI") +
+  ylab("SKILLS") +
+  theme(axis.text.x = element_blank(),
+        legend.title = element_blank(),
+        aspect.ratio = 1,
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Apprendimento iniziale") -> learning_r_plot
+
+
+after_spss <- function(x) sqrt(x*5)
+
+ggplot(data = data.frame(x = 0), mapping = aes(x = x)) + 
+  stat_function(fun = function(x) sqrt(x*150), aes(color = "After SPSS"), size = 1.5) +
+  stat_function(fun = after_spss, aes(color = "After R"), size = 1.5) +
+  xlim(0, 100) +
+  ylim(0, 100) +
+  cowplot::theme_minimal_grid() +
+  xlab("ORE TOTALI") +
+  ylab("SKILLS") +
+  theme(axis.text.x = element_blank(),
+        legend.title = element_blank(),
+        aspect.ratio = 1,
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Apprendimento di altri linguaggi") -> after_r_plot
+```
+
+.pull-left[
+```{r}
+learning_r_plot
+```
+]
+.pull-right[
+```{r}
+after_r_plot
+```
+]
+---
 # R come una lingua parlata
 
 Una lingua è composta da:
@@ -245,8 +301,3 @@ Una lingua è composta da:
 # R come una lingua parlata
 
 Anche in R, come in tutti i linguaggi di programmazione sono presenti questi aspetti. Questa metafora del linguaggio di programmazione come lingua parlata vorrei che stesse con noi per tutto il corso perchè molto utile per avere una visione d'insieme.
-
----
-
-
-

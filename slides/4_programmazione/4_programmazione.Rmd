@@ -1,11 +1,12 @@
 ---
-title: 'title'
+title: 'Programmazione in R'
 subtitle: ""
 author: ""
 institute: ""
 date: ""
 output:
   xaringan::moon_reader:
+    self_contained: true
     seal: false
     css: ["resources/arca.css", "resources/arca_fonts.css"]
     lib_dir: libs
