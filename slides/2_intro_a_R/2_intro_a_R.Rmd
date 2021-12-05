@@ -54,7 +54,6 @@ class: title-slide, center, middle
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
-
 ###.location[Corsi ARCA - @DPSS]
 
 ###.author[Filippo Gambarota]
@@ -81,7 +80,7 @@ class: section, center, middle
 
 # Console
 
-```{r}
+```{r, echo = FALSE, out.width="90%"}
 put_image("R_console.png")
 ```
 
@@ -89,7 +88,7 @@ put_image("R_console.png")
 
 # RStudio
 
-```{r}
+```{r, echo = FALSE, out.width="90%"}
 knitr::include_graphics("img/rstudio.png")
 ```
 
@@ -103,7 +102,7 @@ class: section, center, middle
 
 In R è possibile effettuare tutte le [operazioni matematiche](https://psicostat.github.io/Introduction2R/first-comands.html#math-operators) e algebriche dalle più semplici alle più avanzate
 
-```{r}
+```{r, echo = FALSE}
 names_function <- c("Addizione", "Sottrazione", "Moltiplicazione", "Divisione",
                     "Resto della divisione", "Divisione intera", "Potenza",
                     "Valore assoluto","Segno di un'espressione", "Radice quadrata", 
@@ -296,7 +295,7 @@ T <- 2 # attenzione
 
 Il legame `nome-oggetto` viene creato nel **global environment** e rimane *salvato* per tutta a sessione di utilizzo. Potete visualizzare l'environment in RStudio oppure usando il comando `ls()`:
 
-```{r}
+```{r, echo = FALSE, out.width="90%"}
 put_image("obj_environment.png")
 ```
 
@@ -344,7 +343,7 @@ class: section, center, middle
 
 Il **working environment** è la vostra *scrivania* quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
 
-```{r}
+```{r, echo = FALSE, out.width="90%"}
 knitr::include_graphics("img/environemnt.png")
 ```
 
@@ -353,7 +352,7 @@ knitr::include_graphics("img/environemnt.png")
 
 La working directory è la posizione (cartella) sul vostro PC dove R sta lavorando e nella quale R si aspetta di trovare i vostri file, se non specificato altrimenti
 
-```{r}
+```{r, echo = FALSE, out.width="90%"}
 knitr::include_graphics("img/working_directory.png")
 ```
 
@@ -368,7 +367,7 @@ In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro
 ---
 # Packages
 
-```{r}
+```{r, echo = FALSE, out.width="90%"}
 knitr::include_graphics("img/packages.png")
 ```
 
@@ -384,7 +383,7 @@ class: section, center, middle
 - Lo script è un file di testo dove il codice viene salvato e puo essere lanciato in successione
 - Nello script è possibile combinare **codice** e **commenti**
 
-```{r}
+```{r, echo = FALSE, out.width="70%"}
 knitr::include_graphics("img/script.png")
 ```
 
@@ -442,23 +441,26 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 ---
 # Come NON fare una domanda
 
+--
+
 .pull-left[
-```{r, out.width="70%"}
+```{r, out.width="70%", echo = FALSE}
 put_image("bad_question.png")
 ```
 ]
 
 --
 
-.pull-left[
-```{r, out.width="70%"}
+.pull-right[
+```{r, out.width="70%", echo = FALSE}
 put_image("bad_question_after.png")
 ```
 ]
 
 --
 
-.pull-right[
+---
+# Come NON fare una domanda
+
 - Non riporta il **messaggio di errore**!
 - Usa un **percorso assoluto**! Come posso riprodurre il suo problema?
-]
