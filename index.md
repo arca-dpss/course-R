@@ -35,10 +35,10 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 
 Questi sono i link alle principali slide del corso:
 
-- **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html)
-- **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html)
-- **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html)
-- **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html)
+- **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
+- **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
+- **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
+- **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
 
 ### Esercizi
 
@@ -53,6 +53,7 @@ In questa sezione ci sono alcuni argomenti extra che possono essere utili nel la
 - **NA, NaN, NULL e altri strani valori** - [Appunti](extra/dealing_with_NA_NaN_NULL.html)
 - **Importare dati esterni in R** - [Appunti](extra/importing_data.html)
 - **Le funzioni TOP in R** - [Appunti](extra/top_functions.html)
+- **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/filippogambarota_slides/tidyverse_presentation/tidyverse_presentation.html)
 
 ## Errori libro `Introduzione a R`
 
