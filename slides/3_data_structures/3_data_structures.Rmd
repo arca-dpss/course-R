@@ -50,6 +50,11 @@ knitr::include_graphics(path = "img/arca_logo.svg")
 ###.author[Filippo Gambarota]
 
 ---
+class: section, center, middle
+
+# Recap sulle tipologie di dato
+
+---
 
 # Strutture dati
 
@@ -394,7 +399,7 @@ put_image("list_vs_vector.svg")
 
 .pull-left[
 
-```{r, echo = FALSE, out.width="80%"}
+```{r, echo = FALSE, out.width="70%"}
 put_image("list_example.png")
 ```
 

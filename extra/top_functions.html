@@ -270,7 +270,8 @@ is.numeric(x)</code></pre>
 <p>La <code>as.*</code> family non si limita solo a chiedere ma è leggermente più <em>aggressiva</em> e cerca di convertire la tipologia di oggetto. Dico cerca perchè non tutto è direttamente convertibile:</p>
 <pre class="r"><code>x &lt;- 1:10
 as.character(x)</code></pre>
-<pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot;</code></pre>
+<pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot; 
+##  [8] &quot;8&quot;  &quot;9&quot;  &quot;10&quot;</code></pre>
 <pre class="r"><code>as.factor(x)</code></pre>
 <pre><code>##  [1] 1  2  3  4  5  6  7  8  9  10
 ## Levels: 1 2 3 4 5 6 7 8 9 10</code></pre>
@@ -311,7 +312,8 @@ as.numeric(y)</code></pre>
 x</code></pre>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <pre class="r"><code>x &lt; 5 # rappresentazione logica</code></pre>
-<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+##  [7] FALSE FALSE FALSE FALSE</code></pre>
 <pre class="r"><code>which(x &lt; 5) # rappresentazione intera</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <ul>

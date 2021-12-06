@@ -272,39 +272,105 @@ div.tocify {
 }</code></pre>
 <p>Utilizzo:</p>
 <pre class="r"><code>put_random_na(mtcars, 30)</code></pre>
-<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710          22.8   4    NA  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout   18.7  NA 360.0 175 3.15 3.440 17.02  0  0    3    2
-## Valiant             18.1   6 225.0 105 2.76 3.460    NA  1  0    3   NA
-## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## Merc 240D           24.4  NA    NA  62 3.69 3.190 20.00  1  0    4   NA
-## Merc 230              NA   4 140.8  95 3.92 3.150    NA  1 NA   NA   NA
-## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90 NA  0    4    4
-## Merc 450SE          16.4   8 275.8 180 3.07 4.070    NA  0  0   NA    3
-## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-## Merc 450SLC         15.2   8    NA 180 3.07 3.780 18.00  0  0    3    3
-## Cadillac Fleetwood  10.4   8 472.0 205 2.93    NA 17.98  0  0    3   NA
-## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82 NA NA    3    4
-## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42 NA  0    3   NA
-## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Camaro Z28          13.3   8 350.0 245 3.73 3.840    NA  0  0    3    4
-## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-## Fiat X1-9           27.3   4  79.0  66   NA    NA 18.90  1  1    4    1
-## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1   NA    2
-## Lotus Europa        30.4  NA  95.1 113 3.77 1.513 16.90  1  1    5    2
-## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0 NA    5    4
-## Ferrari Dino        19.7  NA 145.0 175 3.62 2.770 15.50  0  1    5    6
-## Maserati Bora       15.0   8    NA 335 3.54 3.570 14.60  0  1    5    8
-## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+<pre><code>##                      mpg cyl  disp  hp
+## Mazda RX4           21.0   6 160.0 110
+## Mazda RX4 Wag       21.0   6 160.0 110
+## Datsun 710          22.8   4 108.0  93
+## Hornet 4 Drive      21.4   6 258.0 110
+## Hornet Sportabout   18.7   8 360.0 175
+## Valiant             18.1   6 225.0 105
+## Duster 360          14.3   8 360.0 245
+## Merc 240D             NA   4 146.7  62
+## Merc 230              NA   4 140.8  NA
+## Merc 280            19.2   6 167.6 123
+## Merc 280C           17.8   6    NA 123
+## Merc 450SE          16.4   8 275.8 180
+## Merc 450SL            NA   8 275.8 180
+## Merc 450SLC         15.2  NA 275.8 180
+## Cadillac Fleetwood  10.4   8 472.0 205
+## Lincoln Continental 10.4  NA 460.0 215
+## Chrysler Imperial   14.7   8 440.0 230
+## Fiat 128            32.4   4  78.7  NA
+## Honda Civic         30.4   4  75.7  NA
+## Toyota Corolla      33.9   4  71.1  65
+## Toyota Corona       21.5  NA 120.1  97
+## Dodge Challenger      NA   8 318.0 150
+## AMC Javelin           NA   8 304.0 150
+## Camaro Z28          13.3   8    NA 245
+## Pontiac Firebird      NA   8 400.0 175
+## Fiat X1-9           27.3   4  79.0  66
+## Porsche 914-2       26.0   4 120.3  91
+## Lotus Europa        30.4   4  95.1 113
+## Ford Pantera L      15.8   8 351.0 264
+## Ferrari Dino        19.7   6 145.0 175
+## Maserati Bora       15.0   8 301.0 335
+## Volvo 142E          21.4  NA 121.0 109
+##                     drat    wt  qsec vs
+## Mazda RX4           3.90 2.620 16.46  0
+## Mazda RX4 Wag         NA 2.875 17.02  0
+## Datsun 710          3.85 2.320 18.61  1
+## Hornet 4 Drive        NA 3.215 19.44 NA
+## Hornet Sportabout   3.15 3.440 17.02  0
+## Valiant             2.76 3.460 20.22  1
+## Duster 360          3.21 3.570    NA  0
+## Merc 240D           3.69 3.190 20.00  1
+## Merc 230            3.92 3.150 22.90  1
+## Merc 280            3.92 3.440 18.30  1
+## Merc 280C           3.92 3.440 18.90  1
+## Merc 450SE          3.07 4.070 17.40  0
+## Merc 450SL          3.07 3.730 17.60  0
+## Merc 450SLC         3.07 3.780 18.00  0
+## Cadillac Fleetwood  2.93 5.250 17.98  0
+## Lincoln Continental 3.00 5.424    NA  0
+## Chrysler Imperial   3.23    NA 17.42  0
+## Fiat 128            4.08 2.200 19.47  1
+## Honda Civic         4.93 1.615 18.52  1
+## Toyota Corolla      4.22 1.835 19.90  1
+## Toyota Corona       3.70    NA 20.01  1
+## Dodge Challenger    2.76 3.520 16.87  0
+## AMC Javelin         3.15 3.435 17.30 NA
+## Camaro Z28          3.73 3.840 15.41 NA
+## Pontiac Firebird    3.08 3.845 17.05  0
+## Fiat X1-9           4.08 1.935 18.90  1
+## Porsche 914-2       4.43 2.140    NA  0
+## Lotus Europa        3.77 1.513    NA  1
+## Ford Pantera L      4.22 3.170 14.50  0
+## Ferrari Dino        3.62 2.770 15.50  0
+## Maserati Bora       3.54 3.570 14.60  0
+## Volvo 142E          4.11 2.780    NA  1
+##                     am gear carb
+## Mazda RX4            1    4    4
+## Mazda RX4 Wag        1    4    4
+## Datsun 710           1    4    1
+## Hornet 4 Drive       0   NA    1
+## Hornet Sportabout    0    3    2
+## Valiant              0    3    1
+## Duster 360           0    3    4
+## Merc 240D            0    4    2
+## Merc 230             0    4    2
+## Merc 280             0    4    4
+## Merc 280C            0    4    4
+## Merc 450SE           0    3    3
+## Merc 450SL           0    3    3
+## Merc 450SLC          0    3    3
+## Cadillac Fleetwood   0    3    4
+## Lincoln Continental  0    3    4
+## Chrysler Imperial    0    3    4
+## Fiat 128             1    4    1
+## Honda Civic          1    4    2
+## Toyota Corolla       1    4    1
+## Toyota Corona       NA    3    1
+## Dodge Challenger     0    3    2
+## AMC Javelin          0    3    2
+## Camaro Z28           0    3    4
+## Pontiac Firebird     0    3    2
+## Fiat X1-9            1    4    1
+## Porsche 914-2        1    5    2
+## Lotus Europa         1    5    2
+## Ford Pantera L       1   NA    4
+## Ferrari Dino         1    5    6
+## Maserati Bora        1    5    8
+## Volvo 142E           1    4    2</code></pre>
 </div>
 <div id="randomize_case" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> <code>randomize_case()</code></h2>
@@ -320,31 +386,81 @@ div.tocify {
 }</code></pre>
 <p>Utilizzo:</p>
 <pre class="r"><code>randomize_case(iris$Species)</code></pre>
-<pre><code>##   [1] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;SeTOSa&quot;     &quot;SeTOSa&quot;    
-##   [7] &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [13] &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [19] &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;    
-##  [25] &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;    
-##  [31] &quot;setosa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [37] &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;    
-##  [43] &quot;SeTOSa&quot;     &quot;SeTOSa&quot;     &quot;SeTOSa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SeTOSa&quot;    
-##  [49] &quot;setosa&quot;     &quot;setosa&quot;     &quot;VeRSICOlOR&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot;
-##  [55] &quot;versicolor&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [61] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot; &quot;VeRSICOlOR&quot;
-##  [67] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot;
-##  [73] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [79] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [85] &quot;versicolor&quot; &quot;VeRSICOlOR&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot;
-##  [91] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VeRSICOlOR&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [97] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;virginica&quot;  &quot;virginica&quot; 
-## [103] &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;VIRGInICa&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [109] &quot;virginica&quot;  &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot; 
-## [115] &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [121] &quot;VIRGInICa&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [127] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;VIRGInICa&quot; 
-## [133] &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot; 
-## [139] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [145] &quot;VIRGInICa&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;VIRGInICa&quot;</code></pre>
+<pre><code>##   [1] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##   [3] &quot;setosa&quot;     &quot;setosa&quot;    
+##   [5] &quot;SeTOSA&quot;     &quot;SeTOSA&quot;    
+##   [7] &quot;setosa&quot;     &quot;setosa&quot;    
+##   [9] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [11] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [13] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [15] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [17] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [19] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [21] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [23] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [25] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [27] &quot;SeTOSA&quot;     &quot;setosa&quot;    
+##  [29] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [31] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [33] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [35] &quot;SeTOSA&quot;     &quot;SeTOSA&quot;    
+##  [37] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [39] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [41] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [43] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [45] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [47] &quot;setosa&quot;     &quot;SeTOSA&quot;    
+##  [49] &quot;setosa&quot;     &quot;setosa&quot;    
+##  [51] &quot;VeRSIcOLOR&quot; &quot;versicolor&quot;
+##  [53] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [55] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [57] &quot;VeRSIcOLOR&quot; &quot;VeRSIcOLOR&quot;
+##  [59] &quot;VeRSIcOLOR&quot; &quot;VeRSIcOLOR&quot;
+##  [61] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [63] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [65] &quot;VeRSIcOLOR&quot; &quot;VeRSIcOLOR&quot;
+##  [67] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [69] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [71] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [73] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [75] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [77] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [79] &quot;VeRSIcOLOR&quot; &quot;versicolor&quot;
+##  [81] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [83] &quot;VeRSIcOLOR&quot; &quot;versicolor&quot;
+##  [85] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [87] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [89] &quot;versicolor&quot; &quot;VeRSIcOLOR&quot;
+##  [91] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [93] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [95] &quot;versicolor&quot; &quot;versicolor&quot;
+##  [97] &quot;VeRSIcOLOR&quot; &quot;versicolor&quot;
+##  [99] &quot;versicolor&quot; &quot;versicolor&quot;
+## [101] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [103] &quot;virginica&quot;  &quot;VIRgInIcA&quot; 
+## [105] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [107] &quot;virginica&quot;  &quot;virginica&quot; 
+## [109] &quot;virginica&quot;  &quot;virginica&quot; 
+## [111] &quot;virginica&quot;  &quot;virginica&quot; 
+## [113] &quot;VIRgInIcA&quot;  &quot;VIRgInIcA&quot; 
+## [115] &quot;virginica&quot;  &quot;virginica&quot; 
+## [117] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [119] &quot;virginica&quot;  &quot;virginica&quot; 
+## [121] &quot;virginica&quot;  &quot;virginica&quot; 
+## [123] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [125] &quot;virginica&quot;  &quot;virginica&quot; 
+## [127] &quot;virginica&quot;  &quot;virginica&quot; 
+## [129] &quot;virginica&quot;  &quot;virginica&quot; 
+## [131] &quot;virginica&quot;  &quot;virginica&quot; 
+## [133] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [135] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [137] &quot;virginica&quot;  &quot;virginica&quot; 
+## [139] &quot;virginica&quot;  &quot;virginica&quot; 
+## [141] &quot;virginica&quot;  &quot;virginica&quot; 
+## [143] &quot;VIRgInIcA&quot;  &quot;virginica&quot; 
+## [145] &quot;virginica&quot;  &quot;virginica&quot; 
+## [147] &quot;VIRgInIcA&quot;  &quot;VIRgInIcA&quot; 
+## [149] &quot;virginica&quot;  &quot;VIRgInIcA&quot;</code></pre>
 </div>
 </div>
 

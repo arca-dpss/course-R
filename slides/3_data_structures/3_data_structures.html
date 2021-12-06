@@ -29,6 +29,11 @@ class: title-slide, center, middle
 ###.author[Filippo Gambarota]
 
 ---
+class: section, center, middle
+
+# Recap sulle tipologie di dato
+
+---
 
 # Strutture dati
 
@@ -309,7 +314,8 @@ my_vec
 ```
 
 ```
-##  [1] 15 17 24 19 50  4 33 31 79 38 53 95 46 21  3 52 80 30 36 73
+##  [1] 49 83 27 34 28 27 21  8 85 92 22 22
+## [13] 43 49 26  4 16 79 75 62
 ```
 
 ```r
@@ -317,7 +323,7 @@ my_vec[1] # estraggo il primo elemento
 ```
 
 ```
-## [1] 15
+## [1] 49
 ```
 
 ```r
@@ -325,7 +331,7 @@ my_vec[1:10] # estraggo i primi 10 elementi
 ```
 
 ```
-##  [1] 15 17 24 19 50  4 33 31 79 38
+##  [1] 49 83 27 34 28 27 21  8 85 92
 ```
 
 ```r
@@ -333,7 +339,7 @@ my_vec[c(1,5,10,16)] # estraggo n elementi a varie posizioni
 ```
 
 ```
-## [1] 15 50 38 52
+## [1] 49 28 92  4
 ```
 
 ```r
@@ -341,7 +347,7 @@ my_vec[length(my_vec)] # estraggo l&#39;ultimo elemento
 ```
 
 ```
-## [1] 73
+## [1] 62
 ```
 
 ---
@@ -385,7 +391,8 @@ my_selection
 ```
 
 ```
-##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
+##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE
+##  [7]  TRUE  TRUE FALSE  TRUE
 ```
 
 ```r
@@ -393,7 +400,7 @@ my_vec[my_selection]
 ```
 
 ```
-## [1]  1  5  6  9 10
+## [1]  5  6  7  8 10
 ```
 
 ---
@@ -456,7 +463,7 @@ which(my_vec &lt; 0.5)
 ```
 
 ```
-## [1]  3  4  5  6  7  9 10
+## [1] 1 2 4 5 7
 ```
 
 ```r
@@ -466,7 +473,8 @@ my_vec[which(my_vec &lt; 0.5)]
 ```
 
 ```
-## [1] -1.05726876 -0.08742888 -0.56098421  0.35397459 -0.44218295 -1.32974611  0.02416598
+## [1] -1.3802791 -0.4024256 -1.2486843
+## [4]  0.3057091 -0.7157513
 ```
 
 ```r
@@ -476,7 +484,8 @@ my_vec[my_vec &lt; 0.5]
 ```
 
 ```
-## [1] -1.05726876 -0.08742888 -0.56098421  0.35397459 -0.44218295 -1.32974611  0.02416598
+## [1] -1.3802791 -0.4024256 -1.2486843
+## [4]  0.3057091 -0.7157513
 ```
 
 ---
@@ -670,7 +679,7 @@ La lista è una generalizzazione dell&#39; **atomic vector** dove:
 
 .pull-left[
 
-&lt;img src=&quot;data:image/png;base64,#img/list_example.png&quot; width=&quot;80%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
+&lt;img src=&quot;data:image/png;base64,#img/list_example.png&quot; width=&quot;70%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
 
 ]
 
@@ -839,9 +848,9 @@ str(my_list)
 ##  $ :List of 3
 ##   ..$ : int [1:10] 1 2 3 4 5 6 7 8 9 10
 ##   ..$ : chr [1:10] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...
-##   ..$ : num [1:10] 0.1451 -0.9732 0.4862 0.0608 0.629 ...
-##  $ : num [1:10] 0.204 -1.433 -1.205 -0.182 -0.425 ...
-##  $ : num [1:10] -1.3915 0.0285 -2.1213 0.4954 0.4448 ...
+##   ..$ : num [1:10] -0.169 -1.231 -0.289 1.323 0.266 ...
+##  $ : num [1:10] -1.663 1.506 0.236 0.336 -0.427 ...
+##  $ : num [1:10] -0.743 1.42 -1.765 -0.282 1.6 ...
 ```
 
 ---
@@ -872,7 +881,8 @@ my_list[[c(1,2)]] # equivalente a my_list[[1]][[2]]
 ```
 
 ```
-##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot;
+##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;
+## [10] &quot;j&quot;
 ```
 
 ---
@@ -939,8 +949,10 @@ matrix(data = 1:100, ncol = 3, nrow = 3)
 ```
 
 ```
-## Warning in matrix(data = 1:100, ncol = 3, nrow = 3): data length [100] is not a sub-
-## multiple or multiple of the number of rows [3]
+## Warning in matrix(data = 1:100, ncol = 3,
+## nrow = 3): data length [100] is not a sub-
+## multiple or multiple of the number of rows
+## [3]
 ```
 
 ```
@@ -955,8 +967,10 @@ matrix(data = 1:9, ncol = 5, nrow = 5)
 ```
 
 ```
-## Warning in matrix(data = 1:9, ncol = 5, nrow = 5): data length [9] is not a sub-multiple or
-## multiple of the number of rows [5]
+## Warning in matrix(data = 1:9, ncol = 5,
+## nrow = 5): data length [9] is not a sub-
+## multiple or multiple of the number of rows
+## [5]
 ```
 
 ```
@@ -1312,17 +1326,28 @@ my_df
 ```
 
 ```
-##    colonna1 colonna2    colonna3   colonna4
-## 1         1        a  0.71819783 0.73614228
-## 2         2        b -1.31785601 0.66682581
-## 3         3        c -1.31004156 0.14610214
-## 4         4        d  0.82711192 0.21578151
-## 5         5        e  0.02148688 0.01991706
-## 6         6        f  0.20277681 0.47105027
-## 7         7        g  1.12477168 0.12342792
-## 8         8        h  0.74374070 0.82015182
-## 9         9        i  1.28838201 0.06865102
-## 10       10        j -1.49662661 0.40264600
+##    colonna1 colonna2    colonna3
+## 1         1        a  1.09726981
+## 2         2        b -0.50054932
+## 3         3        c -2.56473683
+## 4         4        d -0.02766383
+## 5         5        e  0.10307474
+## 6         6        f -0.44378426
+## 7         7        g  0.32867690
+## 8         8        h  0.04129511
+## 9         9        i -1.18074864
+## 10       10        j  0.44584666
+##      colonna4
+## 1  0.32776325
+## 2  0.59052604
+## 3  0.39750898
+## 4  0.08036399
+## 5  0.47091631
+## 6  0.82500650
+## 7  0.68951993
+## 8  0.94521379
+## 9  0.91512477
+## 10 0.40695308
 ```
 ---
 # Dataframe - Attributi
@@ -1345,7 +1370,8 @@ attributes(my_df) # ma ha anche una classe dedicata
 
 ```
 ## $names
-## [1] &quot;colonna1&quot; &quot;colonna2&quot; &quot;colonna3&quot; &quot;colonna4&quot;
+## [1] &quot;colonna1&quot; &quot;colonna2&quot; &quot;colonna3&quot;
+## [4] &quot;colonna4&quot;
 ## 
 ## $class
 ## [1] &quot;data.frame&quot;
@@ -1400,8 +1426,8 @@ my_df[1, ]
 ```
 
 ```
-##   colonna1 colonna2  colonna3  colonna4
-## 1        1        a 0.7181978 0.7361423
+##   colonna1 colonna2 colonna3  colonna4
+## 1        1        a  1.09727 0.3277632
 ```
 
 ```r
@@ -1460,13 +1486,20 @@ my_df[my_df$colonna1 &gt; 4, ]
 ```
 
 ```
-##    colonna1 colonna2    colonna3   colonna4
-## 5         5        e  0.02148688 0.01991706
-## 6         6        f  0.20277681 0.47105027
-## 7         7        g  1.12477168 0.12342792
-## 8         8        h  0.74374070 0.82015182
-## 9         9        i  1.28838201 0.06865102
-## 10       10        j -1.49662661 0.40264600
+##    colonna1 colonna2    colonna3
+## 5         5        e  0.10307474
+## 6         6        f -0.44378426
+## 7         7        g  0.32867690
+## 8         8        h  0.04129511
+## 9         9        i -1.18074864
+## 10       10        j  0.44584666
+##     colonna4
+## 5  0.4709163
+## 6  0.8250065
+## 7  0.6895199
+## 8  0.9452138
+## 9  0.9151248
+## 10 0.4069531
 ```
 
 ```r
@@ -1474,11 +1507,20 @@ my_df[my_df$colonna1 &gt; 4 &amp; my_df$colonna4 &gt; 0.1, ]
 ```
 
 ```
-##    colonna1 colonna2   colonna3  colonna4
-## 6         6        f  0.2027768 0.4710503
-## 7         7        g  1.1247717 0.1234279
-## 8         8        h  0.7437407 0.8201518
-## 10       10        j -1.4966266 0.4026460
+##    colonna1 colonna2    colonna3
+## 5         5        e  0.10307474
+## 6         6        f -0.44378426
+## 7         7        g  0.32867690
+## 8         8        h  0.04129511
+## 9         9        i -1.18074864
+## 10       10        j  0.44584666
+##     colonna4
+## 5  0.4709163
+## 6  0.8250065
+## 7  0.6895199
+## 8  0.9452138
+## 9  0.9151248
+## 10 0.4069531
 ```
 
 ```r
@@ -1486,7 +1528,8 @@ my_df[my_df$colonna1 &gt; 4, &quot;colonna4&quot;]
 ```
 
 ```
-## [1] 0.01991706 0.47105027 0.12342792 0.82015182 0.06865102 0.40264600
+## [1] 0.4709163 0.8250065 0.6895199
+## [4] 0.9452138 0.9151248 0.4069531
 ```
 
 ```r
