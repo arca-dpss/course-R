@@ -34,6 +34,7 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 - Cartella condivisa Google Drive - [Link](https://drive.google.com/drive/u/0/folders/1jZKbaMfseJEg7wyIFMhE7Q92rROo3Rqo)
 - Google Docs con info principali - [Link](https://docs.google.com/document/d/1IUP4AevoUVhKH2kEZfTeVBrmKfhXB0falWxxzSR4ttg/edit)
 - Lavagna condivisa [Link](https://jamboard.google.com/d/1ZS43_2ujqWtCbT-tG7iGzM_62TUO4Dm2rg3mJW0akoA)
+- Gooogle Docs condiviso per esercizi - [Link](https://docs.google.com/document/d/13mjgz8InbAS8aPo21NMDrOrmUJR7AFm7A7oDlPHFNsk/edit?usp=sharing)
 
 ## Materiale
 
