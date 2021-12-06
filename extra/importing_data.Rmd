@@ -19,7 +19,6 @@ knitr::opts_chunk$set(echo = TRUE,
 devtools::load_all()
 ```
 
-
 # Introduzione
 
 Per operazioni semplici o per esercizi si possono creare strutture dati come `vettori`, `liste` o `dataframe` direttamente in R. Tuttavia per lavorare con R è solito **importare** i dati da fonti esterne come file e database.

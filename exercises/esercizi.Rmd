@@ -390,9 +390,25 @@ $$
 15. Commenta i differenti risultati che otteniamo nelle operazioni `A*B`, `B*A`, `A%*%B` e `B%*%A`.
 16. Assegna i seguenti nomi alle colonne e alle righe della matrice `C`: `"col_1", "col_2", "col_3", "col_4", "row_1", "row_2", "row_3"`.
 
+## Liste
+
+1. Crea una **named list** con questi elementi:
+
+- un vettore numerico (`x`) con i numeri da 1 a 100
+- un vettore di caratteri (`y`) con le prime 15 lettere dell'alfabeto (vedi l'oggetto `letters`)
+- la matrice `B` creata nell'esercizio precedente
+- un fattore creato nell'esercizio precedente
+
+2. Aggiungi alla lista un vettore logico `TRUE/FALSE` testando che il vettore numerico creato in precedenza abbia numeri pari (`TRUE`) o dispari (`FALSE`)
+3. Aggiungi un altro elemento alla lista come vettore numerico creato facendo una selezione  degli elementi di `x`
+4. Sovrascrivi il vettore `y` con lo stesso vettore di caratteri ma ripetendo ogni elemento 4 volte
+5. Seleziona i numeri da 1 a 50 del vettore `x` all'interno della lista
+6. Aggiungi alla lista un'ulteriore lista selezionando i primi 3 elementi della lista originale
+7. Aggiungi alla lista nested un vettore numerico selezionando solo i numeri di `x` divisibili per 3
+
 ## Dataframe
 
-Ricrea questo dataframe in R:
+1. Ricrea questo dataframe in R:
 
 ```{r}
 data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
@@ -402,17 +418,29 @@ data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
                       response=c(2,1,1,0,2,1,2,0,1))
 ```
 
-Utilizzando il dataframe `dataframe_example.rds` esegui le seguenti operazioni:
+2. Utilizzando il dataframe `dataframe_example1.rds` esegui le seguenti operazioni:
 
 - selezionare le persone con età maggiore di 30 anni
 - selezionare le persone con età maggiore di 30 anni e minore di 21
 - selezionare le persone che studiano al *dams* con voto di laurea maggiore di 100 e almeno 1 fratello/sorella
 - selezionare le persone che studiano *psicologia* e non hanno fratelli
+- selezionare le persone che hanno punteggi di depressione maggiori di 50 e punteggi di ansia maggiori di 20
 
-Utilizza la funzione `put_random_na(data, n)` dove `data` è il dataframe e `n` è il numero di `NA` da generare. Ora:
+3. Utilizza la funzione `put_random_na(data, n)` dove `data` è il dataframe e `n` è il numero di `NA` da generare. Ora:
 
 - seleziona le persone con `NA` per la colonna `degree` e per la colonna `età`
 - seleziona le persone con `NA` per la colonna `email` e abitanti del veneto o campania
+- seleziona le persone che non hanno nessun NA (vedi la funzione `complete.cases()`)
+
+4. Utilizzando il dataset `dataframe_example2.csv`
+
+- crea una nuova colonna `id` che identifichi in modo univoco ogni soggetto progressivamente
+- importa il dataframe dal formato `csv`
+- controlla che tutte le colonne siano del tipo appropriato (usa la famiglia `is.*`)
+- seleziona tutte le persone a cui non piace `nessuna` festa. Noti qualche problema?
+- seleziona tutte le persone a cui piace il colore `blu` e piace il `natale`
+- per risolvere i problemi con le stringhe, trova un modo per portare tutte le stringhe ad un formato comparabile
+- fai un subset del dataset tenendo solo le colonne numeriche (usa la `is.* family`)
 
 # Programmazione
 

@@ -62,7 +62,7 @@ knitr::include_graphics(path = "img/arca_logo.svg")
 
 Tutti voi avete presente un foglio di calcolo:
 
-```{r}
+```{r, echo = FALSE, out.width="80%"}
 put_image("foglio_excel.png")
 ```
 
@@ -101,7 +101,7 @@ class: section, center, middle
 
 ---
 
-```{r}
+```{r, echo = FALSE}
 put_image("vectors_diagram.svg")
 ```
 
@@ -119,7 +119,7 @@ I vettori (**atomic**) sono una struttura dati *unidimensionale* e sono la più 
 ---
 # Vettori
 
-```{r}
+```{r, echo = FALSE}
 put_image("vector.png")
 ```
 
@@ -270,7 +270,7 @@ my_vec[my_vec < 2 | my_vec > 8] # in modo più compatto
 ```
 
 ---
-# Vettori - Indicizzazione Logica `which()`
+# Vettori - Indicizzazione Intera `which()`
 
 La funzione `which()` è molto utile perchè restituisce la **posizione** associata ad una selezione logica:
 
@@ -302,6 +302,11 @@ my_vec[!my_vec > 5] # rimuovo i maggiori di 5, chiaramente uguale a selezionare 
 ```
 
 ---
+class: section, center, middle
+
+# Extra - Valori NA in tutte le salse
+
+---
 
 class: section, center, middle
 
@@ -312,7 +317,7 @@ class: section, center, middle
 
 I fattori sono una tipologia di dato peculiare e per quanto simile a semplici `characters` in realtà sono un tipo di vettore `integer` con delle proprietà aggiuntive.
 
-```{r}
+```{r, echo = FALSE}
 put_image("factors.png")
 ```
 
@@ -380,7 +385,7 @@ La lista è una generalizzazione dell' **atomic vector** dove:
 - ogni elemento può essere **a sua volta una lista**
 - sono una struttura dati *unidimensionale* ma possono svilupparsi in **profondità** (ci arriviamo)
 
-```{r}
+```{r, echo=FALSE}
 put_image("list_vs_vector.svg")
 ```
 
@@ -389,7 +394,7 @@ put_image("list_vs_vector.svg")
 
 .pull-left[
 
-```{r}
+```{r, echo = FALSE, out.width="80%"}
 put_image("list_example.png")
 ```
 
@@ -397,7 +402,7 @@ put_image("list_example.png")
 
 .pull-right[
 
-```{r}
+```{r, echo = FALSE, out.width="80%"}
 put_image("list_depth.png")
 ```
 
@@ -581,7 +586,7 @@ is.logical(my_mat > 3)
 matrix("R", nrow = 3, ncol = 3) # notate che se l'argomento data è un solo elemento questo viene riciclato
 ```
 
-L'indicizzazione è la medesima a prescindere dal tipo di dato, mentre le operazioni (matematiche) sono chiaramente possibili solo per matrici numeriche.
+L'indicizzazione è la medesima mentre le operazioni (matematiche) sono possibili solo per matrici numeriche.
 
 ---
 
@@ -610,7 +615,7 @@ dimnames(my_mat)
 Se per i vettori possiamo unire elementi con `c(1,2,3)` o unire vettori `c(vec1, vec2)` con le matrici possiamo usare i comandi `cbind()`
 e `rowbind()`:
 
-```{r}
+```{r, echo=FALSE, out.width="80%"}
 put_image("matrix_comb.svg")
 ```
 ---
@@ -746,3 +751,8 @@ per ottenere sempre un dataframe:
 typeof(my_df[, 1, drop = FALSE])
 typeof(my_df[1,1, drop = FALSE])
 ```
+
+---
+class: section, center, middle
+
+# Extra - Importazione dati

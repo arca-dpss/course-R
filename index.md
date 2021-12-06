@@ -34,7 +34,8 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 - Cartella condivisa Google Drive - [Link](https://drive.google.com/drive/u/0/folders/1jZKbaMfseJEg7wyIFMhE7Q92rROo3Rqo)
 - Google Docs con info principali - [Link](https://docs.google.com/document/d/1IUP4AevoUVhKH2kEZfTeVBrmKfhXB0falWxxzSR4ttg/edit)
 - Lavagna condivisa [Link](https://jamboard.google.com/d/1ZS43_2ujqWtCbT-tG7iGzM_62TUO4Dm2rg3mJW0akoA)
-- Gooogle Docs condiviso per esercizi - [Link](https://docs.google.com/document/d/13mjgz8InbAS8aPo21NMDrOrmUJR7AFm7A7oDlPHFNsk/edit?usp=sharing)
+- Google Docs condiviso per esercizi - [Link](https://docs.google.com/document/d/13mjgz8InbAS8aPo21NMDrOrmUJR7AFm7A7oDlPHFNsk/edit?usp=sharing)
+- Cartella Dati - [Link](https://drive.google.com/drive/folders/1coRNAu1E6o_bLeXb4C9Tw1orLgs-enbF?usp=sharing)
 
 ## Materiale
 
@@ -52,6 +53,7 @@ Questi sono i link alle principali slide del corso:
 In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:
 
 - Esercizi - [file](exercises/esercizi.html)
+- Datasets - [Cartella](https://drive.google.com/drive/folders/1coRNAu1E6o_bLeXb4C9Tw1orLgs-enbF?usp=sharing)
 
 ### Argomenti extra
 
@@ -60,6 +62,7 @@ In questa sezione ci sono alcuni argomenti extra che possono essere utili nel la
 - **NA, NaN, NULL e altri strani valori** - [Appunti](extra/dealing_with_NA_NaN_NULL.html)
 - **Importare dati esterni in R** - [Appunti](extra/importing_data.html)
 - **Le funzioni TOP in R** - [Appunti](extra/top_functions.html)
+- **Funzioni personalizzate** - [Appunti](extra/custom_functions.html)
 - **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/filippogambarota_slides/tidyverse_presentation/tidyverse_presentation.html)
 
 ## Errori libro `Introduzione a R`

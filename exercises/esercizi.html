@@ -60,7 +60,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
+<link rel="stylesheet" href="data:text/css,h1%20%7Bcolor%3A%20%239B0A14%3Bfont%2Dweight%3A%20bold%3B%7D%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7Bbackground%2Dcolor%3A%20%239B0A14%3B%7Ddetails%20%7Bfont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3Bwidth%3A%20620px%3B%7Ddetails%20%3E%20summary%20%7Bpadding%3A%202px%206px%3Bwidth%3A%2015em%3Bbackground%2Dcolor%3A%20%23ddd%3Bborder%3A%20none%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3Bcursor%3A%20pointer%3B%7Ddetails%20%3E%20p%20%7Bborder%2Dradius%3A%200%200%2010px%2010px%3Bbackground%2Dcolor%3A%20%23ddd%3Bpadding%3A%202px%206px%3Bmargin%3A%200%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3B%7Ddetails%5Bopen%5D%20%3E%20summary%20%7Bbackground%2Dcolor%3A%20%23ccf%3B%7D" type="text/css" />
 
 
 
@@ -575,9 +575,8 @@ levels(genere2) &lt;- c(&quot;donne&quot;, &quot;uomini&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Crea la variabile categoriale <code>intervento</code> così definita:</li>
 </ol>
-<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi
-## [5] CBT         Psicanalisi Controllo   Controllo  
-## [9] CBT        
+<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi Controllo  
+## [8] Controllo   CBT        
 ## Levels: CBT Controllo Psicanalisi</code></pre>
 <details>
 <summary>
@@ -593,8 +592,8 @@ Vedi la soluzione proposta
 Vedi la soluzione proposta
 </summary>
 <pre class="r"><code>intervento[7:8] &lt;- &quot;Farmaci&quot;</code></pre>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;):
-## invalid factor level, NA generated</code></pre>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;): invalid factor level, NA
+## generated</code></pre>
 <pre class="r"><code>levels(intervento)&lt;-c(levels(intervento), &quot;Farmaci&quot;)
 intervento[7:8]&lt;-&quot;Farmaci&quot;</code></pre>
 </details>
@@ -611,10 +610,9 @@ Vedi la soluzione proposta
 
 # cosa succede con questo e perche?
 c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))</code></pre>
-<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;        
-##  [5] &quot;1&quot;         &quot;3&quot;         &quot;4&quot;         &quot;4&quot;        
-##  [9] &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;        
-## [13] &quot;Farmaci&quot;   &quot;Controllo&quot; &quot;Farmaci&quot;</code></pre>
+<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;4&quot;        
+##  [8] &quot;4&quot;         &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;         &quot;Farmaci&quot;   &quot;Controllo&quot;
+## [15] &quot;Farmaci&quot;</code></pre>
 </details>
 </div>
 <div id="matrici" class="section level2" number="3.3">
@@ -647,25 +645,65 @@ c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))<
 <li>Assegna i seguenti nomi alle colonne e alle righe della matrice <code>C</code>: <code>&quot;col_1&quot;, &quot;col_2&quot;, &quot;col_3&quot;, &quot;col_4&quot;, &quot;row_1&quot;, &quot;row_2&quot;, &quot;row_3&quot;</code>.</li>
 </ol>
 </div>
-<div id="dataframe" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Dataframe</h2>
-<p>Ricrea questo dataframe in R:</p>
+<div id="liste" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Liste</h2>
+<ol style="list-style-type: decimal">
+<li>Crea una <strong>named list</strong> con questi elementi:</li>
+</ol>
+<ul>
+<li>un vettore numerico (<code>x</code>) con i numeri da 1 a 100</li>
+<li>un vettore di caratteri (<code>y</code>) con le prime 15 lettere dell’alfabeto (vedi l’oggetto <code>letters</code>)</li>
+<li>la matrice <code>B</code> creata nell’esercizio precedente</li>
+<li>un fattore creato nell’esercizio precedente</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Aggiungi alla lista un vettore logico <code>TRUE/FALSE</code> testando che il vettore numerico creato in precedenza abbia numeri pari (<code>TRUE</code>) o dispari (<code>FALSE</code>)</li>
+<li>Aggiungi un altro elemento alla lista come vettore numerico creato facendo una selezione degli elementi di <code>x</code></li>
+<li>Sovrascrivi il vettore <code>y</code> con lo stesso vettore di caratteri ma ripetendo ogni elemento 4 volte</li>
+<li>Seleziona i numeri da 1 a 50 del vettore <code>x</code> all’interno della lista</li>
+<li>Aggiungi alla lista un’ulteriore lista selezionando i primi 3 elementi della lista originale</li>
+<li>Aggiungi alla lista nested un vettore numerico selezionando solo i numeri di <code>x</code> divisibili per 3</li>
+</ol>
+</div>
+<div id="dataframe" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Dataframe</h2>
+<ol style="list-style-type: decimal">
+<li>Ricrea questo dataframe in R:</li>
+</ol>
 <pre class="r"><code>data_long&lt;-data.frame(Id=rep(c(&quot;subj_1&quot;,&quot;subj_2&quot;,&quot;subj_3&quot;),each=3),
                       age=rep(c(21,23,19),each=3),
                       gender=rep(c(&quot;F&quot;,&quot;M&quot;,&quot;F&quot;),each=3),
                       item=rep(1:3,3),
                       response=c(2,1,1,0,2,1,2,0,1))</code></pre>
-<p>Utilizzando il dataframe <code>dataframe_example.rds</code> esegui le seguenti operazioni:</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Utilizzando il dataframe <code>dataframe_example1.rds</code> esegui le seguenti operazioni:</li>
+</ol>
 <ul>
 <li>selezionare le persone con età maggiore di 30 anni</li>
 <li>selezionare le persone con età maggiore di 30 anni e minore di 21</li>
 <li>selezionare le persone che studiano al <em>dams</em> con voto di laurea maggiore di 100 e almeno 1 fratello/sorella</li>
 <li>selezionare le persone che studiano <em>psicologia</em> e non hanno fratelli</li>
+<li>selezionare le persone che hanno punteggi di depressione maggiori di 50 e punteggi di ansia maggiori di 20</li>
 </ul>
-<p>Utilizza la funzione <code>put_random_na(data, n)</code> dove <code>data</code> è il dataframe e <code>n</code> è il numero di <code>NA</code> da generare. Ora:</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Utilizza la funzione <code>put_random_na(data, n)</code> dove <code>data</code> è il dataframe e <code>n</code> è il numero di <code>NA</code> da generare. Ora:</li>
+</ol>
 <ul>
 <li>seleziona le persone con <code>NA</code> per la colonna <code>degree</code> e per la colonna <code>età</code></li>
 <li>seleziona le persone con <code>NA</code> per la colonna <code>email</code> e abitanti del veneto o campania</li>
+<li>seleziona le persone che non hanno nessun NA (vedi la funzione <code>complete.cases()</code>)</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Utilizzando il dataset <code>dataframe_example2.csv</code></li>
+</ol>
+<ul>
+<li>crea una nuova colonna <code>id</code> che identifichi in modo univoco ogni soggetto progressivamente</li>
+<li>importa il dataframe dal formato <code>csv</code></li>
+<li>controlla che tutte le colonne siano del tipo appropriato (usa la famiglia <code>is.*</code>)</li>
+<li>seleziona tutte le persone a cui non piace <code>nessuna</code> festa. Noti qualche problema?</li>
+<li>seleziona tutte le persone a cui piace il colore <code>blu</code> e piace il <code>natale</code></li>
+<li>per risolvere i problemi con le stringhe, trova un modo per portare tutte le stringhe ad un formato comparabile</li>
+<li>fai un subset del dataset tenendo solo le colonne numeriche (usa la <code>is.* family</code>)</li>
 </ul>
 </div>
 </div>
@@ -724,7 +762,7 @@ x &lt;- rnorm(100)</code></pre>
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] 25.25855</code></pre>
+<pre><code>## [1] 4.92682</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -743,7 +781,7 @@ Vedi la soluzione proposta
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] -0.05943322</code></pre>
+<pre><code>## [1] -0.04224085</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -754,16 +792,16 @@ Vedi la soluzione proposta
 }
 
 my_mean(x)</code></pre>
-<pre><code>## [1] -0.05943322</code></pre>
+<pre><code>## [1] -0.04224085</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] -0.05943322</code></pre>
+<pre><code>## [1] -0.04224085</code></pre>
 </details>
 </div>
 <div id="median" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] -0.08901472</code></pre>
+<pre><code>## [1] 0.03243949</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -972,39 +1010,28 @@ Vedi la soluzione proposta
 }
 
 populate_matrix(mat, x)</code></pre>
-<pre><code>##              [,1]       [,2]        [,3]        [,4]
-##  [1,] -0.11011959  1.8051130 -0.45430490 -0.64955295
-##  [2,] -0.69430238  1.5788356  0.01119373 -1.02705305
-##  [3,] -1.90338477  0.0955770 -0.31844647  0.55817892
-##  [4,]  0.69253041  0.3295028  0.63808934 -0.04808244
-##  [5,]  0.89950315  1.5761199  0.42642389 -0.38933595
-##  [6,]  0.04605382 -0.1172192 -0.08047931 -2.22538895
-##  [7,] -0.27988515 -0.2516164  1.53937699 -1.94986183
-##  [8,]  0.57273539  0.9074617  1.41949597 -2.70193970
-##  [9,]  1.00881137 -0.7349512 -0.19109293 -0.95812261
-## [10,]  1.32548834  0.9655692  1.06405113 -1.04465148
-##              [,5]       [,6]       [,7]        [,8]
-##  [1,] -0.71933236  0.8391554 -1.1233461 -0.66465530
-##  [2,] -0.87972196 -0.1572173 -1.4233071 -0.58351333
-##  [3,]  1.06247230 -1.0972469  0.1221712 -0.05501135
-##  [4,]  1.08777753 -1.0132823  1.1253426 -1.02482452
-##  [5,]  0.94025760 -0.2836141 -0.9581277  0.89959187
-##  [6,]  0.77818449 -1.1557034  1.1188627 -0.02665609
-##  [7,]  0.16280326 -1.1337124  0.5360976  0.39862630
-##  [8,]  1.17008271  0.0771481  0.7062107  0.61155043
-##  [9,] -0.01445362  0.8087769  0.5347125 -1.02058577
-## [10,] -0.49297744 -0.3896475 -1.1623066 -1.25785191
-##              [,9]      [,10]
-##  [1,]  0.05527467  0.1921259
-##  [2,] -0.14007413  1.4754177
-##  [3,]  0.35075281  0.3068477
-##  [4,] -0.51019221  0.7909656
-##  [5,]  0.95270532  1.0812206
-##  [6,]  0.63311027 -0.6463511
-##  [7,] -0.53823112  0.5630122
-##  [8,]  0.17977886  0.2779834
-##  [9,] -0.28600006 -0.9763147
-## [10,]  0.06559758  0.4950046</code></pre>
+<pre><code>##              [,1]        [,2]       [,3]        [,4]        [,5]       [,6]        [,7]
+##  [1,]  1.08613788 -1.01825655  0.2909540 -0.12808294 -0.02773149  0.7646154 -1.36776497
+##  [2,]  1.17363327 -0.84625666 -0.2854468  0.23954026 -1.05747102  1.1715601  0.33880903
+##  [3,] -0.22324518  0.06447486  0.4009708  0.88852493  0.26913730 -1.9133594  0.04049072
+##  [4,] -0.38520286  0.27627835 -0.4816439  0.94961140  0.69860358 -0.6186238  0.74692186
+##  [5,] -1.05623069 -1.61197592  0.6689275 -0.17221236 -0.05827251  0.4556002 -1.49675660
+##  [6,] -0.74936580 -1.68908309  0.3993572 -0.46486048 -0.90491104  1.2105908  0.67086459
+##  [7,]  0.09223397 -0.71252910  0.3157783  0.16246985 -0.38718433 -0.2195551  1.84389042
+##  [8,] -0.26463810  0.11784556 -1.1917756 -0.47191551 -0.46477570 -0.5713189 -0.55019094
+##  [9,]  1.01782515  0.20294027 -0.8806506 -0.09727466 -0.03748329 -0.5145923  1.24747423
+## [10,] -0.86306883 -1.22836904  1.2226335  1.69349940 -1.01336024  0.2272257 -0.30057162
+##             [,8]        [,9]      [,10]
+##  [1,]  0.4973729 -0.75250351  0.3595421
+##  [2,]  0.2041259 -0.98390370 -1.9720813
+##  [3,] -0.5153258 -0.38285144  0.7982189
+##  [4,]  0.5854546  0.02653352 -0.6243305
+##  [5,] -0.5007907  0.86079815  0.8272639
+##  [6,] -0.6275960 -0.18347417  0.3589402
+##  [7,] -1.5447360  2.58409051  1.7509405
+##  [8,]  0.1221916  0.65960404 -0.3089678
+##  [9,] -0.4297924 -0.08584524 -0.3175175
+## [10,] -2.0020288 -0.82508648 -1.1304764</code></pre>
 </details>
 </div>
 </div>
@@ -1035,27 +1062,20 @@ populate_matrix(mat, x)</code></pre>
 <li><code>insert_date</code>: la data di inserimento nel catalogo netflix</li>
 </ul>
 <pre class="r"><code>head(netflix)</code></pre>
-<pre><code>##   show_id    type title          director       country
-## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil
-## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico
-## 3      s3   Movie 23:59      Gilbert Chan     Singapore
-## 4      s4   Movie     9       Shane Acker United States
-## 5      s5   Movie    21    Robert Luketic United States
-## 6      s6 TV Show    46       Serdar Akar        Turkey
-##    duration users_rating imdb_rating total_cost
-## 1 4 Seasons            5           2         35
-## 2    93 min            7           5        105
-## 3    78 min            6           3        127
-## 4    80 min            8           2         95
-## 5   123 min            1           5         39
-## 6  1 Season            0           3         51
-##   duration_episode release_date insert_date
-## 1               91   2019-05-07  2019-09-24
-## 2               NA   2019-01-01  2019-03-31
-## 3               NA   2019-10-23  2020-01-30
-## 4               NA   2020-06-02  2020-06-09
-## 5               NA   2019-07-26  2019-08-30
-## 6               60   2019-11-09  2020-03-25</code></pre>
+<pre><code>##   show_id    type title          director       country  duration users_rating imdb_rating
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5           2
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7           5
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6           3
+## 4      s4   Movie     9       Shane Acker United States    80 min            8           2
+## 5      s5   Movie    21    Robert Luketic United States   123 min            1           5
+## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0           3
+##   total_cost duration_episode release_date insert_date
+## 1         35               91   2019-05-07  2019-09-24
+## 2        105               NA   2019-01-01  2019-03-31
+## 3        127               NA   2019-10-23  2020-01-30
+## 4         95               NA   2020-06-02  2020-06-09
+## 5         39               NA   2019-07-26  2019-08-30
+## 6         51               60   2019-11-09  2020-03-25</code></pre>
 <div id="passaggi-da-fare" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Passaggi da fare:</h3>
 <ul>
