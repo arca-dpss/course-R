@@ -60,7 +60,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="data:text/css,h1%20%7Bcolor%3A%20%239B0A14%3Bfont%2Dweight%3A%20bold%3B%7D%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7Bbackground%2Dcolor%3A%20%239B0A14%3B%7Ddetails%20%7Bfont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3Bwidth%3A%20620px%3B%7Ddetails%20%3E%20summary%20%7Bpadding%3A%202px%206px%3Bwidth%3A%2015em%3Bbackground%2Dcolor%3A%20%23ddd%3Bborder%3A%20none%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3Bcursor%3A%20pointer%3B%7Ddetails%20%3E%20p%20%7Bborder%2Dradius%3A%200%200%2010px%2010px%3Bbackground%2Dcolor%3A%20%23ddd%3Bpadding%3A%202px%206px%3Bmargin%3A%200%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3B%7Ddetails%5Bopen%5D%20%3E%20summary%20%7Bbackground%2Dcolor%3A%20%23ccf%3B%7D" type="text/css" />
+<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
 
 
 
@@ -456,8 +456,7 @@ Vedi la soluzione proposta
 </ol>
 <pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot; &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot;</code></pre>
 <pre class="r"><code>rep(rep(c(&quot;foo&quot;, &quot;bar&quot;), each = 2), times = 2)</code></pre>
-<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot; &quot;foo&quot; &quot;foo&quot;
-## [7] &quot;bar&quot; &quot;bar&quot;</code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot; &quot;foo&quot; &quot;foo&quot; &quot;bar&quot; &quot;bar&quot;</code></pre>
 </div>
 <div id="indicizzare-vettori" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Indicizzare vettori</h3>
@@ -576,8 +575,7 @@ levels(genere2) &lt;- c(&quot;donne&quot;, &quot;uomini&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Crea la variabile categoriale <code>intervento</code> così definita:</li>
 </ol>
-<pre><code>## [1] CBT         Psicanalisi CBT        
-## [4] Psicanalisi CBT         Psicanalisi
+<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi
 ## [7] Controllo   Controllo   CBT        
 ## Levels: CBT Controllo Psicanalisi</code></pre>
 <details>
@@ -594,8 +592,7 @@ Vedi la soluzione proposta
 Vedi la soluzione proposta
 </summary>
 <pre class="r"><code>intervento[7:8] &lt;- &quot;Farmaci&quot;</code></pre>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8,
-## value = &quot;Farmaci&quot;): invalid factor level,
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;): invalid factor level,
 ## NA generated</code></pre>
 <pre class="r"><code>levels(intervento)&lt;-c(levels(intervento), &quot;Farmaci&quot;)
 intervento[7:8]&lt;-&quot;Farmaci&quot;</code></pre>
@@ -613,10 +610,8 @@ Vedi la soluzione proposta
 
 # cosa succede con questo e perche?
 c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))</code></pre>
-<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;        
-##  [4] &quot;3&quot;         &quot;1&quot;         &quot;3&quot;        
-##  [7] &quot;4&quot;         &quot;4&quot;         &quot;1&quot;        
-## [10] &quot;4&quot;         &quot;2&quot;         &quot;4&quot;        
+<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;        
+##  [7] &quot;4&quot;         &quot;4&quot;         &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;        
 ## [13] &quot;Farmaci&quot;   &quot;Controllo&quot; &quot;Farmaci&quot;</code></pre>
 </details>
 </div>
@@ -767,7 +762,7 @@ x &lt;- rnorm(100)</code></pre>
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] -15.32749</code></pre>
+<pre><code>## [1] 2.057108</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -786,7 +781,7 @@ Vedi la soluzione proposta
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] -0.1350056</code></pre>
+<pre><code>## [1] -0.08521401</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -797,16 +792,16 @@ Vedi la soluzione proposta
 }
 
 my_mean(x)</code></pre>
-<pre><code>## [1] -0.1350056</code></pre>
+<pre><code>## [1] -0.08521401</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] -0.1350056</code></pre>
+<pre><code>## [1] -0.08521401</code></pre>
 </details>
 </div>
 <div id="median" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] -0.01511421</code></pre>
+<pre><code>## [1] -0.2060714</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -919,8 +914,7 @@ num_odd2 &lt;- function(x){
 <h3><span class="header-section-number">4.4.8</span> <code>complete.cases()</code></h3>
 <p>Cerca di capire cosa fa la funzione <code>complete.cases()</code> e di creare una funzione personalizzata <code>my_complete_cases()</code> con cui ottenere lo stesso output.</p>
 <pre class="r"><code>complete.cases(iris[1:10, ])</code></pre>
-<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-##  [8] TRUE TRUE TRUE</code></pre>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <p>Suggerimenti:</p>
 <ul>
 <li>usa la funzione <code>any()</code></li>
@@ -1016,50 +1010,28 @@ Vedi la soluzione proposta
 }
 
 populate_matrix(mat, x)</code></pre>
-<pre><code>##             [,1]        [,2]        [,3]
-##  [1,] -1.5675781  0.23239519  0.22677763
-##  [2,]  0.6391907 -2.11059190 -0.75018007
-##  [3,]  0.8291087  1.89087105 -0.06497932
-##  [4,]  0.2036392 -1.14921953 -0.10830302
-##  [5,]  0.2479549 -0.60650532  0.98171905
-##  [6,] -0.8348933  0.04343713 -0.25561343
-##  [7,]  0.8330679  0.26017659  3.00392408
-##  [8,] -0.8134682 -2.93823062  0.53567741
-##  [9,]  0.9879938  0.52142414 -1.18764326
-## [10,]  0.2059189 -0.91806508 -0.64428091
-##             [,4]       [,5]       [,6]
-##  [1,]  1.5747206 -0.9689300 -0.9802322
-##  [2,] -0.3506149  0.8244194  0.5474374
-##  [3,]  0.6154580 -0.3704284  1.9484475
-##  [4,]  1.0059721  0.5638012  1.2420724
-##  [5,]  0.5845513 -0.2546138 -1.4055896
-##  [6,]  0.2123403  1.4961759 -0.6285434
-##  [7,] -0.7154245  0.6629210 -0.1496957
-##  [8,] -1.7473283 -0.4276408 -1.6526520
-##  [9,] -0.3771019  1.1373402  1.4471881
-## [10,] -0.7980328  0.8568799  0.3835429
-##             [,7]        [,8]       [,9]
-##  [1,] -0.3760014 -0.01876084 -0.4395645
-##  [2,]  0.6606406  0.31272300 -1.6976432
-##  [3,] -0.2533612  1.55425629 -0.2325405
-##  [4,]  1.1164768 -0.59307339 -1.0812392
-##  [5,] -2.0206326  0.33605534 -0.7707389
-##  [6,] -0.1903874 -0.83936179 -0.3260876
-##  [7,]  0.3450746  0.80977723  0.5530923
-##  [8,]  1.6074894 -1.09155727  0.2034863
-##  [9,]  0.3704062 -1.74320794  1.0609276
-## [10,]  2.4566409 -1.58715075  1.3517235
-##            [,10]
-##  [1,]  1.8220707
-##  [2,] -0.0844230
-##  [3,]  0.5504862
-##  [4,] -1.1625691
-##  [5,] -0.4318136
-##  [6,] -0.7374074
-##  [7,] -0.9524598
-##  [8,] -0.4425499
-##  [9,] -0.5631295
-## [10,] -0.2934276</code></pre>
+<pre><code>##              [,1]        [,2]       [,3]        [,4]         [,5]       [,6]
+##  [1,] -1.03006967 -1.60660276 -0.6803230 -0.83448600 -0.657129326  0.6601389
+##  [2,]  3.74148967 -1.22633630 -0.7595296 -0.30946448 -0.989974658  0.7310806
+##  [3,]  0.03048241 -0.29496928 -0.3034592  1.71950832  1.061623145 -1.4728166
+##  [4,]  1.47640697  1.94332285 -2.3488522 -0.90623371 -0.172284094  0.3378743
+##  [5,] -0.84117157  0.43166894 -1.6379163 -0.29528115 -0.413412718 -0.8287971
+##  [6,]  0.40170612  1.10102542  0.8803687  0.41076530  0.002074064  0.2927993
+##  [7,] -1.07262628  0.79190078 -0.5078923 -0.06738818 -1.314377220 -0.8024414
+##  [8,] -1.22596695  0.35651681  0.6484898 -0.65624550  0.086602793  1.3354262
+##  [9,]  1.03657166 -0.06966409  0.6770276  0.30363296 -0.255094263 -0.8517425
+## [10,] -1.64619449  0.34625725  1.0553303 -0.70987645 -1.027267348  0.4407671
+##             [,7]       [,8]         [,9]      [,10]
+##  [1,]  1.1574215 -0.8745222  0.552296832  1.4005845
+##  [2,]  1.3158206  0.1904658  0.390480408 -0.1438576
+##  [3,]  0.6546747  1.4584687 -0.415760666  0.9103203
+##  [4,] -0.1311402 -1.1422845  0.681220208  1.2522799
+##  [5,] -0.9256727 -0.1493903 -0.007809496  0.4029619
+##  [6,]  2.0705062 -0.8003979 -0.375302035 -0.5817022
+##  [7,]  0.8931698 -1.1035820 -0.701878427 -0.1500040
+##  [8,]  0.9788884 -2.0842788  0.753776387 -1.1711585
+##  [9,]  1.3010681  0.5594800 -0.772928420 -0.6479342
+## [10,] -0.1066672  1.4820652  0.088467908 -1.0631696</code></pre>
 </details>
 </div>
 </div>
@@ -1090,34 +1062,20 @@ populate_matrix(mat, x)</code></pre>
 <li><code>insert_date</code>: la data di inserimento nel catalogo netflix</li>
 </ul>
 <pre class="r"><code>head(netflix)</code></pre>
-<pre><code>##   show_id    type title          director
-## 1      s1 TV Show    3%              &lt;NA&gt;
-## 2      s2   Movie  7:19 Jorge Michel Grau
-## 3      s3   Movie 23:59      Gilbert Chan
-## 4      s4   Movie     9       Shane Acker
-## 5      s5   Movie    21    Robert Luketic
-## 6      s6 TV Show    46       Serdar Akar
-##         country  duration users_rating
-## 1        Brazil 4 Seasons            5
-## 2        Mexico    93 min            7
-## 3     Singapore    78 min            6
-## 4 United States    80 min            8
-## 5 United States   123 min            1
-## 6        Turkey  1 Season            0
-##   imdb_rating total_cost duration_episode
-## 1           2         35               91
-## 2           5        105               NA
-## 3           3        127               NA
-## 4           2         95               NA
-## 5           5         39               NA
-## 6           3         51               60
-##   release_date insert_date
-## 1   2019-05-07  2019-09-24
-## 2   2019-01-01  2019-03-31
-## 3   2019-10-23  2020-01-30
-## 4   2020-06-02  2020-06-09
-## 5   2019-07-26  2019-08-30
-## 6   2019-11-09  2020-03-25</code></pre>
+<pre><code>##   show_id    type title          director       country  duration users_rating
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6
+## 4      s4   Movie     9       Shane Acker United States    80 min            8
+## 5      s5   Movie    21    Robert Luketic United States   123 min            1
+## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0
+##   imdb_rating total_cost duration_episode release_date insert_date
+## 1           2         35               91   2019-05-07  2019-09-24
+## 2           5        105               NA   2019-01-01  2019-03-31
+## 3           3        127               NA   2019-10-23  2020-01-30
+## 4           2         95               NA   2020-06-02  2020-06-09
+## 5           5         39               NA   2019-07-26  2019-08-30
+## 6           3         51               60   2019-11-09  2020-03-25</code></pre>
 <div id="passaggi-da-fare" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Passaggi da fare:</h3>
 <ul>

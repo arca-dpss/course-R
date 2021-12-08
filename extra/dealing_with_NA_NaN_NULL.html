@@ -60,7 +60,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="data:text/css,h1%20%7Bcolor%3A%20%239B0A14%3Bfont%2Dweight%3A%20bold%3B%7D%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7Bbackground%2Dcolor%3A%20%239B0A14%3B%7Ddetails%20%7Bfont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3Bwidth%3A%20620px%3B%7Ddetails%20%3E%20summary%20%7Bpadding%3A%202px%206px%3Bwidth%3A%2015em%3Bbackground%2Dcolor%3A%20%23ddd%3Bborder%3A%20none%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3Bcursor%3A%20pointer%3B%7Ddetails%20%3E%20p%20%7Bborder%2Dradius%3A%200%200%2010px%2010px%3Bbackground%2Dcolor%3A%20%23ddd%3Bpadding%3A%202px%206px%3Bmargin%3A%200%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3B%7Ddetails%5Bopen%5D%20%3E%20summary%20%7Bbackground%2Dcolor%3A%20%23ccf%3B%7D" type="text/css" />
+<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
 
 
 
@@ -325,9 +325,9 @@ mean(x)</code></pre>
 <pre><code>## [1] NA</code></pre>
 <p>In fact, these functions have a specific argument <code>na.rm = TRUE</code> for doing the computation without considering <code>NA</code> values. Of course we can remove <code>NA</code> values before the computation and the result will be the same:</p>
 <pre class="r"><code>mean(x, na.rm = TRUE)</code></pre>
-<pre><code>## [1] 0.6735894</code></pre>
+<pre><code>## [1] 0.4764638</code></pre>
 <pre class="r"><code>mean(x[!is.na(x)])</code></pre>
-<pre><code>## [1] 0.6735894</code></pre>
+<pre><code>## [1] 0.4764638</code></pre>
 <ul>
 <li><a href="http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/" class="uri">http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/</a></li>
 <li><a href="https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r" class="uri">https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r</a></li>

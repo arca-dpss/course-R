@@ -494,6 +494,17 @@ my_list[[c(1,2)]] # equivalente a my_list[[1]][[2]]
 ```
 
 ---
+# Modificare elementi
+
+Per modificare elementi posso usare l'approccio selezione e riassegnazione:
+
+```{r, eval=FALSE}
+my_list[1] <- list(oggetto) # se uso le parentesi singole [] devo assegnare una lista
+my_list[[1]] <- oggetto # se uso le doppie, riassegno direttamente l'oggetto
+```
+
+In generale valgono gli stessi principi dei vettori (atomics) quindi selezione negativa `lista[-index]` e selezione multipla `lista[1:n]`
+---
 class: section, center, middle
 
 # Matrici
