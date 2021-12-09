@@ -37,6 +37,10 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 - Google Docs condiviso per esercizi - [Link](https://docs.google.com/document/d/13mjgz8InbAS8aPo21NMDrOrmUJR7AFm7A7oDlPHFNsk/edit?usp=sharing)
 - Cartella Dati - [Link](https://drive.google.com/drive/folders/1coRNAu1E6o_bLeXb4C9Tw1orLgs-enbF?usp=sharing)
 
+## Questionario Valutazione
+
+A questo [link](https://docs.google.com/forms/d/e/1FAIpQLSf_fvSZSwWV-WpzlAASOeRUE0TRAizjWjy5WlKLtw712ttRLQ/viewform) potete trovare il questionario di valutazione del corso. E' molto importante per me e per i corsi futuri in modo da migliorarlo al massimo.
+
 ## Materiale
 
 ### Slides lezioni
