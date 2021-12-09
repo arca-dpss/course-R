@@ -68,6 +68,7 @@ In questa sezione ci sono alcuni argomenti extra che possono essere utili nel la
 - **Le funzioni TOP in R** - [Appunti](extra/top_functions.html)
 - **Funzioni personalizzate** - [Appunti](extra/custom_functions.html)
 - **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/filippogambarota_slides/tidyverse_presentation/tidyverse_presentation.html)
+- **Manipolare Stringhe** - [Capitolo 16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R
 
 ## Errori libro `Introduzione a R`
 
