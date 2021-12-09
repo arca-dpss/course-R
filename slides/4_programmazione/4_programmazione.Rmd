@@ -50,7 +50,7 @@ class: title-slide, center, middle
 
 #.title[Introduzione a R]
 
-#.subtitle[Giornata 3 - Programmazione in R]
+#.subtitle[Giornata 4 - Programmazione in R]
 
 ```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
@@ -303,6 +303,59 @@ my_summary(x)
 
 x <- rep(c("a","b","c"), c(10, 2, 8))
 my_summary(x)
+```
+
+---
+# `ifelse()`
+
+Un limite di usare gli `if statements` riguarda il fatto che funzionano solo su un singolo valore (i.e. non sono **vettorizzati**):
+
+```{r}
+x <- 1:10
+if(x < 5){
+    print("x è minore di 5")
+}else{
+    print("x è maggiore di 5")
+}
+```
+
+La versione vettorizzata è la funzione `ifelse(test, yes, no)`:
+
+```{r}
+ifelse(x < 5, "x è minore di 5", "x è maggiore di 5")
+```
+
+---
+# `ifelse()`
+
+Come anche per gli `if statements` normali, posso creare degli `ifelse() nested` quando ho bisogno di testare più alternative. Immaginiamo di avere una colonna/vettore `age` e voler creare un altro vettore dove l'età è divisa in 3 fascie, bambino, adulto, anziano:
+
+```{r}
+age <- round(runif(50, 3, 80))
+age_ifelse <- ifelse(age < 18, 
+       yes = "bambino",
+       no = ifelse(
+           age >= 18 & age < 60,
+           "adulto",
+           "anziano"
+       ))
+```
+
+---
+# `dplyr::case_when()`
+
+Quando le condizioni da testare sono numerose (indicativamente > 3) può essere tedioso scrivere molti `ifelse()` multipli. Possiamo allora usare la funzione `dplyr::case_when()` del pacchetto `dplyr` che è una generalizzazione di `ifelse()`:
+
+```{r}
+age_case_when <- case_when(age < 18 ~ "bambino",
+          age >= 18 & age < 60 ~ "adulto",
+          TRUE ~ "anziano") # con TRUE si identifica "tutto il resto" in modo da non lasciare valori scoperti (ATTENZIONE)
+```
+
+I due risultati sono identici:
+
+```{r}
+all.equal(age_case_when, age_ifelse)
 ```
 
 ---

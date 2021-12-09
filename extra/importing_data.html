@@ -482,30 +482,30 @@ my_sav</code></pre>
 my_iris &lt;- put_random_na(my_iris, 10)
 my_iris</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1           5.1          NA          1.4         0.2  setosa
+## 1           5.1         3.5          1.4         0.2  setosa
 ## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7          NA          1.3         0.2  setosa
-## 4           4.6         3.1           NA         0.2  setosa
-## 5           5.0          NA          1.4         0.2  setosa
-## 6            NA         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4          NA  setosa
-## 8           5.0         3.4          1.5         0.2    &lt;NA&gt;
-## 9            NA         2.9          1.4         0.2    &lt;NA&gt;
-## 10          4.9         3.1          1.5          NA  setosa</code></pre>
+## 3           4.7         3.2          1.3          NA  setosa
+## 4            NA          NA          1.5          NA    &lt;NA&gt;
+## 5           5.0         3.6          1.4         0.2    &lt;NA&gt;
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4           NA         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4          NA          1.4         0.2  setosa
+## 10          4.9          NA          1.5          NA  setosa</code></pre>
 <p>Ora scriviamo il file come <code>csv</code> specificando un certo tipo di stringa per gli <code>NA</code>:</p>
 <pre class="r"><code>write.csv(my_iris, file = &quot;data/na_csv_example.csv&quot;, na = &quot;NA&quot;, row.names = FALSE)</code></pre>
 <p>Ora vediamo il risultato:</p>
 <pre><code>&quot;Sepal.Length&quot;,&quot;Sepal.Width&quot;,&quot;Petal.Length&quot;,&quot;Petal.Width&quot;,&quot;Species&quot;
-5.1,NA,1.4,0.2,&quot;setosa&quot;
+5.1,3.5,1.4,0.2,&quot;setosa&quot;
 4.9,3,1.4,0.2,&quot;setosa&quot;
-4.7,NA,1.3,0.2,&quot;setosa&quot;
-4.6,3.1,NA,0.2,&quot;setosa&quot;
-5,NA,1.4,0.2,&quot;setosa&quot;
-NA,3.9,1.7,0.4,&quot;setosa&quot;
-4.6,3.4,1.4,NA,&quot;setosa&quot;
-5,3.4,1.5,0.2,NA
-NA,2.9,1.4,0.2,NA
-4.9,3.1,1.5,NA,&quot;setosa&quot;</code></pre>
+4.7,3.2,1.3,NA,&quot;setosa&quot;
+NA,NA,1.5,NA,NA
+5,3.6,1.4,0.2,NA
+5.4,3.9,1.7,0.4,&quot;setosa&quot;
+4.6,3.4,NA,0.3,&quot;setosa&quot;
+5,3.4,1.5,0.2,&quot;setosa&quot;
+4.4,NA,1.4,0.2,&quot;setosa&quot;
+4.9,NA,1.5,NA,&quot;setosa&quot;</code></pre>
 <p>Come vedete abbiamo il dataset e in mezzo dei valori <code>NA</code>. Proviamo a immaginare di non aver creato questo file e dobbiamo importarlo per la prima volta in R:</p>
 <pre class="r"><code>my_csv &lt;- read.csv(file = &quot;data/na_csv_example.csv&quot;, header = TRUE)
 sapply(my_csv, typeof)</code></pre>
@@ -515,30 +515,30 @@ sapply(my_csv, typeof)</code></pre>
 <pre class="r"><code>write.csv(my_iris, file = &quot;data/na_csv_example.csv&quot;, na = &quot;NO&quot;, row.names = FALSE)</code></pre>
 <p>Ora gli <code>NA</code> sono rappresentati come <code>NO</code>:</p>
 <pre><code>&quot;Sepal.Length&quot;,&quot;Sepal.Width&quot;,&quot;Petal.Length&quot;,&quot;Petal.Width&quot;,&quot;Species&quot;
-5.1,NO,1.4,0.2,&quot;setosa&quot;
+5.1,3.5,1.4,0.2,&quot;setosa&quot;
 4.9,3,1.4,0.2,&quot;setosa&quot;
-4.7,NO,1.3,0.2,&quot;setosa&quot;
-4.6,3.1,NO,0.2,&quot;setosa&quot;
-5,NO,1.4,0.2,&quot;setosa&quot;
-NO,3.9,1.7,0.4,&quot;setosa&quot;
-4.6,3.4,1.4,NO,&quot;setosa&quot;
-5,3.4,1.5,0.2,NO
-NO,2.9,1.4,0.2,NO
-4.9,3.1,1.5,NO,&quot;setosa&quot;</code></pre>
+4.7,3.2,1.3,NO,&quot;setosa&quot;
+NO,NO,1.5,NO,NO
+5,3.6,1.4,0.2,NO
+5.4,3.9,1.7,0.4,&quot;setosa&quot;
+4.6,3.4,NO,0.3,&quot;setosa&quot;
+5,3.4,1.5,0.2,&quot;setosa&quot;
+4.4,NO,1.4,0.2,&quot;setosa&quot;
+4.9,NO,1.5,NO,&quot;setosa&quot;</code></pre>
 <p>Infatti se importiamo con la stessa funzione abbiamo un risultato strano:</p>
 <pre class="r"><code>my_csv &lt;- read.csv(file = &quot;data/na_csv_example.csv&quot;, header = TRUE)
 my_csv</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1           5.1          NO          1.4         0.2  setosa
+## 1           5.1         3.5          1.4         0.2  setosa
 ## 2           4.9           3          1.4         0.2  setosa
-## 3           4.7          NO          1.3         0.2  setosa
-## 4           4.6         3.1           NO         0.2  setosa
-## 5             5          NO          1.4         0.2  setosa
-## 6            NO         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4          NO  setosa
-## 8             5         3.4          1.5         0.2      NO
-## 9            NO         2.9          1.4         0.2      NO
-## 10          4.9         3.1          1.5          NO  setosa</code></pre>
+## 3           4.7         3.2          1.3          NO  setosa
+## 4            NO          NO          1.5          NO      NO
+## 5             5         3.6          1.4         0.2      NO
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4           NO         0.3  setosa
+## 8             5         3.4          1.5         0.2  setosa
+## 9           4.4          NO          1.4         0.2  setosa
+## 10          4.9          NO          1.5          NO  setosa</code></pre>
 <pre class="r"><code>sapply(my_csv, typeof)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##  &quot;character&quot;  &quot;character&quot;  &quot;character&quot;  &quot;character&quot;  &quot;character&quot;</code></pre>
@@ -546,16 +546,16 @@ my_csv</code></pre>
 <pre class="r"><code>my_csv &lt;- read.csv(file = &quot;data/na_csv_example.csv&quot;, header = TRUE, na.strings = &quot;NO&quot;)
 my_csv</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1           5.1          NA          1.4         0.2  setosa
+## 1           5.1         3.5          1.4         0.2  setosa
 ## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7          NA          1.3         0.2  setosa
-## 4           4.6         3.1           NA         0.2  setosa
-## 5           5.0          NA          1.4         0.2  setosa
-## 6            NA         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4          NA  setosa
-## 8           5.0         3.4          1.5         0.2    &lt;NA&gt;
-## 9            NA         2.9          1.4         0.2    &lt;NA&gt;
-## 10          4.9         3.1          1.5          NA  setosa</code></pre>
+## 3           4.7         3.2          1.3          NA  setosa
+## 4            NA          NA          1.5          NA    &lt;NA&gt;
+## 5           5.0         3.6          1.4         0.2    &lt;NA&gt;
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4           NA         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4          NA          1.4         0.2  setosa
+## 10          4.9          NA          1.5          NA  setosa</code></pre>
 <pre class="r"><code>sapply(my_csv, typeof)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##     &quot;double&quot;     &quot;double&quot;     &quot;double&quot;     &quot;double&quot;  &quot;character&quot;</code></pre>

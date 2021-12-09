@@ -575,8 +575,7 @@ levels(genere2) &lt;- c(&quot;donne&quot;, &quot;uomini&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Crea la variabile categoriale <code>intervento</code> così definita:</li>
 </ol>
-<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi Controllo  
-## [8] Controllo   CBT        
+<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi Controllo   Controllo   CBT        
 ## Levels: CBT Controllo Psicanalisi</code></pre>
 <details>
 <summary>
@@ -592,8 +591,7 @@ Vedi la soluzione proposta
 Vedi la soluzione proposta
 </summary>
 <pre class="r"><code>intervento[7:8] &lt;- &quot;Farmaci&quot;</code></pre>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;): invalid factor level, NA
-## generated</code></pre>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;): invalid factor level, NA generated</code></pre>
 <pre class="r"><code>levels(intervento)&lt;-c(levels(intervento), &quot;Farmaci&quot;)
 intervento[7:8]&lt;-&quot;Farmaci&quot;</code></pre>
 </details>
@@ -610,9 +608,8 @@ Vedi la soluzione proposta
 
 # cosa succede con questo e perche?
 c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))</code></pre>
-<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;4&quot;        
-##  [8] &quot;4&quot;         &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;         &quot;Farmaci&quot;   &quot;Controllo&quot;
-## [15] &quot;Farmaci&quot;</code></pre>
+<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;4&quot;         &quot;4&quot;         &quot;1&quot;        
+## [10] &quot;4&quot;         &quot;2&quot;         &quot;4&quot;         &quot;Farmaci&quot;   &quot;Controllo&quot; &quot;Farmaci&quot;</code></pre>
 </details>
 </div>
 <div id="matrici" class="section level2" number="3.3">
@@ -716,10 +713,8 @@ c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))<
 <span class="math display">\[
 Fahrenheit = Celsius *1.8 + 32
 \]</span></li>
-<li>Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona.</li>
-<li>Definisci una funzione che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media.</li>
-<li>Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti con la funzione <code>readline()</code>.</li>
-<li>Definisci una funzione che calcoli lo stipendio mensile sulla base delle ore svolte nel mese e la paga oraria.</li>
+<li>Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona. Prova a utilizzare e capire le funzioni <code>paste()</code> e <code>print()</code>.</li>
+<li>Definisci una funzione <code>n_and_media()</code> che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media e restituisca entrambe in una frase. Ad esempio <code>n_and_media(x)</code> deve restituire “la media di x è … e la lunghezza di x è …”. Anche qui sono utili le funzioni <code>paste()</code> e <code>print()</code>.</li>
 </ol>
 </div>
 <div id="condizionali" class="section level2" number="4.2">
@@ -735,23 +730,125 @@ Fahrenheit = Celsius *1.8 + 32
 <li>.75 &lt;= score &lt; .85 - distinto</li>
 <li>.85 &lt;= score - ottimo</li>
 </ul>
+<p>La funzione quindi deve ricevere in input un valore e restituire la stringa corrispondente in base al valore stesso.</p>
 <ol start="2" style="list-style-type: decimal">
+<li>Usa una serie di <code>ifelse()</code> nested per creare una variabile <code>score_chr</code> con le etichette corrispondenti all’esercizio precedente.</li>
 <li>Definisci una funzione che determini se un numero è pari o dispari.</li>
 <li>Definisci una funzione che determini se un numero è un multiplo di 3, 4, o 5.</li>
-<li>Definisci una funzione che calcoli lo stipendio mensile considerando gli straordinari che sono retribuiti 1.5 della paga oraria normale. Utilizza come parametrile ore svolte nel mese, la paga oraria ed il tetto ore lavorative, oltre cui si contano gli straordinari.</li>
 </ol>
 </div>
 <div id="loop" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Loop</h2>
 <div id="scrivi-un-loop-che" class="section level3" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Scrivi un loop che:</h3>
-<p>Scrivi un loop che scorre le colonne del dataset <code>iris</code> (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio <code>Sepal.Length (12)</code>. Potete usare le funzioni <code>print()</code>, <code>paste0()</code> and <code>nchar()</code>.</p>
+<p>Scrivi un loop che scorre le colonne del dataset <code>iris</code> (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio <code>Sepal.Length (12)</code>. Potete usare le funzioni <code>print()</code>, <code>paste()</code> and <code>nchar()</code>.</p>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>for(i in 1:ncol(iris)){
+    col_i &lt;- colnames(iris)[i]
+    print(paste(col_i, &quot;(&quot;, nchar(col_i), &quot;)&quot;))
+}</code></pre>
+<pre><code>## [1] &quot;Sepal.Length ( 12 )&quot;
+## [1] &quot;Sepal.Width ( 11 )&quot;
+## [1] &quot;Petal.Length ( 12 )&quot;
+## [1] &quot;Petal.Width ( 11 )&quot;
+## [1] &quot;Species ( 7 )&quot;</code></pre>
+</details>
 </div>
-<div id="popola-la-matrice-con-un-for" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Popola la matrice con un <code>for</code></h3>
-<p>Popoliamo una matrice usando il ciclo <code>for</code>. La matrice ha un numero <em>totale</em> di elementi. Usando il vettore <code>x</code> che contiene il numero di elementi totali della matrice come possiamo popolare la matrice senza usare la funzione <code>matrix()</code>. La matrice è <strong>quadrata</strong> di dimensione 10x10:</p>
+<div id="scrivi-un-loop-che-1" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Scrivi un loop che:</h3>
+<p>Scrivi un loop che scorre le colonne del dataset <code>iris</code> (lo trovate direttamente in R) e resituisce la <code>media</code> se la colonna è numerica (ricordate le <code>is.*</code> family) oppure la tabella di frequenza (comando <code>table()</code>) se la colonna è stringa/fattore</p>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>for(i in 1:ncol(iris)){
+    if(is.numeric(iris[[i]])){
+        print(mean(iris[[i]]))
+    }else{
+        print(table(iris[[i]]))
+    }
+}</code></pre>
+<pre><code>## [1] 5.843333
+## [1] 3.057333
+## [1] 3.758
+## [1] 1.199333
+## 
+##     setosa versicolor  virginica 
+##         50         50         50</code></pre>
+</details>
+</div>
+<div id="apply" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> <code>*apply()</code></h3>
+<p>Usando la funzione più adatta dell<code>*apply()</code> family, calcola la <code>deviazione standard</code> di ogni colonna del dataset <code>mtcars</code> (lo trovate direttamente in R)</p>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<pre class="r"><code>sapply(mtcars, sd) # perchè funziona? cosa cambia con lapply o apply?</code></pre>
+<pre><code>##         mpg         cyl        disp          hp        drat          wt        qsec          vs          am        gear 
+##   6.0269481   1.7859216 123.9386938  68.5628685   0.5346787   0.9784574   1.7869432   0.5040161   0.4989909   0.7378041 
+##        carb 
+##   1.6152000</code></pre>
+<pre class="r"><code>apply(mtcars, 2, sd)</code></pre>
+<pre><code>##         mpg         cyl        disp          hp        drat          wt        qsec          vs          am        gear 
+##   6.0269481   1.7859216 123.9386938  68.5628685   0.5346787   0.9784574   1.7869432   0.5040161   0.4989909   0.7378041 
+##        carb 
+##   1.6152000</code></pre>
+<pre class="r"><code>lapply(mtcars, sd)</code></pre>
+<pre><code>## $mpg
+## [1] 6.026948
+## 
+## $cyl
+## [1] 1.785922
+## 
+## $disp
+## [1] 123.9387
+## 
+## $hp
+## [1] 68.56287
+## 
+## $drat
+## [1] 0.5346787
+## 
+## $wt
+## [1] 0.9784574
+## 
+## $qsec
+## [1] 1.786943
+## 
+## $vs
+## [1] 0.5040161
+## 
+## $am
+## [1] 0.4989909
+## 
+## $gear
+## [1] 0.7378041
+## 
+## $carb
+## [1] 1.6152</code></pre>
+</details>
+</div>
+<div id="popola-la-matrice-con-un-for" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Popola la matrice con un <code>for</code></h3>
+<p>Popoliamo una matrice usando il ciclo <code>for</code>. La matrice ha un numero <em>totale</em> di elementi. Usando il vettore <code>x</code> che contiene il numero di elementi totali della matrice come possiamo popolare la matrice partendo da una vuota <code>matrix(NA, 10, 10)</code>. La matrice è <strong>quadrata</strong> di dimensione 10x10:</p>
 <pre class="r"><code># matrice 10 x 10 quindi 100 elementi totali
-x &lt;- rnorm(100)</code></pre>
+my_mat &lt;- matrix(NA, 10, 10) # matrice vuota 10x10</code></pre>
+<p>Suggerimento: puoi fare un doppio ciclo <code>for</code> e generare un numero casuale da inserire con <code>rnorm(1)</code></p>
+<details>
+<summary>
+Vedi la soluzione proposta
+</summary>
+<p>Generando un numero casuale direttamente dentro il <code>for</code></p>
+<pre class="r"><code>for(i in 1:nrow(my_mat)){
+    for(j in 1:ncol(my_mat)){
+        my_mat[i,j] &lt;- rnorm(1)
+    }
+}</code></pre>
+</details>
 </div>
 </div>
 <div id="ri-creiamo-le-funzioni-in-r" class="section level2" number="4.4">
@@ -762,7 +859,7 @@ x &lt;- rnorm(100)</code></pre>
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] -0.5566283</code></pre>
+<pre><code>## [1] -14.92989</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -781,7 +878,7 @@ Vedi la soluzione proposta
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] 0.08184748</code></pre>
+<pre><code>## [1] 0.0227881</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -792,16 +889,16 @@ Vedi la soluzione proposta
 }
 
 my_mean(x)</code></pre>
-<pre><code>## [1] 0.08184748</code></pre>
+<pre><code>## [1] 0.0227881</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] 0.08184748</code></pre>
+<pre><code>## [1] 0.0227881</code></pre>
 </details>
 </div>
 <div id="median" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 0.178834</code></pre>
+<pre><code>## [1] 0.02662059</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -1010,28 +1107,17 @@ Vedi la soluzione proposta
 }
 
 populate_matrix(mat, x)</code></pre>
-<pre><code>##              [,1]         [,2]        [,3]       [,4]        [,5]       [,6]        [,7]
-##  [1,]  0.84061571 -0.005724677 -0.24798176  2.1254419  0.54654431 -0.4161605 -1.75841120
-##  [2,] -1.02091482  0.162655050 -0.06284332 -0.5563419  0.07975643 -1.5160893 -0.73086603
-##  [3,]  1.27094177 -0.991830524  0.06834087  0.2865242 -1.18270108 -0.2472318  1.53486660
-##  [4,]  0.58192379  1.075880969  0.96332903 -1.3609829  0.38197723  0.3625272 -2.24291709
-##  [5,] -0.17784604  0.154415041 -0.27180436  0.1313460  0.04373319 -1.2731587 -1.32315822
-##  [6,]  0.08489787  0.483051039  1.23956669 -0.7967981  0.34377011  1.1535552 -1.19683001
-##  [7,] -1.64467471 -0.454020261  1.42198660 -0.8443240 -0.07720841 -1.5953301 -0.41170874
-##  [8,]  0.55706417 -1.210118994  0.63063253 -0.6753259  0.23999218  1.8122831 -0.91469978
-##  [9,]  1.99805659 -0.216098789  0.09328842  0.4424667  0.72375203 -1.3294146  1.44229105
-## [10,]  1.66046103 -0.550649039  0.89871567  1.3955715 -0.86664213  2.1487313 -0.06121907
-##              [,8]         [,9]      [,10]
-##  [1,] -0.52414306 -0.809671804  0.2357185
-##  [2,]  0.08798285  1.311767750  0.1093917
-##  [3,] -0.72408594  1.411555688  0.2959581
-##  [4,] -0.63544237  1.327257475  2.7318514
-##  [5,] -0.91026652 -1.231367833 -0.5175777
-##  [6,]  0.19716773 -1.077510362  0.5730928
-##  [7,] -1.00476078 -0.233259128 -0.1968892
-##  [8,]  0.72890003 -1.184563276 -1.3456141
-##  [9,] -0.12430307  0.585663451  0.6241070
-## [10,]  1.22542144 -0.007500876  0.2953017</code></pre>
+<pre><code>##             [,1]       [,2]       [,3]       [,4]        [,5]       [,6]        [,7]       [,8]         [,9]      [,10]
+##  [1,]  2.5868305  1.2955199 -1.0927513 -0.5103209  0.17609090  1.1695520  0.23920941 -1.0352280 -0.050854494 -0.2151683
+##  [2,] -1.5119658  1.7330942 -1.4123826  0.4936008 -0.56615200 -0.1144349  0.02359612  1.0027009  0.171353633 -0.3505112
+##  [3,] -1.9455222 -0.5509123 -0.4219362  1.3096528  0.04831042  2.0732291  2.50233888  1.5450557 -0.678271351  0.6184728
+##  [4,]  0.7513198  1.0371272 -1.0155641  0.8675585 -0.69672042 -0.5197084 -0.23778999  0.2133285  0.334771315  0.2214918
+##  [5,]  0.2826332 -0.2077956 -0.4318151 -2.8601242 -0.71594953 -0.4647386  0.58794621 -0.1332887  0.806754847  0.8143450
+##  [6,] -0.2053977 -0.6778874 -1.0361136  0.5898878 -2.26774550  1.7398283 -0.11490082  1.4279270  0.601112506 -2.0939912
+##  [7,]  1.8571760  0.3256470  0.3238531 -1.4002983 -1.45409858 -1.0228134  0.22562092  1.2944345 -0.004543266  0.7824371
+##  [8,] -0.1609962 -0.6591890  1.8981593  0.9937597 -0.95840415 -1.6105248  1.11535454  0.3165673 -0.845619923  0.4878723
+##  [9,] -0.0718138  0.5185412 -1.0091923  1.6664600  1.08674821  0.9943028  1.33427870 -0.8160000  0.549242388  0.1773946
+## [10,] -0.2036579 -0.9927911 -0.2896414  0.6889747  1.23792335 -0.7611115  0.93387568 -0.5157534  0.155617281 -0.9203530</code></pre>
 </details>
 </div>
 </div>
@@ -1062,20 +1148,20 @@ populate_matrix(mat, x)</code></pre>
 <li><code>insert_date</code>: la data di inserimento nel catalogo netflix</li>
 </ul>
 <pre class="r"><code>head(netflix)</code></pre>
-<pre><code>##   show_id    type title          director       country  duration users_rating
-## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5
-## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7
-## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6
-## 4      s4   Movie     9       Shane Acker United States    80 min            8
-## 5      s5   Movie    21    Robert Luketic United States   123 min            1
-## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0
-##   imdb_rating total_cost duration_episode release_date insert_date
-## 1           2         35               91   2019-05-07  2019-09-24
-## 2           5        105               NA   2019-01-01  2019-03-31
-## 3           3        127               NA   2019-10-23  2020-01-30
-## 4           2         95               NA   2020-06-02  2020-06-09
-## 5           5         39               NA   2019-07-26  2019-08-30
-## 6           3         51               60   2019-11-09  2020-03-25</code></pre>
+<pre><code>##   show_id    type title          director       country  duration users_rating imdb_rating total_cost duration_episode
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5           2         35               91
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7           5        105               NA
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6           3        127               NA
+## 4      s4   Movie     9       Shane Acker United States    80 min            8           2         95               NA
+## 5      s5   Movie    21    Robert Luketic United States   123 min            1           5         39               NA
+## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0           3         51               60
+##   release_date insert_date
+## 1   2019-05-07  2019-09-24
+## 2   2019-01-01  2019-03-31
+## 3   2019-10-23  2020-01-30
+## 4   2020-06-02  2020-06-09
+## 5   2019-07-26  2019-08-30
+## 6   2019-11-09  2020-03-25</code></pre>
 <div id="passaggi-da-fare" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Passaggi da fare:</h3>
 <ul>

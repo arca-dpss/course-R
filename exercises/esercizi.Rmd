@@ -450,10 +450,8 @@ data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
 $$
 Fahrenheit = Celsius *1.8 + 32
 $$
-2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona.
-3. Definisci una funzione che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media.
-4. Definisci una funzione interattiva che calcoli il prodotto di due valori. Gli input devono essere ottenuti con la funzione `readline()`.
-5. Definisci una funzione che calcoli lo stipendio mensile sulla base delle ore svolte nel mese e la paga oraria.
+2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona. Prova a utilizzare e capire le funzioni `paste()` e `print()`.
+3. Definisci una funzione `n_and_media()` che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media e restituisca entrambe in una frase. Ad esempio `n_and_media(x)` deve restituire "la media di x è ... e la lunghezza di x è ...". Anche qui sono utili le funzioni `paste()` e `print()`.
 
 ## Condizionali
 
@@ -469,24 +467,82 @@ score <- runif(100, 0, 1)
 - .75 <= score < .85 - distinto
 - .85 <= score - ottimo
 
-2. Definisci una funzione che determini se un numero è pari o dispari.
-3. Definisci una funzione che determini se un numero è un multiplo di 3, 4, o 5.
-4. Definisci una funzione che calcoli lo stipendio mensile considerando gli straordinari che sono retribuiti 1.5 della paga oraria normale. Utilizza come parametrile ore svolte nel mese, la paga oraria ed il tetto ore lavorative, oltre cui si contano gli straordinari.
+La funzione quindi deve ricevere in input un valore e restituire la stringa corrispondente in base al valore stesso.
+
+2. Usa una serie di `ifelse()` nested per creare una variabile `score_chr` con le etichette corrispondenti all'esercizio precedente.
+3. Definisci una funzione che determini se un numero è pari o dispari.
+4. Definisci una funzione che determini se un numero è un multiplo di 3, 4, o 5.
 
 ## Loop
 
 ### Scrivi un loop che:
 
-Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio `Sepal.Length (12)`. Potete usare le funzioni `print()`, `paste0()` and `nchar()`.
+Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio `Sepal.Length (12)`. Potete usare le funzioni `print()`, `paste()` and `nchar()`.
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+for(i in 1:ncol(iris)){
+    col_i <- colnames(iris)[i]
+    print(paste(col_i, "(", nchar(col_i), ")"))
+}
+```
+
+</details>
+
+### Scrivi un loop che:
+
+Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e resituisce la `media` se la colonna è numerica (ricordate le `is.*` family) oppure la tabella di frequenza (comando `table()`) se la colonna è stringa/fattore
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+for(i in 1:ncol(iris)){
+    if(is.numeric(iris[[i]])){
+        print(mean(iris[[i]]))
+    }else{
+        print(table(iris[[i]]))
+    }
+}
+```
+</details>
+
+### `*apply()`
+
+Usando la funzione più adatta dell`*apply()` family, calcola la `deviazione standard` di ogni colonna del dataset `mtcars` (lo trovate direttamente in R)
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+sapply(mtcars, sd) # perchè funziona? cosa cambia con lapply o apply?
+apply(mtcars, 2, sd)
+lapply(mtcars, sd)
+```
+
+</details>
 
 ### Popola la matrice con un `for`
 
-Popoliamo una matrice usando il ciclo `for`. La matrice ha un numero *totale* di elementi. Usando il vettore `x` che contiene il numero di elementi totali della matrice come possiamo popolare la matrice senza usare la funzione `matrix()`. La matrice è **quadrata** di dimensione 10x10:
+Popoliamo una matrice usando il ciclo `for`. La matrice ha un numero *totale* di elementi. Usando il vettore `x` che contiene il numero di elementi totali della matrice come possiamo popolare la matrice partendo da una vuota `matrix(NA, 10, 10)`. La matrice è **quadrata** di dimensione 10x10:
 
 ```{r}
 # matrice 10 x 10 quindi 100 elementi totali
-x <- rnorm(100)
+my_mat <- matrix(NA, 10, 10) # matrice vuota 10x10
 ```
+
+Suggerimento: puoi fare un doppio ciclo `for` e generare un numero casuale da inserire con `rnorm(1)`
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+Generando un numero casuale direttamente dentro il `for`
+
+```{r}
+
+for(i in 1:nrow(my_mat)){
+    for(j in 1:ncol(my_mat)){
+        my_mat[i,j] <- rnorm(1)
+    }
+}
+```
+
+</details>
 
 ## Ri-creiamo le funzioni in R
 
