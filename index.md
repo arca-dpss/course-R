@@ -9,7 +9,7 @@ R è un linguaggio di programmazione open-source che vanta una community estrema
 In questo corso di 20 ore partiremo dalla basi di R come linguaggio acquisendo competenze utili a comprendere la programmazione in generale. Verranno poi presentate le principali caratteristiche specifiche di R come i vari tipi di oggetti, le strutture dati ed anche aspetti più avanzati come la creazione di funzioni in modo da poter utilizzare poi il linguaggio in autonomia. Saranno poi accennati gli aspetti di programmazione in R che una volta acquisiti potranno essere facilmente trasferibili ad altri linguaggi e software.
 Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l’approfondimento e suggerimenti su come organizzare e ottimizzare al meglio l’utilizzo del software. 
 
-Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/https://psicostat.github.io/Introduction2R/).
+Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
 
 ## Suddivisione argomenti
 
