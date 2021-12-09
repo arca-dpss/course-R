@@ -26,6 +26,8 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = TRUE, 
                       fig.retina = 2, 
                       dpi = 300,
+                      warning = FALSE,
+                      message = FALSE,
                       fig.align = "center")
 ```
 
@@ -40,7 +42,9 @@ put_image <- function(name){
 }
 ```
 
-<!-- END HEADER --> 
+```{r packages, echo=FALSE}
+library(ggplot2)
+```
 
 class: title-slide, center, middle
 
@@ -58,7 +62,7 @@ knitr::include_graphics(path = "img/arca_logo.svg")
 
 ---
 
-# Programmazion in R
+# Programmazione in R
 
 Quello che vedremo in questa sezione sono i principali **costrutti della programmazione** e la loro applicazione in R. Ci sono alcuni punti da considerare:
 
@@ -68,11 +72,11 @@ Quello che vedremo in questa sezione sono i principali **costrutti della program
 
 ---
 
-# Programmazion in R - Disclaimer
+# Programmazione in R - Disclaimer
 
 Ci sono delle cose che per tempo e complessità non possiamo affrontare e che sono R specifiche. Per questi aspetti avanzati del linguaggio, il libro [**Advanced R**](https://adv-r.hadley.nz/) è la cosa migliore
 
-```{r}
+```{r, echo=FALSE, out.width="20%"}
 put_image("adv_R.png")
 ```
 
@@ -99,11 +103,20 @@ Analogalmente alle *funzioni matematiche* la funzione in programmazione consiste
 
 Prendiamo l'equazione di una retta: $y = 2x + 3$ dove $3$
 
-```{r}
+.pull-left[
+
+```{r, fig.width=2}
 x <- 1:10
 y <- 2*x + 3
-plot(x, y, xlim = c(0, 10), ylim = c(0, 30), type = "l")
 ```
+]
+
+.pull-right[
+```{r, echo = FALSE}
+qplot(x, y, xlim = c(0, 10), ylim = c(0, 30))
+```
+
+]
 
 ---
 # Funzioni
@@ -223,7 +236,7 @@ summary <- function(argomento){
 
 Il concetto di `se <condizione> allora fai <operazione>` si traduce in programmazione tramite quelli che si chiamano `if statement`:
 
-```{r}
+```{r, echo=FALSE, out.width="40%"}
 put_image("if_chart.png")
 ```
 
@@ -240,7 +253,7 @@ Per lavorare con gli `if statements` dobbiamo avere chiaro:
 
 Quando una sola condizione non basta...
 
-```{r}
+```{r, echo=FALSE, out.width="40%"}
 put_image("ifelse_chart.png")
 ```
 
@@ -338,7 +351,7 @@ Ci sono vari costrutti che ci permettono di ripetere operazioni:
 ---
 # For
 
-```{r}
+```{r, echo=FALSE, out.width="40%"}
 put_image("for_loop.png")
 ```
 
@@ -886,7 +899,7 @@ class: section, center, middle
 
 .pull-left[
 
-```{r}
+```{r, echo=FALSE, out.width="60%"}
 put_image("purrr.svg")
 ```
 

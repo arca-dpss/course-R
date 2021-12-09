@@ -60,7 +60,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
+<link rel="stylesheet" href="data:text/css,h1%20%7Bcolor%3A%20%239B0A14%3Bfont%2Dweight%3A%20bold%3B%7D%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7Bbackground%2Dcolor%3A%20%239B0A14%3B%7Ddetails%20%7Bfont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3Bwidth%3A%20620px%3B%7Ddetails%20%3E%20summary%20%7Bpadding%3A%202px%206px%3Bwidth%3A%2015em%3Bbackground%2Dcolor%3A%20%23ddd%3Bborder%3A%20none%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3Bcursor%3A%20pointer%3B%7Ddetails%20%3E%20p%20%7Bborder%2Dradius%3A%200%200%2010px%2010px%3Bbackground%2Dcolor%3A%20%23ddd%3Bpadding%3A%202px%206px%3Bmargin%3A%200%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3B%7Ddetails%5Bopen%5D%20%3E%20summary%20%7Bbackground%2Dcolor%3A%20%23ccf%3B%7D" type="text/css" />
 
 
 
@@ -575,8 +575,8 @@ levels(genere2) &lt;- c(&quot;donne&quot;, &quot;uomini&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Crea la variabile categoriale <code>intervento</code> così definita:</li>
 </ol>
-<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi
-## [7] Controllo   Controllo   CBT        
+<pre><code>## [1] CBT         Psicanalisi CBT         Psicanalisi CBT         Psicanalisi Controllo  
+## [8] Controllo   CBT        
 ## Levels: CBT Controllo Psicanalisi</code></pre>
 <details>
 <summary>
@@ -592,8 +592,8 @@ Vedi la soluzione proposta
 Vedi la soluzione proposta
 </summary>
 <pre class="r"><code>intervento[7:8] &lt;- &quot;Farmaci&quot;</code></pre>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;): invalid factor level,
-## NA generated</code></pre>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 7:8, value = &quot;Farmaci&quot;): invalid factor level, NA
+## generated</code></pre>
 <pre class="r"><code>levels(intervento)&lt;-c(levels(intervento), &quot;Farmaci&quot;)
 intervento[7:8]&lt;-&quot;Farmaci&quot;</code></pre>
 </details>
@@ -610,9 +610,9 @@ Vedi la soluzione proposta
 
 # cosa succede con questo e perche?
 c(intervento, c(&quot;Farmaci&quot;,&quot;Controllo&quot;,&quot;Farmaci&quot;))</code></pre>
-<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;        
-##  [7] &quot;4&quot;         &quot;4&quot;         &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;        
-## [13] &quot;Farmaci&quot;   &quot;Controllo&quot; &quot;Farmaci&quot;</code></pre>
+<pre><code>##  [1] &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;1&quot;         &quot;3&quot;         &quot;4&quot;        
+##  [8] &quot;4&quot;         &quot;1&quot;         &quot;4&quot;         &quot;2&quot;         &quot;4&quot;         &quot;Farmaci&quot;   &quot;Controllo&quot;
+## [15] &quot;Farmaci&quot;</code></pre>
 </details>
 </div>
 <div id="matrici" class="section level2" number="3.3">
@@ -762,7 +762,7 @@ x &lt;- rnorm(100)</code></pre>
 <p>Ricrea la funzione <code>sum()</code> e testala sul seguente vettore:</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 sum(x)</code></pre>
-<pre><code>## [1] 2.057108</code></pre>
+<pre><code>## [1] -0.5566283</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -781,7 +781,7 @@ Vedi la soluzione proposta
 <p>Ricrea la funzione <code>mean()</code> testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione <code>sum()</code> creata prima):</p>
 <pre class="r"><code>x &lt;- rnorm(100)
 mean(x)</code></pre>
-<pre><code>## [1] -0.08521401</code></pre>
+<pre><code>## [1] 0.08184748</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -792,16 +792,16 @@ Vedi la soluzione proposta
 }
 
 my_mean(x)</code></pre>
-<pre><code>## [1] -0.08521401</code></pre>
+<pre><code>## [1] 0.08184748</code></pre>
 <pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] -0.08521401</code></pre>
+<pre><code>## [1] 0.08184748</code></pre>
 </details>
 </div>
 <div id="median" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> <code>median()</code></h3>
 <p>La <a href="https://en.wikipedia.org/wiki/Median">mediana</a> è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un <code>if</code> per controllare queste condizioni)</p>
 <pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] -0.2060714</code></pre>
+<pre><code>## [1] 0.178834</code></pre>
 <details>
 <summary>
 Vedi la soluzione proposta
@@ -1010,28 +1010,28 @@ Vedi la soluzione proposta
 }
 
 populate_matrix(mat, x)</code></pre>
-<pre><code>##              [,1]        [,2]       [,3]        [,4]         [,5]       [,6]
-##  [1,] -1.03006967 -1.60660276 -0.6803230 -0.83448600 -0.657129326  0.6601389
-##  [2,]  3.74148967 -1.22633630 -0.7595296 -0.30946448 -0.989974658  0.7310806
-##  [3,]  0.03048241 -0.29496928 -0.3034592  1.71950832  1.061623145 -1.4728166
-##  [4,]  1.47640697  1.94332285 -2.3488522 -0.90623371 -0.172284094  0.3378743
-##  [5,] -0.84117157  0.43166894 -1.6379163 -0.29528115 -0.413412718 -0.8287971
-##  [6,]  0.40170612  1.10102542  0.8803687  0.41076530  0.002074064  0.2927993
-##  [7,] -1.07262628  0.79190078 -0.5078923 -0.06738818 -1.314377220 -0.8024414
-##  [8,] -1.22596695  0.35651681  0.6484898 -0.65624550  0.086602793  1.3354262
-##  [9,]  1.03657166 -0.06966409  0.6770276  0.30363296 -0.255094263 -0.8517425
-## [10,] -1.64619449  0.34625725  1.0553303 -0.70987645 -1.027267348  0.4407671
-##             [,7]       [,8]         [,9]      [,10]
-##  [1,]  1.1574215 -0.8745222  0.552296832  1.4005845
-##  [2,]  1.3158206  0.1904658  0.390480408 -0.1438576
-##  [3,]  0.6546747  1.4584687 -0.415760666  0.9103203
-##  [4,] -0.1311402 -1.1422845  0.681220208  1.2522799
-##  [5,] -0.9256727 -0.1493903 -0.007809496  0.4029619
-##  [6,]  2.0705062 -0.8003979 -0.375302035 -0.5817022
-##  [7,]  0.8931698 -1.1035820 -0.701878427 -0.1500040
-##  [8,]  0.9788884 -2.0842788  0.753776387 -1.1711585
-##  [9,]  1.3010681  0.5594800 -0.772928420 -0.6479342
-## [10,] -0.1066672  1.4820652  0.088467908 -1.0631696</code></pre>
+<pre><code>##              [,1]         [,2]        [,3]       [,4]        [,5]       [,6]        [,7]
+##  [1,]  0.84061571 -0.005724677 -0.24798176  2.1254419  0.54654431 -0.4161605 -1.75841120
+##  [2,] -1.02091482  0.162655050 -0.06284332 -0.5563419  0.07975643 -1.5160893 -0.73086603
+##  [3,]  1.27094177 -0.991830524  0.06834087  0.2865242 -1.18270108 -0.2472318  1.53486660
+##  [4,]  0.58192379  1.075880969  0.96332903 -1.3609829  0.38197723  0.3625272 -2.24291709
+##  [5,] -0.17784604  0.154415041 -0.27180436  0.1313460  0.04373319 -1.2731587 -1.32315822
+##  [6,]  0.08489787  0.483051039  1.23956669 -0.7967981  0.34377011  1.1535552 -1.19683001
+##  [7,] -1.64467471 -0.454020261  1.42198660 -0.8443240 -0.07720841 -1.5953301 -0.41170874
+##  [8,]  0.55706417 -1.210118994  0.63063253 -0.6753259  0.23999218  1.8122831 -0.91469978
+##  [9,]  1.99805659 -0.216098789  0.09328842  0.4424667  0.72375203 -1.3294146  1.44229105
+## [10,]  1.66046103 -0.550649039  0.89871567  1.3955715 -0.86664213  2.1487313 -0.06121907
+##              [,8]         [,9]      [,10]
+##  [1,] -0.52414306 -0.809671804  0.2357185
+##  [2,]  0.08798285  1.311767750  0.1093917
+##  [3,] -0.72408594  1.411555688  0.2959581
+##  [4,] -0.63544237  1.327257475  2.7318514
+##  [5,] -0.91026652 -1.231367833 -0.5175777
+##  [6,]  0.19716773 -1.077510362  0.5730928
+##  [7,] -1.00476078 -0.233259128 -0.1968892
+##  [8,]  0.72890003 -1.184563276 -1.3456141
+##  [9,] -0.12430307  0.585663451  0.6241070
+## [10,]  1.22542144 -0.007500876  0.2953017</code></pre>
 </details>
 </div>
 </div>

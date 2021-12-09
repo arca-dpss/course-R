@@ -60,7 +60,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="data:text/css,h1%20%7B%0Acolor%3A%20%239B0A14%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7B%0Abackground%2Dcolor%3A%20%239B0A14%3B%0A%7D%0Adetails%20%7B%0Afont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3B%0Awidth%3A%20620px%3B%0A%7D%0Adetails%20%3E%20summary%20%7B%0Apadding%3A%202px%206px%3B%0Awidth%3A%2015em%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Aborder%3A%20none%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0Acursor%3A%20pointer%3B%0A%7D%0Adetails%20%3E%20p%20%7B%0Aborder%2Dradius%3A%200%200%2010px%2010px%3B%0Abackground%2Dcolor%3A%20%23ddd%3B%0Apadding%3A%202px%206px%3B%0Amargin%3A%200%3B%0Abox%2Dshadow%3A%203px%203px%204px%20black%3B%0A%7D%0Adetails%5Bopen%5D%20%3E%20summary%20%7B%0Abackground%2Dcolor%3A%20%23ccf%3B%0A%7D" type="text/css" />
+<link rel="stylesheet" href="data:text/css,h1%20%7Bcolor%3A%20%239B0A14%3Bfont%2Dweight%3A%20bold%3B%7D%2Elist%2Dgroup%2Ditem%2Eactive%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Afocus%2C%20%2Elist%2Dgroup%2Ditem%2Eactive%3Ahover%20%7Bbackground%2Dcolor%3A%20%239B0A14%3B%7Ddetails%20%7Bfont%3A%2016px%20%22Open%20Sans%22%2C%20Calibri%2C%20sans%2Dserif%3Bwidth%3A%20620px%3B%7Ddetails%20%3E%20summary%20%7Bpadding%3A%202px%206px%3Bwidth%3A%2015em%3Bbackground%2Dcolor%3A%20%23ddd%3Bborder%3A%20none%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3Bcursor%3A%20pointer%3B%7Ddetails%20%3E%20p%20%7Bborder%2Dradius%3A%200%200%2010px%2010px%3Bbackground%2Dcolor%3A%20%23ddd%3Bpadding%3A%202px%206px%3Bmargin%3A%200%3Bbox%2Dshadow%3A%203px%203px%204px%20black%3B%7Ddetails%5Bopen%5D%20%3E%20summary%20%7Bbackground%2Dcolor%3A%20%23ccf%3B%7D" type="text/css" />
 
 
 
@@ -246,7 +246,7 @@ div.tocify {
 
 
 <pre class="r"><code>devtools::load_all()</code></pre>
-<pre><code>## ℹ Loading corsoR</code></pre>
+<pre><code>## i Loading corsoR</code></pre>
 <div id="introduzione" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Introduzione</h1>
 <p>Per operazioni semplici o per esercizi si possono creare strutture dati come <code>vettori</code>, <code>liste</code> o <code>dataframe</code> direttamente in R. Tuttavia per lavorare con R è solito <strong>importare</strong> i dati da fonti esterne come file e database.</p>
@@ -435,7 +435,7 @@ my_csv</code></pre>
 <p>Il pacchetto <a href="https://readxl.tidyverse.org/"><code>readxl</code></a> con le funzioni <code>readxl::read_excel()</code>, <code>readxl::read_xls()</code> e <code>readxl::read_xlsx()</code>. Rispetto ai <code>csv</code> i file Excel sono più complessi e permettono di avere più “fogli”. Queste funzioni permettono anche di importare un foglio specifico (argomento <code>sheet =</code>) oppure un range specifico nel foglio di destinazione (argomento <code>range =</code>) Excel identifica infatti le righe in modo numerico <code>1,2,3,4...</code> e le colonne con le lettere dell’alfabeto in modo progressivo <code>A, B, C ...</code></p>
 <pre class="r"><code>my_excel &lt;- readxl::read_xlsx(&quot;data/excel_example.xlsx&quot;, range = &quot;A1:D10&quot;)
 my_excel</code></pre>
-<pre><code>## # A tibble: 9 × 4
+<pre><code>## # A tibble: 9 x 4
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width
 ##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
 ## 1          5.1         3.5          1.4         0.2
@@ -454,7 +454,7 @@ my_excel</code></pre>
 <p>Il formato <code>.sav</code> è specifico del software SPSS e può essere gestito con il pacchetto <a href="https://haven.tidyverse.org/"><code>haven</code></a> che permette di leggere e scrivere file in questo formato. In questo caso, in modo simile all’excel, non ci sono particolari opzioni per leggere/scrivere se non specificare il percorso del file.</p>
 <pre class="r"><code>my_sav &lt;- haven::read_sav(file = &quot;data/sav_example.sav&quot;)
 my_sav</code></pre>
-<pre><code>## # A tibble: 150 × 5
+<pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl+lbl&gt;
 ##  1          5.1         3.5          1.4         0.2 1 [setosa]
@@ -467,7 +467,7 @@ my_sav</code></pre>
 ##  8          5           3.4          1.5         0.2 1 [setosa]
 ##  9          4.4         2.9          1.4         0.2 1 [setosa]
 ## 10          4.9         3.1          1.5         0.1 1 [setosa]
-## # … with 140 more rows</code></pre>
+## # ... with 140 more rows</code></pre>
 </div>
 </div>
 <div id="elementi-comuni" class="section level2" number="1.6">
@@ -482,30 +482,30 @@ my_sav</code></pre>
 my_iris &lt;- put_random_na(my_iris, 10)
 my_iris</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1            NA          NA          1.4         0.2    &lt;NA&gt;
+## 1           5.1          NA          1.4         0.2  setosa
 ## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3          NA    &lt;NA&gt;
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5            NA         3.6          1.4          NA  setosa
+## 3           4.7          NA          1.3         0.2  setosa
+## 4           4.6         3.1           NA         0.2  setosa
+## 5           5.0          NA          1.4         0.2  setosa
 ## 6            NA         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4           NA         0.2  setosa
-## 9            NA         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+## 7           4.6         3.4          1.4          NA  setosa
+## 8           5.0         3.4          1.5         0.2    &lt;NA&gt;
+## 9            NA         2.9          1.4         0.2    &lt;NA&gt;
+## 10          4.9         3.1          1.5          NA  setosa</code></pre>
 <p>Ora scriviamo il file come <code>csv</code> specificando un certo tipo di stringa per gli <code>NA</code>:</p>
 <pre class="r"><code>write.csv(my_iris, file = &quot;data/na_csv_example.csv&quot;, na = &quot;NA&quot;, row.names = FALSE)</code></pre>
 <p>Ora vediamo il risultato:</p>
 <pre><code>&quot;Sepal.Length&quot;,&quot;Sepal.Width&quot;,&quot;Petal.Length&quot;,&quot;Petal.Width&quot;,&quot;Species&quot;
-NA,NA,1.4,0.2,NA
+5.1,NA,1.4,0.2,&quot;setosa&quot;
 4.9,3,1.4,0.2,&quot;setosa&quot;
-4.7,3.2,1.3,NA,NA
-4.6,3.1,1.5,0.2,&quot;setosa&quot;
-NA,3.6,1.4,NA,&quot;setosa&quot;
+4.7,NA,1.3,0.2,&quot;setosa&quot;
+4.6,3.1,NA,0.2,&quot;setosa&quot;
+5,NA,1.4,0.2,&quot;setosa&quot;
 NA,3.9,1.7,0.4,&quot;setosa&quot;
-4.6,3.4,1.4,0.3,&quot;setosa&quot;
-5,3.4,NA,0.2,&quot;setosa&quot;
-NA,2.9,1.4,0.2,&quot;setosa&quot;
-4.9,3.1,1.5,0.1,&quot;setosa&quot;</code></pre>
+4.6,3.4,1.4,NA,&quot;setosa&quot;
+5,3.4,1.5,0.2,NA
+NA,2.9,1.4,0.2,NA
+4.9,3.1,1.5,NA,&quot;setosa&quot;</code></pre>
 <p>Come vedete abbiamo il dataset e in mezzo dei valori <code>NA</code>. Proviamo a immaginare di non aver creato questo file e dobbiamo importarlo per la prima volta in R:</p>
 <pre class="r"><code>my_csv &lt;- read.csv(file = &quot;data/na_csv_example.csv&quot;, header = TRUE)
 sapply(my_csv, typeof)</code></pre>
@@ -515,30 +515,30 @@ sapply(my_csv, typeof)</code></pre>
 <pre class="r"><code>write.csv(my_iris, file = &quot;data/na_csv_example.csv&quot;, na = &quot;NO&quot;, row.names = FALSE)</code></pre>
 <p>Ora gli <code>NA</code> sono rappresentati come <code>NO</code>:</p>
 <pre><code>&quot;Sepal.Length&quot;,&quot;Sepal.Width&quot;,&quot;Petal.Length&quot;,&quot;Petal.Width&quot;,&quot;Species&quot;
-NO,NO,1.4,0.2,NO
+5.1,NO,1.4,0.2,&quot;setosa&quot;
 4.9,3,1.4,0.2,&quot;setosa&quot;
-4.7,3.2,1.3,NO,NO
-4.6,3.1,1.5,0.2,&quot;setosa&quot;
-NO,3.6,1.4,NO,&quot;setosa&quot;
+4.7,NO,1.3,0.2,&quot;setosa&quot;
+4.6,3.1,NO,0.2,&quot;setosa&quot;
+5,NO,1.4,0.2,&quot;setosa&quot;
 NO,3.9,1.7,0.4,&quot;setosa&quot;
-4.6,3.4,1.4,0.3,&quot;setosa&quot;
-5,3.4,NO,0.2,&quot;setosa&quot;
-NO,2.9,1.4,0.2,&quot;setosa&quot;
-4.9,3.1,1.5,0.1,&quot;setosa&quot;</code></pre>
+4.6,3.4,1.4,NO,&quot;setosa&quot;
+5,3.4,1.5,0.2,NO
+NO,2.9,1.4,0.2,NO
+4.9,3.1,1.5,NO,&quot;setosa&quot;</code></pre>
 <p>Infatti se importiamo con la stessa funzione abbiamo un risultato strano:</p>
 <pre class="r"><code>my_csv &lt;- read.csv(file = &quot;data/na_csv_example.csv&quot;, header = TRUE)
 my_csv</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1            NO          NO          1.4         0.2      NO
+## 1           5.1          NO          1.4         0.2  setosa
 ## 2           4.9           3          1.4         0.2  setosa
-## 3           4.7         3.2          1.3          NO      NO
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5            NO         3.6          1.4          NO  setosa
+## 3           4.7          NO          1.3         0.2  setosa
+## 4           4.6         3.1           NO         0.2  setosa
+## 5             5          NO          1.4         0.2  setosa
 ## 6            NO         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8             5         3.4           NO         0.2  setosa
-## 9            NO         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+## 7           4.6         3.4          1.4          NO  setosa
+## 8             5         3.4          1.5         0.2      NO
+## 9            NO         2.9          1.4         0.2      NO
+## 10          4.9         3.1          1.5          NO  setosa</code></pre>
 <pre class="r"><code>sapply(my_csv, typeof)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##  &quot;character&quot;  &quot;character&quot;  &quot;character&quot;  &quot;character&quot;  &quot;character&quot;</code></pre>
@@ -546,16 +546,16 @@ my_csv</code></pre>
 <pre class="r"><code>my_csv &lt;- read.csv(file = &quot;data/na_csv_example.csv&quot;, header = TRUE, na.strings = &quot;NO&quot;)
 my_csv</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1            NA          NA          1.4         0.2    &lt;NA&gt;
+## 1           5.1          NA          1.4         0.2  setosa
 ## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3          NA    &lt;NA&gt;
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5            NA         3.6          1.4          NA  setosa
+## 3           4.7          NA          1.3         0.2  setosa
+## 4           4.6         3.1           NA         0.2  setosa
+## 5           5.0          NA          1.4         0.2  setosa
 ## 6            NA         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4           NA         0.2  setosa
-## 9            NA         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+## 7           4.6         3.4          1.4          NA  setosa
+## 8           5.0         3.4          1.5         0.2    &lt;NA&gt;
+## 9            NA         2.9          1.4         0.2    &lt;NA&gt;
+## 10          4.9         3.1          1.5          NA  setosa</code></pre>
 <pre class="r"><code>sapply(my_csv, typeof)</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##     &quot;double&quot;     &quot;double&quot;     &quot;double&quot;     &quot;double&quot;  &quot;character&quot;</code></pre>
