@@ -39,3 +39,7 @@ vignettes/*.pdf
 .Renviron
 
 local/
+
+# Jekyll
+
+_site/
