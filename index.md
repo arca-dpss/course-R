@@ -1,11 +1,9 @@
 ---
-course_title: nome corso
-author_name: Author name
+course_title: Introduzione a R
+author_name: Filippo Gambarota
 ---
 
-# Introduzione a R
-
-## Il corso in breve
+# Il corso in breve
 
 Nel mondo accademico il panorama del software open-source e riproducibile si sta consolidando come la modalità di lavoro più professionale e avanzata. Allo stesso tempo, per poter usare questi strumenti, sono richieste competenze come basi di programmazione e la flessibilità a imparare diversi linguaggi e software. Uno dei più potenti e versatili linguaggi nell’ambito accademico ed anche aziendale è sicuramente R. 
 
@@ -16,38 +14,38 @@ Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l
 
 Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
 
-## Suddivisione argomenti
+# Suddivisione argomenti
 
-### Introduzione all’ambiente di lavoro in R.
+## Introduzione all’ambiente di lavoro in R.
 
 In questa giornata verrà introdotto il software R dall’installazione per i vari sistemi operativi alla spiegazione e organizzazione di come gestire una sessione di lavoro.
 
-### Strutture dati e manipolazione di oggetti
+## Strutture dati e manipolazione di oggetti
 
 In questa giornata verranno introdotte le principali strutture dati che compongono il linguaggio R e le modalità per interagire in modo avanzato con esse.
 
-### Introduzione alla programmazione in R
+## Introduzione alla programmazione in R
 
 In questa giornata verranno introdotti i principali costrutti della programmazione (operazioni condizionali, iterazioni e funzioni) e la loro implementazione in R.
 
-### Sviluppo di un progetto in R e cenni ad elementi avanzati del linguaggio
+## Sviluppo di un progetto in R e cenni ad elementi avanzati del linguaggio
 
 In questa giornata verranno introdotti alcuni aspetti trasversali utili per un utilizzo moderno e avanzato del linguaggio R. Inoltre verrà sviluppato individ- ualmente un progetto che comprenda organizzazione della sessione di lavoro e applicazione dei principali elementi del linguaggio.
 
-## Link importanti
+# Link importanti
 
 - Cartella condivisa Google Drive - [Link](https://drive.google.com/drive/u/0/folders/1jZKbaMfseJEg7wyIFMhE7Q92rROo3Rqo)
 - Lavagna condivisa [Link](https://jamboard.google.com/d/1ZS43_2ujqWtCbT-tG7iGzM_62TUO4Dm2rg3mJW0akoA)
 - Documento condiviso per esercizi - [Link](https://textb.org/t/arca-corsoR/)
 - Cartella Dati - [Download Link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/filippogambarota/corsoR/tree/main/exercises/data)
 
-## Questionario Valutazione
+# Questionario Valutazione
 
 A questo [link](https://docs.google.com/forms/d/e/1FAIpQLSf_fvSZSwWV-WpzlAASOeRUE0TRAizjWjy5WlKLtw712ttRLQ/viewform) potete trovare il questionario di valutazione del corso. E' molto importante per me e per i corsi futuri in modo da migliorarlo al massimo.
 
-## Materiale
+# Materiale
 
-### Slides lezioni
+## Slides lezioni
 
 Questi sono i link alle principali slide del corso:
 
@@ -56,14 +54,14 @@ Questi sono i link alle principali slide del corso:
 - **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
 - **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
 
-### Esercizi
+## Esercizi
 
 In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:
 
 - Esercizi - [file](exercises/esercizi.html)
 - Datasets - [Cartella](https://drive.google.com/drive/folders/1coRNAu1E6o_bLeXb4C9Tw1orLgs-enbF?usp=sharing)
 
-### Argomenti extra
+## Argomenti extra
 
 In questa sezione ci sono alcuni argomenti extra che possono essere utili nel lavoro in R. Oltre ad una breve descrizione ci sono sempre dei riferimenti utili:
 
@@ -74,7 +72,7 @@ In questa sezione ci sono alcuni argomenti extra che possono essere utili nel la
 - **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/filippogambarota_slides/tidyverse_presentation/tidyverse_presentation.html)
 - **Manipolare Stringhe** - [Capitolo 16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R
 
-## Errori libro `Introduzione a R`
+# Errori libro `Introduzione a R`
 
 Quando aumenta la quantità delle cose da scrivere aumenta (tantissimo 😱) la quantità di errori, inconsistenze e così via. Lo scopo di questo documento è di **raccogliere e sistemare tutti gli errori che nel tempo si trovano**.
 
