@@ -1,3 +1,8 @@
+---
+course_title: nome corso
+author_name: Author name
+---
+
 # Introduzione a R
 
 ## Il corso in breve
