@@ -8,7 +8,7 @@ output:
   xaringan::moon_reader:
     self_contained: true
     seal: false
-    css: ["resources/arca.css", "resources/arca_fonts.css"]
+    css: ["../style/arca.css", "../style/arca_fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: googlecode
@@ -20,11 +20,6 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-
-put_image <- function(name){
- img <- file.path("img", name)
- knitr::include_graphics(img)
-}
 ```
 
 ```{r slide-setup, include=FALSE}
@@ -43,7 +38,6 @@ class: title-slide, center, middle
 ```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
-
 
 ###.location[Corsi ARCA - @DPSS]
 
@@ -68,7 +62,7 @@ class: section, center, middle
 Tutti voi avete presente un foglio di calcolo:
 
 ```{r, echo = FALSE, out.width="80%"}
-put_image("foglio_excel.png")
+knitr::include_graphics("img/foglio_excel.png")
 ```
 
 ---
@@ -107,7 +101,7 @@ class: section, center, middle
 ---
 
 ```{r, echo = FALSE}
-put_image("vectors_diagram.svg")
+knitr::include_graphics("img/vectors_diagram.svg")
 ```
 
 ---
@@ -125,7 +119,7 @@ I vettori (**atomic**) sono una struttura dati *unidimensionale* e sono la più 
 # Vettori
 
 ```{r, echo = FALSE}
-put_image("vector.png")
+knitr::include_graphics("img/vector.png")
 ```
 
 ---
@@ -323,7 +317,7 @@ class: section, center, middle
 I fattori sono una tipologia di dato peculiare e per quanto simile a semplici `characters` in realtà sono un tipo di vettore `integer` con delle proprietà aggiuntive.
 
 ```{r, echo = FALSE}
-put_image("factors.png")
+knitr::include_graphics("img/factors.png")
 ```
 
 ---
@@ -391,7 +385,7 @@ La lista è una generalizzazione dell' **atomic vector** dove:
 - sono una struttura dati *unidimensionale* ma possono svilupparsi in **profondità** (ci arriviamo)
 
 ```{r, echo=FALSE}
-put_image("list_vs_vector.svg")
+knitr::include_graphics("img/list_vs_vector.svg")
 ```
 
 ---
@@ -400,7 +394,7 @@ put_image("list_vs_vector.svg")
 .pull-left[
 
 ```{r, echo = FALSE, out.width="70%"}
-put_image("list_example.png")
+knitr::include_graphics("img/list_example.png")
 ```
 
 ]
@@ -408,7 +402,7 @@ put_image("list_example.png")
 .pull-right[
 
 ```{r, echo = FALSE, out.width="80%"}
-put_image("list_depth.png")
+knitr::include_graphics("img/list_depth.png")
 ```
 
 ]
@@ -632,7 +626,7 @@ Se per i vettori possiamo unire elementi con `c(1,2,3)` o unire vettori `c(vec1,
 e `rowbind()`:
 
 ```{r, echo=FALSE, out.width="80%"}
-put_image("matrix_comb.svg")
+knitr::include_graphics("img/matrix_comb.svg")
 ```
 ---
 # Extra: Array

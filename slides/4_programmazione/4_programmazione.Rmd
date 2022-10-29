@@ -8,7 +8,7 @@ output:
   xaringan::moon_reader:
     self_contained: true
     seal: false
-    css: ["resources/arca.css", "resources/arca_fonts.css"]
+    css: ["../style/arca.css", "../style/arca_fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -29,17 +29,6 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
                       message = FALSE,
                       fig.align = "center")
-```
-
-```{r variables, include=FALSE}
-year <- format(Sys.time(), "%Y")
-```
-
-```{r functions, include=FALSE}
-put_image <- function(name){
- img <- file.path("img", name)
- knitr::include_graphics(img)
-}
 ```
 
 ```{r packages, echo=FALSE}
@@ -77,7 +66,7 @@ Quello che vedremo in questa sezione sono i principali **costrutti della program
 Ci sono delle cose che per tempo e complessità non possiamo affrontare e che sono R specifiche. Per questi aspetti avanzati del linguaggio, il libro [**Advanced R**](https://adv-r.hadley.nz/) è la cosa migliore
 
 ```{r, echo=FALSE, out.width="20%"}
-put_image("adv_R.png")
+knitr::include_graphics("img/adv_R.png")
 ```
 
 ---
@@ -237,7 +226,7 @@ summary <- function(argomento){
 Il concetto di `se <condizione> allora fai <operazione>` si traduce in programmazione tramite quelli che si chiamano `if statement`:
 
 ```{r, echo=FALSE, out.width="40%"}
-put_image("if_chart.png")
+knitr::include_graphics("img/if_chart.png")
 ```
 
 ---
@@ -254,7 +243,7 @@ Per lavorare con gli `if statements` dobbiamo avere chiaro:
 Quando una sola condizione non basta...
 
 ```{r, echo=FALSE, out.width="40%"}
-put_image("ifelse_chart.png")
+knitr::include_graphics("img/ifelse_chart.png")
 ```
 
 ---
@@ -310,7 +299,7 @@ my_summary(x)
 
 Un limite di usare gli `if statements` riguarda il fatto che funzionano solo su un singolo valore (i.e. non sono **vettorizzati**):
 
-```{r}
+```{r, error = TRUE}
 x <- 1:10
 if(x < 5){
     print("x è minore di 5")
@@ -405,7 +394,7 @@ Ci sono vari costrutti che ci permettono di ripetere operazioni:
 # For
 
 ```{r, echo=FALSE, out.width="40%"}
-put_image("for_loop.png")
+knitr::include_graphics("img/for_loop.png")
 ```
 
 ---
@@ -953,7 +942,7 @@ class: section, center, middle
 .pull-left[
 
 ```{r, echo=FALSE, out.width="60%"}
-put_image("purrr.svg")
+knitr::include_graphics("img/purrr.svg")
 ```
 
 ]

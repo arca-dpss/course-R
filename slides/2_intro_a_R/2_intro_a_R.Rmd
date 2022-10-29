@@ -8,7 +8,7 @@ output:
   xaringan::moon_reader:
     self_contained: true
     seal: false
-    css: ["resources/arca.css", "resources/arca_fonts.css"]
+    css: ["../style/arca.css", "../style/arca_fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -31,17 +31,6 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```{r packages, include = FALSE}
 library(kableExtra)
-```
-
-```{r variables, include=FALSE}
-year <- format(Sys.time(), "%Y")
-```
-
-```{r functions, include=FALSE}
-put_image <- function(name){
- img <- file.path("img", name)
- knitr::include_graphics(img)
-}
 ```
 
 class: title-slide, center, middle
@@ -81,7 +70,7 @@ class: section, center, middle
 # Console
 
 ```{r, echo = FALSE, out.width="90%"}
-put_image("R_console.png")
+knitr::include_graphics("img/R_console.png")
 ```
 
 ---
@@ -293,10 +282,9 @@ T <- 2 # attenzione
 ---
 # Dove viene creato l'oggetto?
 
-Il legame `nome-oggetto` viene creato nel **global environment** e rimane *salvato* per tutta a sessione di utilizzo. Potete visualizzare l'environment in RStudio oppure usando il comando `ls()`:
 
 ```{r, echo = FALSE, out.width="90%"}
-put_image("obj_environment.png")
+knitr::include_graphics("img/obj_environment.png")
 ```
 
 ---
@@ -445,7 +433,7 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 
 .pull-left[
 ```{r, out.width="70%", echo = FALSE}
-put_image("bad_question.png")
+knitr::include_graphics("img/bad_question.png")
 ```
 ]
 
@@ -453,7 +441,7 @@ put_image("bad_question.png")
 
 .pull-right[
 ```{r, out.width="70%", echo = FALSE}
-put_image("bad_question_after.png")
+knitr::include_graphics("img/bad_question_after.png")
 ```
 ]
 

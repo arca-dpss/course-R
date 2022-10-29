@@ -1,5 +1,5 @@
 ---
-title: 'Introduzione al corso'
+title: 'Introduzione a R'
 subtitle: ""
 author: ""
 institute: ""
@@ -8,14 +8,14 @@ output:
   xaringan::moon_reader:
     self_contained: true
     seal: false
-    css: ["resources/arca.css", "resources/arca_fonts.css"]
+    css: ["../style/arca.css", "../style/arca_fonts.css"]
     lib_dir: libs
     nature:
-        highlightStyle: github
-        highlightLines: true
-        highlightLanguage: ["r"]
-        countIncrementalSlides: false
-        ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      ratio: "16:9"
 ---
 
 ```{r setup, include=FALSE}
@@ -26,20 +26,10 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(echo = FALSE, 
                       fig.retina = 2, 
                       dpi = 300,
+                      sdev = "svg",
                       warning = FALSE,
                       message = FALSE,
                       fig.align = "center")
-```
-
-```{r variables, include=FALSE}
-year <- format(Sys.time(), "%Y")
-```
-
-```{r functions, include=FALSE}
-put_image <- function(name){
- img <- file.path("img", name)
- knitr::include_graphics(img)
-}
 ```
 
 ```{r packages}
@@ -50,13 +40,13 @@ class: title-slide, center, middle
 
 #.title[Introduzione a R]
 
-<br/>
+#.subtitle[Giornata 1]
 
-```{r, out.width="20%", echo = FALSE}
+```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
-#.subtitle[Giornata 1]
+###.location[Corsi ARCA - @DPSS]
 
 ###.author[Filippo Gambarota]
 
