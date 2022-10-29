@@ -4,6 +4,7 @@ output:
     bookdown::html_document2:
         toc: true
         toc_float: true
+        code_download: true
 css: ["../files/css/course_html.css"]
 ---
 

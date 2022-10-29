@@ -4,12 +4,14 @@ output:
     bookdown::html_document2:
         toc: true
         toc_float: true
+        code_download: true
 css: ["../files/css/course_html.css"]
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
-                      warning = FALSE, 
+                      warning = FALSE,
+                      message = FALSE,
                       fig.align = "center", 
                       fig.retina = 2, 
                       dpi = 300)
@@ -36,7 +38,6 @@ RStudio permette di importare qualsiasi tipo di dato tramite interfaccia grafica
 ```{r rstudio-import, fig.cap="Menù di importazione dati di RStudio", out.width="50%"}
 knitr::include_graphics("img/rstudio_import.png")
 ```
-
 
 ## Tipi di formato
 
@@ -208,7 +209,7 @@ Immaginiamo di avere il dataset `my_iris` con dei valori `NA`:
 
 ```{r}
 my_iris <- iris[1:10, ]
-my_iris <- put_random_na(my_iris, 10)
+my_iris <- filor::put_random_na(my_iris, 10)
 my_iris
 ```
 
