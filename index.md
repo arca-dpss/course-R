@@ -52,7 +52,7 @@ Questi sono i link al materiale principale del corso:
 - **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
 - **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
 - **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
-- **Problem Solving in R** - [Link](R_problem_solving.html)
+- **Problem Solving in R** - [Link](extra/R_problem_solving.html)
 
 ## Esercizi
 
