@@ -15,9 +15,11 @@ knitr::opts_chunk$set(
 
 <img align="right" width="150" height="150" src="files/arca_logo.svg">
 
-# corsoR
+# course-R
 
 <!-- badges: start -->
+![Github
+Pages](https://github.com/filippogambarota/cv/actions/workflows/pages/pages-build-deployment/badge.svg?branch=master)
 <!-- badges: end -->
 
 # ARCA (Applied Research Courses Academy)
@@ -26,6 +28,6 @@ I corsi ARCA sono dei corsi avanzati e fortemente applicativi riguardo gli strum
 
 # ARCA - Introduzione a R
 
-Questa è la repository principale del corso dove ci saranno tutte le informazioni, slides, link e materiale. Per consultare direttamente il materiale è possibile accedere al sito del corso [filippogambarota/corsoR](https://filippogambarota.github.io/corsoR)
+Questa è la repository principale del corso dove ci saranno tutte le informazioni, slides, link e materiale. Per consultare direttamente il materiale è possibile accedere al sito del corso [arca-dpss/course-R](https://arca-dpss.github.io/course-R/)
 
 Il principale materiale di riferimento è il libro: [Introduzione a R](https://psicostat.github.io/Introduction2R/). Il libro, in costante aggiornamento e miglioramento, è disponibile online ed è interamente open-source.
