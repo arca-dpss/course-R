@@ -1,0 +1,288 @@
+---
+title: "R for Problem Solving"
+author: "Filippo Gambarota"
+output: 
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+        code_download: true
+css: ["../files/css/course_html.css"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+# R for Problem Solving
+
+Quando si comincia ad entrare nell'ottica della programmazione e data manipulation, si possono risolvere molti problemi concreti in modo creativo, riproducibile e anche efficiente. Generalmente ci sono due modi di affrontare problemi concreti nella vita accademica di tutti i giorni:
+
+- **one-shot**
+- **take your time**
+
+Il modo **one-shot** è quello (apparentemente) più rapido, immediato e (apparentemente) efficiente. Ad esempio:
+
+> Questionario somministrato a 100 persone. Scarico i dati dalla piattaforma di somministrazione ed eseguo delle operazioni manualmente (ricodifica item, eliminare delle righe/colonne).
+
+- **Pros**: concludo in poco tempo il lavoro (dipende sempre dal lavoro)
+- **Cons**: Se i dati in input cambiano o aumentano devo ricominciare
+- **Probabilità di errori**: alta
+
+Il metodo **take your time** prevede di investire anche molto tempo per capire il problema, sviluppare una soluzione riproducibile (ed eventualmente applicabile anche altre volte) e poi applicarla indipendentemente dall'input.
+
+- **Pros**: in caso di errori o cambiamenti non devo rifare nulla
+- **Cons**: devo saperlo fare e investire più tempo inizialmente
+- **Probabilità di errori**: bassa (o comunque controllabile)
+
+# Correlazioni in sottogruppi
+
+Un altro problema che spesso si incontra è quello di applicare operazioni, manipolazioni o statistiche a solo un sotto-gruppo di elementi di un dataset. In questo caso l'idea è di partire con un dataframe ben organizzato per poi selezionare solo le righe/colonne che ci interessano. Facciamo un esempio di un ipotetico dataframe con 4 gruppi, e 4 variabili da correlare:
+
+```{r}
+# simuliamo i dati
+ngroups <- 4
+nsample <- 20
+cordat_long <- faux::rnorm_multi(ngroups * nsample, mu = c(0, 0, 0, 0), sd = 1, r = 0.7)
+names(cordat_long) <- paste0("y", 1:4)
+
+# creiamo i gruppi
+cordat_long$group <- rep(c("g1", "g2", "g3", "g4"), each = nsample) # colonna che identifica il gruppo
+cordat_long$id <- rep(1:nsample, ngroups) # colonna che identifica il soggetto dentro il gruppo
+head(cordat_long)                                                                                                                                                  
+```
+
+Quello che abbiamo creato è un dataframe in forma lunga o *long* e consiste nell'avere le variabili **dipendenti** come colonne separate e quelle **indipendenti** organizzate in riga. In altri termini abbiamo ogni riga come 1 osservazione e la colonna gruppo come unica. L'alternativa è usare il formato *wide* (sconsigliato in questo caso):
+
+```{r}
+cordat_wide <- tidyr::pivot_wider(cordat_long, names_from = group, values_from = c(y1, y2, y3, y4))
+head(cordat_wide)
+```
+
+Seppur il formato *wide* possa sembrare più intuitivo, la maggior parte dei pacchetti per fare analisi, grafici o altro lavora meglio se il dataframe è in formato *long*. Forse l'unico caso dove il formato *wide* è consigliato è lavorare con le correlazioni MA in questo caso visto che ci sono 4 gruppi e diverse variabili è comunque meglio quello *long*. Ma vediamo la soluzione in entrambi i casi.
+
+Il risultato che vogliamo ottenere è quello di calcolare una matrice di correlazione tra le 4 variabili dipendenti indipendentemente per ogni sottogruppo di partecipanti. Il modo più semplice è quello di fare un `subset` del nostro dataframe e applicare la funzione `cor` o qualsiasi altra operazione.
+
+```{r}
+cor(cordat_long[cordat_long$group == "g1", c("y1", "y2", "y3", "y4")])
+cor(cordat_long[cordat_long$group == "g2", c("y1", "y2", "y3", "y4")])
+cor(cordat_long[cordat_long$group == "g3", c("y1", "y2", "y3", "y4")])
+cor(cordat_long[cordat_long$group == "g4", c("y1", "y2", "y3", "y4")])
+```
+
+In questo caso stiamo ripetendo molto codice ma il principio è lo stesso. Applicare la funzione `cor` ad ogni sottogruppo. Possiamo per esempio renderlo più efficiente usando una procedura iterativa come un `for` oppure una funzione `*apply`.
+Vediamo la soluzione con `for`:
+
+```{r}
+var_for_cor <- c("y1", "y2", "y3", "y4") # per convenienza metto le colonne da considerare qui
+cormats <- vector(mode = "list", length = length(unique(cordat_long$group))) # inizializzo una lista vuota per essere più efficiente
+
+# itero per la lunghezza di cormats che equivale a quanti gruppi abbiamo e applico la funzione cor selezionando un gruppo alla volta
+for(i in 1:length(cormats)){
+    cormats[[i]] <- cor(cordat_long[cordat_long$group == unique(cordat_long$group)[i], var_for_cor])
+}
+```
+
+Vediamo la soluzione con `lapply` ragionando in modo simile al `for`:
+
+```{r}
+# non serve inizializzare perchè lo fa già internamente. Itero su un vettore con i valori dei gruppi e seleziono
+cormats <- lapply(unique(cordat_long$group), function(group) cor(cordat_long[cordat_long$group == group, var_for_cor]))
+cormats
+```
+
+Vediamo la soluzione con `lapply` ma in modo ancora più compatto usando la funzione `?split` per scomporre i dataframe fuori dalla funzione iterativa:
+
+```{r}
+cordat_long_split <- split(cordat_long, cordat_long$group)
+cormats <- lapply(cordat_long_split, function(x) cor(x[, var_for_cor]))
+cormats
+```
+
+L'ultima soluzione è quella che ritengo migliore in termini di chiarezza ed efficienza. Proviamo ora a ragionare sul dataframe `wide`. Qui non abbiamo la possibilità di scomporre il dataframe nei gruppi in base alle righe (per questo è sempre meglio usare la versione `long`) ma tutto si basa sulla selezione di colonne che per molti versi è meno intuitiva ed automatica di quella di righe.
+
+L'idea è quella di identificare le colonne in base ai nomi (è quindi sempre fondamentale dare nomi consistenti e significativi). Le colonne del gruppo "g1" finiscono sempre per `_g1` e così per tutti i gruppi. Possiamo usare la funzione `endsWith` che prende una stringa ed un pattern e fornisce `TRUE` quando la stringa finisce con il pattern che abbiamo selezionato.
+
+```{r}
+endsWith(colnames(cordat_wide), "g1")
+
+cor(cordat_wide[, endsWith(colnames(cordat_wide), "g1")])
+cor(cordat_wide[, endsWith(colnames(cordat_wide), "g2")])
+cor(cordat_wide[, endsWith(colnames(cordat_wide), "g3")])
+cor(cordat_wide[, endsWith(colnames(cordat_wide), "g4")])
+
+cormats <- lapply(c("g1", "g2", "g3", "g4"), function(x) cor(cordat_wide[endsWith(colnames(cordat_wide), x)]))
+```
+
+Seppur efficace trovo molto meno intuitivo ragionare in termini di colonne che di righe. Ma comunque entrambe le soluzioni portano allo stesso risultato.
+
+# Complex filtering
+
+Spesso negli esperimenti dobbiamo escludere dei trial in base a condizioni semplici (giusto o sbagliato) o condizioni più complesse che dipendono anche da informazioni di altri trial o condizioni. Ad esempio, una modalità comune in esperimenti da laboratorio che indagano prestazioni di Working Memory è quella di analizzare non solo i trial corretti ma anche quelli corretti preceduti da un trial corretto. In altri termini eliminare i trial sbagliati o corretti ma preceduti da trial sbagliati. Un esperimento comune con 30 soggetti può arrivare anche ad avere 1000 trial per soggetto rendendo l'opzione *manuale* non solo sconsigliata ma improponibile.
+
+Proviamo a simulare uno scenario. Questo è un dataset ipotetico con diverse condizioni e 30 soggetti ed una variabil `y` che indica l'accuratezza.
+
+```{r}
+block <- 1:6
+cond <- c("a", "b", "c", "d")
+ntrial <- 20
+nsubj <- 30
+
+dat <- expand.grid(id = 1:nsubj,
+                   block = block,
+                   cond = cond, 
+                   ntrial = 1:ntrial)
+
+dat$y <- rbinom(nrow(dat), 1, prob = 0.5)
+
+head(dat)
+```
+
+Quindi l'obiettivo è quello di eliminare tutti i trial sbagliati e quelli giusti ma preceduti da uno sbagliato. Per risolvere questo problema ci serve:
+
+1. un modo per selezionare i trial giusti/sbagliati (e.g., **indicizzazione logica**)
+2. un modo per "guardare" il trial precedente
+3. applicare lo stesso metodo per ogni soggetto condizione in modo separato
+
+Per il punto 1 dobbiamo semplicemente selezionare quali trial sono corretti e quali sono sbagliati. Fortunatamente essendo una variabile binaria abbiamo solo una possibilità e ci basta quindi un solo **test logico**
+
+```{r}
+table(dat$y) # 1 = corretto, 0 = sbagliato
+table(dat$y == 1)
+head(subset(dat, subset = y == 1)) # metodo 1
+head(dat[dat$y == 1, ]) # metodo 2
+```
+
+Ora il problema è che non stiamo considerando la seconda condizione, quella dove il trial precedente deve essere considerato per tenere al 100% un trial corretto. Per fare questo la cosa migliore è ragionare in ottica iterativa. Se lo facessimo a mano semplicemente scorriamo trial per trial, vediamo se è giusto e vediamo se il trial prima è sbagliato. Questo è esattamente lo scopo della programmazione **iterativa** ad esempio i cicli `for`:
+
+```{r}
+keep <- vector(mode = "logical", length = nrow(dat)) # inizializzo un vettore vuoto. Non essenziale ma aumenta la velocità del codice per operazioni lunghe
+
+for(i in 1:nrow(dat)){
+    if(i == 1){
+        keep[i] <- dat$y[i] == 1
+    }else{
+        keep[i] <- dat$y[i] == 1 & dat$y[i - 1] == 1
+    }
+}
+```
+
+Analizziamo il codice precedente. Questa riga inizializza un vettore che dovrà contenere il nostro risultato. L'idea è quella di scorrere riga per riga e poi *segnare* se un trial è da tenere oppure no in modo da utilizzare questo oggetto dopo per selezionare le righe corrette. Siccome sappiamo che a prescindere dal risultato il nostro vettore logico di selezione sarà lungo come il dataset possiamo inizializzarlo.
+
+```{r}
+keep <- vector(mode = "logical", length = nrow(dat))
+```
+
+Poi partiamo con il ciclo `for`. Ora l'idea è di scomporre gli scenari possibili nel modo più chiaro e semplice. Abbiamo 2 possibilità:
+
+- il trial che stiamo considerando è il primo e quindi non ha un valore precedente. Questo è un problema perchè se usiamo l'iteratore `i` calcolando `i - 1` il codice ci darà errore perchè non esiste la posizione 0.
+- il trial che stiamo considerando è diverso dal primo e quindi `i - 1` non darà mai errore
+
+```{r, eval = FALSE}
+if(i == 1){ # se il trial è il primo
+    ...
+}else{ # in tutti gli altri casi
+    ...
+}
+```
+
+Infine dobbiamo fare un check della condizione principale ovvero guardare se il trial è corretto `y == 1` e nel caso dove `i != 1` vedere anche il trial prima:
+
+```{r}
+if(i == 1){
+    keep[i] <- dat$y[i] == 1 # se y[i] == 1 diventa TRUE altrimenti FALSE
+}else{
+    keep[i] <- dat$y[i] == 1 & dat$y[i - 1] == 1 # se y[i] == 1 ed il trial precendente == 1 doventa TRUE, altrimenti FALSE
+}
+```
+
+Ora dobbiamo semplicemente ripetere questo check logico per ogni elemento del dataframe impostando il ciclo for da 1 a quante righe ci sono nel dataframe.
+
+```{r, eval = FALSE}
+for(i in 1:nrow(dat)){
+    ...
+}
+```
+
+Proviamo il nostro metodo:
+
+```{r, eval = FALSE}
+keep <- vector(mode = "logical", length = nrow(dat)) # inizializzo un vettore vuoto. Non essenziale ma aumenta la velocità del codice per operazioni lunghe
+
+for(i in 1:nrow(dat)){
+    if(i == 1){
+        keep[i] <- dat$y[i] == 1
+    }else{
+        keep[i] <- dat$y[i] == 1 & dat$y[i - 1] == 1
+    }
+}
+dat$keep <- keep
+```
+
+Tutto perfetto ma c'è un problema. Il metodo deve essere applicato ad ogni soggetto/condizione separatamente altrimenti il trial di un blocco/condizione precedente può impattare quella di un blocco/condizione diversa. La cosa interessante è che la nostra soluzione è perfetta se applicata in una condizione specifica. Ci basterà replicare (*iterare*) il codice precedente per ogni soggetto/blocco/condizione.
+
+- mettiamo dentro una funzione il codice precedente
+- splittiamo (vedi `?split`) il dataframe
+- applichiamo con `for` o in modo più compatto con `*apply` il codice precedente ad ogni elemento dello splitting
+
+Facciamo la funzione:
+
+```{r}
+keep_correct <- function(data){ # notate data vs dat per generalizzare
+    keep <- vector(mode = "logical", length = nrow(data))
+    
+    for(i in 1:nrow(data)){
+        if(i == 1){
+            keep[i] <- data$y[i] == 1
+        }else{
+            keep[i] <- data$y[i] == 1 & data$y[i - 1] == 1
+        }
+    }
+    data_correct <- data[keep, ] # filtro il dataset
+    return(data_correct) # restituisco il dataset
+}
+```
+
+Splittiamo il dataframe:
+
+```{r}
+dat_split <- split(dat, list(dat$id, dat$block, dat$cond))
+head(dat_split[[1]])
+nrow(dat_split[[1]]) # numero di righe in un elemento = numero di trial per soggetto/condizione/blocco
+length(dat_split)
+length(block) * length(cond) * nsubj # numero di condizioni = numero di elementi nella lista
+```
+
+Ora applichiamo la funzione di prima ad ognuno di questi elementi:
+
+```{r}
+dat_split_sel <- lapply(dat_split, keep_correct)
+dat_split_sel[[1]] # questo è il risultato
+```
+
+Ora possiamo ricostruire il dataset *attaccando* insieme tutti i nuovi dataset filtrati. In qualche modo dobbiamo fare il contrario di `split`. Ci sono vari modi:
+
+```{r, eval = FALSE}
+dat_sel <- dplyr::bind_rows(dat_split_sel) # usando dplyr::bind_rows()
+dat_sel <- do.call(rbind, dat_split_sel) # usando base R con do.call e rbind
+
+# usando un ciclo for (implicito negli altri metodi) ma brutto e poco efficiente. Utile per capire cosa accade
+
+dat_sel <- dat_split_sel[[1]] # inizializziamo il primo
+
+for(i in 2:length(dat_split_sel)){ # partiamo dal secondo perchè il primo è già fatto
+    dat_sel <- rbind(dat_sel, dat_split_sel[[i]])
+}
+```
+
+Il mio preferito è il primo. Semplice e veloce:
+
+```{r}
+dat_sel <- dplyr::bind_rows(dat_split_sel) # usando dplyr::bind_rows()
+head(dat_sel)
+```
+
+
+
+
