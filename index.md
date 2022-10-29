@@ -28,16 +28,15 @@ In questa giornata verranno introdotte le principali strutture dati che compongo
 
 In questa giornata verranno introdotti i principali costrutti della programmazione (operazioni condizionali, iterazioni e funzioni) e la loro implementazione in R.
 
-## Sviluppo di un progetto in R e cenni ad elementi avanzati del linguaggio
+## Applicazioni avanzate del linguaggio
 
-In questa giornata verranno introdotti alcuni aspetti trasversali utili per un utilizzo moderno e avanzato del linguaggio R. Inoltre verrà sviluppato individ- ualmente un progetto che comprenda organizzazione della sessione di lavoro e applicazione dei principali elementi del linguaggio.
+In questa giornata verranno introdotti alcuni aspetti trasversali utili per un utilizzo moderno e avanzato del linguaggio R cercando di risolvere problemi concreti.
 
 # Link importanti
 
 - Cartella condivisa Google Drive - [Link](https://drive.google.com/drive/u/0/folders/1jZKbaMfseJEg7wyIFMhE7Q92rROo3Rqo)
-- Lavagna condivisa [Link](https://jamboard.google.com/d/1ZS43_2ujqWtCbT-tG7iGzM_62TUO4Dm2rg3mJW0akoA)
-- Documento condiviso per esercizi - [Link](https://textb.org/t/arca-corsoR/)
-- Cartella Dati - [Download Link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/filippogambarota/corsoR/tree/main/exercises/data)
+- Documento condiviso per esercizi - [Link](https://etherpad.wikimedia.org/p/arca-corsoR)
+- Cartella Dati - [Download Link](https://minhaskamal.github.io/DownGit/#/home?url=https:%2F%2Fgithub.com%2Farca-dpss%2Fcourse-R%2Ftree%2Fmain%2Fexercises%2Fdata)
 
 # Questionario Valutazione
 
@@ -45,21 +44,21 @@ A questo [link](https://docs.google.com/forms/d/e/1FAIpQLSf_fvSZSwWV-WpzlAASOeRU
 
 # Materiale
 
-## Slides lezioni
+## Lezioni
 
-Questi sono i link alle principali slide del corso:
+Questi sono i link al materiale principale del corso:
 
 - **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
 - **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
 - **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
 - **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
+- **Problem Solving in R** - [Link](R_problem_solving.html)
 
 ## Esercizi
 
 In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:
 
 - Esercizi - [file](exercises/esercizi.html)
-- Datasets - [Cartella](https://drive.google.com/drive/folders/1coRNAu1E6o_bLeXb4C9Tw1orLgs-enbF?usp=sharing)
 
 ## Argomenti extra
 
