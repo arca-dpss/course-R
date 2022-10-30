@@ -33,6 +33,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```{r packages, echo=FALSE}
 library(ggplot2)
+library(dplyr)
 ```
 
 class: title-slide, center, middle
@@ -1140,3 +1141,10 @@ while(i < 4){
 ]
 
 - `repeat` valuta la condizione una volta finita l'iterazione, mentre `while` all'inizio. Se la condizione non è `TRUE` all'inizio, il `while` non parte mentre `repeat` si.
+
+---
+class: section, center, middle
+
+# Dataframe come Liste
+
+---

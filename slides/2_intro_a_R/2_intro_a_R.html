@@ -411,6 +411,25 @@ overflow-x: auto;
 padding: .5em;
 color: #333;
 background: #f8f8f8;
+}
+
+.font90 {
+font-size: 90%;
+}
+.font80 {
+font-size: 80%;
+}
+.font70 {
+font-size: 70%;
+}
+.font60 {
+font-size: 60%;
+}
+.font50 {
+font-size: 50%;
+}
+.font40 {
+font-size: 40%;
 }</style>
     <style type="text/css">@font-face {
 font-family: 'Yanone Kaffeesatz';
@@ -757,6 +776,21 @@ class: section, center, middle
 Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un vettore, dei caratteri o delle funzioni sono creati come oggetti.
 
 ---
+# R e le funzioni
+
+&gt; “Everything that happen in R is a function call” - John Chambers
+
+Anche il concetto di **funzione** è fondamentale in R. Essenzialmente tutto quello che facciamo è chiamare **funzioni** su oggetti ottenendo un nuovo oggetto o modificando un oggetto esistente
+
+---
+# Cosa possiamo usare/creare in R?
+
+- **Numeri**: 100, 20, 6, 5.6 sono tutti numeri intepretati e trattati come tali
+- **Stringhe**: &quot;ciao&quot;, &quot;1&quot; sono *caratteri* che vengono intepretati letteralmente devono essere dichiarati con `&quot;&quot;`
+- **Nomi**: ciao, x sono nomi (senza virgolette) e sono utilizzati per essere associati ad un oggetto (variabile, funzione, etc.)
+    - **operatori**: sono delle funzioni (e quindi oggetti con un nome associato) che si utilizzano in modo particolare. `3 + 4` in questo caso `+` è un operatore (funzione) che si può usare anche come `+`(3, 4)
+
+---
 # R e gli oggetti
 
 - Come creare un oggetto?
@@ -773,7 +807,7 @@ x
 ```
 
 ```
-##  [1]  1  2  3  4  5  6  7  8  9 10
+## Error in eval(expr, envir, enclos): object &#39;x&#39; not found
 ```
 
 ```r
@@ -928,6 +962,74 @@ x &gt; 10
 ```
 ## [1] TRUE
 ```
+
+---
+# Formula Syntax (extra, but useful)
+
+- In R vedrete spesso l&#39;utilizzo dell&#39;operatore `~` per fare grafici, statistiche descrittive, modelli lineari etc. L&#39;utilizzo di `y ~ x` permette di creare del codice R che non viene eseguito subito ma può essere eseguito successivamente in un ambiente specifico.
+- è l&#39;unico caso dove nomi non assegnati possono essere utilizzati senza errori
+- questo tipo di programmazione si chiama **non-standard evaluation** perchè appunto non funziona come il solito codice R
+
+
+```r
+y # y non esiste e quindi ho un errore
+```
+
+```
+## Error in eval(expr, envir, enclos): object &#39;y&#39; not found
+```
+
+```r
+y ~ x # usando ~ non ho errori perchè il codice non viene eseguito
+```
+
+```
+## y ~ x
+## &lt;environment: 0x55cd6bc86b80&gt;
+```
+
+```r
+`~`(y, x) # l&#39;operatore ~ non è altro che una funzione come quelle che abbiamo visto fino ad ora 
+```
+
+```
+## y ~ x
+## &lt;environment: 0x55cd6bc86b80&gt;
+```
+
+---
+# Formula Syntax (extra, but useful)
+
+Le formule vengono utilizzate in tantissimi contesti.
+
+Per fare modelli di regressione
+
+
+```r
+# un modello linare -&gt; dipendente ~ indipendenti
+lm(y ~ x1 + x2)
+```
+
+Per fare aggregare un dataset
+
+
+```r
+# per aggregare un dataset (vedremo più avanti :) )
+aggregate(y ~ x, data = data, FUN = mean)
+```
+
+Per fare grafici
+
+
+```r
+# per fare grafici
+boxplot(y ~ x, data = data)
+```
+
+---
+# Formula Syntax (extra, but useful)
+
+In generale, ogni volta che usate delle variabili *unquoted* (senza virgolette) e queste non sono dichiarate nell&#39;ambiente, state probabilmente usando la **non-standard evaluation** e c&#39;è una formula da qualche parte 😄 
 
 ---
 class: section, center, middle

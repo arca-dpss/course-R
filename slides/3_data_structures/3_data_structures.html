@@ -187,6 +187,25 @@ overflow-x: auto;
 padding: .5em;
 color: #333;
 background: #f8f8f8;
+}
+
+.font90 {
+font-size: 90%;
+}
+.font80 {
+font-size: 80%;
+}
+.font70 {
+font-size: 70%;
+}
+.font60 {
+font-size: 60%;
+}
+.font50 {
+font-size: 50%;
+}
+.font40 {
+font-size: 40%;
 }</style>
     <style type="text/css">@font-face {
 font-family: 'Yanone Kaffeesatz';
@@ -556,7 +575,7 @@ my_vec
 ```
 
 ```
-##  [1] 74 22 64 62 64 91 30 33 70 22 20 37 34 61 25  9  1 88 44 43
+##  [1]  47  84  56  53  62   6  34  91  61  84  50 100  81   7  80  12  10  34   1  17
 ```
 
 ```r
@@ -564,7 +583,7 @@ my_vec[1] # estraggo il primo elemento
 ```
 
 ```
-## [1] 74
+## [1] 47
 ```
 
 ```r
@@ -572,7 +591,7 @@ my_vec[1:10] # estraggo i primi 10 elementi
 ```
 
 ```
-##  [1] 74 22 64 62 64 91 30 33 70 22
+##  [1] 47 84 56 53 62  6 34 91 61 84
 ```
 
 ```r
@@ -580,7 +599,7 @@ my_vec[c(1,5,10,16)] # estraggo n elementi a varie posizioni
 ```
 
 ```
-## [1] 74 64 22  9
+## [1] 47 62 84 12
 ```
 
 ```r
@@ -588,7 +607,7 @@ my_vec[length(my_vec)] # estraggo l&#39;ultimo elemento
 ```
 
 ```
-## [1] 43
+## [1] 17
 ```
 
 ---
@@ -632,7 +651,7 @@ my_selection
 ```
 
 ```
-##  [1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE
+##  [1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE
 ```
 
 ```r
@@ -640,7 +659,7 @@ my_vec[my_selection]
 ```
 
 ```
-## [1] 1 3 4 5 8
+## [1]  1  2  4  6 10
 ```
 
 ---
@@ -703,7 +722,7 @@ which(my_vec &lt; 0.5)
 ```
 
 ```
-## [1]  1  3  4  5  7  8 10
+## [1]  1  5  7  8 10
 ```
 
 ```r
@@ -713,8 +732,7 @@ my_vec[which(my_vec &lt; 0.5)]
 ```
 
 ```
-## [1] -0.7664814  0.1403664 -1.5442351 -0.8631975 -0.4967450 -0.1410313
-## [7] -0.1780073
+## [1] -0.9568982 -0.2553648 -1.2508284 -0.2868657  0.3841104
 ```
 
 ```r
@@ -724,8 +742,7 @@ my_vec[my_vec &lt; 0.5]
 ```
 
 ```
-## [1] -0.7664814  0.1403664 -1.5442351 -0.8631975 -0.4967450 -0.1410313
-## [7] -0.1780073
+## [1] -0.9568982 -0.2553648 -1.2508284 -0.2868657  0.3841104
 ```
 
 ---
@@ -1088,9 +1105,9 @@ str(my_list)
 ##  $ :List of 3
 ##   ..$ : int [1:10] 1 2 3 4 5 6 7 8 9 10
 ##   ..$ : chr [1:10] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...
-##   ..$ : num [1:10] 0.891 0.69 -0.97 0.483 0.234 ...
-##  $ : num [1:10] -0.337 -0.658 0.757 -0.469 1.224 ...
-##  $ : num [1:10] -1.758 0.341 0.232 -0.969 0.959 ...
+##   ..$ : num [1:10] 0.76 0.9 1.599 0.246 -0.181 ...
+##  $ : num [1:10] -1.136 1.579 -0.373 -0.565 1.363 ...
+##  $ : num [1:10] 0.0768 -0.3393 -0.4347 0.643 -1.7804 ...
 ```
 
 ---
@@ -1200,8 +1217,8 @@ matrix(data = 1:100, ncol = 3, nrow = 3)
 ```
 
 ```
-## Warning in matrix(data = 1:100, ncol = 3, nrow = 3): data length [100] is
-## not a sub-multiple or multiple of the number of rows [3]
+## Warning in matrix(data = 1:100, ncol = 3, nrow = 3): data length [100] is not a sub-
+## multiple or multiple of the number of rows [3]
 ```
 
 ```
@@ -1216,8 +1233,8 @@ matrix(data = 1:9, ncol = 5, nrow = 5)
 ```
 
 ```
-## Warning in matrix(data = 1:9, ncol = 5, nrow = 5): data length [9] is not a
-## sub-multiple or multiple of the number of rows [5]
+## Warning in matrix(data = 1:9, ncol = 5, nrow = 5): data length [9] is not a sub-
+## multiple or multiple of the number of rows [5]
 ```
 
 ```
@@ -1545,7 +1562,7 @@ class: section, center, middle
 # Dataframe
 
 Il dataframe è la struttura più &quot;complessa&quot;, utile e potente di R. Da un punto di vista intuitivo è un *foglio excel* mentre da un punto di vista
-di R è una tipologia di lista con alcune caratteristiche/restrizioni &lt;sup&gt;1&lt;/sup&gt;
+di R è una tipologia di lista con alcune caratteristiche/restrizioni&lt;sup&gt;1&lt;/sup&gt;
 
 - ogni elemento della lista è un **vettore con un nome associato** (aka una colonna)
 - ogni **lista/colonna** deve avere lo **stesso numero di elementi**
@@ -1573,17 +1590,17 @@ my_df
 ```
 
 ```
-##    colonna1 colonna2    colonna3   colonna4
-## 1         1        a -1.38735583 0.32032576
-## 2         2        b  0.17522301 0.55457208
-## 3         3        c -0.04468958 0.67575544
-## 4         4        d  0.32986219 0.27932666
-## 5         5        e  0.15299569 0.17472860
-## 6         6        f -1.53866016 0.34318567
-## 7         7        g -0.05882591 0.01195629
-## 8         8        h  0.96421192 0.07483183
-## 9         9        i -0.01209564 0.74013241
-## 10       10        j  1.04333884 0.92132515
+##    colonna1 colonna2   colonna3  colonna4
+## 1         1        a -1.8531901 0.4982585
+## 2         2        b -0.2638435 0.7309694
+## 3         3        c -1.0212543 0.2442822
+## 4         4        d -1.4079025 0.4040446
+## 5         5        e -0.2482087 0.9650418
+## 6         6        f -0.7932738 0.8744555
+## 7         7        g -0.5498252 0.5927088
+## 8         8        h  0.3638214 0.9282408
+## 9         9        i -0.8350550 0.6769256
+## 10       10        j -0.4819420 0.5022838
 ```
 ---
 # Dataframe - Attributi
@@ -1661,8 +1678,8 @@ my_df[1, ]
 ```
 
 ```
-##   colonna1 colonna2  colonna3  colonna4
-## 1        1        a -1.387356 0.3203258
+##   colonna1 colonna2 colonna3  colonna4
+## 1        1        a -1.85319 0.4982585
 ```
 
 ```r
@@ -1721,13 +1738,13 @@ my_df[my_df$colonna1 &gt; 4, ]
 ```
 
 ```
-##    colonna1 colonna2    colonna3   colonna4
-## 5         5        e  0.15299569 0.17472860
-## 6         6        f -1.53866016 0.34318567
-## 7         7        g -0.05882591 0.01195629
-## 8         8        h  0.96421192 0.07483183
-## 9         9        i -0.01209564 0.74013241
-## 10       10        j  1.04333884 0.92132515
+##    colonna1 colonna2   colonna3  colonna4
+## 5         5        e -0.2482087 0.9650418
+## 6         6        f -0.7932738 0.8744555
+## 7         7        g -0.5498252 0.5927088
+## 8         8        h  0.3638214 0.9282408
+## 9         9        i -0.8350550 0.6769256
+## 10       10        j -0.4819420 0.5022838
 ```
 
 ```r
@@ -1735,11 +1752,13 @@ my_df[my_df$colonna1 &gt; 4 &amp; my_df$colonna4 &gt; 0.1, ]
 ```
 
 ```
-##    colonna1 colonna2    colonna3  colonna4
-## 5         5        e  0.15299569 0.1747286
-## 6         6        f -1.53866016 0.3431857
-## 9         9        i -0.01209564 0.7401324
-## 10       10        j  1.04333884 0.9213252
+##    colonna1 colonna2   colonna3  colonna4
+## 5         5        e -0.2482087 0.9650418
+## 6         6        f -0.7932738 0.8744555
+## 7         7        g -0.5498252 0.5927088
+## 8         8        h  0.3638214 0.9282408
+## 9         9        i -0.8350550 0.6769256
+## 10       10        j -0.4819420 0.5022838
 ```
 
 ```r
@@ -1747,7 +1766,7 @@ my_df[my_df$colonna1 &gt; 4, &quot;colonna4&quot;]
 ```
 
 ```
-## [1] 0.17472860 0.34318567 0.01195629 0.07483183 0.74013241 0.92132515
+## [1] 0.9650418 0.8744555 0.5927088 0.9282408 0.6769256 0.5022838
 ```
 
 ```r
@@ -1806,6 +1825,605 @@ typeof(my_df[1,1, drop = FALSE])
 ```
 ## [1] &quot;list&quot;
 ```
+
+---
+# Dataframe - Indicizzazione `subset()`
+
+Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione `subset()`:
+
+
+```r
+subset(iris, subset = Species == &quot;setosa&quot; &amp; Sepal.Length &gt; 4)
+```
+
+```
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## 11          5.4         3.7          1.5         0.2  setosa
+## 12          4.8         3.4          1.6         0.2  setosa
+## 13          4.8         3.0          1.4         0.1  setosa
+## 14          4.3         3.0          1.1         0.1  setosa
+## 15          5.8         4.0          1.2         0.2  setosa
+## 16          5.7         4.4          1.5         0.4  setosa
+## 17          5.4         3.9          1.3         0.4  setosa
+## 18          5.1         3.5          1.4         0.3  setosa
+## 19          5.7         3.8          1.7         0.3  setosa
+## 20          5.1         3.8          1.5         0.3  setosa
+## 21          5.4         3.4          1.7         0.2  setosa
+## 22          5.1         3.7          1.5         0.4  setosa
+## 23          4.6         3.6          1.0         0.2  setosa
+## 24          5.1         3.3          1.7         0.5  setosa
+## 25          4.8         3.4          1.9         0.2  setosa
+## 26          5.0         3.0          1.6         0.2  setosa
+## 27          5.0         3.4          1.6         0.4  setosa
+## 28          5.2         3.5          1.5         0.2  setosa
+## 29          5.2         3.4          1.4         0.2  setosa
+## 30          4.7         3.2          1.6         0.2  setosa
+## 31          4.8         3.1          1.6         0.2  setosa
+## 32          5.4         3.4          1.5         0.4  setosa
+## 33          5.2         4.1          1.5         0.1  setosa
+## 34          5.5         4.2          1.4         0.2  setosa
+## 35          4.9         3.1          1.5         0.2  setosa
+## 36          5.0         3.2          1.2         0.2  setosa
+## 37          5.5         3.5          1.3         0.2  setosa
+## 38          4.9         3.6          1.4         0.1  setosa
+## 39          4.4         3.0          1.3         0.2  setosa
+## 40          5.1         3.4          1.5         0.2  setosa
+## 41          5.0         3.5          1.3         0.3  setosa
+## 42          4.5         2.3          1.3         0.3  setosa
+## 43          4.4         3.2          1.3         0.2  setosa
+## 44          5.0         3.5          1.6         0.6  setosa
+## 45          5.1         3.8          1.9         0.4  setosa
+## 46          4.8         3.0          1.4         0.3  setosa
+## 47          5.1         3.8          1.6         0.2  setosa
+## 48          4.6         3.2          1.4         0.2  setosa
+## 49          5.3         3.7          1.5         0.2  setosa
+## 50          5.0         3.3          1.4         0.2  setosa
+```
+
+E&#39; equivalente a:
+
+
+```r
+iris[iris$Species == &quot;setosa&quot; &amp; iris$Sepal.Length &gt; 4, ]
+```
+
+```
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## 11          5.4         3.7          1.5         0.2  setosa
+## 12          4.8         3.4          1.6         0.2  setosa
+## 13          4.8         3.0          1.4         0.1  setosa
+## 14          4.3         3.0          1.1         0.1  setosa
+## 15          5.8         4.0          1.2         0.2  setosa
+## 16          5.7         4.4          1.5         0.4  setosa
+## 17          5.4         3.9          1.3         0.4  setosa
+## 18          5.1         3.5          1.4         0.3  setosa
+## 19          5.7         3.8          1.7         0.3  setosa
+## 20          5.1         3.8          1.5         0.3  setosa
+## 21          5.4         3.4          1.7         0.2  setosa
+## 22          5.1         3.7          1.5         0.4  setosa
+## 23          4.6         3.6          1.0         0.2  setosa
+## 24          5.1         3.3          1.7         0.5  setosa
+## 25          4.8         3.4          1.9         0.2  setosa
+## 26          5.0         3.0          1.6         0.2  setosa
+## 27          5.0         3.4          1.6         0.4  setosa
+## 28          5.2         3.5          1.5         0.2  setosa
+## 29          5.2         3.4          1.4         0.2  setosa
+## 30          4.7         3.2          1.6         0.2  setosa
+## 31          4.8         3.1          1.6         0.2  setosa
+## 32          5.4         3.4          1.5         0.4  setosa
+## 33          5.2         4.1          1.5         0.1  setosa
+## 34          5.5         4.2          1.4         0.2  setosa
+## 35          4.9         3.1          1.5         0.2  setosa
+## 36          5.0         3.2          1.2         0.2  setosa
+## 37          5.5         3.5          1.3         0.2  setosa
+## 38          4.9         3.6          1.4         0.1  setosa
+## 39          4.4         3.0          1.3         0.2  setosa
+## 40          5.1         3.4          1.5         0.2  setosa
+## 41          5.0         3.5          1.3         0.3  setosa
+## 42          4.5         2.3          1.3         0.3  setosa
+## 43          4.4         3.2          1.3         0.2  setosa
+## 44          5.0         3.5          1.6         0.6  setosa
+## 45          5.1         3.8          1.9         0.4  setosa
+## 46          4.8         3.0          1.4         0.3  setosa
+## 47          5.1         3.8          1.6         0.2  setosa
+## 48          4.6         3.2          1.4         0.2  setosa
+## 49          5.3         3.7          1.5         0.2  setosa
+## 50          5.0         3.3          1.4         0.2  setosa
+```
+
+---
+# Dataframe - Indicizzazione `subset()`
+
+Possiamo anche selezione delle colonne invece che righe:
+
+
+```r
+# usando i nomi delle colonne
+subset(iris, select = c(Sepal.Length, Species)) # equivale a iris[, c(&quot;Sepal.Length&quot;, &quot;Species&quot;)]
+```
+
+```
+##     Sepal.Length    Species
+## 1            5.1     setosa
+## 2            4.9     setosa
+## 3            4.7     setosa
+## 4            4.6     setosa
+## 5            5.0     setosa
+## 6            5.4     setosa
+## 7            4.6     setosa
+## 8            5.0     setosa
+## 9            4.4     setosa
+## 10           4.9     setosa
+## 11           5.4     setosa
+## 12           4.8     setosa
+## 13           4.8     setosa
+## 14           4.3     setosa
+## 15           5.8     setosa
+## 16           5.7     setosa
+## 17           5.4     setosa
+## 18           5.1     setosa
+## 19           5.7     setosa
+## 20           5.1     setosa
+## 21           5.4     setosa
+## 22           5.1     setosa
+## 23           4.6     setosa
+## 24           5.1     setosa
+## 25           4.8     setosa
+## 26           5.0     setosa
+## 27           5.0     setosa
+## 28           5.2     setosa
+## 29           5.2     setosa
+## 30           4.7     setosa
+## 31           4.8     setosa
+## 32           5.4     setosa
+## 33           5.2     setosa
+## 34           5.5     setosa
+## 35           4.9     setosa
+## 36           5.0     setosa
+## 37           5.5     setosa
+## 38           4.9     setosa
+## 39           4.4     setosa
+## 40           5.1     setosa
+## 41           5.0     setosa
+## 42           4.5     setosa
+## 43           4.4     setosa
+## 44           5.0     setosa
+## 45           5.1     setosa
+## 46           4.8     setosa
+## 47           5.1     setosa
+## 48           4.6     setosa
+## 49           5.3     setosa
+## 50           5.0     setosa
+## 51           7.0 versicolor
+## 52           6.4 versicolor
+## 53           6.9 versicolor
+## 54           5.5 versicolor
+## 55           6.5 versicolor
+## 56           5.7 versicolor
+## 57           6.3 versicolor
+## 58           4.9 versicolor
+## 59           6.6 versicolor
+## 60           5.2 versicolor
+## 61           5.0 versicolor
+## 62           5.9 versicolor
+## 63           6.0 versicolor
+## 64           6.1 versicolor
+## 65           5.6 versicolor
+## 66           6.7 versicolor
+## 67           5.6 versicolor
+## 68           5.8 versicolor
+## 69           6.2 versicolor
+## 70           5.6 versicolor
+## 71           5.9 versicolor
+## 72           6.1 versicolor
+## 73           6.3 versicolor
+## 74           6.1 versicolor
+## 75           6.4 versicolor
+## 76           6.6 versicolor
+## 77           6.8 versicolor
+## 78           6.7 versicolor
+## 79           6.0 versicolor
+## 80           5.7 versicolor
+## 81           5.5 versicolor
+## 82           5.5 versicolor
+## 83           5.8 versicolor
+## 84           6.0 versicolor
+## 85           5.4 versicolor
+## 86           6.0 versicolor
+## 87           6.7 versicolor
+## 88           6.3 versicolor
+## 89           5.6 versicolor
+## 90           5.5 versicolor
+## 91           5.5 versicolor
+## 92           6.1 versicolor
+## 93           5.8 versicolor
+## 94           5.0 versicolor
+## 95           5.6 versicolor
+## 96           5.7 versicolor
+## 97           5.7 versicolor
+## 98           6.2 versicolor
+## 99           5.1 versicolor
+## 100          5.7 versicolor
+## 101          6.3  virginica
+## 102          5.8  virginica
+## 103          7.1  virginica
+## 104          6.3  virginica
+## 105          6.5  virginica
+## 106          7.6  virginica
+## 107          4.9  virginica
+## 108          7.3  virginica
+## 109          6.7  virginica
+## 110          7.2  virginica
+## 111          6.5  virginica
+## 112          6.4  virginica
+## 113          6.8  virginica
+## 114          5.7  virginica
+## 115          5.8  virginica
+## 116          6.4  virginica
+## 117          6.5  virginica
+## 118          7.7  virginica
+## 119          7.7  virginica
+## 120          6.0  virginica
+## 121          6.9  virginica
+## 122          5.6  virginica
+## 123          7.7  virginica
+## 124          6.3  virginica
+## 125          6.7  virginica
+## 126          7.2  virginica
+## 127          6.2  virginica
+## 128          6.1  virginica
+## 129          6.4  virginica
+## 130          7.2  virginica
+## 131          7.4  virginica
+## 132          7.9  virginica
+## 133          6.4  virginica
+## 134          6.3  virginica
+## 135          6.1  virginica
+## 136          7.7  virginica
+## 137          6.3  virginica
+## 138          6.4  virginica
+## 139          6.0  virginica
+## 140          6.9  virginica
+## 141          6.7  virginica
+## 142          6.9  virginica
+## 143          5.8  virginica
+## 144          6.8  virginica
+## 145          6.7  virginica
+## 146          6.7  virginica
+## 147          6.3  virginica
+## 148          6.5  virginica
+## 149          6.2  virginica
+## 150          5.9  virginica
+```
+
+```r
+# oppure usando indici
+subset(iris, select = c(1, 5))
+```
+
+```
+##     Sepal.Length    Species
+## 1            5.1     setosa
+## 2            4.9     setosa
+## 3            4.7     setosa
+## 4            4.6     setosa
+## 5            5.0     setosa
+## 6            5.4     setosa
+## 7            4.6     setosa
+## 8            5.0     setosa
+## 9            4.4     setosa
+## 10           4.9     setosa
+## 11           5.4     setosa
+## 12           4.8     setosa
+## 13           4.8     setosa
+## 14           4.3     setosa
+## 15           5.8     setosa
+## 16           5.7     setosa
+## 17           5.4     setosa
+## 18           5.1     setosa
+## 19           5.7     setosa
+## 20           5.1     setosa
+## 21           5.4     setosa
+## 22           5.1     setosa
+## 23           4.6     setosa
+## 24           5.1     setosa
+## 25           4.8     setosa
+## 26           5.0     setosa
+## 27           5.0     setosa
+## 28           5.2     setosa
+## 29           5.2     setosa
+## 30           4.7     setosa
+## 31           4.8     setosa
+## 32           5.4     setosa
+## 33           5.2     setosa
+## 34           5.5     setosa
+## 35           4.9     setosa
+## 36           5.0     setosa
+## 37           5.5     setosa
+## 38           4.9     setosa
+## 39           4.4     setosa
+## 40           5.1     setosa
+## 41           5.0     setosa
+## 42           4.5     setosa
+## 43           4.4     setosa
+## 44           5.0     setosa
+## 45           5.1     setosa
+## 46           4.8     setosa
+## 47           5.1     setosa
+## 48           4.6     setosa
+## 49           5.3     setosa
+## 50           5.0     setosa
+## 51           7.0 versicolor
+## 52           6.4 versicolor
+## 53           6.9 versicolor
+## 54           5.5 versicolor
+## 55           6.5 versicolor
+## 56           5.7 versicolor
+## 57           6.3 versicolor
+## 58           4.9 versicolor
+## 59           6.6 versicolor
+## 60           5.2 versicolor
+## 61           5.0 versicolor
+## 62           5.9 versicolor
+## 63           6.0 versicolor
+## 64           6.1 versicolor
+## 65           5.6 versicolor
+## 66           6.7 versicolor
+## 67           5.6 versicolor
+## 68           5.8 versicolor
+## 69           6.2 versicolor
+## 70           5.6 versicolor
+## 71           5.9 versicolor
+## 72           6.1 versicolor
+## 73           6.3 versicolor
+## 74           6.1 versicolor
+## 75           6.4 versicolor
+## 76           6.6 versicolor
+## 77           6.8 versicolor
+## 78           6.7 versicolor
+## 79           6.0 versicolor
+## 80           5.7 versicolor
+## 81           5.5 versicolor
+## 82           5.5 versicolor
+## 83           5.8 versicolor
+## 84           6.0 versicolor
+## 85           5.4 versicolor
+## 86           6.0 versicolor
+## 87           6.7 versicolor
+## 88           6.3 versicolor
+## 89           5.6 versicolor
+## 90           5.5 versicolor
+## 91           5.5 versicolor
+## 92           6.1 versicolor
+## 93           5.8 versicolor
+## 94           5.0 versicolor
+## 95           5.6 versicolor
+## 96           5.7 versicolor
+## 97           5.7 versicolor
+## 98           6.2 versicolor
+## 99           5.1 versicolor
+## 100          5.7 versicolor
+## 101          6.3  virginica
+## 102          5.8  virginica
+## 103          7.1  virginica
+## 104          6.3  virginica
+## 105          6.5  virginica
+## 106          7.6  virginica
+## 107          4.9  virginica
+## 108          7.3  virginica
+## 109          6.7  virginica
+## 110          7.2  virginica
+## 111          6.5  virginica
+## 112          6.4  virginica
+## 113          6.8  virginica
+## 114          5.7  virginica
+## 115          5.8  virginica
+## 116          6.4  virginica
+## 117          6.5  virginica
+## 118          7.7  virginica
+## 119          7.7  virginica
+## 120          6.0  virginica
+## 121          6.9  virginica
+## 122          5.6  virginica
+## 123          7.7  virginica
+## 124          6.3  virginica
+## 125          6.7  virginica
+## 126          7.2  virginica
+## 127          6.2  virginica
+## 128          6.1  virginica
+## 129          6.4  virginica
+## 130          7.2  virginica
+## 131          7.4  virginica
+## 132          7.9  virginica
+## 133          6.4  virginica
+## 134          6.3  virginica
+## 135          6.1  virginica
+## 136          7.7  virginica
+## 137          6.3  virginica
+## 138          6.4  virginica
+## 139          6.0  virginica
+## 140          6.9  virginica
+## 141          6.7  virginica
+## 142          6.9  virginica
+## 143          5.8  virginica
+## 144          6.8  virginica
+## 145          6.7  virginica
+## 146          6.7  virginica
+## 147          6.3  virginica
+## 148          6.5  virginica
+## 149          6.2  virginica
+## 150          5.9  virginica
+```
+
+---
+# Dataframe - Indicizzazione `subset()`
+
+Possiamo anche combinare le due cose facendo una selezione di righe e colonne:
+
+
+```r
+subset(iris, Species == &quot;setosa&quot; &amp; Sepal.Length &gt; 4, c(Sepal.Length, Species))
+```
+
+```
+##    Sepal.Length Species
+## 1           5.1  setosa
+## 2           4.9  setosa
+## 3           4.7  setosa
+## 4           4.6  setosa
+## 5           5.0  setosa
+## 6           5.4  setosa
+## 7           4.6  setosa
+## 8           5.0  setosa
+## 9           4.4  setosa
+## 10          4.9  setosa
+## 11          5.4  setosa
+## 12          4.8  setosa
+## 13          4.8  setosa
+## 14          4.3  setosa
+## 15          5.8  setosa
+## 16          5.7  setosa
+## 17          5.4  setosa
+## 18          5.1  setosa
+## 19          5.7  setosa
+## 20          5.1  setosa
+## 21          5.4  setosa
+## 22          5.1  setosa
+## 23          4.6  setosa
+## 24          5.1  setosa
+## 25          4.8  setosa
+## 26          5.0  setosa
+## 27          5.0  setosa
+## 28          5.2  setosa
+## 29          5.2  setosa
+## 30          4.7  setosa
+## 31          4.8  setosa
+## 32          5.4  setosa
+## 33          5.2  setosa
+## 34          5.5  setosa
+## 35          4.9  setosa
+## 36          5.0  setosa
+## 37          5.5  setosa
+## 38          4.9  setosa
+## 39          4.4  setosa
+## 40          5.1  setosa
+## 41          5.0  setosa
+## 42          4.5  setosa
+## 43          4.4  setosa
+## 44          5.0  setosa
+## 45          5.1  setosa
+## 46          4.8  setosa
+## 47          5.1  setosa
+## 48          4.6  setosa
+## 49          5.3  setosa
+## 50          5.0  setosa
+```
+
+E&#39; equivalente a:
+
+
+```r
+iris[iris$Species == &quot;setosa&quot; &amp; iris$Sepal.Length &gt; 4, c(&quot;Sepal.Length&quot;, &quot;Species&quot;)]
+```
+
+```
+##    Sepal.Length Species
+## 1           5.1  setosa
+## 2           4.9  setosa
+## 3           4.7  setosa
+## 4           4.6  setosa
+## 5           5.0  setosa
+## 6           5.4  setosa
+## 7           4.6  setosa
+## 8           5.0  setosa
+## 9           4.4  setosa
+## 10          4.9  setosa
+## 11          5.4  setosa
+## 12          4.8  setosa
+## 13          4.8  setosa
+## 14          4.3  setosa
+## 15          5.8  setosa
+## 16          5.7  setosa
+## 17          5.4  setosa
+## 18          5.1  setosa
+## 19          5.7  setosa
+## 20          5.1  setosa
+## 21          5.4  setosa
+## 22          5.1  setosa
+## 23          4.6  setosa
+## 24          5.1  setosa
+## 25          4.8  setosa
+## 26          5.0  setosa
+## 27          5.0  setosa
+## 28          5.2  setosa
+## 29          5.2  setosa
+## 30          4.7  setosa
+## 31          4.8  setosa
+## 32          5.4  setosa
+## 33          5.2  setosa
+## 34          5.5  setosa
+## 35          4.9  setosa
+## 36          5.0  setosa
+## 37          5.5  setosa
+## 38          4.9  setosa
+## 39          4.4  setosa
+## 40          5.1  setosa
+## 41          5.0  setosa
+## 42          4.5  setosa
+## 43          4.4  setosa
+## 44          5.0  setosa
+## 45          5.1  setosa
+## 46          4.8  setosa
+## 47          5.1  setosa
+## 48          4.6  setosa
+## 49          5.3  setosa
+## 50          5.0  setosa
+```
+---
+# Dataframe - Indicizzazione - *data mask*
+
+Cosa fa `subset` di speciale? essenzialmente prende delle espressioni `Species == &quot;setosa&quot;` che vengono eseguite all&#39;interno dell&#39;ambiente dataframe specificato come primo argomento. Un più generico esempio del data masking è la funzione `with`:
+
+
+```r
+Sepal.Length &lt;- &quot;ciao&quot;
+with(iris, Sepal.Length + Sepal.Width) # se usasse la variabile definita prima darebbe errore
+```
+
+```
+##   [1]  8.6  7.9  7.9  7.7  8.6  9.3  8.0  8.4  7.3  8.0  9.1  8.2  7.8  7.3  9.8
+##  [16] 10.1  9.3  8.6  9.5  8.9  8.8  8.8  8.2  8.4  8.2  8.0  8.4  8.7  8.6  7.9
+##  [31]  7.9  8.8  9.3  9.7  8.0  8.2  9.0  8.5  7.4  8.5  8.5  6.8  7.6  8.5  8.9
+##  [46]  7.8  8.9  7.8  9.0  8.3 10.2  9.6 10.0  7.8  9.3  8.5  9.6  7.3  9.5  7.9
+##  [61]  7.0  8.9  8.2  9.0  8.5  9.8  8.6  8.5  8.4  8.1  9.1  8.9  8.8  8.9  9.3
+##  [76]  9.6  9.6  9.7  8.9  8.3  7.9  7.9  8.5  8.7  8.4  9.4  9.8  8.6  8.6  8.0
+##  [91]  8.1  9.1  8.4  7.3  8.3  8.7  8.6  9.1  7.6  8.5  9.6  8.5 10.1  9.2  9.5
+## [106] 10.6  7.4 10.2  9.2 10.8  9.7  9.1  9.8  8.2  8.6  9.6  9.5 11.5 10.3  8.2
+## [121] 10.1  8.4 10.5  9.0 10.0 10.4  9.0  9.1  9.2 10.2 10.2 11.7  9.2  9.1  8.7
+## [136] 10.7  9.7  9.5  9.0 10.0  9.8 10.0  8.5 10.0 10.0  9.7  8.8  9.5  9.6  8.9
+```
+
+L&#39;espressione `Sepal.Length + Sepal.Width` viene eseguita all&#39;interno (`with`) del dataframe `iris` in modo da eseguire anche operazioni complesse tra le colonne di `iris` senza dover ogni volta specificare `iris$variabile`.
 
 ---
 class: section, center, middle
