@@ -659,7 +659,7 @@ class: section, center, middle
 # Dataframe
 
 Il dataframe è la struttura più "complessa", utile e potente di R. Da un punto di vista intuitivo è un *foglio excel* mentre da un punto di vista
-di R è una tipologia di lista con alcune caratteristiche/restrizioni <sup>1</sup>
+di R è una tipologia di lista con alcune caratteristiche/restrizioni<sup>1</sup>
 
 - ogni elemento della lista è un **vettore con un nome associato** (aka una colonna)
 - ogni **lista/colonna** deve avere lo **stesso numero di elementi**
@@ -761,6 +761,60 @@ per ottenere sempre un dataframe:
 typeof(my_df[, 1, drop = FALSE])
 typeof(my_df[1,1, drop = FALSE])
 ```
+
+---
+# Dataframe - Indicizzazione `subset()`
+
+Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione `subset()`:
+
+```{r}
+subset(iris, subset = Species == "setosa" & Sepal.Length > 4)
+```
+
+E' equivalente a:
+
+```{r}
+iris[iris$Species == "setosa" & iris$Sepal.Length > 4, ]
+```
+
+---
+# Dataframe - Indicizzazione `subset()`
+
+Possiamo anche selezione delle colonne invece che righe:
+
+```{r}
+# usando i nomi delle colonne
+subset(iris, select = c(Sepal.Length, Species)) # equivale a iris[, c("Sepal.Length", "Species")]
+
+# oppure usando indici
+subset(iris, select = c(1, 5))
+```
+
+---
+# Dataframe - Indicizzazione `subset()`
+
+Possiamo anche combinare le due cose facendo una selezione di righe e colonne:
+
+```{r}
+subset(iris, Species == "setosa" & Sepal.Length > 4, c(Sepal.Length, Species))
+```
+
+E' equivalente a:
+
+```{r}
+iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length", "Species")]
+```
+---
+# Dataframe - Indicizzazione - *data mask*
+
+Cosa fa `subset` di speciale? essenzialmente prende delle espressioni `Species == "setosa"` che vengono eseguite all'interno dell'ambiente dataframe specificato come primo argomento. Un più generico esempio del data masking è la funzione `with`:
+
+```{r}
+Sepal.Length <- "ciao"
+with(iris, Sepal.Length + Sepal.Width) # se usasse la variabile definita prima darebbe errore
+```
+
+L'espressione `Sepal.Length + Sepal.Width` viene eseguita all'interno (`with`) del dataframe `iris` in modo da eseguire anche operazioni complesse tra le colonne di `iris` senza dover ogni volta specificare `iris$variabile`.
 
 ---
 class: section, center, middle
