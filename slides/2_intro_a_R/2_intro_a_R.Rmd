@@ -329,6 +329,51 @@ x > 10
 ```
 
 ---
+# Formula Syntax (extra, but useful)
+
+- In R vedrete spesso l'utilizzo dell'operatore `~` per fare grafici, statistiche descrittive, modelli lineari etc. L'utilizzo di `y ~ x` permette di creare del codice R che non viene eseguito subito ma può essere eseguito successivamente in un ambiente specifico.
+- è l'unico caso dove nomi non assegnati possono essere utilizzati senza errori
+- questo tipo di programmazione si chiama **non-standard evaluation** perchè appunto non funziona come il solito codice R
+
+```{r, error = TRUE}
+y # y non esiste e quindi ho un errore
+
+y ~ x # usando ~ non ho errori perchè il codice non viene eseguito
+`~`(y, x) # l'operatore ~ non è altro che una funzione come quelle che abbiamo visto fino ad ora 
+```
+
+---
+# Formula Syntax (extra, but useful)
+
+Le formule vengono utilizzate in tantissimi contesti.
+
+Per fare modelli di regressione
+
+```{r, eval = FALSE}
+# un modello linare -> dipendente ~ indipendenti
+lm(y ~ x1 + x2)
+```
+
+Per fare aggregare un dataset
+
+```{r, eval = FALSE}
+# per aggregare un dataset (vedremo più avanti :) )
+aggregate(y ~ x, data = data, FUN = mean)
+```
+
+Per fare grafici
+
+```{r, eval = FALSE}
+# per fare grafici
+boxplot(y ~ x, data = data)
+```
+
+---
+# Formula Syntax (extra, but useful)
+
+In generale, ogni volta che usate delle variabili *unquoted* (senza virgolette) e queste non sono dichiarate nell'ambiente, state probabilmente usando la **non-standard evaluation** e c'è una formula da qualche parte `r emo::ji("smile")` 
+
+---
 class: section, center, middle
 
 # Ambiente di lavoro
