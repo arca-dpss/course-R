@@ -19,7 +19,8 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
+options(htmltools.dir.version = FALSE,
+        crayon.enabled = TRUE)
 ```
 
 ```{r slide-setup, include=FALSE}
@@ -196,6 +197,21 @@ class: section, center, middle
 > “Everything that exists in R is an object” - John Chambers
 
 Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un vettore, dei caratteri o delle funzioni sono creati come oggetti.
+
+---
+# R e le funzioni
+
+> “Everything that happen in R is a function call” - John Chambers
+
+Anche il concetto di **funzione** è fondamentale in R. Essenzialmente tutto quello che facciamo è chiamare **funzioni** su oggetti ottenendo un nuovo oggetto o modificando un oggetto esistente
+
+---
+# Cosa possiamo usare/creare in R?
+
+- **Numeri**: 100, 20, 6, 5.6 sono tutti numeri intepretati e trattati come tali
+- **Stringhe**: "ciao", "1" sono *caratteri* che vengono intepretati letteralmente devono essere dichiarati con `""`
+- **Nomi**: ciao, x sono nomi (senza virgolette) e sono utilizzati per essere associati ad un oggetto (variabile, funzione, etc.)
+    - **operatori**: sono delle funzioni (e quindi oggetti con un nome associato) che si utilizzano in modo particolare. `3 + 4` in questo caso `+` è un operatore (funzione) che si può usare anche come `+`(3, 4)
 
 ---
 # R e gli oggetti
