@@ -14,3 +14,10 @@ compile <- function(file, pdf = FALSE){
     }
     cli::cli_alert_success(paste(file, "compiled! :)"))
 }
+
+cap_link <- function(link, text = NULL){
+    if (is.null(text)) {
+        text <- link
+    }
+    sprintf('<a href="%s">%s</a>', link, text)
+}
