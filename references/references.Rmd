@@ -1,0 +1,16 @@
+---
+title: "Riferimenti Utili"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduzione a R
+
+## Formula syntax
+
+- https://www.datacamp.com/tutorial/r-formula-tutorial
+- https://r4ds.had.co.nz/model-basics.html?q=formula#formulas-and-model-families
+- https://adv-r.hadley.nz/metaprogramming.html
