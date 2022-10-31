@@ -1,8 +1,8 @@
 ---
-title: 'Programmazione in R'
-subtitle: ""
-author: ""
-institute: ""
+title: 'Introduzione a R'
+subtitle: "Programmazione in R"
+author: "Filippo Gambarota"
+institute: "ARCA - @DPSS"
 date: ""
 output:
   xaringan::moon_reader:
@@ -32,23 +32,24 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 
 ```{r packages, echo=FALSE}
+devtools::load_all()
 library(ggplot2)
 library(dplyr)
 ```
 
 class: title-slide, center, middle
 
-#.title[Introduzione a R]
+#.title[`r rmarkdown::metadata$title`]
 
-#.subtitle[Giornata 4 - Programmazione in R]
+#.subtitle[`r rmarkdown::metadata$subtitle`]
 
 ```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
-###.location[Corsi ARCA - @DPSS]
+###.location[`r rmarkdown::metadata$institute`]
 
-###.author[Filippo Gambarota]
+###.author[`r rmarkdown::metadata$author`]
 
 ---
 
@@ -70,6 +71,12 @@ Ci sono delle cose che per tempo e complessità non possiamo affrontare e che so
 knitr::include_graphics("img/adv_R.png")
 ```
 
+.footnote[
+
+https://adv-r.hadley.nz/
+
+]
+
 ---
 
 class: section, center, middle
@@ -79,34 +86,30 @@ class: section, center, middle
 ---
 # Costrutti della programmazione in R
 
-- Funzioni
-- Programmazione condizionale
-- Programmazione iterativa
+- #### Funzioni
+- #### Programmazione condizionale
+- #### Programmazione iterativa
 
 ---
 # Funzioni
 
 Analogalmente alle *funzioni matematiche* la funzione in programmazione consiste nell' **astrarre** una serie di operazioni (nel nostro caso una porzione di codice) definendo una serie di operazioni che forniti degli *input* forniscono degli *output* eseguendo una serie di *operazioni*
 
+```{r, echo = FALSE, out.width = "80%"}
+knitr::include_graphics("img/function.svg")
+```
+
 ---
 # Funzioni
 
-Prendiamo l'equazione di una retta: $y = 2x + 3$ dove $3$
+Prendiamo un operazione ripetitiva che spesso si fa in analisi dati, **standardizzare** (trasformare in punti *z*) una variabile ovvero sottrarre da un *vettore* di osservazioni $x$ la sua media $\mu_x$ e poi dividere per la deviazione standard $\sigma_x$:
 
-.pull-left[
+$$
+x_{z} = \frac{x - \mu_x}{\sigma_x}
+$$
 
-```{r, fig.width=2}
-x <- 1:10
-y <- 2*x + 3
-```
-]
+Seppur semplice, questa operazione può essere resa molto automatica scrivendo una funzione.
 
-.pull-right[
-```{r, echo = FALSE}
-qplot(x, y, xlim = c(0, 10), ylim = c(0, 30))
-```
-
-]
 
 ---
 # Funzioni
@@ -120,12 +123,10 @@ Se vogliamo *astrarre* questa operazione in modo da renderla più generale e uti
 ---
 # Funzioni - Argomenti
 
-Gli **argomenti** sono quelle parti variabili della funzione che vengono definiti e poi sono necessari ad eseguire la funzione stessa. Se vogliamo *astrarre* la retta che abbiamo visto prima dobbiamo definire alcune parti come **variabili**:
-
-La retta $y = mx + q$ dove $m$ è la pendenza, $x$ sono i valori della variabile $x$ e $q$ è l'intercetta (valore di $y$ quando $x = 0$). Quindi possiamo definire in R:
+Gli **argomenti** sono quelle parti variabili della funzione che vengono definiti e poi sono necessari ad eseguire la funzione stessa. Se vogliamo *astrarre* la retta che abbiamo visto prima dobbiamo definire alcune parti come **variabili**. Nel caso della nostra funzione l'unico argomento è il vettore $x$ in input. Possiamo analogalmente a `mean` e `sd` impostare un argomento che indichi se eliminare gli `NA`:
 
 ```{r, eval = FALSE}
-retta <- function(m, x, q){ # argomenti
+z_score <- function(x, na.rm = FALSE){ # argomenti
     # body
     # output
 }
@@ -134,12 +135,11 @@ retta <- function(m, x, q){ # argomenti
 ---
 # Funzioni - Body
 
-Il corpo della funzione sono le operazioni da eseguire utilizzando gli argomenti in input. Nel caso della retta semplicemente moltiplicare $m$ per ogni valore di $x$ e aggiungere $q$. In questo modo otteniamo tutti i valori di $y$:
+Il **corpo** della funzione sono le operazioni da eseguire utilizzando gli argomenti in input. Nel nostro caso dobbiamo sottrarre la *media* da $x$ e dividere per la *deviazione standard*
 
 ```{r, eval = FALSE}
-retta <- function(m, x, q){ # argomenti
-    y <- m*x + q
-    
+z_score <- function(x, na.rm = FALSE){ # argomenti
+    (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
     # output
 }
 ```
@@ -147,41 +147,43 @@ retta <- function(m, x, q){ # argomenti
 ---
 # Funzioni - Output
 
-L'output è il **risultato che la funzione ci restituisce** dopo aver eseguito tutte le operazioni. Nel nostro caso della retta, vogliamo ottenere il rispettivo valore di $y$ per ogni valore di $x$ inserito:
+L'output è il **risultato che la funzione ci restituisce** dopo aver eseguito tutte le operazioni. Nel nostro caso vogliamo che la funzione restituisca il vettore $x$ ma trasformato in punti z:
 
 ```{r, eval = FALSE}
-retta <- function(m, x, q){ # argomenti
-    y <- m*x + q
-    
-    return(y) # restituisce y
+z_score <- function(x, na.rm = FALSE){ # argomenti
+    (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm)
+}
+```
+
+Per essere più consistenti possiamo usare il comando `return` che esplicitamente dice alla funzione cosa restituire:
+
+```{r, eval = FALSE}
+z_score <- function(x, na.rm = FALSE){ # argomenti
+    xcen <- (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm) # assegno ad una nuova variabile nell'ambiente funzione
+    return(xcen)
 }
 ```
 
 ---
 # Funzioni - Risultato finale
 
-.pull-left[
+Ora possiamo salvare la nostra funzione come un normale oggetto ed utilizzarla come se fosse una funzione giù implementata in R:
 
 ```{r}
-retta <- function(m, x, q){ # argomenti
-    y <- m*x + q
-    
-    return(y) # restituisce y
+z_score <- function(x, na.rm = FALSE){ # argomenti
+    xcen <- (x - mean(x, na.rm = na.rm)) / sd(x, na.rm = na.rm) # assegno ad una nuova variabile nell'ambiente funzione
+    return(xcen)
 }
 
-x <- 1:10
-m <- 0.3
-q <- 0
+vec <- rnorm(100, 50, 10) # media 50 e deviazione standard 10
 
-y <- retta(m, x, q)
-```
-]
+mean(vec)
+sd(vec)
 
-.pull-right[
-```{r, echo=FALSE}
-plot(x, y)
+vec0 <- z_score(vec)
+mean(vec0)
+sd(vec0)
 ```
-]
 
 ---
 class: section, center, middle
@@ -220,6 +222,8 @@ summary <- function(argomento){
     # ...
 }
 ```
+
+Quindi non solo una funzione esegue lo stesso codice ogni volta che è chiamata ma può eseguire un codice specifico (o un parte) in base al contesto (condizioni)
 
 ---
 # Programmazione condizionale
@@ -349,6 +353,29 @@ all.equal(age_case_when, age_ifelse)
 ```
 
 ---
+# Esempio con `dplyr::case_when()`
+
+Ricodificare i valori di una variabile come ad esempio "girare" gli item di un questionario è un operazione facilmente eseguibile in con `dplyr::case_when()`:
+
+```{r}
+item <- sample(1:5, 20, replace = TRUE) # simuliamo delle risposte ad un item
+item
+
+# ricodifichiamo con 1 = 5, 2 = 4, 3 = 3, 4 = 2, 5 = 1
+item_rec <- case_when(
+    item == 1 ~ 5,
+    item == 2 ~ 4,
+    item == 3 ~ 3,
+    item == 4 ~ 2,
+    item == 5 ~ 1
+)
+
+item_rec
+```
+
+Se usate spesso dei questionari potete scrivervi la vostra funzione che fa lo scoring in automatico `r emo::ji("smirking_face")`
+
+---
 class: section, center, middle
 
 # Programmazione iterativa
@@ -358,27 +385,29 @@ class: section, center, middle
 
 Il concetto di *iterazione* è alla base di qualsiasi operazione nei linguaggi di programmazione.
 
-In R molte delle operazioni sono vettorizzate. Questo rende il linguaggio più efficiente e pulito MA nasconde il concetto di *iterazione*
+In R molte delle operazioni sono **vettorizzate**. Questo rende il linguaggio più efficiente e pulito MA nasconde il concetto di **iterazione**. Ad esempio la funzione `sum()` permette di sommare un vettore di numeri. Ma cosa si nasconde sotto?
+
+```{r}
+sum(1:100)
+# come è possibile?
+```
 
 ---
 
 # Programmazione iterativa
 
-Esempio: se io vi chiedo di usare la funzione `print()` per scrivere `"hello world"` nella console 10 volte, come fate?
+Esempio: se io vi chiedo di usare la funzione `print()` per scrivere `"hello world"` nella console 5 volte, come fate?
 
 ```{r}
 msg <- "Hello World"
-print(msg)
-print(msg)
-print(msg)
-print(msg)
-print(msg)
-print(msg)
-print(msg)
-print(msg)
-print(msg)
-print(msg)
+print(msg) # 1
+print(msg) # 2
+print(msg) # 3
+print(msg) # 4
+print(msg) # 5
 ```
+
+---
 
 # Programmazione iterativa
 
@@ -392,7 +421,7 @@ Ci sono vari costrutti che ci permettono di ripetere operazioni:
 - altri
 
 ---
-# For
+# Il ciclo `for`
 
 ```{r, echo=FALSE, out.width="40%"}
 knitr::include_graphics("img/for_loop.png")
@@ -401,16 +430,26 @@ knitr::include_graphics("img/for_loop.png")
 ---
 # For
 
+Il ciclo `for` è una struttura che permette di ripetere un numero *finito* e *pre-determinato* di volte una certa porzione di codice:
+
 La scrittura di un ciclo `for` è:
 
 ```{r, eval=FALSE}
 for(i in 1:n){
-    # operazioni
+    # quante operazioni voglio
+}
+```
+
+Se voglio stampare una cosa 5 volte, posso tranquillamente usare un ciclo `for`:
+
+```{r}
+for(i in 1:5){
+    print(paste("Ciclo for giro", i))
 }
 ```
 
 ---
-# Scomponiamo il ciclo for
+# Scomponiamo il ciclo `for`
 
 Ci sono diversi elementi:
 
@@ -418,17 +457,6 @@ Ci sono diversi elementi:
 - `i`: questo viene chiamato *iteratore* o *indice*. E' un indice generico che può assumere qualsiasi valore e nome. Per convenzione viene chiamato `i`, `j` etc. Questo tiene conto del numero di iterazioni che il nostro ciclo deve fare
 - `in <valori>`: questo indica i valori che assumerà l'*iteratore* all'interno del ciclo
 - `{ # operazioni }`: sono le operazioni che i ciclo deve eseguire
-
----
-# Hello world come ciclo for
-
-```{r}
-# vogliamo che il ciclo ripeta l'operazione 10 volte
-
-for(i in 1:10){
-    print("hello world")
-}
-```
 
 ---
 # Ma l'iteratore?
@@ -473,7 +501,9 @@ for(i in vec){
 ---
 # While
 
-Il ciclo `while` è una versione più generale del ciclo for. Per funzionare utilizza una *condizione logica* e non un iteratore e un range di valori come nel `for`.
+Il ciclo `while` è una versione più generale del ciclo for. Per funzionare utilizza una *condizione logica* e non un iteratore e un range di valori come nel `for`. Il ciclo continuerà fino a che la `condizione` è vera:
+
+.pull-left[
 
 ```{r, eval = FALSE}
 while(condizione){
@@ -481,12 +511,22 @@ while(condizione){
 }
 ```
 
-Dove il ciclo continuearà fino a che la `condizione` è vera
+]
+
+.pull-right[
+
+```{r, echo = FALSE, out.width = "70%"}
+knitr::include_graphics("img/while_loop.png")
+```
+
+]
 
 ---
-# While - (Fun)
+# While - (Fun `r emo::ji("face_with_hand_over_mouth")`)
 
-Provate a scrivere questo ciclo `while` e vedere cosa succede:
+Provate a scrivere questo ciclo `while` e vedere cosa succede e capire perchè accade.
+
+.pull-left[
 
 ```{r, eval = FALSE}
 
@@ -497,7 +537,16 @@ while (x < 15) {
 }
 ```
 
-Chi mi sa spiegare il risultato?
+
+]
+
+--
+
+.pull-right[
+
+`r iframe("https://giphy.com/embed/LPHXLKEOZw6T6", 400, 400)`
+
+]
 
 ---
 # While
@@ -570,6 +619,18 @@ x <- rnorm(100)
 my_sum(x)
 sum(x)
 ```
+
+---
+# Iterazione e funzioni
+
+Per quanto sia un esercizio utile e divertente ricreare le funzioni base di R capendo la struttura iterativa (`r emo::ji("face_with_hand_over_mouth")`) questo nella pratica non è quasi mai necessario.
+
+Però è assolutamente fondamentale capire il **concetto** di iterazione perchè praticamente ogni operazione consiste nell'iterare tra:
+
+- colonne/righe di un dataframe
+- elementi di un vettore
+- lettere in una parole
+- ...
 
 ---
 class: section, center, middle
@@ -811,15 +872,25 @@ class(res)
 
 - `apply(dataframe, index, fun)`
 
+.pull-left[
+
 ```{r}
 # index 1 = riga, 2 = colonna
 my_dataframe <- data.frame(my_list)
 head(my_dataframe)
+```
 
+]
+
+.pull-right[
+
+```{r}
 apply(my_dataframe, 1, mean)
 apply(my_dataframe, 2, mean)
 apply(my_dataframe, 2, center_var)
 ```
+
+]
 
 ---
 # `tapply`
@@ -1010,8 +1081,8 @@ library(stats) # no errore
 La ragione è che R è in grado di salvare un'espressione per usarla poi in uno specifico contesto (ad esempio dentro una funzione). La `formula syntax` è un esempio. Usando la tilde `~` possiamo creare delle `formule` che R può utilizzare in specifici contesti:
 
 ```{r, error=TRUE}
-y
-x
+head(y)
+head(x)
 y ~ x
 my_formula <- y ~ x
 class(my_formula)
@@ -1022,21 +1093,30 @@ class(my_formula)
 
 Un esempio utile è la funzione `aggregate()` molto interessante per applicare funzioni a dataframe. Immaginate di avere il dataset `iris` e calcolare la media per ogni livello del fattore `Species`:
 
+.pull-left[
+
 ```{r, error = TRUE}
 tapply(iris$Sepal.Length, iris$Species)
 aggregate(Sepal.Length ~ Species, FUN = mean, data = iris)
+```
 
+]
+
+.pull-right[
+
+```{r, error = TRUE}
 # Anche creando un oggetto, ma solo come formula
 
 my_formula <- Sepal.Length ~ Species
 my_char <- "Sepal.Length ~ Species"
 aggregate(my_char, FUN = mean, data = iris)
 
-
 # Viene lo stesso usando $ e senza specificare data =
 aggregate(iris$Sepal.Length, iris$Species, FUN = mean)
-
 ```
+
+]
+
 ---
 
 # Formula syntax e `aggregate()`
@@ -1148,3 +1228,72 @@ class: section, center, middle
 # Dataframe come Liste
 
 ---
+
+# Dataframe come Liste
+
+Essendo il dataframe tecnicamente una lista, è possibile eseguire delle operazioni iterative. Ad esempio:
+
+```{r}
+sapply(mtcars, mean)
+```
+
+Applica a tutti gli elementi della lista i.e. colonne la funzione mean
+
+---
+# Dataframe come Liste
+
+Possiamo però anche dividere un dataframe in liste di dataframes in base alle righe. Ad esempio possiamo voler fittare un modello statistico su ogni soggetto separatamente. Prendiamo questo dataframe di esempio con 2 condizioni, 30 trial in ogni condizione e 10 soggetti:
+
+```{r}
+dat <- expand.grid(
+    id = 1:10,
+    cond = c("a", "b"),
+    ntrial = 1:30
+)
+dat$y <- rnorm(nrow(dat))
+head(dat)
+```
+
+---
+# Dataframe come Liste
+
+L'idea è quindi di calcolare un `t.test()` tra le condizioni separatamente per ogni soggetto. Possiamo splittare il dataframe per soggetto ottenendo una lista con 10 dataframes e poi applicare la funzione  `t.test()` ad ogni elemento.
+
+```{r}
+# definisco la funzione con tutti gli argomenti
+ttest <- function(data){
+    t.test(y ~ cond, data = data, paired = TRUE)
+}
+
+dat_list <- split(dat, dat$id) # splittiamo per id
+length(dat_list)
+
+t_list <- lapply(dat_list, ttest)
+t_list[[1]]
+```
+
+---
+# Dataframe come Liste (extra)
+
+Questo approccio è la base per lavorare in modo molto compatto anche per fare cose complesse con più dataframe insieme. Basta avere chiaro il concetto di `funzione` e di `iterazione`. Il capitolo [Many models](https://r4ds.had.co.nz/many-models.html) di R4DS illustra molto chiaramente questa idea introducendo il concetto di nested dataframe.
+
+.pull-left[
+
+```{r, echo = FALSE, out.width = "40%"}
+knitr::include_graphics("img/r4ds.png")
+```
+
+]
+
+.pull-right[
+
+```{r}
+nestdat <- tibble::tibble(
+    id = 1:10,
+    data = dat_list
+)
+
+nestdat
+```
+
+]

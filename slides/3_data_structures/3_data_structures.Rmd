@@ -1,8 +1,8 @@
 ---
-title: "Strutture Dati"
-subtitle: ""
-author: ""
-institute: ""
+title: "Introduzione a R"
+subtitle: "Strutture Dati"
+author: "Filippo Gambarota"
+institute: "ARCA - @DPSS"
 date: ""
 output:
   xaringan::moon_reader:
@@ -11,7 +11,7 @@ output:
     css: ["../style/arca.css", "../style/arca_fonts.css"]
     lib_dir: libs
     nature:
-      highlightStyle: googlecode
+      highlightStyle: github
       highlightLines: true
       highlightLanguage: ["r"]
       countIncrementalSlides: false
@@ -29,24 +29,34 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.align = "center")
 ```
 
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard()
+```
+
 class: title-slide, center, middle
 
-#.title[Strutture dati in R]
+#.title[`r rmarkdown::metadata$title`]
 
-#.subtitle[Giornata 2]
+#.subtitle[`r rmarkdown::metadata$subtitle`]
 
 ```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
-###.location[Corsi ARCA - @DPSS]
+###.location[`r rmarkdown::metadata$institute`]
 
-###.author[Filippo Gambarota]
+###.author[`r rmarkdown::metadata$author`]
 
 ---
+class: recap, center, middle
+
+# `r emo::ji("fast_reverse_button")` Recap sulle tipologie di dati
+
+---
+
 class: section, center, middle
 
-# Recap sulle tipologie di dato
+# Strutture dati
 
 ---
 
@@ -59,9 +69,11 @@ class: section, center, middle
 ---
 # Strutture dati
 
-Tutti voi avete presente un foglio di calcolo:
+Esiste una struttura dati che abbiamo sempre utilizzato. Quale? `r emo::ji("thinking")`
 
-```{r, echo = FALSE, out.width="80%"}
+--
+
+```{r, echo = FALSE, out.width="60%"}
 knitr::include_graphics("img/foglio_excel.png")
 ```
 
@@ -75,13 +87,26 @@ In R sono presenti diverse strutture dati di diversa complessità:
 - Matrici
 - Dataframe
 - Liste
+- ...
+
+---
+# The big picture
+
+```{r, echo = FALSE, out.width="60%"}
+knitr::include_graphics("img/vectors_diagram.svg")
+```
 
 ---
 # Attributi
 
 Gli oggetti in R possiedono degli **attributi** che forniscono informazioni aggiuntive:
 
+--
+
 - *nomi*: possiamo fornire delle etichette ad ogni elemento
+
+--
+
 - *dimensioni*: fornisce il numero di elementi per ogni dimensione nell'oggetto
 
 ---
@@ -96,27 +121,27 @@ Gli oggetti in R possiedono degli **attributi** che forniscono informazioni aggi
 ---
 class: section, center, middle
 
-# Vettori - The big picture
+# Vettori (atomic)
 
 ---
 
-```{r, echo = FALSE}
-knitr::include_graphics("img/vectors_diagram.svg")
-```
-
----
-
-# Vettori - Disclaimer
+# Vettori (atomic)
 
 I vettori (**atomic**) sono una struttura dati *unidimensionale* e sono la più semplice presente in R. Ci sono alcune cose importanti:
 
-- Possono contenere informazioni di una sola *tipologia* (come numeri, stringhe, etc.)
-- Essendo *unidimensionali* ogni elemento corrisponde ad una posizione
-- Sono l'elemento fondante di strutture dati più complesse come matrici e dataframe
-- Quelli che in R si chiamano `vectors` sono gli `atomic vectors` perchè anche le `liste` (che vedremo) sono dei `vectors` ma che possono contenere elementi eterogenei
+--
 
----
-# Vettori
+- Possono contenere informazioni di una sola *tipologia* (come numeri, stringhe, etc.)
+
+--
+
+- Essendo *unidimensionali* ogni elemento corrisponde ad una posizione
+
+--
+
+- Sono l'elemento fondante di strutture dati più complesse come matrici e dataframe
+
+--
 
 ```{r, echo = FALSE}
 knitr::include_graphics("img/vector.png")
@@ -161,16 +186,25 @@ class(my_chr)
 
 Possiamo *testare* o *convertire* (quando possibile) la tipologia di un vettore usando le funzioni `is.*` e `as.*`:
 
+.pull-left[
+
 ```{r}
 is.integer(my_int)
 
-my_dbl
 as.integer(my_dbl)
+```
 
+]
+
+.pull-right[
+
+```{r}
 as.integer(my_lgl) # cosa succede di strano?
 
 as.numeric(my_chr) # cosa succedere di strano?
 ```
+
+]
 
 ---
 # I valori `NA`
@@ -190,9 +224,15 @@ Quello che succede in realtà è che ci sono altrettante tipologie di `NA` come 
 ---
 # Vettori - Attributi
 
+.pull-left[
+
 Gli attributi possibili per un vettore (atomic) sono:
 - `names()`: ogni elemento può essere associato ad un nome/etichetta
 - Dimensione (`dim()`), in realtà con il vettore unidimensionale usiamo `length()`
+
+]
+
+.pull-right[
 
 ```{r}
 x <- 1:10
@@ -203,10 +243,18 @@ dim(x) # NULL
 length(x) # ci fornisce la lunghezza
 ```
 
+]
+
 ---
 # Vettori - Indicizzazione
 
-L'indicizzazione dei vettori è la più semplice essendo *unidimensionali*. Essendo l'unica proprietà la **lunghezza** (`length(vettore)`) possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'**indice di posizione** tramite le parentesi quadre `vettore[pos]`:
+.pull-left[
+
+L'indicizzazione dei vettori è la più semplice essendo *unidimensionali*. Essendo l'unica proprietà la **lunghezza** (`length(vettore)`) possiamo selezionare, eliminare, estrarre elementi semplicemente usando l'**indice di posizione** tramite le parentesi quadre `vettore[pos]`
+
+]
+
+.pull-right[
 
 ```{r}
 my_vec <- round(runif(20, 1, 100))
@@ -217,6 +265,8 @@ my_vec[1:10] # estraggo i primi 10 elementi
 my_vec[c(1,5,10,16)] # estraggo n elementi a varie posizioni
 my_vec[length(my_vec)] # estraggo l'ultimo elemento
 ```
+
+]
 
 ---
 # Vettori - Indicizzazione
@@ -301,9 +351,22 @@ my_vec[!my_vec > 5] # rimuovo i maggiori di 5, chiaramente uguale a selezionare 
 ```
 
 ---
-class: section, center, middle
+# Extra - `NA` values, OMG `r emo::ji("scream")`
 
-# Extra - Valori NA in tutte le salse
+Gli `NA` sono dei valori tanto strani quanto utili per certi versi. Sono importanti da capire perchè possono impattare molte delle funzioni comuni in R:
+
+```{r}
+myvec <- c(rnorm(100), NA)
+mean(myvec)
+sd(myvec)
+mean(myvec, na.rm = TRUE)
+```
+
+.footnote[
+
+Per approfondire ho scritto un documento sull'argomento [https://arca-dpss.github.io/course-R/extra/dealing_with_NA_NaN_NULL.html](https://arca-dpss.github.io/course-R/extra/dealing_with_NA_NaN_NULL.html)
+
+]
 
 ---
 
@@ -316,7 +379,7 @@ class: section, center, middle
 
 I fattori sono una tipologia di dato peculiare e per quanto simile a semplici `characters` in realtà sono un tipo di vettore `integer` con delle proprietà aggiuntive.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width="50%"}
 knitr::include_graphics("img/factors.png")
 ```
 
@@ -335,7 +398,15 @@ my_fac
 ---
 # Fattori - Attributi
 
-I fattori fanno ampiamente uso degli attributi in particolare:
+.pull-left[
+
+- I fattori fanno ampiamente uso degli attributi. In pratica assegnano un etichetta ad un valore numerico intero. Sono usati principalmente perchè sono più efficienti dei caratteri.
+
+- I fattori quindi permettono di avere dei livelli `levels()` come metadati, a prescindere da quali sono effettivamente presenti nel vettore
+
+]
+
+.pull-right[
 
 ```{r}
 typeof(my_fac)
@@ -347,7 +418,7 @@ as.integer(my_fac)
 as.integer(my_chr)
 ```
 
-I fattori quindi permettono di avere dei livelli `levels()` come metadati, a prescindere da quali sono effettivamente presenti nel vettore
+]
 
 ---
 # Fattori - Indicizzazione
@@ -369,6 +440,8 @@ my_ord_fac <- as.ordered(my_fac)
 my_ord_fac
 attributes(my_ord_fac)
 ```
+
+Alcuni modelli statistici o rappresentazioni grafiche sono applicabili a variabili ordinali e in R possono essere esplicitamente creati.
 
 ---
 class: section, center, middle
@@ -393,7 +466,7 @@ knitr::include_graphics("img/list_vs_vector.svg")
 
 .pull-left[
 
-```{r, echo = FALSE, out.width="70%"}
+```{r, echo = FALSE, out.width="60%"}
 knitr::include_graphics("img/list_example.png")
 ```
 
@@ -440,7 +513,13 @@ names(my_list) <- c("elemento1", "elemento2", "elemento3")
 ---
 # Liste - Indicizzazione
 
-L'indicizzazione è più "complessa" ma molto simile ai vettori. Possiamo indicizzare con parentesi quadre `lista[n]` o con le doppie parentesi quadre `lista[[n]]`. Se a lista è una `named list` quindi con associati i nomi, possiamo usare `$` con il nome associato `lista$nome_elemento`:
+.pull-left[
+
+L'indicizzazione è più "complessa" ma molto simile ai vettori. Possiamo indicizzare con parentesi quadre `lista[n]` o con le doppie parentesi quadre `lista[[n]]`. Se a lista è una `named list` quindi con associati i nomi, possiamo usare `$` con il nome associato `lista$nome_elemento`
+
+]
+
+.pull-right[
 
 ```{r}
 my_list[1] # accedo al primo elemento COME LISTA
@@ -449,6 +528,8 @@ my_list$elemento1 # accedo con il nome
 my_list["elemento1"]
 my_list[["elemento1"]]
 ```
+
+]
 
 ---
 # Liste - Indicizzazione
@@ -461,6 +542,19 @@ Se vogliamo selezionare più elementi (quindi fare un vero e proprio subset dell
 my_list[1:2]
 my_list[[1:2]]
 ```
+
+---
+# Liste - Indicizzazione
+
+```{r, out.width="50%", echo=FALSE}
+knitr::include_graphics("img/lists-subsetting.png")
+```
+
+.footnote[
+
+Thanks to Hadley `r emo::ji("smile")` [https://r4ds.had.co.nz/vectors.html#lists-of-condiments](https://r4ds.had.co.nz/vectors.html#lists-of-condiments)
+
+]
 
 ---
 # Liste - Indicizzazione Nested
@@ -506,7 +600,13 @@ class: section, center, middle
 ---
 # Matrici - Creazione
 
-Le matrici sono una struttura dati *bidimensionale* caratterizzate da `righe` e `colonne` ovvero le dimensioni `dim()` dove il numero di righe rappresenta la dimensione 1 e il numero di colonne la dimensione 2. La matrice si crea con il comando `matrix(data, nrow, ncol, byrow =, dimnames=)`:
+.pull-left[
+
+Le matrici sono una struttura dati *bidimensionale* caratterizzate da `righe` e `colonne` ovvero le dimensioni `dim()` dove il numero di righe rappresenta la dimensione 1 e il numero di colonne la dimensione 2. La matrice si crea con il comando `matrix(data, nrow, ncol, byrow =, dimnames=)`
+
+]
+
+.pull-right[
 
 ```{r}
 # usare indici progressivi come dato è utile per capire l'argomento byrow
@@ -517,6 +617,17 @@ t(my_mat) # inverte righe e colonne, equivalente a mettere byrow = TRUE
 dim(my_mat)
 attributes(my_mat)
 ```
+
+]
+
+---
+# Matrici
+
+Come per i vettori ci sono alcune cose rilevanti:
+
+- Possono contenere una sola tipologia di dati
+- Essendo bidimensionali, abbiamo bisogno di due indici di posizione (righe e colonne) per identificare un elemento
+- Possono essere viste come un insieme di singoli vettori
 
 ---
 # Matrici - Creazione
@@ -550,14 +661,25 @@ my_mat
 ---
 # Matrici - Operazioni
 
-Senza andare nei meandri dell'algebra, le matrici (come i vettori) possono essere usati per operazioni matematiche:
+Senza andare nei meandri dell'algebra, le matrici (come i vettori) possono essere usati per operazioni matematiche
+
+.pull-left[
 
 ```{r}
 my_mat + my_mat
 my_mat * my_mat
+```
+
+]
+
+.pull-right[
+
+```{r}
 my_mat %*% my_mat
 my_mat + 1
 ```
+
+]
 
 ---
 
@@ -599,14 +721,6 @@ matrix("R", nrow = 3, ncol = 3) # notate che se l'argomento data è un solo elem
 L'indicizzazione è la medesima mentre le operazioni (matematiche) sono possibili solo per matrici numeriche.
 
 ---
-
-Come per i vettori ci sono alcune cose rilevanti:
-
-- Possono contenere una sola tipologia di dati
-- Essendo bidimensionali, abbiamo bisogno di due indici di posizione (righe e colonne) per identificare un elemento
-- Possono essere viste come un insieme di singoli vettori
-
----
 # Matrici - Attributi
 
 In parte lo abbiamo già visto ma le matrici hanno come attributi la dimensione `dim()` ovvero il numero di righe `nrow()` e il numero di colonne `ncol()`. Inoltre le dimensioni possono avere anche un nome `dimnames()`:
@@ -625,18 +739,31 @@ dimnames(my_mat)
 Se per i vettori possiamo unire elementi con `c(1,2,3)` o unire vettori `c(vec1, vec2)` con le matrici possiamo usare i comandi `cbind()`
 e `rowbind()`:
 
-```{r, echo=FALSE, out.width="80%"}
+```{r, echo=FALSE, out.width="40%"}
 knitr::include_graphics("img/matrix_comb.svg")
 ```
 ---
 # Extra: Array
 
+.pull-left[  
+
 Gli array sono degli oggetti *n-dimensionali*. Se la matrice è un quadrato un array è un cubo. Valgono le stesse proprietà della matrice chiaramente scalate alle *n dimensioni*:
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("img/array.svg")
+```
+
+]
+
+.pull-right[
 
 ```{r}
 my_array <- array(1:27, dim = c(3,3,3)) # esempio tridimensionale
 my_array
 ```
+
+]
 
 ---
 # Extra: Array
@@ -737,14 +864,29 @@ my_df[["colonna1"]] # estraggo la prima colonna usando il nome
 In generale, l'indicizzazione del dataframe è quella più complessa ed efficiente, sopratutto combinata con
 **operazioni relazionali**:
 
+.pull-left[
+
 ```{r}
 my_df[my_df$colonna1 > 4, ]
 my_df[my_df$colonna1 > 4 & my_df$colonna4 > 0.1, ]
+```
+
+]
+
+.pull-right[
+
+```{r}
 my_df[my_df$colonna1 > 4, "colonna4"]
 my_df[my_df$colonna1 > 4, 1]
 ```
 
+]
+
+---
+
 # Dataframe - Indicizzazione
+
+.pull-left[
 
 L'idea generale è semplice ovvero quando seleziono faccio operazioni sulle **righe** (seleziono alcune righe) ed eventualmente sulle
 **colonne** (seleziono alcune colonne). Attenzione però a cosa viene restituito!
@@ -754,6 +896,11 @@ typeof(my_df[1,1])
 typeof(my_df[1, ])
 typeof(my_df[, 1])
 ```
+
+]
+
+.pull-right[
+
 Viene restituito non sempre un dataframe, per evitare questo (se è necessario) possiamo usare `drop = FALSE`
 per ottenere sempre un dataframe:
 
@@ -762,48 +909,77 @@ typeof(my_df[, 1, drop = FALSE])
 typeof(my_df[1,1, drop = FALSE])
 ```
 
+]
+
 ---
 # Dataframe - Indicizzazione `subset()`
+
+.pull-left[
 
 Ci sono anche dei modi alternativi e più compatti di indicizzare. Ad esempio usando la funzione `subset()`:
 
 ```{r}
-subset(iris, subset = Species == "setosa" & Sepal.Length > 4)
+head(subset(iris, subset = Species == "setosa" & Sepal.Length > 4))
 ```
+
+]
+
+.pull-right[
 
 E' equivalente a:
 
 ```{r}
-iris[iris$Species == "setosa" & iris$Sepal.Length > 4, ]
+head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, ])
 ```
+
+]
 
 ---
 # Dataframe - Indicizzazione `subset()`
 
 Possiamo anche selezione delle colonne invece che righe:
 
+.pull-left[
+
 ```{r}
 # usando i nomi delle colonne
-subset(iris, select = c(Sepal.Length, Species)) # equivale a iris[, c("Sepal.Length", "Species")]
-
-# oppure usando indici
-subset(iris, select = c(1, 5))
+head(subset(iris, select = c(Sepal.Length, Species))) # equivale a iris[, c("Sepal.Length", "Species")]
 ```
+
+]
+
+.pull-right[
+
+```{r}
+# oppure usando indici
+head(subset(iris, select = c(1, 5)))
+```
+
+]
 
 ---
 # Dataframe - Indicizzazione `subset()`
 
+.pull-left[
+
 Possiamo anche combinare le due cose facendo una selezione di righe e colonne:
 
 ```{r}
-subset(iris, Species == "setosa" & Sepal.Length > 4, c(Sepal.Length, Species))
+head(subset(iris, Species == "setosa" & Sepal.Length > 4, c(Sepal.Length, Species)))
 ```
+
+]
+
+.pull-right[
 
 E' equivalente a:
 
 ```{r}
-iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length", "Species")]
+head(iris[iris$Species == "setosa" & iris$Sepal.Length > 4, c("Sepal.Length", "Species")])
 ```
+
+]
+
 ---
 # Dataframe - Indicizzazione - *data mask*
 
@@ -817,6 +993,21 @@ with(iris, Sepal.Length + Sepal.Width) # se usasse la variabile definita prima d
 L'espressione `Sepal.Length + Sepal.Width` viene eseguita all'interno (`with`) del dataframe `iris` in modo da eseguire anche operazioni complesse tra le colonne di `iris` senza dover ogni volta specificare `iris$variabile`.
 
 ---
-class: section, center, middle
-
 # Extra - Importazione dati
+
+Importare i dati (solitamente come `dataframe`) è un operazione complessa e che deve gestire numerosi casi particolari. Come indicazione generale:
+
+1. Capire il formato in **input** (`csv`, `txt`, `sav`, etc.)
+2. Trovare la funzione/pacchetto di R che gestisce quel tipo di formato. `read.csv()`, `read.table()`, etc.
+3. Leggere la documentazione della funzione e trovare gli argomenti appropriati (`header`, `sep`, etc.)
+4. Organizzare i dati nel proprio PC (**working directory**)
+5. Importare i dati e controllare il risultato
+  - vedere anomalie
+  - leggere eventuali errori/warnings
+  - controllare la tipologia di variabili (caratteri vs numeri) ed eventualmente sistemare
+
+.footnote[
+
+Per approfondire ho scritto un documento sull'argomento [https://arca-dpss.github.io/course-R/extra/importing_data.html](https://arca-dpss.github.io/course-R/extra/importing_data.html)
+
+]

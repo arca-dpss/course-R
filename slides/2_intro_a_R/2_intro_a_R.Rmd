@@ -1,8 +1,8 @@
 ---
 title: 'Introduzione a R'
-subtitle: ""
-author: ""
-institute: ""
+subtitle: "Primi passi con R"
+author: "Filippo Gambarota"
+institute: "ARCA - @DPSS"
 date: ""
 output:
   xaringan::moon_reader:
@@ -32,21 +32,26 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```{r packages, include = FALSE}
 library(kableExtra)
+devtools::load_all()
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard()
 ```
 
 class: title-slide, center, middle
 
-#.title[Introduzione a R]
+#.title[`r rmarkdown::metadata$title`]
 
-#.subtitle[Giornata 1]
+#.subtitle[`r rmarkdown::metadata$subtitle`]
 
 ```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
-###.location[Corsi ARCA - @DPSS]
+###.location[`r rmarkdown::metadata$institute`]
 
-###.author[Filippo Gambarota]
+###.author[`r rmarkdown::metadata$author`]
 
 ---
 class: section, center, middle
@@ -70,7 +75,7 @@ class: section, center, middle
 
 # Console
 
-```{r, echo = FALSE, out.width="90%"}
+```{r, echo = FALSE, out.width="60%"}
 knitr::include_graphics("img/R_console.png")
 ```
 
@@ -198,12 +203,20 @@ class: section, center, middle
 
 Il concetto di **oggetto** è fondamentale in R. Essenzialmente tutto quello che possiamo creare o utilizzare in R come un numero, un vettore, dei caratteri o delle funzioni sono creati come oggetti.
 
+```{r, echo = FALSE}
+knitr::include_graphics("img/everything_object.svg")
+```
+
 ---
 # R e le funzioni
 
 > “Everything that happen in R is a function call” - John Chambers
 
 Anche il concetto di **funzione** è fondamentale in R. Essenzialmente tutto quello che facciamo è chiamare **funzioni** su oggetti ottenendo un nuovo oggetto o modificando un oggetto esistente
+
+```{r, echo = FALSE}
+knitr::include_graphics("img/everything_function.svg")
+```
 
 ---
 # Cosa possiamo usare/creare in R?
@@ -298,9 +311,10 @@ T <- 2 # attenzione
 ---
 # Dove viene creato l'oggetto?
 
+Di default gli oggetti sono creati nel **global environment** accessibile con `ls()` o visibile in R Studio con anche alcune informazioni aggiuntive:
 
 ```{r, echo = FALSE, out.width="90%"}
-knitr::include_graphics("img/obj_environment.png")
+knitr::include_graphics("img/global_environment.png")
 ```
 
 ---
@@ -326,6 +340,70 @@ x == "ciao"
 
 x > 10
 
+```
+
+---
+class: section, center, middle
+
+# Funzioni
+
+---
+# Funzioni
+
+Le funzioni sono un argomento relativamente complesso ed avanzato. Lo tratteremo più avanti nella sezione [Funzioni](https://arca-dpss.github.io/course-R/slides/4_programmazione/4_programmazione.html#6) del capitolo Programmazione in R. Siccome le usiamo fin da subito è importante avere chiari alcuni aspetti:
+
+- Funzioni come oggetti
+- Argomenti obbligatori, opzionali e default
+- Ordine degli argomenti
+- Documentazione
+
+---
+# Funzioni come oggetti
+
+Abbiamo già visto che ogni cosa in R è un oggetto. Anche le funzioni seppur molto diverse da altri elementi sono creati e trattati in R come oggetti:
+
+```{r}
+myfun <- function(x) {
+  return(x + 3)
+}
+
+ls()
+```
+
+Possiamo crearle, eliminarle o sovrascriverle come un normale oggetto. Vedremo più avanti come crearle ma tenete in considerazione che tutte le funzioni che usiamo sono create come oggetti e salvati nell'ambiente (quando facciamo `library()` sono rese disponibili)
+
+---
+# Argomenti
+
+Gli argomenti delle funzioni sono quelli che da *utenti* dobbiamo conoscere ed impostare nel modo corretto per fare in modo che la funzioni faccia quello per cui è stata pensata. Vediamo l'`help` della funzione `mean()`
+
+`r iframe("https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/mean", 900, 400)`
+
+---
+# Argomenti
+
+- `x` è un oggetto (ovviamente `r emo::ji("smile")`). [...] "currently there are methods for numeric/logical vectors...". Quindi `x` deve essere numerico o logico. Ha senso fare la media di caratteri? `r emo::ji("thinking")`
+- `trim`
+- `na.rm`
+
+--
+
+Per impostare questi argomenti ci sono 2 regole:
+
+- l'ordine non conta SE DEFINISCO NOME DELL'ARGOMENTO con `x = vettore`, `na.rm = TRUE`, etc.
+- l'ordine conta SE NON DEFINISCO IL NOME DELL'ARGOMENTO. Posso quindi omettere `argomento = valore` ma devo rispettare l'ordine con cui è stata scritta la funzione
+
+---
+# Argomenti
+
+In questo caso proviamo ad usare la funzione `mean()`:
+
+```{r, error = TRUE}
+myvec <- rnorm(100, 10, 5)
+mean(myvec) # x definito, trim non definito, na.rm non definito
+mean(myvec, trim = 0.10) # x definito, trim definito, na.rm non definito
+mean(myvec, na.rm = TRUE) # x definito trim non definito, na.rm definito
+mean(myvec, TRUE) # cosa succede?
 ```
 
 ---
@@ -371,21 +449,25 @@ boxplot(y ~ x, data = data)
 ---
 # Formula Syntax (extra, but useful)
 
-In generale, ogni volta che usate delle variabili *unquoted* (senza virgolette) e queste non sono dichiarate nell'ambiente, state probabilmente usando la **non-standard evaluation** e c'è una formula da qualche parte `r emo::ji("smile")` 
+In generale, ogni volta che usate delle variabili *unquoted* (senza virgolette) e queste non sono dichiarate nell'ambiente, state probabilmente usando la **non-standard evaluation** e c'è una formula da qualche parte `r emo::ji("smile")`. Per approfondire:
+
+```{r, echo = FALSE, fig.cap = cap_link("https://adv-r.hadley.nz/metaprogramming.html", "Capitolo Metaprogramming"), out.width="20%"}
+knitr::include_graphics("img/advancedR.jpg")
+```
 
 ---
 class: section, center, middle
 
-# Ambiente di lavoro
+# Ambiente di lavoro `r emo::ji("gear")`
 
 ---
-# Ambiente di lavoro
+# Ambiente di lavoro `r emo::ji("gear")`
 
-- ### Environment
+- Environment
 
-- ### Working directory
+- Working directory
 
-- ### Packages
+- Packages
 
 ---
 # Environment
@@ -393,7 +475,7 @@ class: section, center, middle
 Il **working environment** è la vostra *scrivania* quando lavorate in R. Contiene tutti gli oggetti (variabili) creati durante la sessione di lavoro.
 
 ```{r, echo = FALSE, out.width="90%"}
-knitr::include_graphics("img/environemnt.png")
+knitr::include_graphics("img/global_environment.png")
 ```
 
 ---
@@ -412,6 +494,7 @@ In R è possibile installare e caricare pacchetti aggiuntivi che non fanno altro
 
 - Installare il pacchetto con `install.packages("nomepacchetto")`
 - Caricare il pacchetto con `library(nomepacchetto)`
+- Accedere ad una funzione senza caricare il pachetto `nomepacchetto::nomefunzione()`. Utile se serve solo una funzione o ci sono conflitti
 
 ---
 # Packages
@@ -448,12 +531,21 @@ Gli `R projects` sono una feature implementata in R Studio per organizzare una c
 - permettono un **veloce accesso** ad un determinato progetto
 
 ---
+# R Projects
+
+Per capire meglio il funzionamento degli R `R projects` e di come sono organizzati i file ho fatto un video che può chiarire la questione:
+
+<iframe src="https://www.youtube.com/embed/MvdVqB5brZo?rel=0" width="600" height="400" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+---
 class: section, center, middle
 
 # Come risolvere i problemi ~~nella vita~~ in R
 
 ---
 # Come risolvere i problemi ~~nella vita~~ in R
+
+.pull-left[
 
 In R gli errori sono:
 
@@ -462,6 +554,14 @@ In R gli errori sono:
 - educativi
 
 Resta solo da capire come affrontarli
+
+]
+
+.pull-right[
+
+`r iframe("https://giphy.com/embed/1VT3UNeWdijUSMpRL4", 300, 300)`
+
+]
 
 ---
 # R ed errori
@@ -472,44 +572,53 @@ Ci sono diversi livelli di **allerta** quando scriviamo codice:
 - **warnings**: la funzione ci informa di qualcosa di *potenzialmente* problematico, ma (circa) tutto liscio
 - **error**: la funzione non solo ci informa di un **errore** ma le operazioni richieste non sono state eseguite
 
+--
+
+Ne vedremo e vedrete molti usando R `r emo::ji("smile")`
+
 ---
 # Come risolvere un errore?
+
+.pull-left[
 
 - capire il messaggio
 - leggere la documentazione della funzione
 - cercare il messaggio su Google
 - chiedere aiuto nei forum dedicati
 
+]
+
+.pull-right[
+
+`r iframe("https://giphy.com/embed/l3V0b87RQAMgGGoGA", 300, 300)`
+
+]
+
 ---
 # Come risolvere un errore?
 
-- Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione` o `??nomefunzione`
+- Ogni funzione ha una pagina di documentazione accessibile con `?nomefunzione`, `??nomefunzione` oppure `help(nomefunzione)`
 - Possiamo cercare anche la documentazione del pacchetto
 - Possiamo cercare su Google il nome della funzione o l'eventuale messaggio che riceviamo
 
----
-# Come NON fare una domanda
-
---
-
-.pull-left[
-```{r, out.width="70%", echo = FALSE}
-knitr::include_graphics("img/bad_question.png")
+```{r, echo=FALSE, out.width="50%", fig.cap = "`help(rm)`"}
+knitr::include_graphics("img/help-rm.png")
 ```
-]
-
---
-
-.pull-right[
-```{r, out.width="70%", echo = FALSE}
-knitr::include_graphics("img/bad_question_after.png")
-```
-]
-
---
 
 ---
-# Come NON fare una domanda
+# Stack overflow
 
-- Non riporta il **messaggio di errore**!
-- Usa un **percorso assoluto**! Come posso riprodurre il suo problema?
+[**Stack overflow**](https://stackoverflow.com/) è un forum di discussione riguardo qualsiasi cosa coinvolga codice (statistica, programmazione, etc.). E' pieno di errori comuni, *How to do ...* e di risposte/soluzioni estremamente utili. Nel 90% dei casi il problema che avete è comune ed è già presente una soluzione.
+
+```{r echo = FALSE, out.width="80%"}
+knitr::include_graphics("img/stackoverflow.png")
+```
+
+---
+# Se non trovo una soluzione?
+
+Se non trovo una soluzione posso chiedere. Fare una domanda riguardo un errore o un problema di codice non è semplice come sembra. Le fonti dell'errore possono essere molteplici (il mio specifico computer, un pacchetto che ho installato, il codice sorgente etc.). Ecco una guida per chiedere in modo efficace:
+
+```{r echo = FALSE, fig.cap=cap_link("https://stackoverflow.com/help/how-to-ask"), out.width="80%"}
+knitr::include_graphics("img/stackoverflow-question.png")
+```
