@@ -1,0 +1,121 @@
+---
+title: "Netflix"
+output: 
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+        code_download: true
+css: ["../files/css/course_html.css"]
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+library(here)
+```
+
+# Prepariamo il dataset
+
+Per prima cosa importiamo il dataset. Non badate alla funzione `here()` serve solo per gestire percorsi più complessi.
+
+```{r}
+netflix <- read.table(here("exercises", "data", "netflix.txt"), header = TRUE, sep = ";")
+head(netflix)
+```
+
+# Esploriamo
+
+Accediamo a diverse proprietà del dataframe per capire la struttura, dimensioni, nomi etc.
+
+```{r}
+dim(netflix) # righe, colonne
+str(netflix)
+sapply(netflix, class) # in questo modo applichiamo la funzione class ad ogni colonna
+```
+
+Come vediamo sono principalmente numeri (interi) e caratteri. Possiamo trasformare in **fattori** alcune variabili dove abbia senso. Da un punto di vista computazionale possiamo trasformare in fattore qualsiasi variabile ma da un punto di vista pratico ha senso farlo dove il numero dei livelli è limitato.
+Ad esempio:
+
+- la colonna `users_rating` rappresenta il voto, da 0 a 10 rispetto al film/serie tv. Possiamo trasformare questa variabile in un ordered factor:
+
+```{r}
+netflix$users_rating <- factor(netflix$users_rating, ordered = TRUE)
+head(netflix$users_rating)
+```
+
+- la colonna `show_id` è un identificativo unico per ogni film e può essere tranquillamente lasciata come variabile numerica.
+
+# Quanti `NA` in ogni colonna?
+
+Questo è un problema interessante. Idealmente dobbiamo prendere una colonna, contare quanti `NA` e mettere questo valore dentro un vettore. Sappiamo che possiamo usare `*apply` family per iterare sulle colonne di un dataframe. Quindi possiamo ad esempio scrivere una funzione ragionando come se dovessimo fare una sola colonna e poi iterare con `sapply` o `lapply`:
+
+```{r}
+count_na <- function(x){
+    sum(is.na(x)) # perchè sum?
+}
+```
+
+Questa funzione permette di contare quanti `NA` in un vettore perchè `TRUE` e `FALSE` sono rappresentati rispettivamente da 1 e 0. La somma di una serie di `TRUE` e `FALSE` è quindi come sommare 1 e 0.
+
+```{r}
+sum(c(TRUE, TRUE, FALSE)) # c(1,1,0)
+```
+
+Proviamola su una colonna:
+
+```{r}
+count_na(netflix$show_id)
+```
+
+Ottimo, adesso semplicemente iteriamo:
+
+```{r}
+sapply(netflix, count_na)
+```
+
+Per migliorare questa funzione possiamo impostare un argomento per restituire la percentuale invece del numero assoluto:
+
+```{r}
+count_na <- function(x, perc = FALSE){
+    if(perc){
+        mean(is.na(x)) * 100
+    }else{
+        sum(is.na(x))
+    }
+}
+```
+
+Proviamola:
+
+```{r}
+sapply(netflix, count_na, TRUE)
+```
+
+# Differenza tra date
+
+R permette di lavorare anche con le date. In altri termini può gestire giorno, mese e anno rappresentandoli come valori numerici. E' quindi possibile fare operazioni con le date come calcolare l'età dalla data di nascita etc. In questo caso calcoliamo quanto tempo è passato dal rilascio alla disponibilità su Netflix. Per prima cosa convertiamo le strighe in date:
+
+```{r}
+netflix$release_date <- as.Date(netflix$release_date)
+netflix$insert_date <- as.Date(netflix$insert_date)
+str(netflix)
+```
+
+Come vedete ora le due colonne sono riconosciute come date. Proviamo ad usare la funzione `?difftime`:
+
+```{r}
+head(difftime(netflix$insert_date, netflix$release_date, units = "days"))
+```
+
+Ora possiamo assegnare ad una nuova colonna questa operazione:
+
+```{r}
+netflix$release_time <- round(difftime(netflix$insert_date, netflix$release_date, units = "days"))
+```
+
+
+
+

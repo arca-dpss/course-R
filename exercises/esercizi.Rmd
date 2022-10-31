@@ -56,6 +56,7 @@ La scrittura di operazione complesse in R avviene utilizzando le parentesi per d
 1. $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 ((45 + 21)^3 + 3/4)/(sqrt(32 - 12/17))
 ```
@@ -65,6 +66,7 @@ La scrittura di operazione complesse in R avviene utilizzando le parentesi per d
 2. $\frac{\sqrt{7-\pi}}{3\ (45-34)}$
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 sqrt(7 - pi)/(3*(45 -34))
 ```
@@ -74,6 +76,7 @@ sqrt(7 - pi)/(3*(45 -34))
 3. $\sqrt[3]{12-e^2}+\ln(10\pi)$
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 (12 - exp(1)^2)^(1/3) + log(10*pi)
 ```
@@ -83,6 +86,7 @@ sqrt(7 - pi)/(3*(45 -34))
 4. $\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}$
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 (sin((3/4)*pi)^2 + cos((3/2)*pi)) / (log(exp(1)^3/2, base = 7))
 ```
@@ -92,6 +96,7 @@ sqrt(7 - pi)/(3*(45 -34))
 5. $\frac{\sum_{n=1}^{10} n}{10}$
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 sum(1:10)/10
 ```
@@ -107,14 +112,10 @@ Note per la risoluzione degli esercizi:
 
 ## Operazioni logiche
 
-<!--
-TODO: rivedi il primo esercizio
--->
-
-1. Definisci due relazioni false e due vere che ti permettano di valutare i risultati di tutti i possibili incroci che puoi ottenere con gli operatori logici `&` e `|`.
-2. Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un'altra proposizione per i numeri dispari (tip: cosa ti ricorda `%%`?).
+1. Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un'altra proposizione per i numeri dispari (tip: cosa ti ricorda `%%`?).
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 # Numeri pari: x %% 2 == 0
 4 %% 2 == 0  # TRUE
@@ -127,9 +128,10 @@ TODO: rivedi il primo esercizio
 
 </details>
 
-3. Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) "*x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4*".
+2. Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) "*x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4*".
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 # prima soluzione: (x >= -4 & x <= -2) | (x >= 2 & x <= 4)
 (-5 >= -4 & -5 <= -2) | (-5 >= 2 & -5 <= 4) # FALSE
@@ -148,9 +150,10 @@ abs(5) >= 2 & abs(5) <= 4     # FALSE
 
 </details>
 
-4. Esegui le seguenti operazioni `4 ^ 3 %in% c(2,3,4)` e `4 * 3 %in% c(2,3,4)`. Cosa osservi nell'ordine di esecuzione degli operatori?
+3. Esegui le seguenti operazioni `4 ^ 3 %in% c(2,3,4)` e `4 * 3 %in% c(2,3,4)`. Cosa osservi nell'ordine di esecuzione degli operatori?
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 4 ^ 3 %in% c(2,3,4) # ^ ha precedenza rispetto a %in%
 4 * 3 %in% c(2,3,4) # %in% ha precedenza rispetto a *
@@ -200,6 +203,7 @@ s <- rep(c("A", "B", "C"), 4)
 5. Crea il vettore `t` in cui le letter `"A"`,`"B"` e `"C"` vengono ripetute ognuna 4 volte (`?rep()`)
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 t <- rep(c("A", "B", "C"), each = 4)
 ```
@@ -211,9 +215,12 @@ t <- rep(c("A", "B", "C"), each = 4)
 ## [1] "foo" "foo" "bar" "bar" "foo" "foo" "bar" "bar"
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 rep(rep(c("foo", "bar"), each = 2), times = 2)
 ```
+</details>
 
 ### Indicizzare vettori
 
@@ -856,6 +863,7 @@ head(netflix)
 - Scrivere una funzione che prenda in **input** il dataset e restituisca la tipologia di dato presente in ogni colonna
 - Ragionare sul tipo di dato in base alla descrizione ed eventualmente cambiare la tipologia dove appropriato
 - Scrivere una funzione che prenda in input il dataset e fornisca per ogni colonna il numero di valori `NA`
+- Modificare la funzione precedente con un opzione chiamata `perc` che se inserita come `TRUE` restituisce la percentuale di `NA`
 - Creare una nuova colonna con la differenza tra `release_date` e `insert_date`. Per questo può essere utile cercare online come R gestisce le date.
 
 ### Passaggi avanzati
