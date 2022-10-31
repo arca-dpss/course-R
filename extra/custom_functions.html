@@ -1408,35 +1408,7 @@ display: none;
 </style>
 
 
-<style type="text/css">h1 {
-color: #9B0A14;
-font-weight: bold;
-}
-.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
-background-color: #9B0A14;
-}
-details {
-font: 16px "Open Sans", Calibri, sans-serif;
-width: 620px;
-}
-details > summary {
-padding: 2px 6px;
-width: 15em;
-background-color: #ddd;
-border: none;
-box-shadow: 3px 3px 4px black;
-cursor: pointer;
-}
-details > p {
-border-radius: 0 0 10px 10px;
-background-color: #ddd;
-padding: 2px 6px;
-margin: 0;
-box-shadow: 3px 3px 4px black;
-}
-details[open] > summary {
-background-color: #ccf;
-}</style>
+<style type="text/css">h1 {color: #9B0A14;font-weight: bold;}.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {background-color: #9B0A14;}details {font: 16px "Open Sans", Calibri, sans-serif;width: 620px;}details > summary {padding: 2px 6px;width: 15em;background-color: #ddd;border: none;box-shadow: 3px 3px 4px black;cursor: pointer;}details > p {border-radius: 0 0 10px 10px;background-color: #ddd;padding: 2px 6px;margin: 0;box-shadow: 3px 3px 4px black;}details[open] > summary {background-color: #ccf;}</style>
 
 
 
@@ -1637,37 +1609,37 @@ border-radius: 0px;
 <p>Utilizzo:</p>
 <pre class="r"><code>put_random_na(mtcars, 30)</code></pre>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4   NA
-## Mazda RX4 Wag       21.0   6 160.0 110 3.90    NA 17.02  0 NA    4    4
-## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0   NA    2
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110   NA 2.875 17.02  0  1   NA    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1   NA    1
+## Hornet 4 Drive      21.4  NA 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440    NA  0 NA    3    2
 ## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
 ## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4   NA
-## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-## Merc 280            19.2   6 167.6 123 3.92 3.440    NA  1  0    4   NA
-## Merc 280C             NA   6 167.6 123 3.92 3.440 18.90  1 NA    4    4
-## Merc 450SE          16.4   8    NA 180 3.07 4.070 17.40  0  0    3    3
-## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0 NA    3    3
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0   NA    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0   NA    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90 NA  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180   NA 3.730 17.60  0 NA    3    3
 ## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0 NA    3    4
-## Lincoln Continental 10.4   8 460.0 215   NA 5.424 17.82  0  0    3   NA
-## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0   NA    4
+## Cadillac Fleetwood    NA   8 472.0 205 2.93 5.250 17.98 NA  0    3    4
+## Lincoln Continental 10.4   8    NA 215   NA 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7  NA 440.0 230 3.23 5.345 17.42  0  0    3    4
 ## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## Honda Civic         30.4   4    NA  52   NA 1.615 18.52  1  1   NA    2
-## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1   NA    1
-## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-## AMC Javelin           NA   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Camaro Z28            NA   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845    NA NA  0    3    2
+## Honda Civic         30.4   4  75.7  NA 4.93    NA 18.52 NA  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835    NA  1  1    4    1
+## Toyota Corona       21.5   4 120.1  NA 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0  NA 2.76 3.520 16.87  0  0   NA    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73    NA 15.41  0 NA    3    4
+## Pontiac Firebird    19.2  NA 400.0 175 3.08 3.845 17.05 NA  0    3    2
 ## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-## Porsche 914-2       26.0   4 120.3  NA 4.43 2.140 16.70  0  1    5    2
-## Lotus Europa          NA   4  95.1 113   NA 1.513 16.90  1  1    5    2
-## Ford Pantera L        NA   8 351.0 264 4.22 3.170 14.50  0  1   NA    4
-## Ferrari Dino        19.7  NA 145.0 175 3.62 2.770 15.50  0  1    5    6
-## Maserati Bora         NA   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Porsche 914-2       26.0   4 120.3  91   NA 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0  NA 4.22 3.170    NA  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 ## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 </div>
 <div id="randomize_case" class="section level2" number="1.2">
@@ -1684,40 +1656,35 @@ border-radius: 0px;
 }</code></pre>
 <p>Utilizzo:</p>
 <pre class="r"><code>randomize_case(iris$Species)</code></pre>
-<pre><code>##   [1] &quot;setosa&quot;     &quot;setosa&quot;     &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;setosa&quot;    
-##   [6] &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;setosa&quot;     &quot;sETOsA&quot;     &quot;setosa&quot;    
-##  [11] &quot;setosa&quot;     &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [16] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [21] &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [26] &quot;setosa&quot;     &quot;sETOsA&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [31] &quot;sETOsA&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [36] &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;sETOsA&quot;     &quot;sETOsA&quot;    
-##  [41] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;sETOsA&quot;    
-##  [46] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
-##  [51] &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot;
-##  [56] &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot;
-##  [61] &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot;
-##  [66] &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [71] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot;
-##  [76] &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [81] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
-##  [86] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot;
-##  [91] &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot;
-##  [96] &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot; &quot;vERsIcOLOR&quot; &quot;versicolor&quot;
-## [101] &quot;vIRgINIcA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [106] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot; 
-## [111] &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot; 
-## [116] &quot;vIRgINIcA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot; 
-## [121] &quot;virginica&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot; 
-## [126] &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot; 
-## [131] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [136] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot; 
-## [141] &quot;virginica&quot;  &quot;vIRgINIcA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
-## [146] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;vIRgINIcA&quot;</code></pre>
+<pre><code>##   [1] &quot;SEToSA&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
+##   [7] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;    
+##  [13] &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
+##  [19] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;SEToSA&quot;     &quot;setosa&quot;    
+##  [25] &quot;setosa&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;    
+##  [31] &quot;SEToSA&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;    
+##  [37] &quot;setosa&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;setosa&quot;    
+##  [43] &quot;setosa&quot;     &quot;setosa&quot;     &quot;setosa&quot;     &quot;SEToSA&quot;     &quot;SEToSA&quot;     &quot;SEToSA&quot;    
+##  [49] &quot;setosa&quot;     &quot;setosa&quot;     &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot;
+##  [55] &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
+##  [61] &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot;
+##  [67] &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;versicolor&quot;
+##  [73] &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;VErSiColor&quot;
+##  [79] &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;VErSiColor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot;
+##  [85] &quot;versicolor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot;
+##  [91] &quot;versicolor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;VErSiColor&quot;
+##  [97] &quot;VErSiColor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;versicolor&quot; &quot;virginica&quot;  &quot;virginica&quot; 
+## [103] &quot;VirGiNiCA&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
+## [109] &quot;VirGiNiCA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot; 
+## [115] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot; 
+## [121] &quot;VirGiNiCA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
+## [127] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
+## [133] &quot;VirGiNiCA&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
+## [139] &quot;virginica&quot;  &quot;virginica&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot; 
+## [145] &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;virginica&quot;  &quot;VirGiNiCA&quot;  &quot;virginica&quot;</code></pre>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGUgZnVuemlvbmkgVE9QIGluIFIiCm91dHB1dDogCiAgICBib29rZG93bjo6aHRtbF9kb2N1bWVudDI6CiAgICAgICAgdG9jOiB0cnVlCiAgICAgICAgdG9jX2Zsb2F0OiB0cnVlCiAgICAgICAgY29kZV9kb3dubG9hZDogdHJ1ZQpjc3M6IFsiLi4vZmlsZXMvY3NzL2NvdXJzZV9odG1sLmNzcyJdCi0tLQoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkKYGBgCgojIEZ1bnppb25pCgpJbiBxdWVzdG8gZG9jdW1lbnRvIHZlZGlhbW8gYWxjdW5lIGZ1bnppb25pICoqcGVyc29uYWxpenphdGUqKiBjaGUgcG9zc29ubyBlc3NlcmUgdXRpbGkgZHVyYW50ZSBpbCBjb3Jzby4gUGVyIHBvdGVybGUgdXRpbGl6emFyZSBwb3RldGUgY29waWFyZSBlIGluY29sbGFyZSBkaXJldHRhbWVudGUgbGEgZnVuemlvbmUgcGVyIHBvaSBzYWx2YXJsYSBjb21lIG9nZ2V0dG8uCgojIyBgcHV0X3JhbmRvbV9uYSgpYAoKYGBge3J9CnB1dF9yYW5kb21fbmEgPC0gZnVuY3Rpb24oZGF0YSwgbil7CiAgICAKICAgIHBvcyA8LSBsaXN0KHJvd3MgPSAxOm5yb3coZGF0YSksCiAgICAgICAgICAgICAgICBjb2xzID0gMTpuY29sKGRhdGEpKQogICAgCiAgICBwb3MgPC0gZXhwYW5kLmdyaWQocG9zKQogICAgCiAgICBuYV9wb3MgPC0gc2FtcGxlKDE6bnJvdyhwb3MpLCBuKQogICAgCiAgICBmb3IgKGkgaW4gMTpsZW5ndGgobmFfcG9zKSkgewogICAgICAgIAogICAgICAgIG5hX3Bvc19pIDwtIHBvc1tuYV9wb3NbaV0sIF0KICAgICAgICAKICAgICAgICBkYXRhW25hX3Bvc19pW1sxXV0sIG5hX3Bvc19pW1syXV1dIDwtIE5BCiAgICAgICAgCiAgICB9CiAgICAKICAgIHJldHVybihkYXRhKQogICAgCn0KYGBgCgpVdGlsaXp6bzoKCmBgYHtyfQpwdXRfcmFuZG9tX25hKG10Y2FycywgMzApCmBgYAoKIyMgYHJhbmRvbWl6ZV9jYXNlKClgCgpgYGB7cn0KcmFuZG9taXplX2Nhc2UgPC0gZnVuY3Rpb24oeCwgbmxldHRlcnMgPSAxNSwgbl9wcm9iID0gMC4zMCl7CiAgICBuZXdfeCA8LSB0b2xvd2VyKHgpCiAgICB0b19yYW5kb21pemUgPC0gc2FtcGxlKExFVFRFUlMsIG5sZXR0ZXJzKQogICAgbmFtZXModG9fcmFuZG9taXplKSA8LSB0b2xvd2VyKHRvX3JhbmRvbWl6ZSkKICAgIG5fdG9fcmFuZG9taXplIDwtIGZsb29yKGxlbmd0aCh4KSAqIG5fcHJvYikKICAgIGlkX3RvX3JhbmRvbWl6ZSA8LSBzYW1wbGUoMTpsZW5ndGgoeCksIG5fdG9fcmFuZG9taXplKQogICAgbmV3X3hbaWRfdG9fcmFuZG9taXplXSA8LSBzdHJpbmdyOjpzdHJfcmVwbGFjZV9hbGwobmV3X3hbaWRfdG9fcmFuZG9taXplXSwgdG9fcmFuZG9taXplKQoKICAgIHJldHVybihuZXdfeCkKfQpgYGAKClV0aWxpenpvOgoKYGBge3J9CnJhbmRvbWl6ZV9jYXNlKGlyaXMkU3BlY2llcykKYGBgCgoKCgo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkxlIGZ1bnppb25pIFRPUCBpbiBSIg0Kb3V0cHV0OiANCiAgICBib29rZG93bjo6aHRtbF9kb2N1bWVudDI6DQogICAgICAgIHRvYzogdHJ1ZQ0KICAgICAgICB0b2NfZmxvYXQ6IHRydWUNCiAgICAgICAgY29kZV9kb3dubG9hZDogdHJ1ZQ0KY3NzOiBbIi4uL2ZpbGVzL2Nzcy9jb3Vyc2VfaHRtbC5jc3MiXQ0KLS0tDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQ0KYGBgDQoNCiMgRnVuemlvbmkNCg0KSW4gcXVlc3RvIGRvY3VtZW50byB2ZWRpYW1vIGFsY3VuZSBmdW56aW9uaSAqKnBlcnNvbmFsaXp6YXRlKiogY2hlIHBvc3Nvbm8gZXNzZXJlIHV0aWxpIGR1cmFudGUgaWwgY29yc28uIFBlciBwb3RlcmxlIHV0aWxpenphcmUgcG90ZXRlIGNvcGlhcmUgZSBpbmNvbGxhcmUgZGlyZXR0YW1lbnRlIGxhIGZ1bnppb25lIHBlciBwb2kgc2FsdmFybGEgY29tZSBvZ2dldHRvLg0KDQojIyBgcHV0X3JhbmRvbV9uYSgpYA0KDQpgYGB7cn0NCnB1dF9yYW5kb21fbmEgPC0gZnVuY3Rpb24oZGF0YSwgbil7DQogICAgDQogICAgcG9zIDwtIGxpc3Qocm93cyA9IDE6bnJvdyhkYXRhKSwNCiAgICAgICAgICAgICAgICBjb2xzID0gMTpuY29sKGRhdGEpKQ0KICAgIA0KICAgIHBvcyA8LSBleHBhbmQuZ3JpZChwb3MpDQogICAgDQogICAgbmFfcG9zIDwtIHNhbXBsZSgxOm5yb3cocG9zKSwgbikNCiAgICANCiAgICBmb3IgKGkgaW4gMTpsZW5ndGgobmFfcG9zKSkgew0KICAgICAgICANCiAgICAgICAgbmFfcG9zX2kgPC0gcG9zW25hX3Bvc1tpXSwgXQ0KICAgICAgICANCiAgICAgICAgZGF0YVtuYV9wb3NfaVtbMV1dLCBuYV9wb3NfaVtbMl1dXSA8LSBOQQ0KICAgICAgICANCiAgICB9DQogICAgDQogICAgcmV0dXJuKGRhdGEpDQogICAgDQp9DQpgYGANCg0KVXRpbGl6em86DQoNCmBgYHtyfQ0KcHV0X3JhbmRvbV9uYShtdGNhcnMsIDMwKQ0KYGBgDQoNCiMjIGByYW5kb21pemVfY2FzZSgpYA0KDQpgYGB7cn0NCnJhbmRvbWl6ZV9jYXNlIDwtIGZ1bmN0aW9uKHgsIG5sZXR0ZXJzID0gMTUsIG5fcHJvYiA9IDAuMzApew0KICAgIG5ld194IDwtIHRvbG93ZXIoeCkNCiAgICB0b19yYW5kb21pemUgPC0gc2FtcGxlKExFVFRFUlMsIG5sZXR0ZXJzKQ0KICAgIG5hbWVzKHRvX3JhbmRvbWl6ZSkgPC0gdG9sb3dlcih0b19yYW5kb21pemUpDQogICAgbl90b19yYW5kb21pemUgPC0gZmxvb3IobGVuZ3RoKHgpICogbl9wcm9iKQ0KICAgIGlkX3RvX3JhbmRvbWl6ZSA8LSBzYW1wbGUoMTpsZW5ndGgoeCksIG5fdG9fcmFuZG9taXplKQ0KICAgIG5ld194W2lkX3RvX3JhbmRvbWl6ZV0gPC0gc3RyaW5ncjo6c3RyX3JlcGxhY2VfYWxsKG5ld194W2lkX3RvX3JhbmRvbWl6ZV0sIHRvX3JhbmRvbWl6ZSkNCg0KICAgIHJldHVybihuZXdfeCkNCn0NCmBgYA0KDQpVdGlsaXp6bzoNCg0KYGBge3J9DQpyYW5kb21pemVfY2FzZShpcmlzJFNwZWNpZXMpDQpgYGANCg0KDQoNCg0K</div>
 
 
 </div>

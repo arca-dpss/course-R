@@ -1586,23 +1586,125 @@ border-radius: 0px;
 <p>Per prima cosa importiamo il dataset. Non badate alla funzione <code>here()</code> serve solo per gestire percorsi più complessi.</p>
 <pre class="r"><code>netflix &lt;- read.table(here(&quot;exercises&quot;, &quot;data&quot;, &quot;netflix.txt&quot;), header = TRUE, sep = &quot;;&quot;)
 head(netflix)</code></pre>
-<pre><code>##   show_id    type title          director       country  duration users_rating
-## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5
-## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7
-## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6
-## 4      s4   Movie     9       Shane Acker United States    80 min            8
-## 5      s5   Movie    21    Robert Luketic United States   123 min            1
-## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0
-##   imdb_rating total_cost duration_episode release_date insert_date
-## 1           2         35               91   2019-05-07  2019-09-24
-## 2           5        105               NA   2019-01-01  2019-03-31
-## 3           3        127               NA   2019-10-23  2020-01-30
-## 4           2         95               NA   2020-06-02  2020-06-09
-## 5           5         39               NA   2019-07-26  2019-08-30
-## 6           3         51               60   2019-11-09  2020-03-25</code></pre>
+<pre><code>##   show_id    type title          director       country  duration users_rating imdb_rating
+## 1      s1 TV Show    3%              &lt;NA&gt;        Brazil 4 Seasons            5           2
+## 2      s2   Movie  7:19 Jorge Michel Grau        Mexico    93 min            7           5
+## 3      s3   Movie 23:59      Gilbert Chan     Singapore    78 min            6           3
+## 4      s4   Movie     9       Shane Acker United States    80 min            8           2
+## 5      s5   Movie    21    Robert Luketic United States   123 min            1           5
+## 6      s6 TV Show    46       Serdar Akar        Turkey  1 Season            0           3
+##   total_cost duration_episode release_date insert_date
+## 1         35               91   2019-05-07  2019-09-24
+## 2        105               NA   2019-01-01  2019-03-31
+## 3        127               NA   2019-10-23  2020-01-30
+## 4         95               NA   2020-06-02  2020-06-09
+## 5         39               NA   2019-07-26  2019-08-30
+## 6         51               60   2019-11-09  2020-03-25</code></pre>
+</div>
+<div id="esploriamo" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Esploriamo</h1>
+<p>Accediamo a diverse proprietà del dataframe per capire la struttura, dimensioni, nomi etc.</p>
+<pre class="r"><code>dim(netflix) # righe, colonne</code></pre>
+<pre><code>## [1] 7787   12</code></pre>
+<pre class="r"><code>str(netflix)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    7787 obs. of  12 variables:
+##  $ show_id         : chr  &quot;s1&quot; &quot;s2&quot; &quot;s3&quot; &quot;s4&quot; ...
+##  $ type            : chr  &quot;TV Show&quot; &quot;Movie&quot; &quot;Movie&quot; &quot;Movie&quot; ...
+##  $ title           : chr  &quot;3%&quot; &quot;7:19&quot; &quot;23:59&quot; &quot;9&quot; ...
+##  $ director        : chr  NA &quot;Jorge Michel Grau&quot; &quot;Gilbert Chan&quot; &quot;Shane Acker&quot; ...
+##  $ country         : chr  &quot;Brazil&quot; &quot;Mexico&quot; &quot;Singapore&quot; &quot;United States&quot; ...
+##  $ duration        : chr  &quot;4 Seasons&quot; &quot;93 min&quot; &quot;78 min&quot; &quot;80 min&quot; ...
+##  $ users_rating    : int  5 7 6 8 1 0 8 7 4 9 ...
+##  $ imdb_rating     : int  2 5 3 2 5 3 4 4 0 3 ...
+##  $ total_cost      : int  35 105 127 95 39 51 149 69 109 103 ...
+##  $ duration_episode: int  91 NA NA NA NA 60 NA NA NA NA ...
+##  $ release_date    : chr  &quot;2019-05-07&quot; &quot;2019-01-01&quot; &quot;2019-10-23&quot; &quot;2020-06-02&quot; ...
+##  $ insert_date     : chr  &quot;2019-09-24&quot; &quot;2019-03-31&quot; &quot;2020-01-30&quot; &quot;2020-06-09&quot; ...</code></pre>
+<pre class="r"><code>sapply(netflix, class) # in questo modo applichiamo la funzione class ad ogni colonna</code></pre>
+<pre><code>##          show_id             type            title         director          country 
+##      &quot;character&quot;      &quot;character&quot;      &quot;character&quot;      &quot;character&quot;      &quot;character&quot; 
+##         duration     users_rating      imdb_rating       total_cost duration_episode 
+##      &quot;character&quot;        &quot;integer&quot;        &quot;integer&quot;        &quot;integer&quot;        &quot;integer&quot; 
+##     release_date      insert_date 
+##      &quot;character&quot;      &quot;character&quot;</code></pre>
+<p>Come vediamo sono principalmente numeri (interi) e caratteri. Possiamo trasformare in <strong>fattori</strong> alcune variabili dove abbia senso. Da un punto di vista computazionale possiamo trasformare in fattore qualsiasi variabile ma da un punto di vista pratico ha senso farlo dove il numero dei livelli è limitato.
+Ad esempio:</p>
+<ul>
+<li>la colonna <code>users_rating</code> rappresenta il voto, da 0 a 10 rispetto al film/serie tv. Possiamo trasformare questa variabile in un ordered factor:</li>
+</ul>
+<pre class="r"><code>netflix$users_rating &lt;- factor(netflix$users_rating, ordered = TRUE)
+head(netflix$users_rating)</code></pre>
+<pre><code>## [1] 5 7 6 8 1 0
+## Levels: 0 &lt; 1 &lt; 2 &lt; 3 &lt; 4 &lt; 5 &lt; 6 &lt; 7 &lt; 8 &lt; 9 &lt; 10</code></pre>
+<ul>
+<li>la colonna <code>show_id</code> è un identificativo unico per ogni film e può essere tranquillamente lasciata come variabile numerica.</li>
+</ul>
+</div>
+<div id="quanti-na-in-ogni-colonna" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Quanti <code>NA</code> in ogni colonna?</h1>
+<p>Questo è un problema interessante. Idealmente dobbiamo prendere una colonna, contare quanti <code>NA</code> e mettere questo valore dentro un vettore. Sappiamo che possiamo usare <code>*apply</code> family per iterare sulle colonne di un dataframe. Quindi possiamo ad esempio scrivere una funzione ragionando come se dovessimo fare una sola colonna e poi iterare con <code>sapply</code> o <code>lapply</code>:</p>
+<pre class="r"><code>count_na &lt;- function(x){
+    sum(is.na(x)) # perchè sum?
+}</code></pre>
+<p>Questa funzione permette di contare quanti <code>NA</code> in un vettore perchè <code>TRUE</code> e <code>FALSE</code> sono rappresentati rispettivamente da 1 e 0. La somma di una serie di <code>TRUE</code> e <code>FALSE</code> è quindi come sommare 1 e 0.</p>
+<pre class="r"><code>sum(c(TRUE, TRUE, FALSE)) # c(1,1,0)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>Proviamola su una colonna:</p>
+<pre class="r"><code>count_na(netflix$show_id)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p>Ottimo, adesso semplicemente iteriamo:</p>
+<pre class="r"><code>sapply(netflix, count_na)</code></pre>
+<pre><code>##          show_id             type            title         director          country 
+##                0                0                0             2389              507 
+##         duration     users_rating      imdb_rating       total_cost duration_episode 
+##                0                0                0                0             5377 
+##     release_date      insert_date 
+##                0                0</code></pre>
+<p>Per migliorare questa funzione possiamo impostare un argomento per restituire la percentuale invece del numero assoluto:</p>
+<pre class="r"><code>count_na &lt;- function(x, perc = FALSE){
+    if(perc){
+        mean(is.na(x)) * 100
+    }else{
+        sum(is.na(x))
+    }
+}</code></pre>
+<p>Proviamola:</p>
+<pre class="r"><code>sapply(netflix, count_na, TRUE)</code></pre>
+<pre><code>##          show_id             type            title         director          country 
+##         0.000000         0.000000         0.000000        30.679337         6.510851 
+##         duration     users_rating      imdb_rating       total_cost duration_episode 
+##         0.000000         0.000000         0.000000         0.000000        69.050982 
+##     release_date      insert_date 
+##         0.000000         0.000000</code></pre>
+</div>
+<div id="differenza-tra-date" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Differenza tra date</h1>
+<p>R permette di lavorare anche con le date. In altri termini può gestire giorno, mese e anno rappresentandoli come valori numerici. E’ quindi possibile fare operazioni con le date come calcolare l’età dalla data di nascita etc. In questo caso calcoliamo quanto tempo è passato dal rilascio alla disponibilità su Netflix. Per prima cosa convertiamo le strighe in date:</p>
+<pre class="r"><code>netflix$release_date &lt;- as.Date(netflix$release_date)
+netflix$insert_date &lt;- as.Date(netflix$insert_date)
+str(netflix)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    7787 obs. of  12 variables:
+##  $ show_id         : chr  &quot;s1&quot; &quot;s2&quot; &quot;s3&quot; &quot;s4&quot; ...
+##  $ type            : chr  &quot;TV Show&quot; &quot;Movie&quot; &quot;Movie&quot; &quot;Movie&quot; ...
+##  $ title           : chr  &quot;3%&quot; &quot;7:19&quot; &quot;23:59&quot; &quot;9&quot; ...
+##  $ director        : chr  NA &quot;Jorge Michel Grau&quot; &quot;Gilbert Chan&quot; &quot;Shane Acker&quot; ...
+##  $ country         : chr  &quot;Brazil&quot; &quot;Mexico&quot; &quot;Singapore&quot; &quot;United States&quot; ...
+##  $ duration        : chr  &quot;4 Seasons&quot; &quot;93 min&quot; &quot;78 min&quot; &quot;80 min&quot; ...
+##  $ users_rating    : Ord.factor w/ 11 levels &quot;0&quot;&lt;&quot;1&quot;&lt;&quot;2&quot;&lt;&quot;3&quot;&lt;..: 6 8 7 9 2 1 9 8 5 10 ...
+##  $ imdb_rating     : int  2 5 3 2 5 3 4 4 0 3 ...
+##  $ total_cost      : int  35 105 127 95 39 51 149 69 109 103 ...
+##  $ duration_episode: int  91 NA NA NA NA 60 NA NA NA NA ...
+##  $ release_date    : Date, format: &quot;2019-05-07&quot; &quot;2019-01-01&quot; ...
+##  $ insert_date     : Date, format: &quot;2019-09-24&quot; &quot;2019-03-31&quot; ...</code></pre>
+<p>Come vedete ora le due colonne sono riconosciute come date. Proviamo ad usare la funzione <code>?difftime</code>:</p>
+<pre class="r"><code>head(difftime(netflix$insert_date, netflix$release_date, units = &quot;days&quot;))</code></pre>
+<pre><code>## Time differences in days
+## [1] 140  89  99   7  35 137</code></pre>
+<p>Ora possiamo assegnare ad una nuova colonna questa operazione:</p>
+<pre class="r"><code>netflix$release_time &lt;- round(difftime(netflix$insert_date, netflix$release_date, units = &quot;days&quot;))</code></pre>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIk5ldGZsaXgiDQpvdXRwdXQ6IA0KICAgIGJvb2tkb3duOjpodG1sX2RvY3VtZW50MjoNCiAgICAgICAgdG9jOiB0cnVlDQogICAgICAgIHRvY19mbG9hdDogdHJ1ZQ0KICAgICAgICBjb2RlX2Rvd25sb2FkOiB0cnVlDQpjc3M6IFsiLi4vZmlsZXMvY3NzL2NvdXJzZV9odG1sLmNzcyJdDQoNCi0tLQ0KDQpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0NCmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkNCmBgYA0KDQpgYGB7ciBwYWNrYWdlcywgaW5jbHVkZT1GQUxTRX0NCmxpYnJhcnkoaGVyZSkNCmBgYA0KDQojIFByZXBhcmlhbW8gaWwgZGF0YXNldA0KDQpQZXIgcHJpbWEgY29zYSBpbXBvcnRpYW1vIGlsIGRhdGFzZXQuIE5vbiBiYWRhdGUgYWxsYSBmdW56aW9uZSBgaGVyZSgpYCBzZXJ2ZSBzb2xvIHBlciBnZXN0aXJlIHBlcmNvcnNpIHBpw7kgY29tcGxlc3NpLg0KDQpgYGB7cn0NCm5ldGZsaXggPC0gcmVhZC50YWJsZShoZXJlKCJleGVyY2lzZXMiLCAiZGF0YSIsICJuZXRmbGl4LnR4dCIpLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiOyIpDQpoZWFkKG5ldGZsaXgpDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIk5ldGZsaXgiDQpvdXRwdXQ6IA0KICAgIGJvb2tkb3duOjpodG1sX2RvY3VtZW50MjoNCiAgICAgICAgdG9jOiB0cnVlDQogICAgICAgIHRvY19mbG9hdDogdHJ1ZQ0KICAgICAgICBjb2RlX2Rvd25sb2FkOiB0cnVlDQpjc3M6IFsiLi4vZmlsZXMvY3NzL2NvdXJzZV9odG1sLmNzcyJdDQoNCi0tLQ0KDQpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0NCmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkNCmBgYA0KDQpgYGB7ciBwYWNrYWdlcywgaW5jbHVkZT1GQUxTRX0NCmxpYnJhcnkoaGVyZSkNCmBgYA0KDQojIFByZXBhcmlhbW8gaWwgZGF0YXNldA0KDQpQZXIgcHJpbWEgY29zYSBpbXBvcnRpYW1vIGlsIGRhdGFzZXQuIE5vbiBiYWRhdGUgYWxsYSBmdW56aW9uZSBgaGVyZSgpYCBzZXJ2ZSBzb2xvIHBlciBnZXN0aXJlIHBlcmNvcnNpIHBpw7kgY29tcGxlc3NpLg0KDQpgYGB7cn0NCm5ldGZsaXggPC0gcmVhZC50YWJsZShoZXJlKCJleGVyY2lzZXMiLCAiZGF0YSIsICJuZXRmbGl4LnR4dCIpLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiOyIpDQpoZWFkKG5ldGZsaXgpDQpgYGANCg0KIyBFc3Bsb3JpYW1vDQoNCkFjY2VkaWFtbyBhIGRpdmVyc2UgcHJvcHJpZXTDoCBkZWwgZGF0YWZyYW1lIHBlciBjYXBpcmUgbGEgc3RydXR0dXJhLCBkaW1lbnNpb25pLCBub21pIGV0Yy4NCg0KYGBge3J9DQpkaW0obmV0ZmxpeCkgIyByaWdoZSwgY29sb25uZQ0Kc3RyKG5ldGZsaXgpDQpzYXBwbHkobmV0ZmxpeCwgY2xhc3MpICMgaW4gcXVlc3RvIG1vZG8gYXBwbGljaGlhbW8gbGEgZnVuemlvbmUgY2xhc3MgYWQgb2duaSBjb2xvbm5hDQpgYGANCg0KQ29tZSB2ZWRpYW1vIHNvbm8gcHJpbmNpcGFsbWVudGUgbnVtZXJpIChpbnRlcmkpIGUgY2FyYXR0ZXJpLiBQb3NzaWFtbyB0cmFzZm9ybWFyZSBpbiAqKmZhdHRvcmkqKiBhbGN1bmUgdmFyaWFiaWxpIGRvdmUgYWJiaWEgc2Vuc28uIERhIHVuIHB1bnRvIGRpIHZpc3RhIGNvbXB1dGF6aW9uYWxlIHBvc3NpYW1vIHRyYXNmb3JtYXJlIGluIGZhdHRvcmUgcXVhbHNpYXNpIHZhcmlhYmlsZSBtYSBkYSB1biBwdW50byBkaSB2aXN0YSBwcmF0aWNvIGhhIHNlbnNvIGZhcmxvIGRvdmUgaWwgbnVtZXJvIGRlaSBsaXZlbGxpIMOoIGxpbWl0YXRvLg0KQWQgZXNlbXBpbzoNCg0KLSBsYSBjb2xvbm5hIGB1c2Vyc19yYXRpbmdgIHJhcHByZXNlbnRhIGlsIHZvdG8sIGRhIDAgYSAxMCByaXNwZXR0byBhbCBmaWxtL3NlcmllIHR2LiBQb3NzaWFtbyB0cmFzZm9ybWFyZSBxdWVzdGEgdmFyaWFiaWxlIGluIHVuIG9yZGVyZWQgZmFjdG9yOg0KDQpgYGB7cn0NCm5ldGZsaXgkdXNlcnNfcmF0aW5nIDwtIGZhY3RvcihuZXRmbGl4JHVzZXJzX3JhdGluZywgb3JkZXJlZCA9IFRSVUUpDQpoZWFkKG5ldGZsaXgkdXNlcnNfcmF0aW5nKQ0KYGBgDQoNCi0gbGEgY29sb25uYSBgc2hvd19pZGAgw6ggdW4gaWRlbnRpZmljYXRpdm8gdW5pY28gcGVyIG9nbmkgZmlsbSBlIHB1w7IgZXNzZXJlIHRyYW5xdWlsbGFtZW50ZSBsYXNjaWF0YSBjb21lIHZhcmlhYmlsZSBudW1lcmljYS4NCg0KIyBRdWFudGkgYE5BYCBpbiBvZ25pIGNvbG9ubmE/DQoNClF1ZXN0byDDqCB1biBwcm9ibGVtYSBpbnRlcmVzc2FudGUuIElkZWFsbWVudGUgZG9iYmlhbW8gcHJlbmRlcmUgdW5hIGNvbG9ubmEsIGNvbnRhcmUgcXVhbnRpIGBOQWAgZSBtZXR0ZXJlIHF1ZXN0byB2YWxvcmUgZGVudHJvIHVuIHZldHRvcmUuIFNhcHBpYW1vIGNoZSBwb3NzaWFtbyB1c2FyZSBgKmFwcGx5YCBmYW1pbHkgcGVyIGl0ZXJhcmUgc3VsbGUgY29sb25uZSBkaSB1biBkYXRhZnJhbWUuIFF1aW5kaSBwb3NzaWFtbyBhZCBlc2VtcGlvIHNjcml2ZXJlIHVuYSBmdW56aW9uZSByYWdpb25hbmRvIGNvbWUgc2UgZG92ZXNzaW1vIGZhcmUgdW5hIHNvbGEgY29sb25uYSBlIHBvaSBpdGVyYXJlIGNvbiBgc2FwcGx5YCBvIGBsYXBwbHlgOg0KDQpgYGB7cn0NCmNvdW50X25hIDwtIGZ1bmN0aW9uKHgpew0KICAgIHN1bShpcy5uYSh4KSkgIyBwZXJjaMOoIHN1bT8NCn0NCmBgYA0KDQpRdWVzdGEgZnVuemlvbmUgcGVybWV0dGUgZGkgY29udGFyZSBxdWFudGkgYE5BYCBpbiB1biB2ZXR0b3JlIHBlcmNow6ggYFRSVUVgIGUgYEZBTFNFYCBzb25vIHJhcHByZXNlbnRhdGkgcmlzcGV0dGl2YW1lbnRlIGRhIDEgZSAwLiBMYSBzb21tYSBkaSB1bmEgc2VyaWUgZGkgYFRSVUVgIGUgYEZBTFNFYCDDqCBxdWluZGkgY29tZSBzb21tYXJlIDEgZSAwLg0KDQpgYGB7cn0NCnN1bShjKFRSVUUsIFRSVUUsIEZBTFNFKSkgIyBjKDEsMSwwKQ0KYGBgDQoNClByb3ZpYW1vbGEgc3UgdW5hIGNvbG9ubmE6DQoNCmBgYHtyfQ0KY291bnRfbmEobmV0ZmxpeCRzaG93X2lkKQ0KYGBgDQoNCk90dGltbywgYWRlc3NvIHNlbXBsaWNlbWVudGUgaXRlcmlhbW86DQoNCmBgYHtyfQ0Kc2FwcGx5KG5ldGZsaXgsIGNvdW50X25hKQ0KYGBgDQoNClBlciBtaWdsaW9yYXJlIHF1ZXN0YSBmdW56aW9uZSBwb3NzaWFtbyBpbXBvc3RhcmUgdW4gYXJnb21lbnRvIHBlciByZXN0aXR1aXJlIGxhIHBlcmNlbnR1YWxlIGludmVjZSBkZWwgbnVtZXJvIGFzc29sdXRvOg0KDQpgYGB7cn0NCmNvdW50X25hIDwtIGZ1bmN0aW9uKHgsIHBlcmMgPSBGQUxTRSl7DQogICAgaWYocGVyYyl7DQogICAgICAgIG1lYW4oaXMubmEoeCkpICogMTAwDQogICAgfWVsc2V7DQogICAgICAgIHN1bShpcy5uYSh4KSkNCiAgICB9DQp9DQpgYGANCg0KUHJvdmlhbW9sYToNCg0KYGBge3J9DQpzYXBwbHkobmV0ZmxpeCwgY291bnRfbmEsIFRSVUUpDQpgYGANCg0KIyBEaWZmZXJlbnphIHRyYSBkYXRlDQoNClIgcGVybWV0dGUgZGkgbGF2b3JhcmUgYW5jaGUgY29uIGxlIGRhdGUuIEluIGFsdHJpIHRlcm1pbmkgcHXDsiBnZXN0aXJlIGdpb3JubywgbWVzZSBlIGFubm8gcmFwcHJlc2VudGFuZG9saSBjb21lIHZhbG9yaSBudW1lcmljaS4gRScgcXVpbmRpIHBvc3NpYmlsZSBmYXJlIG9wZXJhemlvbmkgY29uIGxlIGRhdGUgY29tZSBjYWxjb2xhcmUgbCdldMOgIGRhbGxhIGRhdGEgZGkgbmFzY2l0YSBldGMuIEluIHF1ZXN0byBjYXNvIGNhbGNvbGlhbW8gcXVhbnRvIHRlbXBvIMOoIHBhc3NhdG8gZGFsIHJpbGFzY2lvIGFsbGEgZGlzcG9uaWJpbGl0w6Agc3UgTmV0ZmxpeC4gUGVyIHByaW1hIGNvc2EgY29udmVydGlhbW8gbGUgc3RyaWdoZSBpbiBkYXRlOg0KDQpgYGB7cn0NCm5ldGZsaXgkcmVsZWFzZV9kYXRlIDwtIGFzLkRhdGUobmV0ZmxpeCRyZWxlYXNlX2RhdGUpDQpuZXRmbGl4JGluc2VydF9kYXRlIDwtIGFzLkRhdGUobmV0ZmxpeCRpbnNlcnRfZGF0ZSkNCnN0cihuZXRmbGl4KQ0KYGBgDQoNCkNvbWUgdmVkZXRlIG9yYSBsZSBkdWUgY29sb25uZSBzb25vIHJpY29ub3NjaXV0ZSBjb21lIGRhdGUuIFByb3ZpYW1vIGFkIHVzYXJlIGxhIGZ1bnppb25lIGA/ZGlmZnRpbWVgOg0KDQpgYGB7cn0NCmhlYWQoZGlmZnRpbWUobmV0ZmxpeCRpbnNlcnRfZGF0ZSwgbmV0ZmxpeCRyZWxlYXNlX2RhdGUsIHVuaXRzID0gImRheXMiKSkNCmBgYA0KDQpPcmEgcG9zc2lhbW8gYXNzZWduYXJlIGFkIHVuYSBudW92YSBjb2xvbm5hIHF1ZXN0YSBvcGVyYXppb25lOg0KDQpgYGB7cn0NCm5ldGZsaXgkcmVsZWFzZV90aW1lIDwtIHJvdW5kKGRpZmZ0aW1lKG5ldGZsaXgkaW5zZXJ0X2RhdGUsIG5ldGZsaXgkcmVsZWFzZV9kYXRlLCB1bml0cyA9ICJkYXlzIikpDQpgYGANCg0KDQoNCg0K</div>
 
 
 </div>
