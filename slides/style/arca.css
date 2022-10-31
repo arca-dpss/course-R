@@ -1,12 +1,12 @@
 /* GENERAL SLIDES */
 
 .remark-slide-content h1 {
-    font-size: 35px;
-    color: #9B0A14;
+    font-size: 30px;
+    color: #8C3031;
 }
 
 .remark-slide-content {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.6;
 }
 
@@ -21,12 +21,6 @@ a, a > code {
   text-decoration: none;
 }
 
-.footnote {
-  position: absolute;
-  bottom: 3em;
-  padding-right: 4em;
-  font-size: 90%;
-}
 .remark-code-line-highlighted     { background-color: #ffff88; }
 
 .inverse {
@@ -71,6 +65,13 @@ a, a > code {
 img, video, iframe {
   max-width: 100%;
 }
+
+/*
+img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+*/
+
 blockquote {
   border-left: solid 5px lightgray;
   padding-left: 1em;
@@ -131,29 +132,47 @@ th, td { padding: 5px; }
 /* SECTION SLIDE */
 
 .section {
-  background-color: #9B0A14;
-  color: white;;
+  background-color: #8C3031;
+  color: white;
   text-shadow: 0 0 0px #333;
 }
 
 .section h1, .inverse h2, .inverse h3 {
   color: #F0F3F4;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .section .remark-slide-number {
   display: none;
 }
 
+/* RECAP SLIDE */
+
+.recap {
+  background-color: #5959E3;
+  color: white;
+  text-shadow: 0 0 0px #333;
+}
+
+.recap h1, .recap h2, .recap h3 {
+  color: white;
+  font-size: 40px;
+}
+
+.recap .remark-slide-number {
+  display: none;
+}
+
 /* TITLE SLIDE */
 
 .title-slide {
-    background:linear-gradient(180deg, #9B0A14 25%,white 25%)
+    /*background:linear-gradient(180deg, #8C3031 25%,white 25%)*/
+    border-top: 90px solid #8C3031;
 }
 
 .title {
-  font-size: 60px;
-  color: white;
+    font-size: 60px;
+    margin-top: -100px;
 }
 
 .subtitle {
@@ -177,7 +196,7 @@ th, td { padding: 5px; }
 /* TEXT COLORS */
 
 .imp {
-  color: #9B0A14;
+  color: #8C3031;
   font-weight: bold;
 }
 
@@ -233,4 +252,33 @@ th, td { padding: 5px; }
 
 .font40 {
   font-size: 40%;
+}
+
+div, iframe {
+    margin: 0 auto;
+}
+
+iframe {
+    display: block;
+    border-style:none;
+}
+
+/* thanks to https://github.com/arca-dpss/course-R-Rmarkdown/blob/main/files/slides/assets/custom-presentation.css */
+
+blockquote {
+  border-left: 5pt solid #8C3031;
+  border-radius: 5pt;
+  padding-left: 10pt;
+  font-size: 18pt;
+  color: #403d3d;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  padding-right: 4em;
+  font-size: 70%;
+  border-left: 5pt solid #AEAEAE;
+  border-radius: 5pt;
+  padding-left: 10pt;
 }
