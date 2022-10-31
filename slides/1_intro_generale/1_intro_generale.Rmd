@@ -1,7 +1,7 @@
 ---
 title: 'Introduzione a R'
-subtitle: ""
-author: ""
+subtitle: "Presentazione del corso"
+author: "Filippo Gambarota"
 institute: ""
 date: ""
 output:
@@ -35,21 +35,22 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r packages}
 library(tidyverse)
+devtools::load_all()
 ```
 
 class: title-slide, center, middle
 
-#.title[Introduzione a R]
+#.title[`r rmarkdown::metadata$title`]
 
-#.subtitle[Giornata 1]
+#.subtitle[`r rmarkdown::metadata$subtitle`]
 
 ```{r, out.width="10%", echo = FALSE}
 knitr::include_graphics(path = "img/arca_logo.svg")
 ```
 
-###.location[Corsi ARCA - @DPSS]
+###.location[ARCA - @DPSS]
 
-###.author[Filippo Gambarota]
+###.author[`r rmarkdown::metadata$author`]
 
 ---
 class: section, center, middle
@@ -63,12 +64,16 @@ class: section, center, middle
 - Impareremo i **costrutti della programmazione** e la loro applicazione in R
 - Impareremo a **impostare un progetto** in R
 
+`r iframe("https://giphy.com/embed/75ZaxapnyMp2w", 300, 300)`
+
 ---
 # Altri obiettivi importanti
 
 - Imparare la .imp[logica generale della programmazione] spendibile con qualsiasi linguaggio
 - Imparare gli elementi di base per poi stare al passo con la .imp[velocissima evoluzione di R]
 - Migliorare il modo di affrontare i problemi e .imp[rendere più efficiente il lavoro quotidiano]
+
+`r iframe("https://giphy.com/embed/26BoDGStUAafwdZII", 300, 300)`
 
 ---
 class: section, center, middle
@@ -87,7 +92,9 @@ class: section, center, middle
 ---
 # Organizzazione delle lezioni
 
-Il miglior modo per imparare un linguaggio è sicuramente la pratica con dati o piccoli problemi da risolvere. E' anche importante però avere una comprensione teorico-logica dei vari argomenti per poter essere più autonomi possibile.
+Il miglior modo per imparare un linguaggio è sicuramente la **pratica con dati o piccoli problemi da risolvere**. E' anche importante però avere una **comprensione teorico-logica dei vari argomenti** per poter essere più autonomi possibile.
+
+--
 
 - Presentazione degli argomenti principali con gli aspetti teorici più importanti
 - Applicazione direttamente scrivendo codice
@@ -96,7 +103,7 @@ Il miglior modo per imparare un linguaggio è sicuramente la pratica con dati o 
 ---
 # Materiale di supporto
 
-- Il materiale del corso (principalmente scripts, slides e link) sarà disponibile alla pagina Github: [filippogambarota/corsoR](https://github.com/filippogambarota/corsoR)
+- Il materiale del corso (principalmente scripts, slides e link) sarà disponibile alla pagina Github `r icons::fontawesome("github")`: [filippogambarota/corsoR](https://github.com/filippogambarota/corsoR)
 - Il materiale e i vari link sono facilmente consultabili nel [sito associato](https://filippogambarota.github.io/corsoR/).
 
 ---
@@ -108,19 +115,39 @@ Il libro è nato da un'idea del mio amico e collega Claudio Zandonella Callegher
 
 Potete attivamente contribuire allo sviluppo del libro fornendoci:
 
+.pull-left[
+
 - suggerimenti
 - **segnalare errori**
 - segnalare parti non chiare
+
+]
+
+.pull-right[
+
+`r iframe("https://giphy.com/embed/FaMmrCXe5zx2QZfkh6", 200, 200)`
+
+]
 
 ---
 # Segnalare errori libro
 
 In particolare, errori di scrittura o imprecisioni sono le cose più importanti. Per questo ho pensato ad un modo efficiente per gestire il tutto. Trovate istruzioni dettagliate [qui](https://filippogambarota.github.io/corsoR/), in breve:
 
+.pull-left[
+
 - trovate un errore o imprecisione
 - aprire il [documento condiviso](https://docs.google.com/spreadsheets/d/1YmXN3iDtiyfLkhW246cICC_4X8S7xqWuN-EiLVDiAT8/edit#gid=0)
 - riportare tutti i dettagli
 - sentirsi soddisfatti `r emo::ji("smile")`
+
+]
+
+.pull-right[
+
+`r iframe("https://giphy.com/embed/FaMmrCXe5zx2QZfkh6", 200, 200)`
+
+]
 ---
 class: section, center, middle
 
@@ -143,29 +170,27 @@ class: section, center, middle
 ---
 # Qualche statistica
 
-.pull-left[
-
-```{r, out.width="70%"}
-knitr::include_graphics("img/programming_languages_rank.png")
+```{r, out.width="50%"}
+knitr::include_graphics("img/rank-pyply.png")
 ```
-
-]
-
-.pull-right[
-
-```{r, out.width="70%"}
-knitr::include_graphics("img/programming_languages_rank2.png")
-```
-
-]
 
 .footnote[
-
-[PYPL](https://pypl.github.io/PYPL.html) and [TIOBE](https://www.tiobe.com/tiobe-index/) index
+[PYPL](https://pypl.github.io/PYPL.html)
 ]
 
 ---
 # Qualche statistica
+
+```{r, out.width="80%"}
+knitr::include_graphics("img/rank-tiobe.png")
+```
+
+.footnote[
+[TIOBE](https://www.tiobe.com/tiobe-index/)
+]
+
+---
+# CRAN
 
 ```{r}
 knitr::include_url("https://cran.r-project.org/web/packages/#:~:text=Currently%2C%20the%20CRAN%20package%20repository%20features%2017951%20available%20packages.")
@@ -181,11 +206,16 @@ knitr::include_graphics("img/google_course.png")
 ---
 # Un cenno all'open-source
 
-Un software si definisce open-source quando il codice sorgente è disponibile a tutti per essere modificato, aggiornato e controllato.
+Un software si definisce open-source quando il **codice sorgente è disponibile** a tutti per essere **modificato**, **aggiornato** e **controllato**.
 
-Open-source non significa necessariamente **gratuito** ma è sicuramente una delle modalità migliori per sviluppare e mantenere un progetto software.
+--
 
-R è sia open-source che gratuito e vanta una community estremamente attiva, come spesso accade con tutti i progetti open-source e in generale i linguaggi di programmazione.
+R è **sia open-source che gratuito** e vanta una community estremamente attiva, come spesso accade con tutti i progetti open-source e in generale i linguaggi di programmazione.
+
+--
+
+`r iframe("https://giphy.com/embed/ajTYvLVDxbT1sbgMlI", 300, 300)`
+
 
 ---
 # Quale è la concorrenza?
@@ -204,10 +234,20 @@ Una volta imparato R, Python in ogni caso è molto semplicee può essere utile p
 
 Nell'ambito della statistica ci sono vari software non open-source ed a pagamento come:
 
+.pull-left[
+
 - Statistica
 - SPSS
 - STATA
 - SAS
+
+]
+
+.pull-right[
+
+`r iframe("https://giphy.com/embed/LBCnioHLnPwpqBjGhI", 300, 300)`
+
+]
 
 ---
 # Quale NON è la concorrenza?
@@ -283,11 +323,15 @@ ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
     scale_color_manual(values = c("red", "grey")) -> after_r_plot
 ```
 
+--
+
 .pull-left[
 ```{r}
 learning_r_plot
 ```
 ]
+
+--
 .pull-right[
 ```{r}
 after_r_plot
@@ -304,6 +348,6 @@ Una lingua è composta da:
 - convenzioni e best practice
 
 ---
-# R come una lingua parlata
+# Let's start `r emo::ji("sunglasses")`
 
-Anche in R, come in tutti i linguaggi di programmazione sono presenti questi aspetti. Questa metafora del linguaggio di programmazione come lingua parlata vorrei che stesse con noi per tutto il corso perchè molto utile per avere una visione d'insieme.
+`r iframe("https://giphy.com/embed/lluj1cauAlO2vQEm8A", 500, 500)`
