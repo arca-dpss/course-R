@@ -21,3 +21,8 @@ cap_link <- function(link, text = NULL){
     }
     sprintf('<a href="%s">%s</a>', link, text)
 }
+
+iframe <- function(link, w, h){
+    sprintf('<iframe src="%s" width="%s" height="%s" frameBorder="0"></iframe',
+            link, w, h)
+}
