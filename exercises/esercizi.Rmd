@@ -954,7 +954,7 @@ Per fare lo scoring dobbiamo:
 In entrambi i casi creiamo delle nuove colonne che si chiamano come le sottoscale da attaccare al dataframe principale.
 
 <details><summary>Vedi la soluzione proposta</summary>
-Per la soluzione andiamo a questo [link](exercises/item-solutions.html)
+Per la soluzione andiamo a questo [link](https://arca-dpss.github.io/course-R/exercises/item-solutions.html)
 </details>
 
 ## Netflix
@@ -993,7 +993,7 @@ Solitamente le colonne di un dataset contengono informazioni rindondanti o non a
 - creare una colonna `durata_stagioni` che contenga il numero di stagioni per ogni serie-tv mentre il valore `0` per i film.
 
 <details><summary>Vedi la soluzione proposta</summary>
-Per la soluzione andiamo a questo [link](exercises/netflix-solutions.html)
+Per la soluzione andiamo a questo [link](https://arca-dpss.github.io/course-R/exercises/netflix-solutions.html)
 </details>
 
 # Credits
