@@ -3,7 +3,7 @@
 
 <img align="right" width="150" height="150" src="files/arca_logo.svg">
 
-# corsoR
+# course-R
 
 <!-- badges: start -->
 
@@ -25,7 +25,7 @@ informazioni dettagliate su tutti i corsi attivi.
 Questa è la repository principale del corso dove ci saranno tutte le
 informazioni, slides, link e materiale. Per consultare direttamente il
 materiale è possibile accedere al sito del corso
-[filippogambarota/corsoR](https://filippogambarota.github.io/corsoR)
+[arca-dpss/course-R](https://arca-dpss.github.io/course-R/)
 
 Il principale materiale di riferimento è il libro: [Introduzione a
 R](https://psicostat.github.io/Introduction2R/). Il libro, in costante

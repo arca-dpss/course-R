@@ -1,0 +1,120 @@
+---
+title: "Scoring"
+output: 
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+        code_download: true
+css: ["../files/css/course_html.css"]
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+library(here)
+```
+
+# Prepariamo il dataset
+
+Per prima cosa importiamo il dataset. Non badate alla funzione `here()` serve solo per gestire percorsi più complessi.
+
+```{r}
+dat <- readRDS(here("exercises", "data", "item_data.rds"))
+head(dat)
+```
+
+Vediamo un pochino la struttura del dataset, numero di righe/colonne etc.
+
+```{r}
+str(dat) # tipologia colonne
+nrow(dat)
+ncol(dat)
+colnames(dat)
+```
+
+# `NA` ed errori
+
+Eliminiamo i soggetti con degli `NA` oppure sostituiamo con 3
+
+```{r}
+n_na <- apply(dat[, 2:ncol(dat)], 1, function(x) sum(is.na(x))) # quanti NA per ogni soggetto?
+```
+
+
+Eliminiamo quelli con più di 2 `NA` e mettiamo 3 sugli altri
+
+```{r}
+dat_clean <- dat[n_na <= 1, ]
+dat_clean[is.na(dat_clean)] <- 3
+```
+
+# Item check
+
+Vediamo ora la scala di ogni item, in particolare i valori minimi e massimi
+
+```{r}
+dat_item <- dat_clean[, 2:ncol(dat_clean)] # prendiamo i dati con i soli item
+sapply(dat_item, min)
+sapply(dat_item, max)
+
+dat_item[dat_item < 1] <- 1
+dat_item[dat_item > 5] <- 5
+```
+
+# Invertire
+
+Ora invertiamo i valori degli item. L'idea è di scrivere una funzione generica e applicarla agli item "critici":
+
+```{r}
+revert_item <- function(x){
+    dplyr::case_when(
+        x == 1 ~ 5,
+        x == 2 ~ 4,
+        x == 3 ~ 3,
+        x == 4 ~ 2,
+        x == 5 ~ 1
+    )
+}
+```
+
+Applichiamo questa funzione agli item 1, 10, 11, 13, 14, 15, 20:
+
+```{r}
+to_revert <- c(1, 10, 11, 13, 14, 15, 20)
+reverted <- lapply(dat_item[, to_revert], revert_item)
+dat_item[, to_revert] <- reverted
+```
+
+# Scoring
+
+Ora creiamo le sottoscale. Possiamo creare dei vettori con l'item di ogni sottoscala e poi usarli per indicizzare:
+
+```{r}
+subscales_sum <- list(
+    sub1 = c(20, 25, 17, 18, 22),
+    sub2 = c(30, 3, 11, 16, 19),
+    sub3 = c(4, 14, 8, 21, 23)
+)
+
+subscales_mean <- list(
+    sub4 = c(26, 29, 9, 13, 10),
+    sub5 = c(5, 12, 6, 28, 24),
+    sub6 = c(7, 15, 27, 2, 1)
+)
+```
+Questa è una soluzione super compatta. Vedete la potenza dell' `*apply` family?
+
+```{r}
+subscales_scoring_sum <- lapply(subscales_sum, function(x) apply(dat_item[, x], 1, sum))
+subscales_scoring_mean <- lapply(subscales_mean, function(x) apply(dat_item[, x], 1, mean))
+dat_item <- cbind(dat_item, subscales_scoring_sum, subscales_scoring_mean)
+
+head(dat_item)
+```
+
+
+
+

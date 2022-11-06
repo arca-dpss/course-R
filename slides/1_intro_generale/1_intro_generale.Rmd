@@ -85,7 +85,7 @@ class: section, center, middle
 
 - Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github `r icons::fontawesome("github")`
 
-- Slide del corso (principalmente per supportare le lezioni)
+- Slide del corso (principalmente per supportare le lezioni) disponibili qui https://github.com/arca-dpss/course-R
 
 - Altra documentazione, link e materiale collegato
 
@@ -103,8 +103,8 @@ Il miglior modo per imparare un linguaggio è sicuramente la **pratica con dati 
 ---
 # Materiale di supporto
 
-- Il materiale del corso (principalmente scripts, slides e link) sarà disponibile alla pagina Github `r icons::fontawesome("github")`: [filippogambarota/corsoR](https://github.com/filippogambarota/corsoR)
-- Il materiale e i vari link sono facilmente consultabili nel [sito associato](https://filippogambarota.github.io/corsoR/).
+- Il materiale del corso (principalmente scripts, slides e link) sarà disponibile alla pagina Github `r icons::fontawesome("github")`: [arca-dpss/course-R](https://github.com/arca-dpss/course-R)
+- Il materiale e i vari link sono facilmente consultabili nel [sito associato](https://arca-dpss.github.io/course-R/).
 
 ---
 # Un cenno al libro

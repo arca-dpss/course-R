@@ -55,6 +55,8 @@ La scrittura di operazione complesse in R avviene utilizzando le parentesi per d
 
 1. $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$
 
+</br>
+
 <details><summary>Vedi la soluzione proposta</summary>
 
 ```{r}
@@ -63,13 +65,21 @@ La scrittura di operazione complesse in R avviene utilizzando le parentesi per d
 
 </details>
 
+</br>
+
 2. $\frac{\sqrt{7-\pi}}{3\ (45-34)}$
 
+</br>
+
 <details><summary>Vedi la soluzione proposta</summary>
+
+</br>
 
 ```{r}
 sqrt(7 - pi)/(3*(45 -34))
 ```
+
+</br>
 
 </details>
 
@@ -83,6 +93,8 @@ sqrt(7 - pi)/(3*(45 -34))
 
 </details>
 
+</br>
+
 4. $\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}$
 
 <details><summary>Vedi la soluzione proposta</summary>
@@ -93,6 +105,8 @@ sqrt(7 - pi)/(3*(45 -34))
 
 </details>
 
+</br>
+
 5. $\frac{\sum_{n=1}^{10} n}{10}$
 
 <details><summary>Vedi la soluzione proposta</summary>
@@ -102,6 +116,8 @@ sum(1:10)/10
 ```
 
 </details>
+
+</br>
 
 Note per la risoluzione degli esercizi:
 
@@ -158,6 +174,31 @@ abs(5) >= 2 & abs(5) <= 4     # FALSE
 4 ^ 3 %in% c(2,3,4) # ^ ha precedenza rispetto a %in%
 4 * 3 %in% c(2,3,4) # %in% ha precedenza rispetto a *
 ```
+
+</details>
+
+4. Esegui le seguenti operazioni logiche tra stringhe e prova prevedere il risultato prima di eseguire il codice:
+
+```{r, eval = FALSE}
+"ciao" == "ciao"
+"R" == "r"
+"SPSS" != "SpSS"
+"1" == 1
+"1" > "ciao"
+"a" > "b"
+"ciao" > "zebra"
+```
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+In R le stringe possono essere comparate anche con gli operatori `> < >= <=`. L'idea è che la lettera è considerata "maggiore" se associata ad una posizione successiva nell'alfabeto. Quindi ad esempio `a > b = FALSE` perchè `a` viene prima e quindi in senso numerico è associata ad un numero inferiore `1 vs 2`. Questo vale anche per le parole dove viene comparata la prima stringa, la seconda e così via:
+
+```{r}
+"a" > "b"
+"aa" < "aa" # a == a, poi a < b
+```
+
+Per approfondire il tema delle stringhe il Capitolo [16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R è un buon punto di partenza.
 
 </details>
 
@@ -221,6 +262,7 @@ t <- rep(c("A", "B", "C"), each = 4)
 rep(rep(c("foo", "bar"), each = 2), times = 2)
 ```
 </details>
+
 
 ### Indicizzare vettori
 
@@ -302,6 +344,35 @@ z[!z %in% c(28,42)]
 
 </details>
 
+10. Spesso è necessario creare delle stringhe random per codificare un partecipante in modo univoco ma senza usare informazioni sensibili. Genera 1 codice univoco formati da `id_string_num` dove:
+    - `id` è un numero casuale tra 1 e 10
+    - `string` è una stringa formata da 5 lettere casuali
+    - `nums` è un numero casuale tra 100 e 999
+Ad esempio `1_adrtv_100` è un id valido.
+
+Tips:
+    - vedi la funzione `sample` o `runif` e `round` per generare i numeri
+    - vedi l'oggetto `letters` già disponibile in R
+    - vedi la funzione `paste0()` o `sprintf()`
+    
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+id <- sample(1:10, size = 1) # numero casuale tra 1 e 10
+string <- sample(letters, size = 5)
+nums <- round(runif(1, min = 100, max = 999)) # oppure sample(100:999, size = 1)
+
+# con sprintf
+sprintf("%s_%s_%s", id, string, nums)
+
+# con paste0
+paste0(id, "_", string, "_", nums)
+```
+
+La differenza tra `paste0()` e `sprintf()` è la versatilità di comporre stringhe complesse. Con entrambi si possono ottenere gli stessi risultati ma `sprintf()` è molto più potente e chiaro da scrivere una volta compresa la sintassi. Ad esempio `%s` è un placeholder per una stringa che viene passata come argomento della funzione.
+
+</details>
+
 ## Fattori
 
 1. Crea la variabile categoriale `genere` così definita:
@@ -336,20 +407,27 @@ factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
 ```
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 intervento <- factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
 ```
 
 </details>
 
-4. Correggi nella variabile `intervento` la 7° e 8° osservazione con la voce `Farmaci`.
+4. Correggi nella variabile `intervento` la 7° e 8° osservazione con la voce `Farmaci`. Notate qualcosa di strano?
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 intervento[7:8] <- "Farmaci"
+intervento
+
 levels(intervento)<-c(levels(intervento), "Farmaci")
 intervento[7:8]<-"Farmaci"
+intervento
 ```
+
+In pratica è necessario prima aggiungere un livello al fattore e poi aggiungere/modificare delle osservazioni appartenenti a quel livello.
 
 </details>
 
@@ -361,11 +439,13 @@ c("Farmaci","Controllo","Farmaci")
 ```
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 intervento <- c(intervento, as.factor(c("Farmaci","Controllo","Farmaci")))
 
 # cosa succede con questo e perche?
 c(intervento, c("Farmaci","Controllo","Farmaci"))
+
 ```
 
 </details>
@@ -412,7 +492,7 @@ $$
 4. Sovrascrivi il vettore `y` con lo stesso vettore di caratteri ma ripetendo ogni elemento 4 volte
 5. Seleziona i numeri da 1 a 50 del vettore `x` all'interno della lista
 6. Aggiungi alla lista un'ulteriore lista selezionando i primi 3 elementi della lista originale
-7. Aggiungi alla lista nested un vettore numerico selezionando solo i numeri di `x` divisibili per 3
+7. Aggiungi alla lista nested un vettore numerico selezionando solo i numeri di `x` divisibili per 3 (ricordi la funzione modulo `%%`?)
 
 ## Dataframe
 
@@ -456,10 +536,10 @@ data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
 
 1. definisci una funzione che trasformi la temperatura da Celsius a Fahrenheit 
 $$
-Fahrenheit = Celsius *1.8 + 32
+Fahrenheit = Celsius * 1.8 + 32
 $$
 2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona. Prova a utilizzare e capire le funzioni `paste()` e `print()`.
-3. Definisci una funzione `n_and_media()` che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media e restituisca entrambe in una frase. Ad esempio `n_and_media(x)` deve restituire "la media di x è ... e la lunghezza di x è ...". Anche qui sono utili le funzioni `paste()` e `print()`.
+3. Definisci una funzione `n_and_media()` che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media e restituisca entrambe in una frase. Ad esempio `n_and_media(x)` deve restituire "la media di x è ... e la lunghezza di x è ...". Anche qui sono utili le funzioni `paste()`/`sprintf` e `print()`.
 
 ## Condizionali
 
@@ -587,6 +667,7 @@ mean(x)
 ```
 
 <details><summary>Vedi la soluzione proposta</summary>
+    
 ```{r}
 my_mean <- function(x){
     avg <- my_sum(x)/length(x)
@@ -595,6 +676,7 @@ my_mean <- function(x){
 
 my_mean(x)
 mean(x)
+
 ```
 </details>
 
@@ -810,6 +892,7 @@ mat <- matrix(nrow = 10, ncol = 10)
 ```
 
 <details><summary>Vedi la soluzione proposta</summary>
+
 ```{r}
 populate_matrix <- function(matrice, contenuto){
     index <- 1
@@ -837,6 +920,42 @@ In questi esercizi vedremo come gestire un dataset più o meno complesso in modo
 - produrre uno script di pulizia dati
 
 In questo corso non abbiamo visto aspetti di statistica o manipolazione dati in senso stretto, tuttavia i concetti che abbiamo imparato sono applicabili anche senza queste nozioni. Ad esempio non abbiamo affrontato nel dettaglio la pulizia dei dati, i pacchetti per gestire dataset complessi ma sappiamo che ad esempio un `dataframe` è una lista, e se vogliamo applicare una funzione ad una lista possiamo usare l'`*apply` family.
+
+## Questionari
+
+Proviamo a fare lo scoring di un questionario rappresentato in R come dataframe. Questo è un caso molto comune dove dobbiamo lavorare con indici di riga/colonna.
+
+- importare il dataset `item_data.rds`
+- esplorare il dataset (struttura, numero di colonne/righe, tipo di colonne)
+- vedere i valori massimi e minimi degli item
+    + se ci sono valori anomali (minori di 1 o maggiori di 5) mettiamo i rispettivi valori minimi e massimi. Ad esempio se c'è 0 mettiamo 1 mentre 10 mettiamo 5
+- vedere se ci sono `NA`. Se un soggetto ha più di 1 `NA`, eliminiamo il soggetto altrimenti mettiamo il valore 3 al posto degli `NA`
+
+Prima di fare lo scoring dobbiamo invertire (ricodificare) alcuni item. In particolare dobbiamo invertire gli item 1, 10, 11, 13, 14, 15, 20. Per invertire semplicemente i punteggi 1 diventano 5, 2 --> 4 e così via.
+
+Tips:
+
+- scrivere una funzione per ricodificare (vedi `case_when()`) e poi applicarla a tutti gli item
+
+Questo questionario è formato da 30 item. Ci sono 5 sottoscale dove:
+
+- sub1 = items 20 25 17 18 22
+- sub2 = items 30  3 11 16 19
+- sub3 = items 4 14  8 21 23
+- sub4 = items 26 29  9 13 10
+- sub5 = items 5 12  6 28 24
+- sub6 = items 7 15 27  2  1
+
+Per fare lo scoring dobbiamo:
+
+- mediare gli item per le sottoscale `sub1`, `sub2` e `sub3`
+- sommare gli item per le sottoscale `sub4`, `sub5` e `sub6`
+
+In entrambi i casi creiamo delle nuove colonne che si chiamano come le sottoscale da attaccare al dataframe principale.
+
+<details><summary>Vedi la soluzione proposta</summary>
+Per la soluzione andiamo a questo [link](exercises/item-solutions.html)
+</details>
 
 ## Netflix
 
@@ -872,6 +991,10 @@ Solitamente le colonne di un dataset contengono informazioni rindondanti o non a
 
 - creare una colonna `durata` che contiene la durata in minuti per i film e la durata dell'episodio per le le serie-tv
 - creare una colonna `durata_stagioni` che contenga il numero di stagioni per ogni serie-tv mentre il valore `0` per i film.
+
+<details><summary>Vedi la soluzione proposta</summary>
+Per la soluzione andiamo a questo [link](exercises/netflix-solutions.html)
+</details>
 
 # Credits
 

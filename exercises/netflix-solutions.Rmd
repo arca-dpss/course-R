@@ -116,6 +116,66 @@ Ora possiamo assegnare ad una nuova colonna questa operazione:
 netflix$release_time <- round(difftime(netflix$insert_date, netflix$release_date, units = "days"))
 ```
 
+# Trasformiamo colonne
 
+Ci sono alcune colonne che potrebbero essere maggiormente utili se trasformate. Creiamo una colonna `duration_in_min` che contiene la durata in minuti dei film e di un episodio per le serie tv. Per ora, la colonna `duration` contiene solo informazioni per i film mentre il numero di stagioni per le serie tv.
 
+```{r}
+netflix$duration_in_min <- ifelse(netflix$type == "TV Show",
+                                  netflix$duration_episode,
+                                  netflix$duration)
+head(netflix)
+```
 
+In questo modo abbiamo creato una colonna che in modo condizionale prende i valori di altre due colonne. Questa operazione è estremamente utile quando appunto vogliamo combinare le informazioni codificate in più colonne.
+
+Facciamo lo stesso creando una colonna `duration_season` che prende il valore del numero di episodi per ogni stagione nel caso di una serie tv altrimenti 0 (per i film):
+
+```{r}
+netflix$duration_season <- ifelse(netflix$type == "TV Show",
+                                  netflix$duration,
+                                  1)
+head(netflix)
+```
+
+In questo modo con lo stesso principio però abbiamo usato una colonna ed una costante `0` ma il funzionamento è esattamente identico.
+
+# Convertire numeri in stringhe [Avanzato]
+
+La colonna `duration_in_min` racchiude ora tutte le informazioni sulla durata ma è codificata come carattere. Per i film infatti abbiamo e.g. `93 min` mentre per le serie tv solo il numero. Per convertire tutto in numeri dobbiamo *estrarre* l'informazione numerica o eliminare quella che non è compatibile ovvero la scritta "min". Vediamo entrambi gli approcci.
+
+Analizzando la stringa troviamo un pattern ripetitivo "numero" + spazio + "min". Quindi possiamo estrarre la stringa " min" se presente in modo da lasciare solo l'informazione numerica. Vedi il comando `gsub()`
+
+```{r}
+strprova <- "100 min" # stringa di prova
+gsub(pattern = " min", replacement = "", strprova)       
+```
+
+In questo modo abbiamo sostituito " min" con la stringa vuota "" che equivale ad eliminare quella parte. Ora applichiamolo a tutta la colonna:
+
+```{r}
+netflix$duration_in_min_new <- gsub(pattern = " min", replacement = "", netflix$duration_in_min)
+head(netflix$duration_in_min)
+```
+
+Ora possiamo semplicemente forzare a numero in modo da ottenere la nostra variabile numerica:
+
+```{r}
+netflix$duration_in_min_new <- as.numeric(netflix$duration_in_min_new)
+hist(netflix$duration_in_min_new)
+```
+
+Un modo più automatico ed intuitivo è quello di usare la funzione `readr::parse_number()` che estrae tutta l'informazione numerica da una stringa:
+
+```{r}
+readr::parse_number(strprova)
+```
+
+Anche qui applichiamo su tutta la colonna e confrontiamo il risultato:
+
+```{r}
+duration_in_min_pn <- readr::parse_number(netflix$duration_in_min)
+
+head(duration_in_min_pn)
+all(duration_in_min_pn == netflix$duration_in_min_new)
+```
