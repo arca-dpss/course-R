@@ -1697,9 +1697,9 @@ mean(x)</code></pre>
 <pre><code>## [1] NA</code></pre>
 <p>In fact, these functions have a specific argument <code>na.rm = TRUE</code> for doing the computation without considering <code>NA</code> values. Of course we can remove <code>NA</code> values before the computation and the result will be the same:</p>
 <pre class="r"><code>mean(x, na.rm = TRUE)</code></pre>
-<pre><code>## [1] 0.5242358</code></pre>
+<pre><code>## [1] 0.4620826</code></pre>
 <pre class="r"><code>mean(x[!is.na(x)])</code></pre>
-<pre><code>## [1] 0.5242358</code></pre>
+<pre><code>## [1] 0.4620826</code></pre>
 <ul>
 <li><a href="http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/" class="uri">http://www.cookbook-r.com/Basics/Working_with_NULL_NA_and_NaN/</a></li>
 <li><a href="https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r" class="uri">https://www.projectpro.io/recipes/what-is-difference-between-na-and-nan-r</a></li>

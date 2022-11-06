@@ -34,7 +34,6 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 
 # Link importanti
 
-- Cartella condivisa Google Drive - [Link](https://drive.google.com/drive/u/0/folders/1jZKbaMfseJEg7wyIFMhE7Q92rROo3Rqo)
 - Documento condiviso per esercizi - [Link](https://etherpad.wikimedia.org/p/arca-corsoR)
 - Cartella Dati - [Download Link](https://minhaskamal.github.io/DownGit/#/home?url=https:%2F%2Fgithub.com%2Farca-dpss%2Fcourse-R%2Ftree%2Fmain%2Fexercises%2Fdata)
 
@@ -68,7 +67,7 @@ In questa sezione ci sono alcuni argomenti extra che possono essere utili nel la
 - **Importare dati esterni in R** - [Appunti](extra/importing_data.html)
 - **Le funzioni TOP in R** - [Appunti](extra/top_functions.html)
 - **Funzioni personalizzate** - [Appunti](extra/custom_functions.html)
-- **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/filippogambarota_slides/tidyverse_presentation/tidyverse_presentation.html)
+- **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/slides/tidyverse_presentation/tidyverse_presentation.html#1)
 - **Manipolare Stringhe** - [Capitolo 16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R
 
 # Errori libro `Introduzione a R`
