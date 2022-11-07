@@ -359,7 +359,7 @@ Tips:
 
 ```{r}
 id <- sample(1:10, size = 1) # numero casuale tra 1 e 10
-string <- sample(letters, size = 5)
+string <- paste0(sample(letters, size = 5), collapse = "")
 nums <- round(runif(1, min = 100, max = 999)) # oppure sample(100:999, size = 1)
 
 # con sprintf
