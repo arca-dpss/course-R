@@ -39,7 +39,7 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 
 # Questionario Valutazione
 
-A questo [link](https://docs.google.com/forms/d/e/1FAIpQLSf_fvSZSwWV-WpzlAASOeRUE0TRAizjWjy5WlKLtw712ttRLQ/viewform) potete trovare il questionario di valutazione del corso. E' molto importante per me e per i corsi futuri in modo da migliorarlo al massimo.
+A questo [link](https://forms.gle/vWA2Gcfox1q526H69) potete trovare il questionario di valutazione del corso. E' molto importante per me e per i corsi futuri in modo da migliorarlo al massimo.
 
 # Materiale
 
