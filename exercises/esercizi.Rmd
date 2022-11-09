@@ -522,8 +522,8 @@ data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
 
 4. Utilizzando il dataset `dataframe_example2.csv`
 
-- crea una nuova colonna `id` che identifichi in modo univoco ogni soggetto progressivamente
 - importa il dataframe dal formato `csv`
+- crea una nuova colonna `id` che identifichi in modo univoco ogni soggetto progressivamente
 - controlla che tutte le colonne siano del tipo appropriato (usa la famiglia `is.*`)
 - seleziona tutte le persone a cui non piace `nessuna` festa. Noti qualche problema?
 - seleziona tutte le persone a cui piace il colore `blu` e piace il `natale`
