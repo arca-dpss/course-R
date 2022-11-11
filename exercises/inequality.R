@@ -92,10 +92,3 @@ dat_new$socioeconomic_class <- case_when(
     dat_new$socioeconomic_class == 4 ~ "high",
     TRUE ~ "crazy"
 )
-
-# Scoring -----------------------------------------------------------------
-
-# facciamo lo scoring del questionario environmental concern e progressive
-# taxation
-# environmental concern to reverse 2, 4, 6, 8, 10, 12, 14
-# progressive taxation to reverse 3, 4
