@@ -37,10 +37,6 @@ In questa giornata verranno introdotti alcuni aspetti trasversali utili per un u
 - Documento condiviso per esercizi - [Link](https://etherpad.wikimedia.org/p/arca-corsoR)
 - Cartella Dati - [Download Link](https://minhaskamal.github.io/DownGit/#/home?url=https:%2F%2Fgithub.com%2Farca-dpss%2Fcourse-R%2Ftree%2Fmain%2Fexercises%2Fdata)
 
-# Questionario Valutazione
-
-A questo [link](https://forms.gle/vWA2Gcfox1q526H69) potete trovare il questionario di valutazione del corso. E' molto importante per me e per i corsi futuri in modo da migliorarlo al massimo.
-
 # Materiale
 
 ## Lezioni
@@ -52,6 +48,7 @@ Questi sono i link al materiale principale del corso:
 - **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
 - **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
 - **Problem Solving in R** - [Link](extra/R_problem_solving.html)
+- **R and beyond** -[Slides](slides/r_R_and_beyond/R_and_beyond.html) - [PDF](slides/r_R_and_beyond/R_and_beyond.pdf)
 
 ## Esercizi
 
