@@ -996,6 +996,12 @@ Solitamente le colonne di un dataset contengono informazioni rindondanti o non a
 Per la soluzione andiamo a questo [link](netflix-solutions.html)
 </details>
 
+## Advanced Cleaning
+
+Nonstante possano sembrare aspetti superficiali, la pulizia dei dataset è fondamentale. Nomi di colonne appropriati, rimuovere caratteri speciali, verificare la struttura e la tipologia delle colonne etc. Il dataframe `inequality_sub.csv` è un esempio di un ottimo dataset di partenza ma con la possibilità di migliorare i nomi delle colonne e alcuni dettagli generali.
+
+Vedi un esempio di pre-processing di un dataset a questo [link](inequality.R).
+
 # Credits
 
 Alcuni esercizi sono stati presi o inspirati da:
