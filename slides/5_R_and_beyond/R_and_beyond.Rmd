@@ -364,7 +364,7 @@ knitr::include_graphics("img/broom.svg")
 
 ]
 
-.pull-rigth[
+.pull-right[
 
 ```{r}
 tidfit <- broom::tidy(fit)
