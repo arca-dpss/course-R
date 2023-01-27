@@ -1,0 +1,25 @@
+---
+title: "Argomento"
+author: "Nome Cognome"
+date: "`r Sys.Date()`"
+output: 
+    pdf_document:
+        toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = FALSE)
+```
+
+# I primi passi con R
+
+## Esercizio 1
+
+```{r}
+((45 + 21)^3 + 3/4)/(sqrt(32 - 12/17))
+```
+
+## Esercizio 2
+
+...
