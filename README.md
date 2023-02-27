@@ -8,7 +8,7 @@
 <!-- badges: start -->
 
 ![Github
-Pages](hhttps://github.com/arca-dpss/course-R/actions/workflows/pages/pages-build-deployment/badge.svg?branch=master)
+Pages](https://github.com/arca-dpss/course-R/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)
 <!-- badges: end -->
 
 # ARCA (Applied Research Courses Academy)
