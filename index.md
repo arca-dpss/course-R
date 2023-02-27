@@ -32,6 +32,8 @@ Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come
 
 ## Installare R Markdown
 
+<!-- TODO togli questa parte perchè c'è esame ora -->
+
 Per tenere traccia degli esercizi fatti useremo R Markdown. R Markdown è un framework molto potente per integrare codice e testo in un unico documento. Tutti i materiali (slide, approfondimenti, etc.) di questo corso sono costruiti con R Markdown. Noi lo useremo semplicemente per scrivere le soluzioni degli esercizi. Per installare R Markdown, dopo aver installato R e RStudio eseguire nella console il comando `install.packages("rmarkdown")`.
 
 Per creare documenti **pdf** è necessario installare il pacchetto `tinytex`, per farlo eseguire nella console `install.packages('tinytex')`. Una volta conclusa l'installazione eseguire `tinytex::install_tinytex()` e seguire la procedura richiesta.
