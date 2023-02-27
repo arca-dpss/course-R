@@ -14,6 +14,16 @@ Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l
 
 Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
 
+## Esame
+
+Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. L'esame contiene **20 domande** a cui rispondere in **45 minuti**. I punteggi sono assegnati con la seguente modalità:
+
+- 1 punto per ogni risposta corretta
+- -0.33 punti per ogni risposta sbagliata
+- 0 punti per ogni risposta non data
+
+Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 20 punti. L'esame si trova a questo link [https://forms.gle/wAime2eWxrk3V6D76](https://docs.google.com/forms/d/1HtjXMo-Wl0RyHChmDkM_tvL5ooaEiB_GXTAww2iHigY/edit#responses).
+
 # Prepararsi al corso
 
 ## Installare R ed R Studio
