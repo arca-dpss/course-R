@@ -27,7 +27,7 @@ Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 
 # Prepararsi al corso
 
 1. **Installare R ed R Studio**. Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
-2. **Salvare il sito web della repository** https://github.com/arca-dpss/course-R come preferito nel browser (in modo da avere facilmente accesso a tutto il materiale)
+2. **Salvare il sito web della repository** [https://github.com/arca-dpss/course-R](https://arca-dpss.github.io/course-R/) come preferito nel browser (in modo da avere facilmente accesso a tutto il materiale)
 3. **Scaricare la repository** Github del corso a questo [link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R). Estraete la cartella del corso in una posizione qualsiasi del PC
 
 # Suddivisione argomenti
