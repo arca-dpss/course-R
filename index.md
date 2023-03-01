@@ -26,19 +26,9 @@ Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 
 
 # Prepararsi al corso
 
-## Installare R ed R Studio
-
-Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
-
-## Installare R Markdown
-
-<!-- TODO togli questa parte perchè c'è esame ora -->
-
-Per tenere traccia degli esercizi fatti useremo R Markdown. R Markdown è un framework molto potente per integrare codice e testo in un unico documento. Tutti i materiali (slide, approfondimenti, etc.) di questo corso sono costruiti con R Markdown. Noi lo useremo semplicemente per scrivere le soluzioni degli esercizi. Per installare R Markdown, dopo aver installato R e RStudio eseguire nella console il comando `install.packages("rmarkdown")`.
-
-Per creare documenti **pdf** è necessario installare il pacchetto `tinytex`, per farlo eseguire nella console `install.packages('tinytex')`. Una volta conclusa l'installazione eseguire `tinytex::install_tinytex()` e seguire la procedura richiesta.
-
-Da ora in poi sarete in grado di creare documenti con R Markdown, durante il corso vedremo un piccolo esempio. Per gli esercizi useremo un template per gli esercizi che può essere scaricato dal seguente [link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R/blob/main/template/template-esercizi.Rmd).
+1. **Installare R ed R Studio**. Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
+2. **Salvare il sito web della repository** https://github.com/arca-dpss/course-R come preferito nel browser (in modo da avere facilmente accesso a tutto il materiale)
+3. **Scaricare la repository** Github del corso a questo [link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R). Estraete la cartella del corso in una posizione qualsiasi del PC
 
 # Suddivisione argomenti
 
