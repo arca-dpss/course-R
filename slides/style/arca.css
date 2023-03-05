@@ -193,6 +193,22 @@ th, td { padding: 5px; }
   display: none;
 }
 
+/* Questions SLIDE */
+
+.questions {
+    background-color: #1F618D;
+}
+
+.questions .remark-slide-number {
+  display: none;
+}
+
+.questions h1 {
+    font-size: 50px;
+    color: white;
+    text-shadow: 0 0 0px #333;
+}
+
 /* TEXT COLORS */
 
 .imp {

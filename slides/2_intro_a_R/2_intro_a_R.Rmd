@@ -88,6 +88,13 @@ knitr::include_graphics("img/rstudio.png")
 ```
 
 ---
+class: questions, center, middle
+
+```{r, echo = FALSE, results='asis'}
+questions()
+```
+
+---
 class: section, center, middle
 
 # I primi passi in R
