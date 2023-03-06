@@ -85,7 +85,7 @@ class: section, center, middle
 
 - Libro [**Introduction2R**](https://psicostat.github.io/Introduction2R/) disponibile online su Github `r icons::fontawesome("github")`
 
-- Slide del corso (principalmente per supportare le lezioni) disponibili qui https://github.com/arca-dpss/course-R
+- Repository Github del corso `r link("https://github.com/arca-dpss/course-R")` accessibile anche al sito web `r link("https://arca-dpss.github.io/course-R")`
 
 - Altra documentazione, link e materiale collegato
 
@@ -148,6 +148,23 @@ In particolare, errori di scrittura o imprecisioni sono le cose più importanti.
 `r iframe("https://giphy.com/embed/FaMmrCXe5zx2QZfkh6", 200, 200)`
 
 ]
+
+---
+class: section, center, middle
+
+# Esame 😱
+
+---
+# Esame 😱
+
+- Consiste in **20 domande** a scelta multipla con una sola risposta corretta
+- **45 minuti** a disposizione
+- I punteggi sono assegnati con la seguente modalità:
+    - **1 punto** per ogni **risposta corretta**
+    - **-0.33 punti** per ogni **risposta sbagliata**
+    - **0 punti** per ogni **risposta non data**
+- Per superare l'esame è necessario ottenere **almeno 15 punti (75%) sul totale di 20 punti**.
+
 ---
 class: section, center, middle
 
@@ -351,3 +368,34 @@ Una lingua è composta da:
 # Let's start `r emo::ji("sunglasses")`
 
 `r iframe("https://giphy.com/embed/lluj1cauAlO2vQEm8A", 500, 500)`
+
+---
+class: section, center, middle
+
+# Prepariamoci!
+
+---
+# Prepariamoci!
+
+Andate su https://github.com/arca-dpss/course-R, e scaricate la repository. **Salvate anche nei preferiti** il link alla repository perchè la useremo spesso.
+
+```{r, echo = FALSE, out.width="100%"}
+knitr::include_graphics("img/download-repo.png")
+```
+---
+# Prepariamoci!
+
+Vi consiglio di lavorare sempre su questa cartella in modo che impariate a lavorare con i progetti R.
+
+```{r, echo = FALSE, out.width="100%"}
+knitr::include_graphics("img/open-r-project.png")
+```
+
+---
+# Prepariamoci!
+
+Aprite e tenete aperto questo link https://etherpad.wikimedia.org/p/arca-corsoR
+
+```{r, echo = FALSE, out.width="100%"}
+knitr::include_graphics("img/pad-condiviso.png")
+```
