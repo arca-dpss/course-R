@@ -24,6 +24,10 @@ Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. 
 
 Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 20 punti. L'esame si trova a questo link [https://forms.gle/wAime2eWxrk3V6D76](https://docs.google.com/forms/d/1HtjXMo-Wl0RyHChmDkM_tvL5ooaEiB_GXTAww2iHigY/edit#responses).
 
+# Questionario Valutazione
+
+Alla fine delle lezioni vi sarà chiesto di valutare il corso compilando un questionario completamente anonimo. Questo feedback è molto importante per noi in modo da migliorare continuamente il corso.
+
 # Prepararsi al corso
 
 1. **Installare R ed R Studio**. Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
