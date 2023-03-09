@@ -14,6 +14,17 @@ Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l
 
 Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
 
+## Aule e Orari
+
+| Data | Ora | Aula |
+|---|---|---|
+| 13/03/2023 | 09:00-13:00 | 4T |
+| 14/03/2023 | 09:00-13:00 | 4M |
+| 15/03/2023 | 09:00-13:00 | 4T |
+| 16/03/2023 | 09:00-10:30 | 4N |
+| 16/03/2023 | 09:00-10:30 | 4T |
+| 17/03/2023 | 09:00-12:30 | 4T |
+
 ## Esame
 
 Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. L'esame contiene **20 domande** a cui rispondere in **45 minuti**. I punteggi sono assegnati con la seguente modalità:
