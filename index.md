@@ -1,5 +1,5 @@
 ---
-course_title: Introduzione a R
+course_title: Introduzione a R 2023-2024
 author_name: Filippo Gambarota
 ---
 
@@ -14,16 +14,15 @@ Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l
 
 Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
 
-## Aule e Orari
+## Aule e Orari (2023-2024)
 
 | Data | Ora | Aula |
 |---|---|---|
-| 13/03/2023 | 09:00-13:00 | 4T |
-| 14/03/2023 | 09:00-13:00 | 4M |
-| 15/03/2023 | 09:00-13:00 | 4T |
-| 16/03/2023 | 09:00-10:30 | 4N |
-| 16/03/2023 | 10:30-13:00 | 4T |
-| 17/03/2023 | 09:00-12:30 | 4T |
+| 06/11/2023 | 13:00-18:00 | 4T |
+| 07/11/2023 | 09:00-14:00 | 4T |
+| 08/11/2023 | 09:00-12:30 | 4T |
+| 09/11/2023 | 09:00-11:30 | 4T |
+| 10/11/2023 | 10:30-13:00 | 4T |
 
 ## Esame
 
@@ -37,7 +36,7 @@ Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 
 
 # Questionario Valutazione
 
-Alla fine delle lezioni vi sarà chiesto di valutare il corso compilando un questionario completamente anonimo. Questo feedback è molto importante per noi in modo da migliorare continuamente il corso. Il questionario si trova a questo link [https://forms.gle/e3G81GMfdNYmg9ao9](https://forms.gle/e3G81GMfdNYmg9ao9)
+Alla fine delle lezioni vi sarà chiesto di valutare il corso compilando un questionario completamente anonimo. Questo feedback è molto importante per noi in modo da migliorare continuamente il corso. Il questionario si trova a questo link.
 
 # Prepararsi al corso
 
