@@ -78,7 +78,7 @@ Questi sono i link al materiale principale del corso:
 - **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
 - **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
 - **Problem Solving in R** - [Link](extra/R_problem_solving.html)
-- **R and beyond** -[Slides](slides/r_R_and_beyond/R_and_beyond.html) - [PDF](slides/r_R_and_beyond/R_and_beyond.pdf)
+- **R and beyond** - [Slides](slides/5_R_and_beyond/5_R_and_beyond.html) - [PDF](slides/5_R_and_beyond/5_R_and_beyond.pdf)
 
 ## Esercizi
 
