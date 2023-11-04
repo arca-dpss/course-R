@@ -29,13 +29,69 @@ La scrittura di operazione complesse in R avviene utilizzando le parentesi per d
 
 1. $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$
 
+</br>
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es11}
+((45 + 21)^3 + 3/4)/(sqrt(32 - 12/17))
+```
+
+</details>
+
+</br>
+
 2. $\frac{\sqrt{7-\pi}}{3\ (45-34)}$
+
+</br>
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+</br>
+
+```{r es12}
+sqrt(7 - pi)/(3*(45 -34))
+```
+
+</br>
+
+</details>
 
 3. $\sqrt[3]{12-e^2}+\ln(10\pi)$
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es13}
+(12 - exp(1)^2)^(1/3) + log(10*pi)
+```
+
+</details>
+
+</br>
+
 4. $\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}$
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es14}
+(sin((3/4)*pi)^2 + cos((3/2)*pi)) / (log(exp(1)^3/2, base = 7))
+```
+
+</details>
+
+</br>
+
 5. $\frac{\sum_{n=1}^{10} n}{10}$
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es15}
+sum(1:10)/10
+```
+
+</details>
+
+</br>
 
 Note per la risoluzione degli esercizi:
 
@@ -48,9 +104,52 @@ Note per la risoluzione degli esercizi:
 
 1. Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un'altra proposizione per i numeri dispari (tip: cosa ti ricorda `%%`?).
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es21}
+# Numeri pari: x %% 2 == 0
+4 %% 2 == 0  # TRUE
+5 %% 2 == 0  # FALSE
+
+# NUmeri dispari: x %% 2 != 0
+4 %% 2 != 0  # FALSE
+5 %% 2 != 0  # TRUE
+```
+
+</details>
+
 2. Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) "*x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4*".
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es22}
+# prima soluzione: (x >= -4 & x <= -2) | (x >= 2 & x <= 4)
+(-5 >= -4 & -5 <= -2) | (-5 >= 2 & -5 <= 4) # FALSE
+(-3 >= -4 & -3 <= -2) | (-3 >= 2 & -3 <= 4) # TRUE
+(0 >= -4 & 0 <= -2) | (0 >= 2 & 0 <= 4)     # FALSE
+(3 >= -4 & 3 <= -2) | (3 >= 2 & 3 <= 4)     # TRUE
+(5 >= -4 & 5 <= -2) | (5 >= 2 & 5 <= 4)     # FALSE
+
+# seconda soluzione: abs(x) >= 2 & abs(x) <= 4
+abs(-5) >= 2 & abs(-5) <= 4   # FALSE
+abs(-3) >= 2 & abs(-3) <= 4   # TRUE
+abs(0) >= 2 & abs(0) <= 4     # FALSE
+abs(3) >= 2 & abs(3) <= 4     # TRUE
+abs(5) >= 2 & abs(5) <= 4     # FALSE
+```
+
+</details>
+
 3. Esegui le seguenti operazioni `4 ^ 3 %in% c(2,3,4)` e `4 * 3 %in% c(2,3,4)`. Cosa osservi nell'ordine di esecuzione degli operatori?
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es23}
+4 ^ 3 %in% c(2,3,4) # ^ ha precedenza rispetto a %in%
+4 * 3 %in% c(2,3,4) # %in% ha precedenza rispetto a *
+```
+
+</details>
 
 4. Esegui le seguenti operazioni logiche tra stringhe e prova prevedere il risultato prima di eseguire il codice:
 
@@ -64,6 +163,19 @@ Note per la risoluzione degli esercizi:
 "ciao" > "zebra"
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+In R le stringe possono essere comparate anche con gli operatori `> < >= <=`. L'idea è che la lettera è considerata "maggiore" se associata ad una posizione successiva nell'alfabeto. Quindi ad esempio `a > b = FALSE` perchè `a` viene prima e quindi in senso numerico è associata ad un numero inferiore `1 vs 2`. Questo vale anche per le parole dove viene comparata la prima stringa, la seconda e così via:
+
+```{r es24}
+"a" > "b"
+"aa" < "aa" # a == a, poi a < b
+```
+
+Per approfondire il tema delle stringhe il Capitolo [16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R è un buon punto di partenza.
+
+</details>
+
 # Strutture dati
 
 ## Vettori
@@ -72,13 +184,45 @@ Note per la risoluzione degli esercizi:
 
 1. Crea il vettore `x` contenente i numeri 4, 6, 12, 34, 
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+x <- c(4,6,12,34)
+```
+</details>
+
 2. Crea il vettore `y` contenente tutti i numeri pari compresi tra 1 e 25 (`?seq()`)
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+y <- seq(2, 25, 2)
+```
+</details>
 
 3. Crea il vettore `z` contenente tutti i primi 10 multipli di 7 partendo da 14 (`?seq()` in particolare l'argomento `length.out =`)
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+z <- seq(from = 14, by = 7,  length.out = 10)
+```
+</details>
+
 4. Crea il vettore `s` in cui le lettere `"A"`,`"B"` e `"C"` vengono ripetute nel medesimo ordine 4 volte (`?rep()`)
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+s <- rep(c("A", "B", "C"), 4)
+```
+
+</details>
+
 5. Crea il vettore `t` in cui le letter `"A"`,`"B"` e `"C"` vengono ripetute ognuna 4 volte (`?rep()`)
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+t <- rep(c("A", "B", "C"), each = 4)
+```
+</details>
 
 6. Genera il seguente output in modo pigro, ovvero scrivendo meno codice possibile ;)
 
@@ -86,11 +230,33 @@ Note per la risoluzione degli esercizi:
 ## [1] "foo" "foo" "bar" "bar" "foo" "foo" "bar" "bar"
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+rep(rep(c("foo", "bar"), each = 2), times = 2)
+```
+</details>
+
+
 ### Indicizzare vettori
 
 1. Del vettore `x` seleziona il 2°, 3° e 5° elemento
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+x[c(2,3,5)]
+```
+
+</details>
+
 2. Del vettore `x` seleziona i valori 34 e 4
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+x[x %in% c(34,4)]
+```
+
+</details>
 
 3. Dato il vettore `my_vector = c(2,4,6,8)` commenta il risultato del comando `my_vector[my_vector]`
 
@@ -101,15 +267,56 @@ my_vector[my_vector]
 
 4. Del vettore `y` seleziona tutti i valori minori di 13 o maggiori di 19
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+y[y < 13 | y > 19]
+```
+
+</details>
+
 5. Del vettore `z` seleziona tutti i valori compresi tra 24 e 50
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+z[z >= 24 & z <= 50]
+```
+
+</details>
 6. Del vettore `s` seleziona tutti gli elementi uguali ad  `"A"`
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+s[s == "A"]
+```
+
+</details>
 
 7. Del vettore `t` seleziona tutti gli elementi diversi da  `"B"`
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+t[t != "B"]
+```
+
+</details>
 8. Crea un nuovo vettore `u` identico a `s` ma dove le `"A"` sono sostituite con la lettera `"U"`
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+u <- s
+u[u == "A"] <- "U"
+```
+
+</details>
+
 9. Elimina dal vettore `z` i valori 28 e 42
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+z[!z %in% c(28,42)]
+```
+
+</details>
 
 10. Spesso è necessario creare delle stringhe random per codificare un partecipante in modo univoco ma senza usare informazioni sensibili. Genera 1 codice univoco formati da `id_string_num` dove:
     - `id` è un numero casuale tra 1 e 10
@@ -122,6 +329,24 @@ Tips:
     - vedi l'oggetto `letters` già disponibile in R
     - vedi la funzione `paste0()` o `sprintf()`
     
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+id <- sample(1:10, size = 1) # numero casuale tra 1 e 10
+string <- paste0(sample(letters, size = 5), collapse = "")
+nums <- round(runif(1, min = 100, max = 999)) # oppure sample(100:999, size = 1)
+
+# con sprintf
+sprintf("%s_%s_%s", id, string, nums)
+
+# con paste0
+paste0(id, "_", string, "_", nums)
+```
+
+La differenza tra `paste0()` e `sprintf()` è la versatilità di comporre stringhe complesse. Con entrambi si possono ottenere gli stessi risultati ma `sprintf()` è molto più potente e chiaro da scrivere una volta compresa la sintassi. Ad esempio `%s` è un placeholder per una stringa che viene passata come argomento della funzione.
+
+</details>
+
 ## Fattori
 
 1. Crea la variabile categoriale `genere` così definita:
@@ -130,15 +355,74 @@ Tips:
 factor(c(rep(c("M","F"),3),"F","F","M"))
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+genere <- factor(c("M", "F", "M", "F", "M", "F", "F", "F", "M"))
+```
+
+</details>
+
 2. Rinomina i livelli della variabile `genere` rispettivamente in `"donne"` e `"uomini"`.
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+genere2 <- genere # per tenere quello originale
+
+# Opzione 1
+levels(genere2) <- c("donne", "uomini")
+```
+
+</details>
+
+3. Crea la variabile categoriale `intervento` così definita:
+
+```{r, echo = FALSE}
+factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
+```
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+intervento <- factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
+```
+
+</details>
+
 4. Correggi nella variabile `intervento` la 7° e 8° osservazione con la voce `Farmaci`. Notate qualcosa di strano?
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+intervento[7:8] <- "Farmaci"
+intervento
+
+levels(intervento)<-c(levels(intervento), "Farmaci")
+intervento[7:8]<-"Farmaci"
+intervento
+```
+
+In pratica è necessario prima aggiungere un livello al fattore e poi aggiungere/modificare delle osservazioni appartenenti a quel livello.
+
+</details>
+
 
 5. Aggiungi alla variabile `intervento` le seguenti nuove osservazioni:
 
 ```{r}
 c("Farmaci","Controllo","Farmaci")
 ```
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+intervento <- c(intervento, as.factor(c("Farmaci","Controllo","Farmaci")))
+
+# cosa succede con questo e perche?
+c(intervento, c("Farmaci","Controllo","Farmaci"))
+
+```
+
+</details>
 
 ## Matrici
 
@@ -225,11 +509,9 @@ data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
 ## Funzioni
 
 1. definisci una funzione che trasformi la temperatura da Celsius a Fahrenheit 
-
 $$
 Fahrenheit = Celsius * 1.8 + 32
 $$
-
 2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona. Prova a utilizzare e capire le funzioni `paste()` e `print()`.
 3. Definisci una funzione `n_and_media()` che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media e restituisca entrambe in una frase. Ad esempio `n_and_media(x)` deve restituire "la media di x è ... e la lunghezza di x è ...". Anche qui sono utili le funzioni `paste()`/`sprintf` e `print()`.
 
@@ -259,13 +541,44 @@ La funzione quindi deve ricevere in input un valore e restituire la stringa corr
 
 Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio `Sepal.Length (12)`. Potete usare le funzioni `print()`, `paste()` and `nchar()`.
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+for(i in 1:ncol(iris)){
+    col_i <- colnames(iris)[i]
+    print(paste(col_i, "(", nchar(col_i), ")"))
+}
+```
+
+</details>
+
 ### Scrivi un loop che:
 
 Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e resituisce la `media` se la colonna è numerica (ricordate le `is.*` family) oppure la tabella di frequenza (comando `table()`) se la colonna è stringa/fattore
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+for(i in 1:ncol(iris)){
+    if(is.numeric(iris[[i]])){
+        print(mean(iris[[i]]))
+    }else{
+        print(table(iris[[i]]))
+    }
+}
+```
+</details>
+
 ### `*apply()`
 
 Usando la funzione più adatta dell`*apply()` family, calcola la `deviazione standard` di ogni colonna del dataset `mtcars` (lo trovate direttamente in R)
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+sapply(mtcars, sd) # perchè funziona? cosa cambia con lapply o apply?
+apply(mtcars, 2, sd)
+lapply(mtcars, sd)
+```
+
+</details>
 
 ### Popola la matrice con un `for`
 
@@ -277,6 +590,21 @@ my_mat <- matrix(NA, 10, 10) # matrice vuota 10x10
 ```
 
 Suggerimento: puoi fare un doppio ciclo `for` e generare un numero casuale da inserire con `rnorm(1)`
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+Generando un numero casuale direttamente dentro il `for`
+
+```{r}
+
+for(i in 1:nrow(my_mat)){
+    for(j in 1:ncol(my_mat)){
+        my_mat[i,j] <- rnorm(1)
+    }
+}
+```
+
+</details>
 
 ## Ri-creiamo le funzioni in R
 
@@ -291,6 +619,18 @@ x <- rnorm(100)
 sum(x)
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_sum <- function(x){
+    sum <- 0
+    for(i in 1:length(x)){
+        sum <- sum + x[i]
+    }
+    return(sum)
+}
+```
+</details>
+
 ### `mean()`
 
 Ricrea la funzione `mean()` testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione `sum()` creata prima):
@@ -300,6 +640,20 @@ x <- rnorm(100)
 mean(x)
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+    
+```{r}
+my_mean <- function(x){
+    avg <- my_sum(x)/length(x)
+    return(avg)
+}
+
+my_mean(x)
+mean(x)
+
+```
+</details>
+
 ### `median()`
 
 La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un `if` per controllare queste condizioni)
@@ -307,6 +661,26 @@ La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore ch
 ```{r}
 median(x)
 ```
+
+<details><summary>Vedi la soluzione proposta</summary>
+Questa è più complessa perchè abbiamo 2 scenari:
+
+- il vettore ha una lunghezza pari
+- il vettore ha una lunghezza dispari
+
+```{r}
+my_median <- function(x){
+  x <- sort(x)
+  if(length(x) %% 2 == 0){ # se è pari
+    mid <- length(x)/2
+    med <- (x[mid] + x[mid+1])/2
+  }else{ # se è dispari
+    med <- x[ceiling(length(x)/2)]
+  }
+  return(med)
+}
+```
+</details>
 
 ### Moda
 
@@ -316,6 +690,28 @@ In R non è prevista una funzione per calcolare la **moda**. In statistica la mo
 - ci sono dei pacchetti che l'hanno implementata?
 - possono esserci situazioni dove abbiamo più mode. La funzione che hai trovato/scritto gestisce questo scenario? eventualmente come puoi modificarla?
 
+<details><summary>Vedi la soluzione proposta</summary>
+La funzione `mode` non è presente in R. Possiamo crearla in vari modi oppure possiamo importarla da un pacchetto esterno. Una possibilità è questa:
+
+```{r}
+my_mode <- function(x){
+    unique(x)[which.max(tabulate(x))]
+}
+```
+
+Nel caso sia necessario gestire più mode bisogna modificare la funzione aggiungendo il fatto che se più valori sono associati a frequenza massima vengano restituiti tutti:
+
+```{r}
+my_better_mode <- function(x){
+    unique_x <- unique(x) # trovo valori unici
+    freq_x <- tabulate(x) # trovo frequenza di ogni valore
+    max_freq <- max(freq_x) # trovo la frequenza massima
+    unique_x[freq_x == max_freq] # indicizzo in modo logico tutti i valori associati alla frequenza massima
+}
+```
+
+</details>
+
 ### `sd()`
 
 La deviazione standard è facilmente implementata in R con la funzione `sd()`. Prova a ricrearla con tutti gli strumenti che abbiamo imparato fino ad ora. La formula matematica è la seguente:
@@ -324,6 +720,28 @@ $$
 SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
 $$
 Attenzione che R utilizza un denominatore diverso per la funzione `sd()` rispetto alla formula proposta. Cerca di capire cosa utilizza R aprendo la documentazione di `sd()` e implementa la versione di R e quella della formula. Crea poi una terza versione della funzione `my_sd(x, versione)` dove viene calcolata una o l'altra versione in base a cosa viene messo come argomento.
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_sd_formula <- function(x){
+    sqrt(mean((x - mean(x))^2))
+}
+
+my_sd_r <- function(x){
+    sqrt(sum((x - mean(x))^2) / (length(x) - 1))
+}
+
+my_sd <- function(x, version = c("formula", "R")){
+    num <- sum((x - mean(x))^2)
+    if(version == "formula"){
+        sqrt(num/length(x))
+    }else{
+        sqrt(num/(length(x) - 1))
+    }
+}
+```
+
+</details>
 
 ### Trova il numero all'interno del vettore
 
@@ -337,6 +755,27 @@ Scrivi una funzione che prenda in input un vettore `x` e restituisca il numero d
 
 - usa l'operatore divisione intera `%%`
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+num_odd <- function(x){
+    count <- 0
+    for(i in seq_along(x)){
+        if(x[i] %% 2 == 0){
+            count <- count + 1
+        }
+    }
+    
+    return(count)
+}
+
+num_odd2 <- function(x){
+    sum(x %% 2 == 0)
+}
+```
+
+</details>
+
 ### `complete.cases()`
 
 Cerca di capire cosa fa la funzione `complete.cases()` e di creare una funzione personalizzata `my_complete_cases()` con cui ottenere lo stesso output.
@@ -349,6 +788,22 @@ Suggerimenti:
 
 - usa la funzione `any()`
 - puoi usare un `ciclo for` oppure una funzione dell'`*apply` family
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+my_complete_cases_apply <- function(data){
+    apply(my_mtcars, 1, function(x) !any(is.na(x)), simplify = T)
+}
+
+my_complete_cases_for <- function(data){
+    out <- vector(mode = "logical", length = nrow(data))
+    for(i in seq_along(out)){
+        out[i] <- all(!is.na(data[i, ]))
+    }
+    return(out)
+}
+```
+</details>
 
 ### Troviamo gli outlier
 
@@ -369,6 +824,19 @@ my_mtcars$factor1 <- factor(rep(c("a", "b", "c"), c(10, 10, 12)))
 my_mtcars$factor2 <- rep(c("d", "e", "f"), c(10, 10, 12))
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+is_outlier <- function(x){
+    x > (mean(x) + sd(x))
+}
+
+has_outlier <- function(data){
+    which_outlier <- sapply(mtcars, function(x) any(is_outlier(x)))
+    names(mtcars)[which_outlier]
+}
+```
+</details>
+
 ### Bootstrapping
 
 Il bootstrapping è una tecnica statistica molto utilizzata. La logica della programmazione però è molto semplice ma interessante (e potrebbe esservi anche utile). Scrivete una funzione `prepare_bootstrap(data, nrow, n)` che prenda in input un dataframe `data`, il numero di righe da estrarre `nrow` e quanti dataframe creare `n` e che fornisca quindi `n` dataframe dove `n` righe sono estratte casualmente.
@@ -376,17 +844,17 @@ Il bootstrapping è una tecnica statistica molto utilizzata. La logica della pro
 - usa il dataset `mtcars`
 - usa la funzione `sample()`
 
-### Leave-one-out
-
-Il leave-one-out è una procedura statistica usata in vari contesti. Ad esempio, per capire se ci sono delle osservazioni influenti in un certo modello statistico, si ripete l'analisi rimuovendo un'osservazione alla volta. Se abbiamo 100 osservazioni otteniamo 100 dataset ognuno formato da 99 osservazioni perchè una è stata rimossa.
-
-1. Scrivete una funzione `leave1out(data)` che riceve in input un dataset e restituisce una lista di dataset, ognuno dove è stata tolta un'osservazione. Usate un ciclo `for`.
-
-2. Scrivete una versione più compatta usando l'`*apply` family.
-
-3. Ampliate la funzione creata al punto 1 in modo che la funziona tolga ogni volta $n$ osservazioni casuali, dove $n$ è un parametro della funzione. Ad esempio, la funzione deve creare 100 dataset, dove ogni volta toglie 3 osservazioni.
-
-Potete usare il dataset `iris`
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+prepare_bootstrap <- function(data, nrighe, n){
+    
+    replicate(n,{
+        idx <- sample(1:nrow(data), nrighe)
+        data[idx, ]
+    }, simplify = FALSE)
+}
+```
+</details>
 
 ### Popolare una matrice
 
@@ -395,6 +863,80 @@ Scrivi una funzione `populate_matrix(matrix, data)` che presi in input i dei dat
 ```{r}
 x <- rnorm(100)
 mat <- matrix(nrow = 10, ncol = 10)
+```
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+populate_matrix <- function(matrice, contenuto){
+    index <- 1
+    
+    for(i in 1:nrow(matrice)){
+        for(j in 1:ncol(matrice)){
+            mat[i,j] <- contenuto[index]
+            index <- index + 1
+        }
+    }
+    return(mat)
+}
+
+populate_matrix(mat, x)
+```
+</details>
+
+### Leave-one-out
+
+Il leave-one-out è una procedura statistica usata in vari contesti. Ad esempio, per capire se ci sono delle osservazioni influenti in un certo modello statistico, si ripete l'analisi rimuovendo un'osservazione alla volta. Se abbiamo 100 osservazioni otteniamo 100 dataset ognuno formato da 99 osservazioni perchè una è stata rimossa.
+
+1. Scrivete una funzione `leave1out(data)` che riceve in input un dataset e restituisce una lista di dataset, ognuno dove è stata tolta un'osservazione. Usate un ciclo `for`.
+
+    - usa il dataset `iris`
+    
+```{r}
+leave1out <- function(data){
+    res <- vector(mode = "list", length = nrow(data))
+    for(i in 1:length(res)){
+        newd <- data[-i, ]
+        res[[i]] <- newd
+    }
+    return(res)
+}
+
+loo <- leave1out(iris)
+nrow(iris)
+sapply(loo, nrow)
+```
+
+
+2. Scrivete una versione più compatta usando l'`*apply` family.
+
+```{r}
+leave1out <- function(data){
+    lapply(1:nrow(data), function(i) data[-i, ])
+}
+
+loo <- leave1out(iris)
+nrow(iris)
+sapply(loo, nrow)
+```
+
+3. Ampliate la funzione creata al punto 1 in modo che la funziona tolga ogni volta $n$ osservazioni casuali, dove $n$ è un parametro della funzione. Ad esempio, la funzione deve creare 100 dataset, dove ogni volta toglie 3 osservazioni.
+
+```{r}
+leave1out <- function(data, n){
+    idx <- sample(nrow(data), size = 3, replace = FALSE)
+    res <- vector(mode = "list", length = nrow(data))
+    
+    for(i in 1:length(res)){
+        newd <- data[-idx, ]
+        res[[i]] <- newd
+    }
+    return(res)
+}
+
+loo <- leave1out(iris)
+nrow(iris)
+sapply(loo, nrow)
 ```
 
 # Esercizi avanzati dataframe
@@ -440,6 +982,10 @@ Per fare lo scoring dobbiamo:
 
 In entrambi i casi creiamo delle nuove colonne che si chiamano come le sottoscale da attaccare al dataframe principale.
 
+<details><summary>Vedi la soluzione proposta</summary>
+Per la soluzione andiamo a questo [link](item-solutions.html)
+</details>
+
 ## Netflix
 
 Questo dataset è stato preso dal sito [Kaggle](https://www.kaggle.com/shivamb/netflix-shows)(un ottima risorsa per trovare datasets). E' un dataset relativamente grande con `r nrow(netflix)` righe e `r ncol(netflix)` colonne. Il dataset contiene informazioni su serie-tv e film presenti sulla piattaforma, in particolare:
@@ -474,6 +1020,10 @@ Solitamente le colonne di un dataset contengono informazioni rindondanti o non a
 
 - creare una colonna `durata` che contiene la durata in minuti per i film e la durata dell'episodio per le le serie-tv
 - creare una colonna `durata_stagioni` che contenga il numero di stagioni per ogni serie-tv mentre il valore `0` per i film.
+
+<details><summary>Vedi la soluzione proposta</summary>
+Per la soluzione andiamo a questo [link](netflix-solutions.html)
+</details>
 
 ## Advanced Cleaning
 

@@ -1,6 +1,6 @@
 Package: corsoR
-Title: ARCA Introduction to R (One Line, Title Case)
-Version: 0.0.0.9000
+Title: ARCA Introduction to R
+Version: 0.0.1
 Authors@R: 
     person("Filippo", "Gambarota", , "filippo.gambarota@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6666-1747"))
