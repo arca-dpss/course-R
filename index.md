@@ -22,7 +22,7 @@ Il libro di riferimento per il corso è il libro anch’esso disponibile online 
 | 07/11/2023 | 09:00-14:00 | 4T |
 | 08/11/2023 | 09:00-12:30 | 4T |
 | 09/11/2023 | 09:00-11:30 | 4T |
-| 10/11/2023 | 10:30-13:00 | 4T |
+| 10/11/2023 | 09:00-13:00 | 4T |
 
 ## Esame
 
