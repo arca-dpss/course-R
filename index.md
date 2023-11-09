@@ -32,11 +32,9 @@ Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. 
 - -0.33 punti per ogni risposta sbagliata
 - 0 punti per ogni risposta non data
 
-Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 20 punti. L'esame si trova a questo link [https://forms.gle/bLnXY11bzY2zQQnc7](https://forms.gle/bLnXY11bzY2zQQnc7)
+Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 20 punti.
 
-# Questionario Valutazione
-
-Alla fine delle lezioni vi sarà chiesto di valutare il corso compilando un questionario completamente anonimo. Questo feedback è molto importante per noi in modo da migliorare continuamente il corso. Il questionario si trova a questo link.
+L'esame ed il questionario di valutazione si può trovare al seguente [link](https://docs.google.com/presentation/d/1o-oOXxV6-3benPJZY_0-zIURdTCydhYv7EZcMJ-wb38/edit#slide=id.p)
 
 # Prepararsi al corso
 
