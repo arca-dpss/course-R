@@ -29,13 +29,69 @@ La scrittura di operazione complesse in R avviene utilizzando le parentesi per d
 
 1. $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$
 
+</br>
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es11}
+((45 + 21)^3 + 3/4)/(sqrt(32 - 12/17))
+```
+
+</details>
+
+</br>
+
 2. $\frac{\sqrt{7-\pi}}{3\ (45-34)}$
+
+</br>
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+</br>
+
+```{r es12}
+sqrt(7 - pi)/(3*(45 -34))
+```
+
+</br>
+
+</details>
 
 3. $\sqrt[3]{12-e^2}+\ln(10\pi)$
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es13}
+(12 - exp(1)^2)^(1/3) + log(10*pi)
+```
+
+</details>
+
+</br>
+
 4. $\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}$
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es14}
+(sin((3/4)*pi)^2 + cos((3/2)*pi)) / (log(exp(1)^3/2, base = 7))
+```
+
+</details>
+
+</br>
+
 5. $\frac{\sum_{n=1}^{10} n}{10}$
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es15}
+sum(1:10)/10
+```
+
+</details>
+
+</br>
 
 Note per la risoluzione degli esercizi:
 
@@ -48,9 +104,52 @@ Note per la risoluzione degli esercizi:
 
 1. Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un'altra proposizione per i numeri dispari (tip: cosa ti ricorda `%%`?).
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es21}
+# Numeri pari: x %% 2 == 0
+4 %% 2 == 0  # TRUE
+5 %% 2 == 0  # FALSE
+
+# NUmeri dispari: x %% 2 != 0
+4 %% 2 != 0  # FALSE
+5 %% 2 != 0  # TRUE
+```
+
+</details>
+
 2. Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) "*x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4*".
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es22}
+# prima soluzione: (x >= -4 & x <= -2) | (x >= 2 & x <= 4)
+(-5 >= -4 & -5 <= -2) | (-5 >= 2 & -5 <= 4) # FALSE
+(-3 >= -4 & -3 <= -2) | (-3 >= 2 & -3 <= 4) # TRUE
+(0 >= -4 & 0 <= -2) | (0 >= 2 & 0 <= 4)     # FALSE
+(3 >= -4 & 3 <= -2) | (3 >= 2 & 3 <= 4)     # TRUE
+(5 >= -4 & 5 <= -2) | (5 >= 2 & 5 <= 4)     # FALSE
+
+# seconda soluzione: abs(x) >= 2 & abs(x) <= 4
+abs(-5) >= 2 & abs(-5) <= 4   # FALSE
+abs(-3) >= 2 & abs(-3) <= 4   # TRUE
+abs(0) >= 2 & abs(0) <= 4     # FALSE
+abs(3) >= 2 & abs(3) <= 4     # TRUE
+abs(5) >= 2 & abs(5) <= 4     # FALSE
+```
+
+</details>
+
 3. Esegui le seguenti operazioni `4 ^ 3 %in% c(2,3,4)` e `4 * 3 %in% c(2,3,4)`. Cosa osservi nell'ordine di esecuzione degli operatori?
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r es23}
+4 ^ 3 %in% c(2,3,4) # ^ ha precedenza rispetto a %in%
+4 * 3 %in% c(2,3,4) # %in% ha precedenza rispetto a *
+```
+
+</details>
 
 4. Esegui le seguenti operazioni logiche tra stringhe e prova prevedere il risultato prima di eseguire il codice:
 
@@ -64,6 +163,19 @@ Note per la risoluzione degli esercizi:
 "ciao" > "zebra"
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+In R le stringe possono essere comparate anche con gli operatori `> < >= <=`. L'idea è che la lettera è considerata "maggiore" se associata ad una posizione successiva nell'alfabeto. Quindi ad esempio `a > b = FALSE` perchè `a` viene prima e quindi in senso numerico è associata ad un numero inferiore `1 vs 2`. Questo vale anche per le parole dove viene comparata la prima stringa, la seconda e così via:
+
+```{r es24}
+"a" > "b"
+"aa" < "aa" # a == a, poi a < b
+```
+
+Per approfondire il tema delle stringhe il Capitolo [16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R è un buon punto di partenza.
+
+</details>
+
 # Strutture dati
 
 ## Vettori
@@ -72,13 +184,45 @@ Note per la risoluzione degli esercizi:
 
 1. Crea il vettore `x` contenente i numeri 4, 6, 12, 34, 
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+x <- c(4,6,12,34)
+```
+</details>
+
 2. Crea il vettore `y` contenente tutti i numeri pari compresi tra 1 e 25 (`?seq()`)
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+y <- seq(2, 25, 2)
+```
+</details>
 
 3. Crea il vettore `z` contenente tutti i primi 10 multipli di 7 partendo da 14 (`?seq()` in particolare l'argomento `length.out =`)
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+z <- seq(from = 14, by = 7,  length.out = 10)
+```
+</details>
+
 4. Crea il vettore `s` in cui le lettere `"A"`,`"B"` e `"C"` vengono ripetute nel medesimo ordine 4 volte (`?rep()`)
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+s <- rep(c("A", "B", "C"), 4)
+```
+
+</details>
+
 5. Crea il vettore `t` in cui le letter `"A"`,`"B"` e `"C"` vengono ripetute ognuna 4 volte (`?rep()`)
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+t <- rep(c("A", "B", "C"), each = 4)
+```
+</details>
 
 6. Genera il seguente output in modo pigro, ovvero scrivendo meno codice possibile ;)
 
@@ -86,11 +230,33 @@ Note per la risoluzione degli esercizi:
 ## [1] "foo" "foo" "bar" "bar" "foo" "foo" "bar" "bar"
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+rep(rep(c("foo", "bar"), each = 2), times = 2)
+```
+</details>
+
+
 ### Indicizzare vettori
 
 1. Del vettore `x` seleziona il 2°, 3° e 5° elemento
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+x[c(2,3,5)]
+```
+
+</details>
+
 2. Del vettore `x` seleziona i valori 34 e 4
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+x[x %in% c(34,4)]
+```
+
+</details>
 
 3. Dato il vettore `my_vector = c(2,4,6,8)` commenta il risultato del comando `my_vector[my_vector]`
 
@@ -101,15 +267,56 @@ my_vector[my_vector]
 
 4. Del vettore `y` seleziona tutti i valori minori di 13 o maggiori di 19
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+y[y < 13 | y > 19]
+```
+
+</details>
+
 5. Del vettore `z` seleziona tutti i valori compresi tra 24 e 50
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+z[z >= 24 & z <= 50]
+```
+
+</details>
 6. Del vettore `s` seleziona tutti gli elementi uguali ad  `"A"`
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+s[s == "A"]
+```
+
+</details>
 
 7. Del vettore `t` seleziona tutti gli elementi diversi da  `"B"`
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+t[t != "B"]
+```
+
+</details>
 8. Crea un nuovo vettore `u` identico a `s` ma dove le `"A"` sono sostituite con la lettera `"U"`
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+u <- s
+u[u == "A"] <- "U"
+```
+
+</details>
+
 9. Elimina dal vettore `z` i valori 28 e 42
+
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+z[!z %in% c(28,42)]
+```
+
+</details>
 
 10. Spesso è necessario creare delle stringhe random per codificare un partecipante in modo univoco ma senza usare informazioni sensibili. Genera 1 codice univoco formati da `id_string_num` dove:
     - `id` è un numero casuale tra 1 e 10
@@ -122,6 +329,24 @@ Tips:
     - vedi l'oggetto `letters` già disponibile in R
     - vedi la funzione `paste0()` o `sprintf()`
     
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+id <- sample(1:10, size = 1) # numero casuale tra 1 e 10
+string <- paste0(sample(letters, size = 5), collapse = "")
+nums <- round(runif(1, min = 100, max = 999)) # oppure sample(100:999, size = 1)
+
+# con sprintf
+sprintf("%s_%s_%s", id, string, nums)
+
+# con paste0
+paste0(id, "_", string, "_", nums)
+```
+
+La differenza tra `paste0()` e `sprintf()` è la versatilità di comporre stringhe complesse. Con entrambi si possono ottenere gli stessi risultati ma `sprintf()` è molto più potente e chiaro da scrivere una volta compresa la sintassi. Ad esempio `%s` è un placeholder per una stringa che viene passata come argomento della funzione.
+
+</details>
+
 ## Fattori
 
 1. Crea la variabile categoriale `genere` così definita:
@@ -130,15 +355,74 @@ Tips:
 factor(c(rep(c("M","F"),3),"F","F","M"))
 ```
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+genere <- factor(c("M", "F", "M", "F", "M", "F", "F", "F", "M"))
+```
+
+</details>
+
 2. Rinomina i livelli della variabile `genere` rispettivamente in `"donne"` e `"uomini"`.
 
+<details><summary>Vedi la soluzione proposta</summary>
+```{r}
+genere2 <- genere # per tenere quello originale
+
+# Opzione 1
+levels(genere2) <- c("donne", "uomini")
+```
+
+</details>
+
+3. Crea la variabile categoriale `intervento` così definita:
+
+```{r, echo = FALSE}
+factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
+```
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+intervento <- factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
+```
+
+</details>
+
 4. Correggi nella variabile `intervento` la 7° e 8° osservazione con la voce `Farmaci`. Notate qualcosa di strano?
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+intervento[7:8] <- "Farmaci"
+intervento
+
+levels(intervento)<-c(levels(intervento), "Farmaci")
+intervento[7:8]<-"Farmaci"
+intervento
+```
+
+In pratica è necessario prima aggiungere un livello al fattore e poi aggiungere/modificare delle osservazioni appartenenti a quel livello.
+
+</details>
+
 
 5. Aggiungi alla variabile `intervento` le seguenti nuove osservazioni:
 
 ```{r}
 c("Farmaci","Controllo","Farmaci")
 ```
+
+<details><summary>Vedi la soluzione proposta</summary>
+
+```{r}
+intervento <- c(intervento, as.factor(c("Farmaci","Controllo","Farmaci")))
+
+# cosa succede con questo e perche?
+c(intervento, c("Farmaci","Controllo","Farmaci"))
+
+```
+
+</details>
 
 ## Matrici
 
@@ -219,6 +503,7 @@ data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
 - seleziona tutte le persone a cui piace il colore `blu` e piace il `natale`
 - per risolvere i problemi con le stringhe, trova un modo per portare tutte le stringhe ad un formato comparabile
 - fai un subset del dataset tenendo solo le colonne numeriche (usa la `is.* family`)
+
 
 # Programmazione
 
