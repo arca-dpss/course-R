@@ -24,7 +24,7 @@ Il libro di riferimento per il corso è il libro anch’esso disponibile online 
 | 21/03/2024 | 13:00-17:00 | 4M |
 | 22/03/2024 | 09:00-13:00 | 4M |
 
-## Esame
+## Esame{#exam}
 
 Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. L'esame contiene **20 domande** a cui rispondere in **45 minuti**. I punteggi sono assegnati con la seguente modalità:
 
