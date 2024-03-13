@@ -1,0 +1,530 @@
+---
+title: "Esercizi"
+output: 
+    bookdown::html_document2:
+        toc: true
+        toc_float: true
+        code_download: true
+css: ["../files/css/course_html.css"]
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+library(here)
+```
+
+```{r load-data, include = F}
+netflix <- read.table(here("exercises", "data", "netflix.txt"), header = T, sep = ";")
+```
+
+# I primi passi con R
+
+## Operazioni matematiche
+
+La scrittura di operazione complesse in R avviene utilizzando le parentesi per dare priorità ad alcune parti. Per il resto R segue quella che è la normale priorità delle operazioni matematiche. Prova a scrivere in R queste operazioni:
+
+1. $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$
+
+
+
+
+2. $\frac{\sqrt{7-\pi}}{3\ (45-34)}$
+
+
+
+3. $\sqrt[3]{12-e^2}+\ln(10\pi)$
+
+
+
+4. $\frac{\sin(\frac{3}{4}\pi)^2+\cos(\frac{3}{2}\pi)}{\log_7{e^{\frac{3}{2}}}}$
+
+
+
+5. $\frac{\sum_{n=1}^{10} n}{10}$
+
+
+
+Note per la risoluzione degli esercizi:
+
+- In R la radice quadrata si ottine con la funzione `sqrt()` mentre per radici di indici diversi si utilizza la notazione esponenziale ($\sqrt[3]{x}$ è dato da `x^(1/3)`).
+- Il valore di $\pi$ si ottiene con `pi`.
+- Il valore di $e$ si ottiene con `exp(1)`.
+- In R per i logaritmi si usa la funzione `log(x, base=a)`, di base viene  considerato il logaritmo naturale.
+
+## Operazioni logiche
+
+1. Definisci una proposizione che ti permetta di valutare se un numero è pari. Definisci un'altra proposizione per i numeri dispari (tip: cosa ti ricorda `%%`?).
+
+
+2. Definisci una proposizione per valutare la seguente condizione (ricordati di testare tutti i possibili scenari) "*x è un numero compreso tra -4 e -2 oppure è un numero compreso tra 2 e 4*".
+
+
+3. Esegui le seguenti operazioni `4 ^ 3 %in% c(2,3,4)` e `4 * 3 %in% c(2,3,4)`. Cosa osservi nell'ordine di esecuzione degli operatori?
+
+
+4. Esegui le seguenti operazioni logiche tra stringhe e prova prevedere il risultato prima di eseguire il codice:
+
+```{r, eval = FALSE}
+"ciao" == "ciao"
+"R" == "r"
+"SPSS" != "SpSS"
+"1" == 1
+"1" > "ciao"
+"a" > "b"
+"ciao" > "zebra"
+```
+
+
+# Strutture dati
+
+## Vettori
+
+### Creare vettori
+
+1. Crea il vettore `x` contenente i numeri 4, 6, 12, 34, 
+
+
+2. Crea il vettore `y` contenente tutti i numeri pari compresi tra 1 e 25 (`?seq()`)
+
+
+3. Crea il vettore `z` contenente tutti i primi 10 multipli di 7 partendo da 14 (`?seq()` in particolare l'argomento `length.out =`)
+
+
+4. Crea il vettore `s` in cui le lettere `"A"`,`"B"` e `"C"` vengono ripetute nel medesimo ordine 4 volte (`?rep()`)
+
+
+5. Crea il vettore `t` in cui le letter `"A"`,`"B"` e `"C"` vengono ripetute ognuna 4 volte (`?rep()`)
+
+
+6. Genera il seguente output in modo pigro, ovvero scrivendo meno codice possibile ;)
+
+```
+## [1] "foo" "foo" "bar" "bar" "foo" "foo" "bar" "bar"
+```
+
+
+
+### Indicizzare vettori
+
+1. Del vettore `x` seleziona il 2°, 3° e 5° elemento
+
+
+2. Del vettore `x` seleziona i valori 34 e 4
+
+
+3. Dato il vettore `my_vector = c(2,4,6,8)` commenta il risultato del comando `my_vector[my_vector]`
+
+```{r, eval = FALSE}
+my_vector = c(2,4,6,8)
+my_vector[my_vector]
+```
+
+4. Del vettore `y` seleziona tutti i valori minori di 13 o maggiori di 19
+
+
+5. Del vettore `z` seleziona tutti i valori compresi tra 24 e 50
+
+6. Del vettore `s` seleziona tutti gli elementi uguali ad  `"A"`
+
+
+7. Del vettore `t` seleziona tutti gli elementi diversi da  `"B"`
+
+8. Crea un nuovo vettore `u` identico a `s` ma dove le `"A"` sono sostituite con la lettera `"U"`
+
+
+9. Elimina dal vettore `z` i valori 28 e 42
+
+
+10. Spesso è necessario creare delle stringhe random per codificare un partecipante in modo univoco ma senza usare informazioni sensibili. Genera 1 codice univoco formati da `id_string_num` dove:
+    - `id` è un numero casuale tra 1 e 10
+    - `string` è una stringa formata da 5 lettere casuali
+    - `nums` è un numero casuale tra 100 e 999
+Ad esempio `1_adrtv_100` è un id valido.
+
+Tips:
+    - vedi la funzione `sample` o `runif` e `round` per generare i numeri
+    - vedi l'oggetto `letters` già disponibile in R
+    - vedi la funzione `paste0()` o `sprintf()`
+    
+
+## Fattori
+
+1. Crea la variabile categoriale `genere` così definita:
+
+```{r, echo=FALSE}
+factor(c(rep(c("M","F"),3),"F","F","M"))
+```
+
+
+2. Rinomina i livelli della variabile `genere` rispettivamente in `"donne"` e `"uomini"`.
+
+
+3. Crea la variabile categoriale `intervento` così definita:
+
+```{r, echo = FALSE}
+factor(c(rep(c("CBT","Psicanalisi"),3),"Controllo","Controllo","CBT"))
+```
+
+
+4. Correggi nella variabile `intervento` la 7° e 8° osservazione con la voce `Farmaci`. Notate qualcosa di strano?
+
+
+
+5. Aggiungi alla variabile `intervento` le seguenti nuove osservazioni:
+
+```{r}
+c("Farmaci","Controllo","Farmaci")
+```
+
+
+## Matrici
+
+1. Crea la matrice `A` così definita: 
+
+$$
+\begin{matrix}
+2 & 34 & 12 & 7\\
+46 & 93 & 27 & 99\\
+23  & 38 & 7 & 04
+\end{matrix}
+$$
+
+2. Crea la matrice `B` contenente tutti i primi 12 numeri dispari disposti su 4 righe e 3 colonne.
+3. Crea la matrice `C` contenente i primi 12 multipli di 9 disposti su 3 righe e 4 colonne.
+4. Crea la matrice `D`  formata da 3 colonne in cui le lettere `"A"`,`"B"` e `"C"` vengano ripetute 4 volte ciascuna rispettivamente nella prima, seconda e terza colonna.
+5. Crea la matrice `E`  formata da 3 righe in cui le lettere `"A"`,`"B"` e `"C"` vengano ripetute 4 volte ciascuna rispettivamente nella prima, seconda e terza riga.
+6. Utilizzando gli indici di riga e di colonna seleziona il numero 27 della matrice `A`
+7. Selziona gli elementi compresi tra la seconda e quarta riga, seconda e terza colonna della matrice `B`
+8. Seleziona solo gli elementi pari della matrice `A` (Nota: utilizza l'operazione resto `%%`)
+9. Elimina dalla matrice `C` la terza riga e la terza colonna
+10. Seleziona tutti gli elementi della seconda e terza riga della matrice `B`
+11. Seleziona tutti gli elementi diversi da  “B” appartenenti alla matrice `D`
+12. Crea la matrice `G` unendo alla matrice `A` le prime due colonne della matrice `C`
+13. Crea la matrice `H` unendo alla matrice `C` le prime due righe della matrice trasposta di `B`
+14. Ridefinisci la matrice `A` eliminando la seconda colonna. Ridefinisci la matrice `B` eliminando la prima riga. Verifica che le  matrici così ottenute abbiano la stessa dimensione.
+15. Commenta i differenti risultati che otteniamo nelle operazioni `A*B`, `B*A`, `A%*%B` e `B%*%A`.
+16. Assegna i seguenti nomi alle colonne e alle righe della matrice `C`: `"col_1", "col_2", "col_3", "col_4", "row_1", "row_2", "row_3"`.
+
+## Liste
+
+1. Crea una **named list** con questi elementi:
+
+- un vettore numerico (`x`) con i numeri da 1 a 100
+- un vettore di caratteri (`y`) con le prime 15 lettere dell'alfabeto (vedi l'oggetto `letters`)
+- la matrice `B` creata nell'esercizio precedente
+- un fattore creato nell'esercizio precedente
+
+2. Aggiungi alla lista un vettore logico `TRUE/FALSE` testando che il vettore numerico creato in precedenza abbia numeri pari (`TRUE`) o dispari (`FALSE`)
+3. Aggiungi un altro elemento alla lista come vettore numerico creato facendo una selezione  degli elementi di `x`
+4. Sovrascrivi il vettore `y` con lo stesso vettore di caratteri ma ripetendo ogni elemento 4 volte
+5. Seleziona i numeri da 1 a 50 del vettore `x` all'interno della lista
+6. Aggiungi alla lista un'ulteriore lista selezionando i primi 3 elementi della lista originale
+7. Aggiungi alla lista nested un vettore numerico selezionando solo i numeri di `x` divisibili per 3 (ricordi la funzione modulo `%%`?)
+
+## Dataframe
+
+1. Ricrea questo dataframe in R:
+
+```{r}
+data_long<-data.frame(Id=rep(c("subj_1","subj_2","subj_3"),each=3),
+                      age=rep(c(21,23,19),each=3),
+                      gender=rep(c("F","M","F"),each=3),
+                      item=rep(1:3,3),
+                      response=c(2,1,1,0,2,1,2,0,1))
+```
+
+2. Utilizzando il dataframe `dataframe_example1.rds` esegui le seguenti operazioni:
+
+- selezionare le persone con età maggiore di 30 anni
+- selezionare le persone con età maggiore di 30 anni e minore di 21
+- selezionare le persone che studiano al *dams* con voto di laurea maggiore di 100 e almeno 1 fratello/sorella
+- selezionare le persone che studiano *psicologia* e non hanno fratelli
+- selezionare le persone che hanno punteggi di depressione maggiori di 50 e punteggi di ansia maggiori di 20
+
+3. Utilizza la funzione `put_random_na(data, n)` dove `data` è il dataframe e `n` è il numero di `NA` da generare. Ora:
+
+- seleziona le persone con `NA` per la colonna `degree` e per la colonna `età`
+- seleziona le persone con `NA` per la colonna `email` e abitanti del veneto o campania
+- seleziona le persone che non hanno nessun NA (vedi la funzione `complete.cases()`)
+
+4. Utilizzando il dataset `dataframe_example2.csv`
+
+- importa il dataframe dal formato `csv`
+- crea una nuova colonna `id` che identifichi in modo univoco ogni soggetto progressivamente
+- controlla che tutte le colonne siano del tipo appropriato (usa la famiglia `is.*`)
+- seleziona tutte le persone a cui non piace `nessuna` festa. Noti qualche problema?
+- seleziona tutte le persone a cui piace il colore `blu` e piace il `natale`
+- per risolvere i problemi con le stringhe, trova un modo per portare tutte le stringhe ad un formato comparabile
+- fai un subset del dataset tenendo solo le colonne numeriche (usa la `is.* family`)
+
+
+# Programmazione
+
+## Funzioni
+
+1. definisci una funzione che trasformi la temperatura da Celsius a Fahrenheit 
+
+$$
+Fahrenheit = Celsius * 1.8 + 32
+$$
+
+2. Definisci una funzione che permetta di fare gli auguri di buon natale e buona pasqua ad una persona. Prova a utilizzare e capire le funzioni `paste()` e `print()`.
+3. Definisci una funzione `n_and_media()` che, dato un vettore di valori numerici, calcoli il numero di elementi e la loro media e restituisca entrambe in una frase. Ad esempio `n_and_media(x)` deve restituire "la media di x è ... e la lunghezza di x è ...". Anche qui sono utili le funzioni `paste()`/`sprintf` e `print()`.
+
+## Condizionali
+
+```{r, echo = TRUE}
+score <- runif(100, 0, 1)
+```
+
+1. Definisci una funzione per assegnare un voto in base alla percentuale di risposte corrette (*score*) segui le seguenti indicazioni: 
+
+- score < .55 insufficiente
+- .55 <= score < .65 - sufficiente
+- .65 <= score < .75 - buono
+- .75 <= score < .85 - distinto
+- .85 <= score - ottimo
+
+La funzione quindi deve ricevere in input un valore e restituire la stringa corrispondente in base al valore stesso.
+
+2. Usa una serie di `ifelse()` nested per creare una variabile `score_chr` con le etichette corrispondenti all'esercizio precedente.
+3. Definisci una funzione che determini se un numero è pari o dispari.
+4. Definisci una funzione che determini se un numero è un multiplo di 3, 4, o 5.
+
+## Loop
+
+### Scrivi un loop che:
+
+Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e stampa il nome della colonna assieme al numero di caratteri che compone la stringa. Ad esempio `Sepal.Length (12)`. Potete usare le funzioni `print()`, `paste()` and `nchar()`.
+
+### Scrivi un loop che:
+
+Scrivi un loop che scorre le colonne del dataset `iris` (lo trovate direttamente in R) e resituisce la `media` se la colonna è numerica (ricordate le `is.*` family) oppure la tabella di frequenza (comando `table()`) se la colonna è stringa/fattore
+
+### `*apply()`
+
+Usando la funzione più adatta dell`*apply()` family, calcola la `deviazione standard` di ogni colonna del dataset `mtcars` (lo trovate direttamente in R)
+
+### Popola la matrice con un `for`
+
+Popoliamo una matrice usando il ciclo `for`. La matrice ha un numero *totale* di elementi. Usando il vettore `x` che contiene il numero di elementi totali della matrice come possiamo popolare la matrice partendo da una vuota `matrix(NA, 10, 10)`. La matrice è **quadrata** di dimensione 10x10:
+
+```{r}
+# matrice 10 x 10 quindi 100 elementi totali
+my_mat <- matrix(NA, 10, 10) # matrice vuota 10x10
+```
+
+Suggerimento: puoi fare un doppio ciclo `for` e generare un numero casuale da inserire con `rnorm(1)`
+
+## Ri-creiamo le funzioni in R
+
+Un ottimo esercizio per affinare le nostre competenze di codice è quello di ricreare le funzioni di R che diamo per scontate diciamo. La funzione `mean()` ad esempio si può facilmente create con un ciclo for e qualche altra aggiunta.
+
+### `sum()`
+
+Ricrea la funzione `sum()` e testala sul seguente vettore:
+
+```{r}
+x <- rnorm(100)
+sum(x)
+```
+
+### `mean()`
+
+Ricrea la funzione `mean()` testala sul seguente vettore confrontando il risultato con la funzione interna (hint: puoi usare la funzione `sum()` creata prima):
+
+```{r}
+x <- rnorm(100)
+mean(x)
+```
+
+### `median()`
+
+La [mediana](https://en.wikipedia.org/wiki/Median) è definita come il valore che divide a metà una distribuzione di valori. Ricreala in R facendo attenzione che la formula cambia a seconda che il vettore sia di lunghezza pari o dispari (hint: puoi usare un `if` per controllare queste condizioni)
+
+```{r}
+median(x)
+```
+
+### Moda
+
+In R non è prevista una funzione per calcolare la **moda**. In statistica la moda è definita come il valore/i associato a maggiore frequenza. Ad esempio se abbiamo un vettore $x$ come `c(1,1,1,2,3,5)` la moda sarà 1.
+
+- come si potrebbe calcolare la moda in R?
+- ci sono dei pacchetti che l'hanno implementata?
+- possono esserci situazioni dove abbiamo più mode. La funzione che hai trovato/scritto gestisce questo scenario? eventualmente come puoi modificarla?
+
+### `sd()`
+
+La deviazione standard è facilmente implementata in R con la funzione `sd()`. Prova a ricrearla con tutti gli strumenti che abbiamo imparato fino ad ora. La formula matematica è la seguente:
+
+$$
+SD = \sqrt{\frac{\sum_{i = 1}^{N} (x_i - \mu_x)^2}{N}}
+$$
+Attenzione che R utilizza un denominatore diverso per la funzione `sd()` rispetto alla formula proposta. Cerca di capire cosa utilizza R aprendo la documentazione di `sd()` e implementa la versione di R e quella della formula. Crea poi una terza versione della funzione `my_sd(x, versione)` dove viene calcolata una o l'altra versione in base a cosa viene messo come argomento.
+
+### Trova il numero all'interno del vettore
+
+Scrivi una funzione che dato in input un vettore `x` restituisca il numero di volte che compare il numero $3$:
+
+- per testare la funzione genera un vettore di numeri casuali con `round(runif(20, 1, 10))`
+
+### Numeri pari
+
+Scrivi una funzione che prenda in input un vettore `x` e restituisca il numero di numeri pari all'interno del vettore. Scrivi una funzione che utilizzi un `for loop` mentre un'altra che usi un'operazione vettorizzata.
+
+- usa l'operatore divisione intera `%%`
+
+### `complete.cases()`
+
+Cerca di capire cosa fa la funzione `complete.cases()` e di creare una funzione personalizzata `my_complete_cases()` con cui ottenere lo stesso output.
+
+```{r}
+complete.cases(iris[1:10, ])
+```
+
+Suggerimenti:
+
+- usa la funzione `any()`
+- puoi usare un `ciclo for` oppure una funzione dell'`*apply` family
+
+### Troviamo gli outlier
+
+Uno step importante quando si analizzano i dati è quello di cercare valori anomali (ad esempio che superano una certa soglia oppure che sono troppo oltre gli indici di tendenza centrale). 
+
+- Scrivi una funzione `is_outlier(x)` che dato in input un vettore `x`, restituisca un vettore logico dove `TRUE` corrisponde ad un valore che è maggiore della media più una volta la deviazione standard di `x`.
+- Scrivi una funzione `has_outlier` che applichi `is_outlier()` ad ogni colonna di un dataframe e restituisca i nomi delle colonne dove è presente **almeno 1 outlier**.
+    - puoi usare la funzione `any()`
+    - puoi usare una funzione dentro un'altra funzione
+    - usa il dataframe `mtcars`
+- modifica la funzione `has_outliers()` per funzionare solo sulle colonne del dataframe che sono **numeriche** (no fattori o caratteri)
+
+Usa il dataframe `my_mtcars` dove sono state aggiunte delle variabili non numeriche:
+
+```{r}
+my_mtcars <- mtcars
+my_mtcars$factor1 <- factor(rep(c("a", "b", "c"), c(10, 10, 12)))
+my_mtcars$factor2 <- rep(c("d", "e", "f"), c(10, 10, 12))
+```
+
+### Bootstrapping
+
+Il bootstrapping è una tecnica statistica molto utilizzata. La logica della programmazione però è molto semplice ma interessante (e potrebbe esservi anche utile). Scrivete una funzione `prepare_bootstrap(data, nrow, n)` che prenda in input un dataframe `data`, il numero di righe da estrarre `nrow` e quanti dataframe creare `n` e che fornisca quindi `n` dataframe dove `n` righe sono estratte casualmente.
+
+- usa il dataset `mtcars`
+- usa la funzione `sample()`
+
+### Leave-one-out
+
+Il leave-one-out è una procedura statistica usata in vari contesti. Ad esempio, per capire se ci sono delle osservazioni influenti in un certo modello statistico, si ripete l'analisi rimuovendo un'osservazione alla volta. Se abbiamo 100 osservazioni otteniamo 100 dataset ognuno formato da 99 osservazioni perchè una è stata rimossa.
+
+1. Scrivete una funzione `leave1out(data)` che riceve in input un dataset e restituisce una lista di dataset, ognuno dove è stata tolta un'osservazione. Usate un ciclo `for`.
+
+2. Scrivete una versione più compatta usando l'`*apply` family.
+
+3. Ampliate la funzione creata al punto 1 in modo che la funziona tolga ogni volta $n$ osservazioni casuali, dove $n$ è un parametro della funzione. Ad esempio, la funzione deve creare 100 dataset, dove ogni volta toglie 3 osservazioni.
+
+Potete usare il dataset `iris`
+
+### Popolare una matrice
+
+Scrivi una funzione `populate_matrix(matrix, data)` che presi in input i dei dati e una matrice vuota, popoli la matrice vuota usando un nested loop.
+
+```{r}
+x <- rnorm(100)
+mat <- matrix(nrow = 10, ncol = 10)
+```
+
+# Esercizi avanzati dataframe
+
+In questi esercizi vedremo come gestire un dataset più o meno complesso in modo da applicare le nozioni che abbiamo imparato. Gli obiettivi sono:
+
+- **applicare** il più possibile i **concetti del corso**
+- **cercare soluzioni online** per le cose non chiare
+- scrivere funzioni dove possibile
+- produrre uno script di pulizia dati
+
+In questo corso non abbiamo visto aspetti di statistica o manipolazione dati in senso stretto, tuttavia i concetti che abbiamo imparato sono applicabili anche senza queste nozioni. Ad esempio non abbiamo affrontato nel dettaglio la pulizia dei dati, i pacchetti per gestire dataset complessi ma sappiamo che ad esempio un `dataframe` è una lista, e se vogliamo applicare una funzione ad una lista possiamo usare l'`*apply` family.
+
+## Questionari
+
+Proviamo a fare lo scoring di un questionario rappresentato in R come dataframe. Questo è un caso molto comune dove dobbiamo lavorare con indici di riga/colonna.
+
+- importare il dataset `item_data.rds`
+- esplorare il dataset (struttura, numero di colonne/righe, tipo di colonne)
+- vedere i valori massimi e minimi degli item
+    + se ci sono valori anomali (minori di 1 o maggiori di 5) mettiamo i rispettivi valori minimi e massimi. Ad esempio se c'è 0 mettiamo 1 mentre 10 mettiamo 5
+- vedere se ci sono `NA`. Se un soggetto ha più di 1 `NA`, eliminiamo il soggetto altrimenti mettiamo il valore 3 al posto degli `NA`
+
+Prima di fare lo scoring dobbiamo invertire (ricodificare) alcuni item. In particolare dobbiamo invertire gli item 1, 10, 11, 13, 14, 15, 20. Per invertire semplicemente i punteggi 1 diventano 5, 2 --> 4 e così via.
+
+Tips:
+
+- scrivere una funzione per ricodificare (vedi `case_when()`) e poi applicarla a tutti gli item
+
+Questo questionario è formato da 30 item. Ci sono 5 sottoscale dove:
+
+- sub1 = items 20 25 17 18 22
+- sub2 = items 30  3 11 16 19
+- sub3 = items 4 14  8 21 23
+- sub4 = items 26 29  9 13 10
+- sub5 = items 5 12  6 28 24
+- sub6 = items 7 15 27  2  1
+
+Per fare lo scoring dobbiamo:
+
+- mediare gli item per le sottoscale `sub1`, `sub2` e `sub3`
+- sommare gli item per le sottoscale `sub4`, `sub5` e `sub6`
+
+In entrambi i casi creiamo delle nuove colonne che si chiamano come le sottoscale da attaccare al dataframe principale.
+
+## Netflix
+
+Questo dataset è stato preso dal sito [Kaggle](https://www.kaggle.com/shivamb/netflix-shows)(un ottima risorsa per trovare datasets). E' un dataset relativamente grande con `r nrow(netflix)` righe e `r ncol(netflix)` colonne. Il dataset contiene informazioni su serie-tv e film presenti sulla piattaforma, in particolare:
+
+- `show_id`: in indice numerico per ogni film/serie-tv
+- `type`: identifica se il prodotto è una serie-tv o un film
+- `title`: il titolo
+- `country`: il paese di produzione
+- `duration`: la durata
+- `users_rating`: le valutazioni degli utenti netflix
+- `imdb_rating`: le valutazioni del portale *imdb*
+- `total_cost`: il costo di produzione in milioni
+- `release_date`: la data di rilascio originale della serie o del film
+- `insert_date`: la data di inserimento nel catalogo netflix
+
+```{r}
+head(netflix)
+```
+
+### Passaggi da fare:
+
+- Importare il file `netflix.txt` capendo quale funzione utilizzare, come assegnare la prima riga come nomi e usando il separatore giusto
+- Scrivere una funzione che prenda in **input** il dataset e restituisca la tipologia di dato presente in ogni colonna
+- Ragionare sul tipo di dato in base alla descrizione ed eventualmente cambiare la tipologia dove appropriato
+- Scrivere una funzione che prenda in input il dataset e fornisca per ogni colonna il numero di valori `NA`
+- Modificare la funzione precedente con un opzione chiamata `perc` che se inserita come `TRUE` restituisce la percentuale di `NA`
+- Creare una nuova colonna con la differenza tra `release_date` e `insert_date`. Per questo può essere utile cercare online come R gestisce le date.
+
+### Passaggi avanzati
+
+Solitamente le colonne di un dataset contengono informazioni rindondanti o non adeguatamente organizzate. Ad esempio la colonna `duration` ha una duplice informazione: la durata in minuti (per i film) e la durata in stagioni per le serie. In un'altra colonna abbiamo invece la durata degli episodi chiaramente non rilevante per i film. In questo caso potrebbe essere utile:
+
+- creare una colonna `durata` che contiene la durata in minuti per i film e la durata dell'episodio per le le serie-tv
+- creare una colonna `durata_stagioni` che contenga il numero di stagioni per ogni serie-tv mentre il valore `0` per i film.
+
+## Advanced Cleaning
+
+Nonstante possano sembrare aspetti superficiali, la pulizia dei dataset è fondamentale. Nomi di colonne appropriati, rimuovere caratteri speciali, verificare la struttura e la tipologia delle colonne etc. Il dataframe `inequality_sub.csv` è un esempio di un ottimo dataset di partenza ma con la possibilità di migliorare i nomi delle colonne e alcuni dettagli generali.
+
+Vedi un esempio di pre-processing di un dataset a questo [link](inequality.R).
+
+# Credits
+
+Alcuni esercizi sono stati presi o inspirati da:
+
+- https://www.r-exercises.com/

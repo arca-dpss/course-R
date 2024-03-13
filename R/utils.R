@@ -27,6 +27,17 @@ cap_link <- function(link, text = NULL){
     sprintf('<a href="%s">%s</a>', link, text)
 }
 
+
+remove_solutions <- function(x){
+    x <- "exercises/esercizi.Rmd"
+    xl <- readLines(x)
+    start <- grep("^<details>", xl) 
+    end <- grep("^</details>", xl)
+    sols <- unlist(mapply(function(s, e) s:e, start, end))
+    xl <- xl[-sols]
+    xl <- xl[!grepl("^</br>", xl)]
+    writeLines(xl, "exercises/esercizi-no-solutions.Rmd")
+}
 iframe <- function(link, w, h){
     sprintf('<iframe src="%s" width="%s" height="%s" frameBorder="0"></iframe',
             link, w, h)

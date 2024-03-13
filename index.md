@@ -88,7 +88,7 @@ Questi sono i link al materiale principale del corso:
 
 In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:
 
-- Esercizi - [file](exercises/esercizi.html)
+- Esercizi - [file](exercises/esercizi-no-solutions.html)
 
 ## Argomenti extra
 
