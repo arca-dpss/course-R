@@ -18,11 +18,11 @@ Il libro di riferimento per il corso è il libro anch’esso disponibile online 
 
 | Data | Ora | Aula |
 |---|---|---|
-| 06/11/2023 | 13:00-18:00 | 4T |
-| 07/11/2023 | 09:00-14:00 | 4T |
-| 08/11/2023 | 09:00-12:30 | 4T |
-| 09/11/2023 | 09:00-11:30 | 4T |
-| 10/11/2023 | 09:00-13:00 | 4T |
+| 18/03/2024 | 09:00-13:00 | 4M |
+| 19/03/2024 | 09:00-13:00 | 4M |
+| 20/03/2024 | 09:00-13:00 | 4M |
+| 21/03/2024 | 13:00-17:00 | 4M |
+| 22/03/2024 | 09:00-13:00 | 4M |
 
 ## Esame
 
@@ -41,6 +41,12 @@ L'esame ed il questionario di valutazione si può trovare al seguente [link](htt
 1. **Installare R ed R Studio**. Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
 2. **Salvare il sito web della repository** [https://github.com/arca-dpss/course-R](https://arca-dpss.github.io/course-R/) come preferito nel browser (in modo da avere facilmente accesso a tutto il materiale)
 3. **Scaricare la repository** Github del corso a questo [link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R). Estraete la cartella del corso in una posizione qualsiasi del PC
+4. Installare i seguenti pacchetti eseguendo il codice R (semplicemente copiate e incollate nella console):
+
+```r
+pkgs <- c("devtools", "filor", "rmarkdown", "bookdown", "knitr", "here", "dplyr", "readr", "stringr", "readxl", "haven", "emo", "faux", "tidyr", "cowplot", "tidyverse", "cli", "purrr", "renderthis", "xaringan", "icons", "kableExtra", "xaringanExtra", "ggplot2", "stats", "tibble", "broom", "flextable", "sjPlot")
+install.packages(pkgs)
+```
 
 # Suddivisione argomenti
 
