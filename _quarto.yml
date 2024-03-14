@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+
+website:
+  title: ARCA
+  page-navigation: true
+  navbar:
+    search: true
+    logo: "files/arca_logo.svg"
+    left: 
+      - text: Home
+        href: index.qmd
+    right:
+      - icon: github
+        href: https://github.com/arca-dpss/course-R
+    margin-header: "files/arca_logo.svg"
+  
+execute:
+  freeze: auto  # re-render only when source changes
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,116 @@
+---
+title: "Introduzione a R"
+---
+
+![](files/arca_logo.svg){width=20% fig-align="center"}
+
+# Il corso in breve
+
+Nel mondo accademico il panorama del software open-source e riproducibile si sta consolidando come la modalità di lavoro più professionale e avanzata. Allo stesso tempo, per poter usare questi strumenti, sono richieste competenze come basi di programmazione e la flessibilità a imparare diversi linguaggi e software. Uno dei più potenti e versatili linguaggi nell’ambito accademico ed anche aziendale è sicuramente R. 
+
+R è un linguaggio di programmazione open-source che vanta una community estremamente attiva e una quantità di estensioni che permettono di analizzare dati, produrre documenti e automatizzare operazioni complesse. 
+
+In questo corso di 20 ore partiremo dalla basi di R come linguaggio acquisendo competenze utili a comprendere la programmazione in generale. Verranno poi presentate le principali caratteristiche specifiche di R come i vari tipi di oggetti, le strutture dati ed anche aspetti più avanzati come la creazione di funzioni in modo da poter utilizzare poi il linguaggio in autonomia. Saranno poi accennati gli aspetti di programmazione in R che una volta acquisiti potranno essere facilmente trasferibili ad altri linguaggi e software.
+Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l’approfondimento e suggerimenti su come organizzare e ottimizzare al meglio l’utilizzo del software. 
+
+Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
+
+## Aule e Orari (2023-2024)
+
+| Data | Ora | Aula |
+|---|---|---|
+| 18/03/2024 | 09:00-13:00 | 4M |
+| 19/03/2024 | 09:00-13:00 | 4M |
+| 20/03/2024 | 09:00-13:00 | 4M |
+| 21/03/2024 | 13:00-17:00 | 4M |
+| 22/03/2024 | 09:00-13:00 | 4M |
+
+## Esame
+
+Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. L'esame contiene **20 domande** a cui rispondere in **45 minuti**. I punteggi sono assegnati con la seguente modalità:
+
+- 1 punto per ogni risposta corretta
+- -0.33 punti per ogni risposta sbagliata
+- 0 punti per ogni risposta non data
+
+Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 20 punti.
+
+L'esame ed il questionario di valutazione si può trovare al seguente [link](https://docs.google.com/presentation/d/1o-oOXxV6-3benPJZY_0-zIURdTCydhYv7EZcMJ-wb38/edit#slide=id.p)
+
+# Prepararsi al corso
+
+1. **Installare R ed R Studio**. Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
+2. **Salvare il sito web della repository** [https://github.com/arca-dpss/course-R](https://arca-dpss.github.io/course-R/) come preferito nel browser (in modo da avere facilmente accesso a tutto il materiale)
+3. **Scaricare la repository** Github del corso a questo [link](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R). Estraete la cartella del corso in una posizione qualsiasi del PC
+4. Installare i seguenti pacchetti eseguendo il codice R (semplicemente copiate e incollate nella console):
+
+```r
+pkgs <- c("devtools", "filor", "rmarkdown", "bookdown", "knitr", "here", "dplyr", "readr", "stringr", "readxl", "haven", "emo", "faux", "tidyr", "cowplot", "tidyverse", "cli", "purrr", "renderthis", "xaringan", "icons", "kableExtra", "xaringanExtra", "ggplot2", "stats", "tibble", "broom", "flextable", "sjPlot")
+install.packages(pkgs)
+```
+
+# Suddivisione argomenti
+
+## Introduzione all’ambiente di lavoro in R.
+
+In questa giornata verrà introdotto il software R dall’installazione per i vari sistemi operativi alla spiegazione e organizzazione di come gestire una sessione di lavoro.
+
+## Strutture dati e manipolazione di oggetti
+
+In questa giornata verranno introdotte le principali strutture dati che compongono il linguaggio R e le modalità per interagire in modo avanzato con esse.
+
+## Introduzione alla programmazione in R
+
+In questa giornata verranno introdotti i principali costrutti della programmazione (operazioni condizionali, iterazioni e funzioni) e la loro implementazione in R.
+
+## Applicazioni avanzate del linguaggio
+
+In questa giornata verranno introdotti alcuni aspetti trasversali utili per un utilizzo moderno e avanzato del linguaggio R cercando di risolvere problemi concreti.
+
+# Link importanti
+
+- Documento condiviso per esercizi - [Link](https://etherpad.wikimedia.org/p/arca-corsoR)
+- Cartella Dati - [Download Link](https://minhaskamal.github.io/DownGit/#/home?url=https:%2F%2Fgithub.com%2Farca-dpss%2Fcourse-R%2Ftree%2Fmain%2Fexercises%2Fdata)
+
+# Materiale
+
+## Lezioni
+
+Questi sono i link al materiale principale del corso:
+
+- **Introduzione al corso** - [Slides](slides/1_intro_generale/1_intro_generale.html) - [PDF](slides/1_intro_generale/1_intro_generale.pdf)
+- **Introduzione a R** - [Slides](slides/2_intro_a_R/2_intro_a_R.html) - [PDF](slides/2_intro_a_R/2_intro_a_R.pdf)
+- **Strutture dati in R** - [Slides](slides/3_data_structures/3_data_structures.html) - [PDF](slides/3_data_structures/3_data_structures.pdf)
+- **Programmazione in R** - [Slides](slides/4_programmazione/4_programmazione.html) - [PDF](slides/4_programmazione/4_programmazione.pdf)
+- **Problem Solving in R** - [Link](extra/R_problem_solving.html)
+- **R and beyond** - [Slides](slides/5_R_and_beyond/5_R_and_beyond.html) - [PDF](slides/5_R_and_beyond/5_R_and_beyond.pdf)
+
+## Esercizi
+
+In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:
+
+- Esercizi - [file](exercises/esercizi-no-solutions.html)
+
+## Argomenti extra
+
+In questa sezione ci sono alcuni argomenti extra che possono essere utili nel lavoro in R. Oltre ad una breve descrizione ci sono sempre dei riferimenti utili:
+
+- **NA, NaN, NULL e altri strani valori** - [Appunti](extra/dealing_with_NA_NaN_NULL.html)
+- **Importare dati esterni in R** - [Appunti](extra/importing_data.html)
+- **Le funzioni TOP in R** - [Appunti](extra/top_functions.html)
+- **Funzioni personalizzate** - [Appunti](extra/custom_functions.html)
+- **Introduzione a Tidyverse** - [Slide](https://filippogambarota.github.io/slides/tidyverse_presentation/tidyverse_presentation.html#1)
+- **Manipolare Stringhe** - [Capitolo 16](https://psicostat.github.io/Introduction2R/stringhe.html) del libro Introduction2R
+
+# Errori libro `Introduzione a R`
+
+Quando aumenta la quantità delle cose da scrivere aumenta (tantissimo 😱) la quantità di errori, inconsistenze e così via. Lo scopo di questo documento è di **raccogliere e sistemare tutti gli errori che nel tempo si trovano**.
+
+Questo [Google Sheet](https://docs.google.com/spreadsheets/d/1YmXN3iDtiyfLkhW246cICC_4X8S7xqWuN-EiLVDiAT8/edit#gid=0) tiene traccia di tutti gli errori e del loro stato.
+
+La modalità è semplice:
+
+1. Controllare che l’errore non sia stato già riportato
+2. Segnare data, sezione (e sotto-sezione)
+3. Segnare la frase dove è presente l'errore (in modo da poterlo trovare con la ricerca)
+4. Breve spiegazione dell'errore (non sempre è immediato)

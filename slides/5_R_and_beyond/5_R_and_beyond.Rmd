@@ -1,5 +1,5 @@
 ---
-title: 'Introduzione a R'
+title: "Introduzione a R"
 subtitle: "R and beyond"
 author: "Filipo Gambarota"
 institute: "ARCA - @DPSS"

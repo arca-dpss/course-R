@@ -209,7 +209,7 @@ Immaginiamo di avere il dataset `my_iris` con dei valori `NA`:
 
 ```{r}
 my_iris <- iris[1:10, ]
-my_iris <- filor::put_random_na(my_iris, 10)
+my_iris <- filor::add_random_na(my_iris, 10)
 my_iris
 ```
 
