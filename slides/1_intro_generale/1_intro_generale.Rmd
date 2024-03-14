@@ -150,6 +150,13 @@ In particolare, errori di scrittura o imprecisioni sono le cose più importanti.
 ]
 
 ---
+# Rules of the game
+
+```{r, out.width="50%", fig.align='center'}
+knitr::include_graphics("img/rules-of-the-game.jpeg")
+```
+
+---
 class: section, center, middle
 
 # Esame 😱
