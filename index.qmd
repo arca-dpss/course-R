@@ -15,28 +15,6 @@ Tutti i vari argomenti saranno accompagnati da esercizi pratici, materiale per l
 
 Il libro di riferimento per il corso è il libro anch’esso disponibile online su Github [Introduction2R](https://psicostat.github.io/Introduction2R/).
 
-## Aule e Orari (2023-2024)
-
-| Data | Ora | Aula |
-|---|---|---|
-| 18/03/2024 | 09:00-13:00 | 4M |
-| 19/03/2024 | 09:00-13:00 | 4M |
-| 20/03/2024 | 09:00-13:00 | 4M |
-| 21/03/2024 | 13:00-17:00 | 4M |
-| 22/03/2024 | 09:00-13:00 | 4M |
-
-## Esame
-
-Il corso prevede un esame finale sugli argomenti trattati nelle varie giornate. L'esame contiene **20 domande** a cui rispondere in **45 minuti**. I punteggi sono assegnati con la seguente modalità:
-
-- 1 punto per ogni risposta corretta
-- -0.33 punti per ogni risposta sbagliata
-- 0 punti per ogni risposta non data
-
-Per superare l'esame è necessario ottenere almeno 15 punti (75%) sul totale di 20 punti.
-
-L'esame ed il questionario di valutazione si può trovare al seguente [link](https://docs.google.com/presentation/d/1o-oOXxV6-3benPJZY_0-zIURdTCydhYv7EZcMJ-wb38/edit#slide=id.p)
-
 # Prepararsi al corso
 
 1. **Installare R ed R Studio**. Per il corso è necessario aver installato R ed R Studio. Per istruzioni su come installare si può vedere il [Capitolo 1](https://psicostat.github.io/Introduction2R/install.html) del libro Introduction2R.
