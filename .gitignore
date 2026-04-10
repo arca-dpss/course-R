@@ -73,3 +73,5 @@ Temporary Items
 .apdisk
 
 /.quarto/
+
+**/*.quarto_ipynb

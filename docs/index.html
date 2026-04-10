@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.21">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cfff8c2e93e78d74a123ac515f9bba40.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -115,7 +116,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./files/arca_logo.svg" alt="" class="navbar-logo">
+    <img src="./files/arca_logo.svg" alt="" class="navbar-logo light-content">
+    <img src="./files/arca_logo.svg" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">ARCA</span>
@@ -216,8 +218,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Scaricare la repository</strong> Github del corso a questo <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R">link</a>. Estraete la cartella del corso in una posizione qualsiasi del PC</li>
 <li>Installare i seguenti pacchetti eseguendo il codice R (semplicemente copiate e incollate nella console):</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"filor"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"bookdown"</span>, <span class="st">"knitr"</span>, <span class="st">"here"</span>, <span class="st">"dplyr"</span>, <span class="st">"readr"</span>, <span class="st">"stringr"</span>, <span class="st">"readxl"</span>, <span class="st">"haven"</span>, <span class="st">"emo"</span>, <span class="st">"faux"</span>, <span class="st">"tidyr"</span>, <span class="st">"cowplot"</span>, <span class="st">"tidyverse"</span>, <span class="st">"cli"</span>, <span class="st">"purrr"</span>, <span class="st">"renderthis"</span>, <span class="st">"xaringan"</span>, <span class="st">"icons"</span>, <span class="st">"kableExtra"</span>, <span class="st">"xaringanExtra"</span>, <span class="st">"ggplot2"</span>, <span class="st">"stats"</span>, <span class="st">"tibble"</span>, <span class="st">"broom"</span>, <span class="st">"flextable"</span>, <span class="st">"sjPlot"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"filor"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"bookdown"</span>, <span class="st">"knitr"</span>, <span class="st">"here"</span>, <span class="st">"dplyr"</span>, <span class="st">"readr"</span>, <span class="st">"stringr"</span>, <span class="st">"readxl"</span>, <span class="st">"haven"</span>, <span class="st">"emo"</span>, <span class="st">"faux"</span>, <span class="st">"tidyr"</span>, <span class="st">"cowplot"</span>, <span class="st">"tidyverse"</span>, <span class="st">"cli"</span>, <span class="st">"purrr"</span>, <span class="st">"renderthis"</span>, <span class="st">"xaringan"</span>, <span class="st">"icons"</span>, <span class="st">"kableExtra"</span>, <span class="st">"xaringanExtra"</span>, <span class="st">"ggplot2"</span>, <span class="st">"stats"</span>, <span class="st">"tibble"</span>, <span class="st">"broom"</span>, <span class="st">"flextable"</span>, <span class="st">"sjPlot"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="suddivisione-argomenti" class="level1">
 <h1>Suddivisione argomenti</h1>
@@ -263,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="esercizi">Esercizi</h2>
 <p>In questa sezione abbiamo il file principale con tutti gli esercizi e alcune soluzioni proposte:</p>
 <ul>
-<li>Esercizi - <a href="exercises/esercizi-no-solutions.html">file</a></li>
+<li>Esercizi - <a href="exercises/esercizi-solutions.html">file</a></li>
 </ul>
 </section>
 <section id="argomenti-extra" class="level2">
